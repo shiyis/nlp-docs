@@ -3,6 +3,8 @@ title: Introduction
 layout: home
 nav_order: 1
 ---
+
+{% include favicon.html %}
 # Hello There! Welcome To This Blog.
 
 I'm Shiyi. I'm deeply passionate about the intricate dance between data and innovation. With a fervent zeal for leveraging technology to extract insights and create meaningful impact, I've embarked on a journey that spans the realms of data science, research, and creative expression.
