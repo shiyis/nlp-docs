@@ -23,4 +23,4 @@ Here is a photo of him! 🫶🏻
 
 ![oreo](./assets/images/oreo.jpeg)
 
-I have created a separate blog for documenting some of the most important concepts in NLP. This blog will summarize some major concepts and important theories that lay the foundation for the development of AI, speech & language processing, and computational linguistics to provide more context and background.
+I have created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech & language processing, and computational linguistics to provide more context and background.
