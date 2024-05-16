@@ -220,20 +220,20 @@ In a similar light, `CTM` or the Computational Theory of Mind was established in
 
 According to `CTM`, the mind is a computational system similar in important respects to a Turing machine, and core mental processes (e.g., reasoning, decision-making, and problem solving) are computations similar in important respects to computations executed by a Turing machine.
 
-```plaintext
-  First, `CTM` is better formulated by describing the mind as a “computing system” or a
-  “computational system” rather than a “computer”. As David Chalmers - an Australian philosopher
-  and cognitive scientist specializing in the areas of philosophy of mind and philosophy of
-  language - (2011) notes, describing a system as a “computer” strongly suggests that the system
-  is programmable. As Chalmers also notes, one need not claim that the mind is programmable
-  simply because one regards it as a Turing-style computational system.
+{: .note }
+First, `CTM` is better formulated by describing the mind as a “computing system” or a
+“computational system” rather than a “computer”. As David Chalmers - an Australian philosopher
+and cognitive scientist specializing in the areas of philosophy of mind and philosophy of
+language - (2011) notes, describing a system as a “computer” strongly suggests that the system
+is programmable. As Chalmers also notes, one need not claim that the mind is programmable
+simply because one regards it as a Turing-style computational system.
 
-  Second, `CTM` is not intended metaphorically. `CTM` does not simply hold that the mind is like a
-  computing system. `CTM` holds that the mind `literally is a computing system`. The most familiar
-  artificial computing systems are made from silicon chips or similar materials, whereas the
-  human body is made from flesh and blood. But `CTM` holds that this difference disguises a more
-  fundamental similarity, which we can capture through a Turing-style computational model.
-```
+{: .note }
+Second, `CTM` is not intended metaphorically. `CTM` does not simply hold that the mind is like a
+computing system. `CTM` holds that the mind `literally is a computing system`. The most familiar
+artificial computing systems are made from silicon chips or similar materials, whereas the
+human body is made from flesh and blood. But `CTM` holds that this difference disguises a more
+fundamental similarity, which we can capture through a Turing-style computational model.
 
 
 
