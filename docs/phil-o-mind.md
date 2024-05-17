@@ -91,10 +91,7 @@ A “strong” form of emergence would suggest that something truly new comes in
 
 The example used was when we talk about atoms and other physical properties, it might not be suitable to talk about free will, but under the philosophical discussions about human consciousness, motivation, and behavior, it may be otherwise.
 
-
-🔘 In such case, explaining what a weak emergence is, we may ask the question: if we take the view that consciousness
-does affect our thoughts and behavior, is that view applicable at the level of atoms and particles, or only at the level
-appropriate for describing human psychology?
+In such case, explaining what a weak emergence is, we may ask the question: **if we take the view that consciousness does affect our thoughts and behavior, is that view applicable at the level of atoms and particles, or only at the level appropriate for describing human psychology ❓**
 
 In answering this question, the article used a different analogy;
 consider the mechanism that regulates the constriction and
@@ -321,8 +318,7 @@ reflects poorly the productivity of these mental processes. On top of that there
 
 Coming back to the important discussion around consciousness. Now we could ask that,
 
-ℹ️ why isn't this indication enough for such a phenomenon to explain what these "nomologically dangling" ideas are?
-And what exactly is the purpose of consciousness? or the importance of qualia?
+**Why isn't this indication enough for such a phenomenon to explain what these "nomologically dangling" ideas are ? And what exactly is the purpose of consciousness ? or the importance of qualia ❓**
 
 {: .note }
 One answer to the questions argues that they are not merely physical, it's the nature's decision bestowed upon us with

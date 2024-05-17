@@ -237,7 +237,7 @@ _The $\theta$-Role_ - similar constraint is the $\theta$-criterion. In addition 
 
 _Movement-$\alpha$_ - During transformation, the d-structure turns into the s-structure which reflects (more or less) the actual form of the generated sentence. This movement is constrained by restrictions on the positions, items moved, and other properties of a chain. This is very crucial to pay attention to if a language modeling task needs to done addressing such a movement.
 
-ℹ️ Why is this important to bring up here?
+**Why is this important to bring up here ❓**
 
 Transformational grammar posits that the structure of sentences in natural language can be generated through a series of transformations applied to underlying structures. These transformations allow for the derivation of various surface forms from a single underlying representation, providing a systematic way to account for the diversity of sentences in a language.
 
@@ -261,7 +261,7 @@ On the other hand, the non-compositionality of semantics indicate that the meani
 
 Cognitive linguists emphasize the search for principles which will facilitate an explanation of the range of _form-meaning pairs_ in a given language.
 
-ℹ️ Why does a specific combinations of words evoke one particular schematic conception rather than another? Why are some word-combinations regarded as ill-formed? How can we describe this evoked conceptualization in a useful manner?
+**Why does a specific combinations of words evoke one particular schematic conception rather than another ？ Why are some word-combinations regarded as ill-formed ? How can we describe this evoked conceptualization in a useful manner ❓**
 
 Traditional attempts to understand the meaning of natural language utterances have typically divided the problem into two parts:
 
@@ -318,12 +318,12 @@ The connections from an active unit in the non-overlap map to the chain map prev
 
 
 
-chain map with activated units on the right and d-structure on the left|
+Chain map with activated units on the right and d-structure on the left|
 :-------------------------:|
 ![](../extras/connectionism/structure-map.jpg)|
 
 
-non-overlap constraints satisfactory map|
+Non-overlap constraints satisfactory map|
 :-------------------------:|
 ![](../extras/connectionism/case-filter-map-annotated.jpg)|
 
@@ -340,7 +340,7 @@ In fact, a few papers accomplished in the 1980s put effort into addressing this 
 
 This section will introduce one of the many researches that has put in such an endeavour to dive deeper and make the connection happen. In the paper that has conducted _Hybrid Noun Phrase Analysis_, under section 3 _Learning Semantic Prepositional Relationships in Distributed Connnectionist Networks_, the net work was built as such that for each preposition there is one back-propagation network that determines the plausibility of the prepositional relationships (see below figure).
 
-One network consists of three layers of units to cover the schema 'Sun (Trajector) rises-_over_ (Locative-PREPOSITION) the sea (Landmark)'. The input layer consists of 32 binary units (value 0 and 1; and probably the earliest vectorization of words or word2vec) representing 15 features for each of the two nouns.
+One network consists of three layers of units to cover the schema 'Sun (Trajector) rises - _over_ (Locative-PREPOSITION) the sea (Landmark)'. The input layer consists of 32 binary units representing 15 features for each of the two nouns.
 
 The single real-valued output unit determines whether the prepositional relationship is plausible (value 1) or implausible (value 0). Twelve real-valued hidden units encode the mapping from the input units to the output units from a training set. All levels in the back-propagation network are fully connected. The graph of such a simple network is demonstrated below.
 
@@ -516,7 +516,7 @@ The context vector describes the relationship between the global input sequence 
 
 _Self-Attention_, or how each word in a sequence is related to other words in the same sequence, is the main emphasis of the multi-headed attention block. An attention vector created within the attention block serves as a representation for the self-attention. The goal is to identify the contextual connections between the sentence's words.
 
-ℹ️ How does that function? By using the scaled dot products, we may determine the relationship between two vectors.
+💭 **How does that function? By using the scaled dot products, we may determine the relationship between two vectors.**
 
 
 
