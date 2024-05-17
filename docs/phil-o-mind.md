@@ -253,7 +253,7 @@ _until it exhausts its limited memory supply_.
 **Memory Locations**: Assuming an infinitely long linear structure or system, here is where these symbols might be kept.
 
 {:.note}
-**Central Processor and Its Actions**: A central processor, which has a limited number of machine states it can enter. The central processor's basic actions on symbols include writing and deleting symbols
+**The Central Processor and Its Actions**: A central processor, which has a limited number of machine states it can enter. The central processor's basic actions on symbols include writing and deleting symbols
 as well as accessing the next memory position in the linear array.
 
 {:.note}
