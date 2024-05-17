@@ -828,12 +828,14 @@ blockquote {
   color: #27262b;
   font-size: 1.125rem !important;
   font-weight: bold;
+  display: none;
 }
 @media (min-width: 50rem) {
   .site-title {
     padding-right: 2rem;
     padding-left: 2rem;
     font-weight: bold;
+    display: none:
   }
 }
 @media (min-width: 31.25rem) {
