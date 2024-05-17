@@ -30,7 +30,7 @@ That being said, the language that we used to describe our mental experience is 
 
 Continuing the discussion of LOTH or the _The Language of Thought Hypothesis_, again one can postulate that it's closely correlated with the mental representation (drawing reference from _the Representational Theory of Mind_ and the current discussions around understanding how the brain actually works; at least w.r.t the folk psychology).
 
-It confirms that _Mentalese_ exists within the scope of research. Aside from the physical aspects (the basic ability to identify, match, and represent the objective and physical reality), researches of these "mental representations" strive to incorporate subjective and qualitative dimensions, for example, consciousness and propositional attitudes specifically borne out in the form of a natural language as feelings, beliefs, desires, intentions, and fears.
+It confirms that _Mentalese_ exists within the scope of research. Aside from the physical aspects (the basic ability to identify, match, and represent the objective and physical reality), researches of these "mental representations" strive to incorporate subjective and qualitative dimensions; for example, consciousness and propositional attitudes specifically in the form of a natural language as feelings, beliefs, desires, intentions, and fears.
 
 The exactness of a mental language or a mental state is yet unknown. However, in folk psychology, these propositional attitudes are a direct reflection and serve a distinctive function to these mental images, in case the locutionary intends that the proposition A* gets assigned to these mental states S.
 
@@ -135,7 +135,7 @@ Molecular theory extracts the canonical or typical relations between symbols thr
 
 To explain in simpler terms as I understood it, looking at a natural language say we have the simple term _word_ and _words_ in English serving as a basic unit or lexical item; they would belong to the same primitive type WORD as the same token under MT and different under HT.
 
-However it's concerned under HT that it might have violated the _publicity constraint_ as propositional attitudes are shareable. And in contemporary literature through the inferential judgement that in a natural language, there's a vague and arbitrary sense of denotation (The English word "cat" denotes cats, but could denote something had the linguistic convention presumes so), one can also conclude that in a _Mentalese_, such a case is applicable.
+However it's concerned under HT that it might have violated the _publicity constraint_ as propositional attitudes are shareable. And in contemporary literature through the inferential judgement that in a natural language, there's a vague and arbitrary sense of denotation (the English word "cat" denotes cats, but could denote something had the linguistic convention presumes so), one can also conclude that in a _Mentalese_, such a case is applicable.
 
 Yet, historical literature suggests an alternative view that addresses an distinction that _Mentalese_ is essentially semantically permeated meaning that they are not arbitrary as a natural language is and at least to some extent they have a fixed denotation.
 
@@ -147,7 +147,7 @@ However, this approach also faces some challenge. First, it violates the origina
 
 This may be carried out in the FCS or the formal-syntactic concept of computation's provided explanation of formalism and semantic integrity; which holds that mental computational is sensitive to syntax independent of semantics or mind is practically speaking a `"syntactic machine"`.
 
-*On top of it, this approach merely prevents the formal-syntactic _Mentalese_ types while executing a reduction in the naturalization of intentionality*.
+On top of it, this approach merely prevents the formal-syntactic _Mentalese_ types while executing a reduction in the naturalization of intentionality.
 
 In a nutshell, above individuation theories might not be adequate to account for the entirety of LOTH. More investigation is needed.
 
@@ -433,28 +433,15 @@ For the first two decades or so, the main goal of statistical NLP has been to as
 
 More fully, the types of tasks addressed can be roughly grouped as follows (where additional keywords indicate typical applications):
 
-{: .note }
-**Text and Document Categorization**: authorship, news categories, sentiment analysis
 
-{: .note }
-**Context Categorization of Selected Text**: lexical disambiguation, named entity recognition, multi-word expression recognition;
-
-{: .note }
-**Sequence Tagging**: cell phones → acoustic features → phonemes → words → POS tags
-
-{: .note }
-**Structural Assignment of Sentences**: parsing, semantic role labeling, quantifier scoping
-
-{: .note }
-**Sentence Transduction**: machine translation, low-frequency computation
-
-{: .note }
-**Structural Assignment of Multi-Sentence Texts**: discourse relationships, recall, plan recognition
-
-{: .note }
-**Large-Scale Relational Extraction**: knowledge extraction, paraphrase and implication relations
-
-
+| :---: |
+**Text and Document Categorization**: authorship, news categories, sentiment analysis |
+**Context Categorization of Selected Text**: lexical disambiguation, named entity recognition, multi-word  expression recognition |
+**Sequence Tagging**: cell phones → acoustic features → phonemes → words → POS tags |
+**Structural Assignment of Sentences**: parsing, semantic role labeling, quantifier scoping |
+**Sentence Transduction**: machine translation, low-frequency computation |
+**Structural Assignment of Multi-Sentence Texts**: discourse relationships, recall, plan recognition |
+**Large-Scale Relational Extraction**: knowledge extraction, paraphrase, and implication relations |
 
 **TF-IDF Normalization:**
 In text classification, one common technique for normalizing word frequencies is TF-IDF (Term Frequency-Inverse Document Frequency). TF-IDF assigns weights to words based on their frequency in the document and their rarity across the entire corpus. Preprocessing steps such as removing stop words and punctuation are often applied before calculating TF-IDF scores to improve accuracy.
@@ -480,20 +467,11 @@ We have talked so much about the statistical methods in dealing with natural lan
 
 Recurrent Neural Networks (RNN) operate on sequential data, including time-series data and language translation. Recurrent neural networks come in several forms.
 
-```plaintext
 
-    Vector to Sequence:
-        takes in a vector and output a sequence of any length.
-
-    Sequence to Vector:
-        accepts a sequence as input and output a vector (frequently used for semantic
-        analysis).
-
-    Sequence To Sequence:
-        Models take one sequence as input and produce another sequence (mostly used for
-        machine translation).
-
-```
+| :---: |
+**Vector to Sequence**: takes in a vector and outputs a sequence of any length. |
+**Sequence to Vector**: accepts a sequence as input and outputs a vector. |
+**Sequence To Sequence**: models take one sequence as input and produces another sequence. |
 
 #### The Encoder-Decoder Architecture
 
