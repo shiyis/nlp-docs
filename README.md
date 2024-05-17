@@ -14,7 +14,7 @@ More specifically, the created site:
 To get started with creating a site, simply:
 
 1. click "[use this template]" to create a GitHub repository
-2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
+2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actionsa
 
 If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](#hosting-your-docs-from-an-existing-project-repo).
 
