@@ -21,7 +21,6 @@ pe = pe.unsqueeze(0).transpose(0, 1)
 ### Explanation
 
 #### 1. `div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))`
-
 {: .fs-4 .fw-700}
 
 - **Purpose**: Calculate the denominator for the sine and cosine functions in the positional encoding formula.
@@ -35,7 +34,6 @@ pe = pe.unsqueeze(0).transpose(0, 1)
   - `torch.exp()`: Applies the exponential function to each element in the tensor, resulting in the `div_term` tensor which will be used to scale the positions.
 
 #### 2. `pe[:, 0::2] = torch.sin(position * div_term)`
-
 {: .fs-4 .fw-700}
 
 - **Purpose**: Compute the sine values for even-indexed dimensions in the positional encoding matrix.
@@ -48,7 +46,6 @@ pe = pe.unsqueeze(0).transpose(0, 1)
   - `=`: Assigns the computed sine values to these selected positions in the positional encoding matrix `pe`.
 
 #### 3. `pe[:, 1::2] = torch.cos(position * div_term)`
-
 {: .fs-4 .fw-700}
 
 - **Purpose**: Compute the cosine values for odd-indexed dimensions in the positional encoding matrix.
@@ -60,7 +57,6 @@ pe = pe.unsqueeze(0).transpose(0, 1)
   - `=`: Assigns the computed cosine values to these selected positions in the positional encoding matrix `pe`.
 
 #### 4. `pe = pe.unsqueeze(0).transpose(0, 1)`
-
 {: .fs-4 .fw-700}
 
 - **Purpose**: Reshape the positional encoding matrix to match the expected input shape for the Transformer model.
