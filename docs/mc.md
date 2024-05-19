@@ -20,11 +20,72 @@ nav_order: 5
 9. **Applications** Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions. |
 10. **Markov Chain**  A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values. |
 
+#### zWe will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding 
 
+
+```python
+    import numpy as np
+
+    # Define the number of states and the transition matrix
+    N = 3
+    P = np.array([[0.5, 0.5, 0.0],
+                [0.0, 0.5, 0.5],
+                [0.5, 0.0, 0.5]])
+
+    # Define a function to simulate the Markov process
+    def simulate_markov(P, N, num_steps):
+        # Initialize the state vector
+        state = np.zeros(N)
+        state[0] = 1
+
+        # Initialize the state history
+        state_history = [state]
+
+        # Simulate the Markov process
+        for i in range(num_steps):
+            # Determine the next state
+            next_state = np.random.choice(N, p=P[:, state])
+
+            # Update the state vector
+            state = next_state
+
+            # Add the current state to the history
+            state_history.append(state)
+
+        return state_history
+
+    # Simulate the Markov process for 100 steps
+    state_history = simulate_markov(P, N, 100)
+    print(state_history)    
+```
+
+
+In this example, we define a transition matrix P for a 3-state Markov process. We then define a function simulate_markov that takes the transition matrix, the number of states, and the number of steps to simulate as input, and returns a list of the system's states at each time step.
+
+The function initializes the state vector to all zeros, with a 1 in the first position to indicate that the system starts in state 0. It then simulates the Markov process by iteratively selecting the next state based on the current state and the transition probabilities. The current state is added to a history list at each time step.
+
+Finally, we simulate the Markov process for 100 steps and print the resulting state history.
+
+Regarding the negative sign in the formula for KL divergence, it is used to convert the KL divergence from a measure of similarity to a measure of dissimilarity. The KL divergence is a non-negative quantity that measures the difference between two probability distributions. In the context of variational inference, we want to minimize the KL divergence between the learned latent variable distribution and a standard normal distribution. By adding a negative sign in front of the formula, we convert the KL divergence into a loss term that can be minimized during training.
+
+Regarding feature engineering, it is the process of creating new features from existing ones in a dataset, with the goal of improving the performance of a machine learning model. In the context of parametric modeling, feature engineering can involve techniques such as polynomial features, interaction features, and categorical encoding. The goal is to create features that are informative and relevant to the problem at hand, and that can help improve the performance of the model.
+
+Here's an example of feature engineering in the context of linear regression:
+
+```
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Load the dataset
+data = pd.read_csv('boston_housing
+
+```
 
 
 #### In what scenarios are markov chain applicable?
-
 
 >**Modeling Stock Prices** Markov processes are used to model the movement of stock prices, where each state represents a certain price level, and transitions occur based on market conditions.
 
