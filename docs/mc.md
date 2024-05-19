@@ -20,7 +20,7 @@ nav_order: 5
 9. **Applications** Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions. |
 10. **Markov Chain**  A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values. |
 
-#### zWe will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding 
+#### We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding 
 
 
 ```python
