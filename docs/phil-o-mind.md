@@ -370,7 +370,7 @@ That there are inherent systematic relations between basic cognitive constitutio
 
 
 Note that this is different from
-how CTM tackles Productivity and Systematicity of thoughts. `CTM` explains the productivity of thoughts by extrapolating the computational nature of any intelligent machine to it and assuming an infinite number of logic produced with a finite set of symbols and the rules and elements that operate on and manipulate them. And it assumes the systematicity of thoughts by subscripting it to the structural organizations of thoughts and the systematic rules of inference that govern them.
+how CTM tackles Productivity and Systematicity of thoughts. `CTM` explains the productivity of thoughts by extrapolating the computational nature of any intelligent machine to it and assuming an infinite number of logic produced with a finite set of symbols and the rules and elements that operate on and manipulate them. And it assumes the systematicity of thoughts by subscribing to the structural organizations of thoughts and the systematic rules of inference that govern them.
 
 More importantly, with a shift in the representation of information toward a sub-symbolic, universally distributed approach. While the specific mention is about solving a philosophical conundrum related to representations of meaning, we can consider how this shift might also address the potential conundrum faced by classicists - the syntactic underpinnings. Here are some ways in which this approach could be relevant:
 
