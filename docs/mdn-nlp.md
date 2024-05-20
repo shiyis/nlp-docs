@@ -232,7 +232,7 @@ _Government Binding_ - essentially what we see in above example is that in GB th
 ```
 
 _The Empty Category Principle_ - which is the constraint that whenever there's an empty category left behind by some sort of motion forced by case-filtering needs to be properly governed.
-
+   
 _D-Structure_ - the d-structure is the product of phrasal structural rules that are derived from X-bar syntax, which provides a template for the structure of phrases (NP, VP, etc).
 
 _Case Filtering_ - Case is a grammatical marking which is assigned to phrase with specific structural relationships to various lexical items, such as verbs.
