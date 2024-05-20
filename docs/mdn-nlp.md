@@ -229,7 +229,6 @@ _Government Binding_ - essentially what we see in above example is that in GB th
 ```
       1. will still require the phrase structure rules.
       2. the change from d-structure to s-structure.
-      
 ```
 
 _The Empty Category Principle_ - which is the constraint that whenever there's an empty category left behind by some sort of motion forced by case-filtering needs to be properly governed.
