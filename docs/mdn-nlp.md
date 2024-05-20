@@ -182,9 +182,13 @@ Another stream of objections go against the fact that the productivity and syste
 
 The connectionists contend that instead of a concatenated structure, distributed representations could well capture the integral parts of LOTH. However, doubt was raised around the idea that if we consider concatenative constituency structure is only one of the realizations of the _productivity_ and _systematicity_ of the LOTH, then these schools of neural models would still be considered as part of the classicism.
 
+It's true that if productivity and systematicity can be realized through distributed representations, connectionist models might be seen as addressing similar concerns as LOTH, potentially aligning them more closely with some aspects of classicism.
+
+However, the core of classicism involves symbolic representations and discrete structures, which are fundamentally different from the principles of connectionism. So, even if connectionist models achieve similar functional outcomes, they are based on fundamentally different theoretical premises.
+
 > broadly speaking, classicists would appreciate the structural representations while the connectionists would appreciate the more distributed representations.
 
-Connectionist models, based on neural networks, nonetheless offered an alternative to traditional symbolic or computational models, such as those associated with the Computational Theory of Mind (CTM). These connectionist models were often seen as more biologically plausible and capable of capturing complex, distributed patterns of information processing.
+Connectionist models, based on neural networks, nonetheless offered an alternative to traditional symbolic or computational models, such as those associated with the Computational Theory of Mind (CTM). These connectionist models were often seen as more biologically plausible and can learn and represent syntactic structures implicitly through distributed processing.
 
 #### COMP Reflected in a Natural Language's Syntactic Makeup
 {: .fs-3 .fw-700}
@@ -223,8 +227,9 @@ Here the letter _e_ represents the empty category that fulfills the empty catego
 _Government Binding_ - essentially what we see in above example is that in GB there are two phases in generation:
 
 ```
-1. will still require the phrase structure rules.
-2. the change from d-structure to s-structure.
+      1. will still require the phrase structure rules.
+      2. the change from d-structure to s-structure.
+      
 ```
 
 _The Empty Category Principle_ - which is the constraint that whenever there's an empty category left behind by some sort of motion forced by case-filtering needs to be properly governed.
