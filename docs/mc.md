@@ -24,6 +24,7 @@ In a different blog, I noted the use of a markov chain in the content of natural
 
 We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding 
 
+This section breaks down a simple example of how to build a simple markov chain in code example.
 
 ```python
 

@@ -1,5 +1,5 @@
 ---
-title: TransforMORE
+title: Transformer
 nav_order: 4
 layout: home
 ---
