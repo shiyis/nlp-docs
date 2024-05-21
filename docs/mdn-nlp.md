@@ -59,7 +59,7 @@ So, to talk about the actualization of a mental image in such case, the process 
 
 Natural languages are compositional meaning that complex sentences are formed through simple linguistic expressions. In the same light, a mental language could be compositional and consist of symbols amenable to semantic analysis. This would be introduced as the COMP or _The Compositionality of Mental Processes_.
 
-LOTH claims that mental states typically have constiuent structures. That said, the mental state of intending something bears weight and complexity on its own not including their propositional objects or mental representations.
+LOTH claims that mental states typically have constiuent structures. That said, the mental state of intending something bears weight and complexity on its own not including their propositional objects or mental representations. While mental states like intending indeed have inherent weight and complexity, LOTH also asserts that this complexity is often tied to the propositional objects or mental representations that constitute these states.
 
 Ancient LOTH proponents used syllogism and propositional logic to analyze the semantics of _Mentalese_. Current researchers instead use predicate calculus, which was established in the late 18th century and optimized in the 30s. The premise was that,
 
@@ -232,7 +232,7 @@ _Government Binding_ - essentially what we see in above example is that in GB th
 ```
 
 _The Empty Category Principle_ - which is the constraint that whenever there's an empty category left behind by some sort of motion forced by case-filtering needs to be properly governed.
-   
+
 _D-Structure_ - the d-structure is the product of phrasal structural rules that are derived from X-bar syntax, which provides a template for the structure of phrases (NP, VP, etc).
 
 _Case Filtering_ - Case is a grammatical marking which is assigned to phrase with specific structural relationships to various lexical items, such as verbs.

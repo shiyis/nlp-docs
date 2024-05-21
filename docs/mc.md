@@ -8,7 +8,7 @@ nav_order: 5
 
 #### This blog will summarize content more on markov processes 
 
-In a different blog, I noted the use of a markov chain in the content of natural language processing. Now in this blog, we will be going through some important details with regard to the concept per se. 
+In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept per se. 
 
 | :---: |
 1. **States** A system can exist in different states, representing distinct configurations or conditions. Denoted by symbols, numbers, or labels. |
