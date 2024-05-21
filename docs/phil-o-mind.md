@@ -15,7 +15,7 @@ abilities of a machine to emulate reasoning, decision-making, problem solving, p
 other mental processes.
 
 ## Table of Contents
-{: .no_toc .text-delta }
+{: .no_toc .text-delta .fs-3 .fw-700}
 
 1. TOC
 {:toc}

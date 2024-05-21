@@ -1,4 +1,10 @@
-Sure! Let's break down Jacobian matrices and Taylor expansions in plain language and explore how they are connected.
+This blog will break down and continue explaining Jacobian matrices and Taylor expansions in plain language and explore how they are connected.
+
+## Table of Contents
+{: .no_toc .text-delta .fs-3 .fw-700}
+
+1. TOC
+{:toc}
 
 ### Jacobian Matrix
 

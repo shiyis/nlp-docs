@@ -20,10 +20,10 @@ That being said, the language that we used to describe our mental experience is 
 
 
 ## Table of Contents
-{: .no_toc .text-delta }
+{: .no_toc .text-delta .fs-3 .fw-700}
 
 1. TOC
-{:toc .fs-3 .fw-700}
+{:toc}
 
 
 
