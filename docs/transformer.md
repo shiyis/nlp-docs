@@ -88,24 +88,99 @@ pe = pe.unsqueeze(0).transpose(0, 1)
 
      - The division by `d_model` normalizes the range of exponents to ensure they vary smoothly between 0 and 1, creating a geometric progression of frequencies.
 
-  ### Detailed Steps
+### Detailed Steps
 
   Let’s rewrite the specific part of the code to understand its purpose:
 
   ```python
   div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))
   ```
-  - **`torch.arange(0, d_model, 2)`**:
+ Let's break down the specific line of code `div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))` and explain its purpose in the context of positional encoding in the Transformer model.
 
-    - Creates a sequence of numbers from `0` to `d_model-1` with a step of `2`, representing even indices. If `d_model` is `512`, this would be `[0, 2, 4, ..., 510]`.
-  - **`(-math.log(10000.0) / d_model)`**:
+### Purpose of the Code
 
-    - Computes the scaling factor. `math.log(10000.0)` is a constant that determines the rate of the exponential decay. Dividing by `d_model` normalizes this rate across the embedding dimensions.
-  - **`torch.exp(... * (-math.log(10000.0) / d_model))`**:
+This line of code is part of the positional encoding generation process in the Transformer model, as described in the paper "Attention is All You Need". The positional encodings allow the model to utilize the order of the sequence since the Transformer itself is position-agnostic.
 
-    - Applies the exponential function to scale the positions appropriately for the sine and cosine calculations.
+### Breaking Down the Code
 
-  ### Intuitive Understanding
+#### 1. `torch.arange(0, d_model, 2)`
+
+- **Purpose**: Creates a sequence of even integers from 0 to `d_model - 2`.
+- **Example**: If `d_model` is 512, `torch.arange(0, d_model, 2)` generates a tensor containing `[0, 2, 4, ..., 510]`.
+
+```python
+indices = torch.arange(0, d_model, 2)
+```
+- **Output**: A tensor of shape `(d_model/2,)` containing even integers up to `d_model - 2`.
+
+#### 2. `.float()`
+
+- **Purpose**: Converts the integer tensor to a tensor of floats. This is necessary because we will perform mathematical operations that require floating-point precision.
+- **Example**: Continuing from the previous step, `.float()` converts the integer tensor to floating-point numbers.
+
+```python
+indices = indices.float()
+```
+- **Output**: A tensor of shape `(d_model/2,)` containing floating-point numbers `[0.0, 2.0, 4.0, ..., 510.0]`.
+
+#### 3. `(-math.log(10000.0) / d_model)`
+
+- **Purpose**: Computes a scaling factor for the positional encodings. The value `-math.log(10000.0) / d_model` ensures the positional encodings have values that decay exponentially.
+- **Value**: If `d_model` is 512, this term calculates to `-math.log(10000.0) / 512 ≈ -0.02302585`.
+
+```python
+scale_factor = -math.log(10000.0) / d_model
+```
+
+#### 4. `* scale_factor`
+
+- **Purpose**: Multiplies each element in the tensor of indices by the scale factor. This operation scales the indices to a range suitable for the exponential function, ensuring the positional encodings vary smoothly.
+- **Example**: Continuing from the previous steps, `indices * scale_factor` scales each index.
+
+```python
+scaled_indices = indices * scale_factor
+```
+- **Output**: A tensor of shape `(d_model/2,)` with scaled values.
+
+#### 5. `torch.exp(scaled_indices)`
+
+- **Purpose**: Applies the exponential function to each element in the scaled tensor. The exponential function is used to create a set of frequencies for the positional encodings.
+- **Example**: Applying the exponential function to the scaled indices.
+
+```python
+div_term = torch.exp(scaled_indices)
+```
+- **Output**: A tensor of shape `(d_model/2,)` containing the calculated frequencies for the positional encodings.
+
+### Final Output
+
+The variable `div_term` now contains a series of exponentially scaled values. These values are used to create the positional encodings, which alternate between sine and cosine functions at different frequencies.
+
+```python
+import torch
+import math
+
+d_model = 512  # Example value
+indices = torch.arange(0, d_model, 2).float()
+scale_factor = -math.log(10000.0) / d_model
+scaled_indices = indices * scale_factor
+div_term = torch.exp(scaled_indices)
+
+print(div_term)
+```
+
+### Summary
+
+- **`torch.arange(0, d_model, 2).float()`**: Creates a tensor of even indices from 0 to `d_model - 2` and converts them to floats.
+- **`(-math.log(10000.0) / d_model)`**: Computes a scaling factor.
+- **`* scale_factor`**: Scales the indices by the computed factor.
+- **`torch.exp(scaled_indices)`**: Applies the exponential function to get the final `div_term`.
+
+### Purpose in Positional Encoding
+
+The `div_term` tensor represents the denominators for the positional encodings' sine and cosine functions. These frequencies ensure that different positions in the input sequence have unique encodings, allowing the Transformer model to infer the position of each token. The overall goal is to introduce a form of positional information that helps the model understand the order of the sequence.
+
+### Intuitive Understanding
 
   - **Varying Frequencies**:
 
