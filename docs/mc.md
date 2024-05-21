@@ -7,6 +7,7 @@ nav_order: 5
 {% include latex_template.html %}
 
 #### This blog will summarize content more on markov processes 
+{: .fs-3 .fw-700}
 
 In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept per se. 
 

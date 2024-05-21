@@ -48,10 +48,10 @@ So, to talk about the actualization of a mental image in such case, the process 
 
 ```
 
-      - First, the occurrence where I have an intention of doing something;
-      - And then second the enduring state which is reflected as my long standing belief
+      1. First, the occurrence where I have an intention of doing something;
+      2. And then second the enduring state which is reflected as my long standing belief
       of something.
-      - With deductive reasoning and inference (I transition from believing* the premises to
+      3. With deductive reasoning and inference (I transition from believing* the premises to
       believing the conclusion) together as a package, the propositional attitudes reflect
       these mental images which are the direct objects and constitute
       the scope of a thought process.
@@ -285,7 +285,8 @@ The meaning of a word is a set of semantic features used to determine its real-w
 
 
 
-##### Non-overlapping Mapping Mechanism: A Connectionism Approach To Representing Complex Phrasal/Syntactic Structures
+#### Non-overlapping Mapping Mechanism: A Connectionism Approach To Representing Complex Phrasal/Syntactic Structures
+{: .fs-3 .fw-700}
 
 This is another important attempt at bridging these two different schools of LOTH theory development together - the non-overlapping mapping mechanism (Rager and Berg, 1992). At a simpler level, a breath-first representation as a mapping was provided to capture the d-structure of a phrasal structure to a row and column representation with constituent parts highlighted (where the constituents preceding a constituent form the elements of the column above it as demonstrated in the graph above). This mapping also needs to satisfy the above constraints, which we will go into more depth in the subsequent sections.
 
