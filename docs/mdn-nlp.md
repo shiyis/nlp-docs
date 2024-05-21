@@ -344,7 +344,9 @@ However, GB theory imposes constraints globally on resulting structures and can 
 
 In fact, a few papers accomplished in the 1980s put effort into addressing this RTM + COMP through coding the syntactic elements of the inputs at a higher level with a simple MLP neural network to train such a model and accomplish subsequent lower level parsing tasks.
 
-##### Simple Distributed Representations (Such As A Simple MLP Network) To Map Syntactic Structures.
+#### Simple Distributed Representations (Such As A Simple MLP Network) To Map Syntactic Structures.
+{: .fs-3 .fw-700}
+
 
 This section will introduce one of the many researches that has put in such an endeavour to dive deeper and make the connection happen. In the paper that has conducted _Hybrid Noun Phrase Analysis_, under section 3 _Learning Semantic Prepositional Relationships in Distributed Connnectionist Networks_, the net work was built as such that for each preposition there is one back-propagation network that determines the plausibility of the prepositional relationships (see below figure).
 
@@ -495,6 +497,7 @@ But there are drawbacks to recurrent neural networks.
 💭 In a separate blog, these different architectures will be introduced in more detail.
 
 #### Attention Is All You Need
+{: .fs-3 .fw-700}
 
 To address some of the issues with conventional RNNs and LSTMs, an attention mechanism was introduced to them. The context vector, which contains the weighted sum of each hidden state in the encoder, served as the basis for the attention mechanism.
 
