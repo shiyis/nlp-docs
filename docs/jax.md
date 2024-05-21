@@ -11,10 +11,10 @@ Sure! Let's break down Jacobian matrices and Taylor expansions in plain language
 - The Jacobian matrix for this function is like a grid that shows how $u$ and $v$ change when $x$ and $y$ change.
 - Mathematically, it's a 2x2 matrix (in this case) where each entry is a partial derivative. It looks like this:
 
-\[ \text{Jacobian} = \begin{pmatrix}
+$$ \text{Jacobian} = \begin{pmatrix}
 \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
 \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
-\end{pmatrix} \]
+\end{pmatrix} $$
 
 **What it tells you:**
 - Each entry in the Jacobian matrix tells you how one output changes with respect to one input.
@@ -31,7 +31,7 @@ Sure! Let's break down Jacobian matrices and Taylor expansions in plain language
 - The Taylor expansion uses the value of the function at $a$ and its derivatives (rates of change) at $a$ to build this approximation.
 - The formula for the Taylor expansion up to the first few terms looks like this:
 
-\[ f(x) \approx f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots \]
+$ f(x) \approx f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots $
 
 **What it tells you:**
 - The first term $f(a)$ is the function's value at $a$.
@@ -44,7 +44,7 @@ Sure! Let's break down Jacobian matrices and Taylor expansions in plain language
 - When you use the Taylor expansion for functions with multiple inputs and outputs, the Jacobian matrix comes into play.
 - For a function with multiple variables, the first-order Taylor expansion looks like this:
 
-\[ f(\mathbf{x}) \approx f(\mathbf{a}) + J(\mathbf{a})(\mathbf{x} - \mathbf{a}) \]
+$ f(\mathbf{x}) \approx f(\mathbf{a}) + J(\mathbf{a})(\mathbf{x} - \mathbf{a}) $
 
   where $\mathbf{x}$ and $\mathbf{a}$ are vectors (like coordinates), and $J(\mathbf{a})$ is the Jacobian matrix at $\mathbf{a}$.
 

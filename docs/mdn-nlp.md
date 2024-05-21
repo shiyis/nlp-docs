@@ -23,7 +23,8 @@ That being said, the language that we used to describe our mental experience is 
 {: .no_toc .text-delta }
 
 1. TOC
-{:toc}
+{:toc .fs-3 .fw-700}
+
 
 
 ### What Does It Mean To Have A Mental Language?
@@ -241,13 +242,14 @@ _The $\theta$-Role_ - similar constraint is the $\theta$-criterion. In addition 
 
 _Movement-$\alpha$_ - During transformation, the d-structure turns into the s-structure which reflects (more or less) the actual form of the generated sentence. This movement is constrained by restrictions on the positions, items moved, and other properties of a chain. This is very crucial to pay attention to if a language modeling task needs to done addressing such a movement.
 
-**Why is this important to bring up here ❓**
+💭 **Why is this important to bring up here ?**
 
 Transformational grammar posits that the structure of sentences in natural language can be generated through a series of transformations applied to underlying structures. These transformations allow for the derivation of various surface forms from a single underlying representation, providing a systematic way to account for the diversity of sentences in a language.
 
 Compositionality, on the other hand, refers to the principle that the meaning of complex expressions is determined by the meanings of their constituent parts and the rules used to combine them. In the context of natural language, compositionality suggests that the meaning of a sentence can be derived from the meanings of its individual words and the syntactic rules that govern their combination.
 
-##### Addressing The Issues with Non-Autonomy Of Syntax And Non-compositionality of Semantics
+#### Addressing The Issues with Non-Autonomy Of Syntax And Non-compositionality of Semantics
+{: .fs-3 .fw-700}
 
 The grammar of a language is conceived by cognitive linguistics to be a pair of utterances and their meanings, where 'meaning' is broadly conceived to encompass all evoked conceptualization, including communicative function and extralinguistic aspects of the speech act.
 
@@ -259,13 +261,14 @@ Under this interpretation of a grammar, all grammatical forms have a conceptual 
 
 One typical example will be to use "peripheral constructions" to cover idiosyncratic expressions like idioms and conventionalized expressions.
 
-##### The Intuitive Imposition in Semantics
+#### The Intuitive Imposition in Semantics
+{: .fs-3 .fw-700}
 
 On the other hand, the non-compositionality of semantics indicate that the meaning of an utterance is the mental conceptualization it evokes.
 
 Cognitive linguists emphasize the search for principles which will facilitate an explanation of the range of _form-meaning pairs_ in a given language.
 
-**Why does a specific combinations of words evoke one particular schematic conception rather than another ？ Why are some word-combinations regarded as ill-formed ? How can we describe this evoked conceptualization in a useful manner ❓**
+💭 **Why does a specific combinations of words evoke one particular schematic conception rather than another ？ Why are some word-combinations regarded as ill-formed ? How can we describe this evoked conceptualization in a useful manner ?**
 
 Traditional attempts to understand the meaning of natural language utterances have typically divided the problem into two parts:
 

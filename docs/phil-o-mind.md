@@ -318,7 +318,7 @@ reflects poorly the productivity of these mental processes. On top of that there
 
 Coming back to the important discussion around consciousness. Now we could ask that,
 
-**Why isn't this indication enough for such a phenomenon to explain what these "nomologically dangling" ideas are ? And what exactly is the purpose of consciousness ? or the importance of qualia ❓**
+**Why isn't this indication enough for such a phenomenon to explain what these "nomologically dangling" ideas are ? And what exactly is the purpose of consciousness ? or the importance of qualia ?**
 
 {: .note }
 One answer to the questions argues that they are not merely physical, it's the nature's decision bestowed upon us with
