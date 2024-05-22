@@ -11,62 +11,7 @@ nav_order: 5
 
 In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept per se. 
 
-| :---: |
-1. **States** A system can exist in different states, representing distinct configurations or conditions. Denoted by symbols, numbers, or labels. |
-2. **Transition Probabilities** Markov processes are characterized by transition probabilities, which determine the likelihood of moving from one state to another in the next time step. These probabilities are often organized into a transition probability matrix. |
-3. **Transition Probability Matrix** A square matrix where each element represents the probability of transitioning from one state to another. Rows correspond to the current state, and columns correspond to the next state. |
-4. **Markov Property** The key feature of Markov processes is the Markov property, stating that the future evolution of the system depends only on its current state and is independent of how the system reached its current state. |
-5. **Homogeneity** Markov processes are often assumed to be homogeneous, meaning that transition probabilities do not change over time. The system's dynamics are consistent throughout. |
-6. **Continuous and Discrete Time** Markov processes can be classified into continuous-time and discrete-time processes based on whether the state transitions occur at every instant or at discrete time intervals. |
-7. **Stationary Distribution** In a steady state, the system may reach a stationary distribution, where the probabilities of being in each state remain constant over time. |
-8. **Absorbing and Transient States** Some states may be absorbing, meaning that once entered, the system stays in that state permanently. Transient states are those from which the system may leave and not return. |
-9. **Applications** Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions. |
-10. **Markov Chain**  A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values. |
-
 We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding. 
-
-This section breaks down a simple example of how to build a simple markov chain in code example.
-
-```python
-
-
-        import numpy as np
-
-        # Define the number of states and the transition matrix
-        N = 3
-        P = np.array([[0.5, 0.5, 0.0],
-                    [0.0, 0.5, 0.5],
-                    [0.5, 0.0, 0.5]])
-
-        # Define a function to simulate the Markov process
-        def simulate_markov(P, N, num_steps):
-            # Initialize the state vector
-            state = np.zeros(N)
-            state[0] = 1
-
-            # Initialize the state history
-            state_history = [state]
-
-            # Simulate the Markov process
-            for i in range(num_steps):
-                # Determine the next state
-                next_state = np.random.choice(N, p=P[:, state])
-
-                # Update the state vector
-                state = next_state
-
-                # Add the current state to the history
-                state_history.append(state)
-
-            return state_history
-
-        # Simulate the Markov process for 100 steps
-        state_history = simulate_markov(P, N, 100)
-        print(state_history)    
-        
-
-
-```
 
 #### Markov Chain Basics
 {: .fs-4 .fw-700 }
@@ -216,11 +161,54 @@ The function initializes the state vector to all zeros, with a 1 in the first po
 
 Finally, we simulate the Markov process for 100 steps and print the resulting state history.
 
-
 #### In what scenarios are markov chain applicable?
 {: .fs-4 .fw-700 }
 
 Simulating all these processes using Markov processes can be quite extensive. However, I can provide a basic framework and example for a few of these applications, demonstrating how Markov processes can be applied. We will use Python and some common libraries such as NumPy for these simulations.
+
+This section breaks down a simple example of how to build a simple markov chain in code example.
+
+```python
+
+
+        import numpy as np
+
+        # Define the number of states and the transition matrix
+        N = 3
+        P = np.array([[0.5, 0.5, 0.0],
+                    [0.0, 0.5, 0.5],
+                    [0.5, 0.0, 0.5]])
+
+        # Define a function to simulate the Markov process
+        def simulate_markov(P, N, num_steps):
+            # Initialize the state vector
+            state = np.zeros(N)
+            state[0] = 1
+
+            # Initialize the state history
+            state_history = [state]
+
+            # Simulate the Markov process
+            for i in range(num_steps):
+                # Determine the next state
+                next_state = np.random.choice(N, p=P[:, state])
+
+                # Update the state vector
+                state = next_state
+
+                # Add the current state to the history
+                state_history.append(state)
+
+            return state_history
+
+        # Simulate the Markov process for 100 steps
+        state_history = simulate_markov(P, N, 100)
+        print(state_history)    
+        
+
+
+```
+
 
 ### Example 1: Modeling Stock Prices
 
@@ -493,3 +481,17 @@ Consider a population model where individuals can be in different health states:
   where $\lambda$ is the rate of getting sick, and $\mu$ is the rate of recovery.
 
 In summary, a Markov chain is a special case of a Markov process with discrete states and discrete time steps, whereas a Markov process can have a broader definition, encompassing both discrete and continuous states and time.
+
+#### To Summarize Everything into A Table
+
+| :---: |
+1. **States** A system can exist in different states, representing distinct configurations or conditions. Denoted by symbols, numbers, or labels. |
+2. **Transition Probabilities** Markov processes are characterized by transition probabilities, which determine the likelihood of moving from one state to another in the next time step. These probabilities are often organized into a transition probability matrix. |
+3. **Transition Probability Matrix** A square matrix where each element represents the probability of transitioning from one state to another. Rows correspond to the current state, and columns correspond to the next state. |
+4. **Markov Property** The key feature of Markov processes is the Markov property, stating that the future evolution of the system depends only on its current state and is independent of how the system reached its current state. |
+5. **Homogeneity** Markov processes are often assumed to be homogeneous, meaning that transition probabilities do not change over time. The system's dynamics are consistent throughout. |
+6. **Continuous and Discrete Time** Markov processes can be classified into continuous-time and discrete-time processes based on whether the state transitions occur at every instant or at discrete time intervals. |
+7. **Stationary Distribution** In a steady state, the system may reach a stationary distribution, where the probabilities of being in each state remain constant over time. |
+8. **Absorbing and Transient States** Some states may be absorbing, meaning that once entered, the system stays in that state permanently. Transient states are those from which the system may leave and not return. |
+9. **Applications** Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions. |
+10. **Markov Chain**  A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values. |

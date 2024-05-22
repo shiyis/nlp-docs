@@ -104,6 +104,7 @@ This line of code is part of the positional encoding generation process in the T
 ### Breaking Down the Code
 
 #### 1. `torch.arange(0, d_model, 2)`
+{: .fs-4 .fw-700}
 
 - **Purpose**: Creates a sequence of even integers from 0 to `d_model - 2`.
 - **Example**: If `d_model` is 512, `torch.arange(0, d_model, 2)` generates a tensor containing `[0, 2, 4, ..., 510]`.
@@ -114,6 +115,7 @@ indices = torch.arange(0, d_model, 2)
 - **Output**: A tensor of shape `(d_model/2,)` containing even integers up to `d_model - 2`.
 
 #### 2. `.float()`
+{: .fs-4 .fw-700}
 
 - **Purpose**: Converts the integer tensor to a tensor of floats. This is necessary because we will perform mathematical operations that require floating-point precision.
 - **Example**: Continuing from the previous step, `.float()` converts the integer tensor to floating-point numbers.
@@ -124,6 +126,7 @@ indices = indices.float()
 - **Output**: A tensor of shape `(d_model/2,)` containing floating-point numbers `[0.0, 2.0, 4.0, ..., 510.0]`.
 
 #### 3. `(-math.log(10000.0) / d_model)`
+{: .fs-4 .fw-700}
 
 - **Purpose**: Computes a scaling factor for the positional encodings. The value `-math.log(10000.0) / d_model` ensures the positional encodings have values that decay exponentially.
 - **Value**: If `d_model` is 512, this term calculates to `-math.log(10000.0) / 512 ≈ -0.02302585`.
@@ -133,6 +136,7 @@ scale_factor = -math.log(10000.0) / d_model
 ```
 
 #### 4. `* scale_factor`
+{: .fs-4 .fw-700}
 
 - **Purpose**: Multiplies each element in the tensor of indices by the scale factor. This operation scales the indices to a range suitable for the exponential function, ensuring the positional encodings vary smoothly.
 - **Example**: Continuing from the previous steps, `indices * scale_factor` scales each index.
@@ -143,6 +147,7 @@ scaled_indices = indices * scale_factor
 - **Output**: A tensor of shape `(d_model/2,)` with scaled values.
 
 #### 5. `torch.exp(scaled_indices)`
+{: .fs-4 .fw-700}
 
 - **Purpose**: Applies the exponential function to each element in the scaled tensor. The exponential function is used to create a set of frequencies for the positional encodings.
 - **Example**: Applying the exponential function to the scaled indices.
@@ -191,22 +196,22 @@ The `div_term` tensor represents the denominators for the positional encodings' 
     - To ensure that the entire range of positional encodings uses a range of frequencies from very slow to very fast.
     - This allows the Transformer to distinguish between different positions effectively.
 
-  ### Example Calculation
+### Example Calculation
 
-  Let’s assume `d_model = 512`:
+Let’s assume `d_model = 512`:
 
-  - For dimension `i = 0`:
+- For dimension `i = 0`:
 
-    - The exponent would be $\frac{0}{512} = 0$.
-    - So, the term would be $10000^{0} = 1$.
-  - For dimension `i = 256`:
+  - The exponent would be $\frac{0}{512} = 0$.
+  - So, the term would be $10000^{0} = 1$.
+- For dimension `i = 256`:
 
-    - The exponent would be $\frac{256}{512} = 0.5$.
-    - So, the term would be $10000^{0.5} = 100$.
+  - The exponent would be $\frac{256}{512} = 0.5$.
+  - So, the term would be $10000^{0.5} = 100$.
 
-  The above steps ensure that the positional encoding matrix has a smooth and gradual change in frequencies across the dimensions, which helps the model to capture the positional information effectively.
+The above steps ensure that the positional encoding matrix has a smooth and gradual change in frequencies across the dimensions, which helps the model to capture the positional information effectively.
 
-  ### Summary
+### Summary
 
-  - **Dividing by `d_model`** ensures the frequencies of sine and cosine functions used in positional encodings are spread across a wide range.
-  - This design allows the Transformer model to learn and utilize positional information effectively, enhancing its ability to understand the order and relative position of tokens in a sequence.
+- **Dividing by `d_model`** ensures the frequencies of sine and cosine functions used in positional encodings are spread across a wide range.
+- This design allows the Transformer model to learn and utilize positional information effectively, enhancing its ability to understand the order and relative position of tokens in a sequence.
