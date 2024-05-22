@@ -67,16 +67,15 @@ the universe."
 
 Each one of them is a hypothesis over the emergence and origin of consciousness, and below is a more detailed breakdown.
 
+{: .note }
+**Strong Emergence**
+Downward causation is one manifestation of this strong-emergence attitude. It’s the idea that what happens at lower levels can be directly influenced (causally acted upon) by what is happening at the higher levels. The idea, in other words, that you can’t really understand the microscopic behavior without knowing something about the macroscopic.
+
 This is the position that is too good to be true and therefore argued against. As it's not very
 much plausible that it's the downward causal direction, where the emergence of consciousness caused the microscopic and molecular changes happening at a lower-level.
 
 The only justification to this position is that it opens up possibilities for free will, explained by the physicist Sean
 Carroll.
-
-{: .note }
-**Strong Emergence**
-Downward causation is one manifestation of this strong-emergence attitude. It’s the idea that what happens at lower levels can be directly influenced (causally acted upon) by what is happening at the higher levels. The idea, in other words, that you can’t really understand the microscopic behavior without knowing something about the
-macroscopic.
 
 
 In contrast, instead of being a strong emergence, maybe in reality consciousness might just be a weak emergence

@@ -1,5 +1,5 @@
 ---
-title: Logic Related
+title: Problem Solving
 layout: home
 nav_order: 6
 ---
