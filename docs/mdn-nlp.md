@@ -526,7 +526,7 @@ Our transformer model calculates the attention using a scaled dot-product functi
 
 The traditional view of language understanding emphasizes the **explicit** use of syntactic, semantic, pragmatic, and world knowledge in deriving meaning, rather than probabilistic methods. It suggests that non-probabilistic formulations are crucial for language understanding and use, and that ambiguity resolution can be achieved through procedures that elaborate on heuristics to facilitate syntactic and semantic interpretations.
 
-From a philosophical point of view, this shift is important, not just a practical one: it suggests that traditional thinking about language may rely too much on introspection. The limitations of introspection are that very little of what happens in our brains as we understand or think about language is approached consciously.
+From a philosophical point of view, this shift is important, not just a practical one: it suggests that traditional thinking about language may rely too much on introspection. The limitations of introspection are that very little of what happens in our brains as how we understand or think about language is approached consciously.
 
 We consciously register the results of our understanding and thinking, apparently in symbolic form, but not in the process of understanding and thinking itself; and these symbolic abstractions, which to some extent lack a quantitative or probabilistic dimension, can lead us to assume that the underlying processing is also non-quantitative. But the success of statistical NLP, as well as recent developments in cognitive science has argued that language and thought are not only symbolic, but **deeply quantitative, and especially probabilistic**.
 
