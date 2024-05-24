@@ -601,7 +601,7 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
+  font-family: sans-serif, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
   font-size: inherit;
   line-height: 1.4;
   color: #5c5962;
@@ -643,7 +643,7 @@ h6,
 p {
   margin-top: 1em;
   margin-bottom: 1em;
-  line-height: 2em;
+  line-height: 1.8em;
 }
 
 a {
