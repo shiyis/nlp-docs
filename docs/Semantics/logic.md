@@ -16,11 +16,11 @@ In this blog, the notes will be more in detail and introduce relevant ideas.
 #### Defining Entailment, Implicatures, and Presuppositions
 
 
-Implicatures: What's suggested in an utterance, even though it is not explicitly stated or entailed by the utterance.
+**Implicatures**: What's suggested in an utterance, even though it is not explicitly stated or entailed by the utterance.
 
-Entailment: Entailment is a relationship between statements where one statement necessarily follows from another. If statement A entails statement B, then if A is true, B must also be true.
+**Entailment**: Entailment is a relationship between statements where one statement necessarily follows from another. If statement A entails statement B, then if A is true, B must also be true.
 
-Presuppositions: A presupposition is an assumption that as speaker makes about what the listener already knows or believes to be true. It's information taken for granted in the utterance.
+**Presuppositions**: A presupposition is an assumption that as speaker makes about what the listener already knows or believes to be true. It's information taken for granted in the utterance.
 
 
 ### Differences Between The Above Three
