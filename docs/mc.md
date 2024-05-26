@@ -6,12 +6,18 @@ nav_order: 5
 ---
 {% include latex_template.html %}
 
-#### This blog will summarize content more on markov processes 
-{: .fs-3 .fw-700}
+## Discussions on markov processes Contitnued 
+{: .text-delta .fs-5 .fw-700}
 
-In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept per se. 
+In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept. 
 
 We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding. 
+
+**Table Of Contents**
+{: .no-toc .fs-3 .fw-700 .text-delta}
+
+1. TOC
+{:toc}
 
 #### Markov Chain Basics
 {: .fs-4 .fw-700 }
@@ -47,10 +53,12 @@ The Markov property states that the probability of transitioning to the next sta
 $ P(X_{t+1} = s_j \mid X_t = s_i, X_{t-1} = s_{i-1}, \ldots, X_0 = s_0) = P(X_{t+1} = s_j \mid X_t = s_i) $
 
 ### Step-by-Step Process
+{: .fs-3 .fw-700 .text-delta}
 
 Let's go through the process of a Markov chain step by step.
 
 #### Step 1: Define the States
+{: .fs-2 .fw-700 }
 
 Identify all possible states of the system. Suppose we have a simple weather system with three states:
 - $ s_1 $: Sunny
@@ -58,7 +66,7 @@ Identify all possible states of the system. Suppose we have a simple weather sys
 - $ s_3 $: Rainy
 
 #### Step 2: Define the Transition Probabilities
-{: .fs-4 .fw-700 }
+{: .fs-2 .fw-700 }
 
 
 Determine the probabilities of moving from one state to another. For example, the transition probabilities might be:
@@ -81,6 +89,7 @@ $$ P = \begin{pmatrix}
 \end{pmatrix} $$
 
 #### Step 3: Initial State Distribution
+{: .fs-2 .fw-700 }
 
 Define the initial state distribution vector $ \pi $, which represents the probability distribution of starting in each state. For example, if we start with a 100% chance of it being sunny:
 $ \pi = \begin{pmatrix}
@@ -90,7 +99,7 @@ $ \pi = \begin{pmatrix}
 \end{pmatrix} $
 
 #### Step 4: State Prediction
-{: .fs-4 .fw-700 }
+{: .fs-2 .fw-700 }
 
 
 To predict the state distribution after one step, multiply the initial state distribution vector $ \pi $ by the transition matrix $ P $:
@@ -161,7 +170,7 @@ The function initializes the state vector to all zeros, with a 1 in the first po
 
 Finally, we simulate the Markov process for 100 steps and print the resulting state history.
 
-#### In what scenarios are markov chain applicable?
+## In What Scenarios Is Markov Chain Applicable?
 {: .fs-4 .fw-700 }
 
 Simulating all these processes using Markov processes can be quite extensive. However, I can provide a basic framework and example for a few of these applications, demonstrating how Markov processes can be applied. We will use Python and some common libraries such as NumPy for these simulations.
@@ -379,22 +388,31 @@ We will model customer loyalty, predicting transitions between different custome
 
 ```
 
-### Summary
+## Summary
+{: .fs-4 .fw-700 .text-delta}
 
-This framework can be extended to simulate other processes like economic forecasting, pharmacokinetics, network protocols, etc. Each simulation follows these general steps:
-1. Define the states.
-2. Define the transition matrix.
-3. Set the initial state.
-4. Simulate the transitions for a specified number of steps.
-5. Analyze or visualize the results.
+This framework can be extended to simulate other processes like economic forecasting, pharmacokinetics, network protocols, etc. 
+
+Each simulation contains these properties:
+
+| :---: |
+1. **States:** A system can exist in different states, representing distinct configurations or conditions. Denoted by symbols, numbers, or labels. |
+2. **Transition Probabilities:** Markov processes are characterized by transition probabilities, which determine the likelihood of moving from one state to another in the next time step. These probabilities are often organized into a transition probability matrix. |
+3. **Transition Probability Matrix:** A square matrix where each element represents the probability of transitioning from one state to another. Rows correspond to the current state, and columns correspond to the next state. |
+4. **Markov Property:** The key feature of Markov processes is the Markov property, stating that the future evolution of the system depends only on its current state and is independent of how the system reached its current state. |
+5. **Homogeneity:** Markov processes are often assumed to be homogeneous, meaning that transition probabilities do not change over time. The system's dynamics are consistent throughout. |
+6. **Continuous and Discrete Time:** Markov processes can be classified into continuous-time and discrete-time processes based on whether the state transitions occur at every instant or at discrete time intervals. |
+7. **Stationary Distribution:** In a steady state, the system may reach a stationary distribution, where the probabilities of being in each state remain constant over time. |
+8. **Absorbing and Transient States:** Some states may be absorbing, meaning that once entered, the system stays in that state permanently. Transient states are those from which the system may leave and not return. |
+9. **Applications:** Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions (as demonstrated above). |
+10. **Markov Chain:**  A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values. |
+
 
 This basic approach can be adapted and extended to suit the specific characteristics and requirements of each application.
 
-#### The differences between all of these systems under the umbrella term Markov something 
 
-The terms "Markov process" and "Markov chain" are closely related, but they refer to slightly different concepts in the context of stochastic processes. Here’s a detailed explanation of each and their differences:
-
-### Markov Chain
+#### Markov Chain
+{: .fs-4 .fw-700 .text-delta}
 
 A Markov chain is a specific type of Markov process that deals with discrete states and discrete time steps. It is characterized by the following:
 
@@ -402,7 +420,8 @@ A Markov chain is a specific type of Markov process that deals with discrete sta
 2. **Discrete Time Steps**: The process evolves in discrete time steps $ t = 0, 1, 2, \ldots $.
 3. **Markov Property**: The probability of transitioning to the next state depends only on the current state and not on the sequence of events that preceded it.
 
-#### Formal Definition
+##### Formal Definition
+{: .fs-3 .fw-700 .text-delta}
 
 A Markov chain is defined by:
 - A set of states $ S $.
@@ -411,6 +430,7 @@ A Markov chain is defined by:
 $$ P(X_{t+1} = s_j \mid X_t = s_i) = P_{ij} $$
 
 ### Markov Process
+{: .fs-4 .fw-700 .text-delta}
 
 A Markov process is a more general concept that includes both discrete and continuous cases. It is characterized by:
 
@@ -419,6 +439,7 @@ A Markov process is a more general concept that includes both discrete and conti
 3. **Markov Property**: Similar to the Markov chain, the future state depends only on the current state and not on past states.
 
 #### Types of Markov Processes
+{: .no-toc .fs-3 .fw-700}
 
 1. **Discrete-Time Markov Process (Markov Chain)**:
    - As described above, it deals with discrete states and discrete time steps.
@@ -428,14 +449,19 @@ A Markov process is a more general concept that includes both discrete and conti
    - The process evolves continuously over time.
    - Transition probabilities are often described using a rate matrix (or generator matrix) instead of a transition matrix.
 
-#### Continuous-Time Markov Chain (CTMC)
+{:.note}
+$\quad$ **Continuous-Time Markov Chain (CTMC)**
+\\
+$\qquad$ A CTMC is a specific type of Markov process where: 
+    \\
+$\qquad \qquad$· The state space is discrete.
+    \\
+$\qquad \qquad$· Time is continuous.
+    \\
+$\qquad \qquad$· The transitions are governed by rates, often described using a rate matrix $ Q $.
 
-A CTMC is a specific type of Markov process where:
-- The state space is discrete.
-- Time is continuous.
-- The transitions are governed by rates, often described using a rate matrix $ Q $.
-
-### Summary of Differences
+#### Summary of Differences
+{: .fs-3 .fw-700 .text-delta}
 
 - **State Space**:
   - **Markov Chain**: Discrete state space.
@@ -449,9 +475,9 @@ A CTMC is a specific type of Markov process where:
   - **Markov Chain**: Defined by a transition probability matrix.
   - **Markov Process**: Defined by transition probabilities for discrete time or transition rates for continuous time.
 
-### Example
 
 #### Markov Chain (Discrete-Time, Discrete State)
+{: .fs-3 .fw-700}
 
 Consider a simple weather model with three states: Sunny, Cloudy, and Rainy. The transitions are defined for each day (discrete time steps).
 
@@ -466,6 +492,7 @@ Consider a simple weather model with three states: Sunny, Cloudy, and Rainy. The
   $$
 
 #### Continuous-Time Markov Process (Continuous-Time, Discrete State)
+{: .fs-3 .fw-700}
 
 Consider a population model where individuals can be in different health states: Healthy, Sick, and Recovered. The transitions happen continuously over time, with certain rates.
 
@@ -481,17 +508,3 @@ Consider a population model where individuals can be in different health states:
   where $\lambda$ is the rate of getting sick, and $\mu$ is the rate of recovery.
 
 In summary, a Markov chain is a special case of a Markov process with discrete states and discrete time steps, whereas a Markov process can have a broader definition, encompassing both discrete and continuous states and time.
-
-#### To Summarize Everything into A Table
-
-| :---: |
-1. **States** A system can exist in different states, representing distinct configurations or conditions. Denoted by symbols, numbers, or labels. |
-2. **Transition Probabilities** Markov processes are characterized by transition probabilities, which determine the likelihood of moving from one state to another in the next time step. These probabilities are often organized into a transition probability matrix. |
-3. **Transition Probability Matrix** A square matrix where each element represents the probability of transitioning from one state to another. Rows correspond to the current state, and columns correspond to the next state. |
-4. **Markov Property** The key feature of Markov processes is the Markov property, stating that the future evolution of the system depends only on its current state and is independent of how the system reached its current state. |
-5. **Homogeneity** Markov processes are often assumed to be homogeneous, meaning that transition probabilities do not change over time. The system's dynamics are consistent throughout. |
-6. **Continuous and Discrete Time** Markov processes can be classified into continuous-time and discrete-time processes based on whether the state transitions occur at every instant or at discrete time intervals. |
-7. **Stationary Distribution** In a steady state, the system may reach a stationary distribution, where the probabilities of being in each state remain constant over time. |
-8. **Absorbing and Transient States** Some states may be absorbing, meaning that once entered, the system stays in that state permanently. Transient states are those from which the system may leave and not return. |
-9. **Applications** Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions. |
-10. **Markov Chain**  A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values. |

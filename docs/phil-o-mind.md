@@ -474,7 +474,7 @@ representations of meaning.
 
 In essence, a distributed representation preserves patterns
 across the net that could allow comparison and good preservation
-when parts go amok.
+when parts go wrong.
 
 
 ##### In A Nutshell

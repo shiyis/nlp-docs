@@ -194,6 +194,8 @@ Connectionist models, based on neural networks, nonetheless offered an alternati
 #### COMP Reflected in a Natural Language's Syntactic Makeup
 {: .fs-3 .fw-700}
 
+_Chomsky's Transformational Grammar Theory and Compositionality_
+
 In this section and the subsequent sections, I will go through the Chomskyan Transformation Grammar Theory to demonstrate how researchers address compositionality through symbolicism. The importance is that natural language modeling and understanding tasks often want to seek solutions that extract the underlying complex syntactic structure of a natural language. This is associated with the fact that natural languages display compositionality similar to a _Mentalese_.
 
 The Schema of a Chomsky hierarchy is demonstrated below,
@@ -372,7 +374,50 @@ The second reason presented by the paper was as described above that to model th
 | :---: |
 ![](../extras/connectionism/back-prop-over.png) |
 
+Sample Code:   
 
+```python
+
+      import numpy as np
+
+      # Define a simple MLP neural network
+      class MLP:
+         def __init__(self, input_dim, hidden_dim, output_dim):
+            self.weights1 = np.random.rand(input_dim, hidden_dim)
+            self.weights2 = np.random.rand(hidden_dim, output_dim)
+
+         def forward(self, input):
+            hidden_layer = np.tanh(np.dot(input, self.weights1))
+            output = np.tanh(np.dot(hidden_layer, self.weights2))
+            return output
+
+      # Define a function to code syntactic elements of inputs at a higher level
+      def code_syntactic_elements(input):
+         # Tokenize the input into syntactic elements (e.g., words, phrases)
+         tokens = tokenize(input)
+         # Convert tokens into numerical representations (e.g., one-hot encoding)
+         numerical_tokens = numericalize(tokens)
+         # Return the numerical representations
+         return numerical_tokens
+
+      # Define a function to train the MLP neural network
+      def train_mlp(input_data, output_data):
+         mlp = MLP(input_dim=10, hidden_dim=20, output_dim=10)
+         for input, output in zip(input_data, output_data):
+            # Code syntactic elements of the input at a higher level
+            coded_input = code_syntactic_elements(input)
+            # Forward pass
+            predicted_output = mlp.forward(coded_input)
+            # Calculate loss and update weights
+            loss = calculate_loss(predicted_output, output)
+            update_weights(mlp, loss)
+
+      # Train the MLP neural network on a dataset
+      train_data = [...]
+      test_data = [...]
+      train_mlp(train_data, test_data)
+      
+```
 
 The architecture of the network could be broken down as such,
 
