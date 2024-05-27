@@ -1,3 +1,13 @@
+---
+title: Jacobian Matrices
+layout: home
+nav_order: 5
+---
+{% include latex_template.html %}
+
+
+## Discussions on Jacobian Matrices Continued
+
 This blog will break down and continue explaining Jacobian matrices and Taylor expansions in plain language and explore how they are connected.
 
 ## Table of Contents
