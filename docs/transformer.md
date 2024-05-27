@@ -5,7 +5,7 @@ layout: home
 ---
 {% include latex_template.html %}
 
-## This blog will summaries and break down the code that form the Transformer model
+## summarizing and breaking down of the code that form the Transformer model continued
 {: .fs-5 .fw-700 .text-delta}
 
 Let's break down the code snippet line by line to understand what each step does in the context of creating positional encodings for a Transformer model using PyTorch.

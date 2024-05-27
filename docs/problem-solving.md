@@ -5,7 +5,7 @@ nav_order: 4
 ---
 
 #### This blog will continue with the content on logic and problem solving
-{: .fs-2 .fw-700}
+{: .fs-5 .fw-700}
 
 
 In a different [blog](https://shiyis.github.io/nlpwme/modules/1h-semantics/), I have briefly introduced some of the most important concepts of logic and problem solving, including but not limited to predicate calculus, propositional logic, and lambda calculus.

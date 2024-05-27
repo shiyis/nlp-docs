@@ -7,6 +7,8 @@ nav_order: 5
 
 
 ## Discussions on Jacobian Matrices Continued
+{: .fs-5 .fw-700 .text-delta}
+
 
 This blog will break down and continue explaining Jacobian matrices and Taylor expansions in plain language and explore how they are connected.
 
