@@ -4,8 +4,8 @@ layout: home
 nav_order: 4
 ---
 
-##### This blog will continue with the content on logic and problem solving
-{: .fs-5 .fw-700}
+#### This blog will continue with the content on logic and problem solving
+{: .fs-5 .fw-700 .text-delta}
 
 
 In a different [blog](https://shiyis.github.io/nlpwme/modules/1h-semantics/), I have briefly introduced some of the most important concepts of logic and problem solving, including but not limited to predicate calculus, propositional logic, and lambda calculus.
@@ -26,7 +26,7 @@ In this blog, the notes will be more in detail and introduce relevant ideas.
 #### Differences Between The Above Three
 
 
-Sure! Let's define implicatures, entailments, and presuppositions and compare their differences in simple terms
+Let's define implicatures, entailments, and presuppositions and compare their differences in simple terms
 
 1. **Nature of Meaning**:
    - **Implicature**: Implied meaning that relies on context and shared understanding. It is not directly stated but inferred.
@@ -64,13 +64,9 @@ Sure! Let's define implicatures, entailments, and presuppositions and compare th
 By understanding these differences, we can better analyze and interpret the subtleties of communication and language use.
 
 
-
-### More on lambda calculus
-{: .fs-4 .fw-700 .text-delta}
-
 Lambda calculus is a formal system in mathematical logic and computer science for expressing computation based on function abstraction and application. It was introduced by Alonzo Church in the 1930s as part of his work on the foundations of mathematics.
 
-#### Basic Concepts of Lambda Calculus
+### Basic Concepts of Lambda Calculus
 
 #### 1. **Lambda Abstraction**:
    - **Syntax**: `λx. E`
