@@ -340,11 +340,9 @@ Affective valuation would not have any behavioral implications if it were misali
 
 Epiphenomenalists and physicalists would only be left with the option of accepting a crude and unscientific understanding of the pre-existing harmony of affective appraisal of feelings and the usefulness of their sources.
 
+In addressing these challenges, researchers looked for alternative approaches to better understand and replicate human cognition. This led to the development and adoption of the Representational Theory of Mind (RTM), which shared some foundational principles with CTM but offered additional insights and solutions.
 
-
-Later then came about the renaissance period with the blooming of connectionism grounded in _The Representational Theory
-of Mind_. `RTM` was developed to address these limitations. Not only did it not shy away from the traditional rationalism
-or symbolicist ideals, it incorporated the aspects and was established to addresses these limitations,
+RTM posits that mental states are representations of the world, emphasizing the role of mental content. It incorporates elements from traditional rationalism and symbolicist ideals but also adapts to address the limitations of CTM:
 
 > **Emphasis on Representations**: `RTM` places a central focus on mental representations, acknowledging that cognitive processes involve manipulating and interpreting these representations.
 
@@ -354,21 +352,38 @@ or symbolicist ideals, it incorporated the aspects and was established to addres
 
 > **Flexibility in Cognitive Processing**: `RTM` allows for more flexibility in cognitive processing by recognizing that mental representations can be dynamic and context-dependent.
 
+RTM is able to accomplish the above by assuming,
 
+```
 
-`RTM` is able to accomplish the above by assuming,
+    Productivity:
+    A finites set of symbols in natural language and the device could
+    entertain a infinite numbers of logic using a finite set of concepts and ideas.
 
-{:.note}
-**Productivity**: A finites set of symbols in natural language and the device could
-entertain a infinite numbers of logic using a finite set of concepts and ideas.
+    Systematicity:
+    That there are inherent systematic relations between basic cognitive constitutions.
 
-{:.note}
-**Systematicity**:
-That there are inherent systematic relations between basic cognitive constitutions.
+```
 
+Note that this is different fromhow CTM tackles Productivity and Systematicity of
+thoughts. CTM explains theproductivity of thoughts by extrapolating,
 
-Note that this is different from
-how `CTM` tackles Productivity and Systematicity of thoughts. `CTM` explains the productivity of thoughts by extrapolating the computational nature of any intelligent machine to it and assuming an infinite number of logic produced with a finite set of symbols and the rules and elements that operate on and manipulate them. And it assumes the systematicity of thoughts by subscribing to the structural organizations of thoughts and the systematic rules of inference that govern them.
+```
+
+    Productivity:
+    The computational nature of any intelligent machine to it and assuming an infinite
+    number of logic produced with a finite set of symbols and the rules and elements that
+    operate on and manipulate them.
+
+    Systematicity:
+    And it assumes the systematicity of thoughts by subscribing to the structural
+    organizations of thoughts and the systematic rules of inference that govern them.
+
+```
+
+During this period of evolution, connectionism also gained prominence. Connectionist models, such as neural networks, focused on distributed processing and learning from experience, providing a stark contrast to the rule-based systems of CTM. These models were grounded in the idea that cognitive processes arise from the interactions of simple units, similar to neurons in the brain.
+
+The renaissance of AI saw the integration of connectionist ideas with representational theories, leading to hybrid models that leveraged the strengths of both approaches. These models aimed to address the symbolic manipulation capabilities of CTM while incorporating the learning and adaptability features of connectionism.
 
 More importantly, with a shift in the representation of information toward a sub-symbolic, universally distributed approach. While the specific mention is about solving a philosophical conundrum related to representations of meaning, we can consider how this shift might also address the potential conundrum faced by classicists - the syntactic underpinnings. Here are some ways in which this approach could be relevant:
 
@@ -381,14 +396,10 @@ More importantly, with a shift in the representation of information toward a sub
 > **Syntactic Analysis**: Distributional representations can also be used as features for downstream syntactic analysis tasks, such as parsing and part-of-speech tagging. By leveraging the syntactic information implicitly encoded in these representations, AI models can improve their performance on these tasks.
 
 
-
-The shift toward a sub-symbolic, universally distributed representation seems to open up possibilities for addressing challenges related to syntactic representation and processing. By embracing a more dynamic and contextually adaptive approach, this mechanism may provide a framework for capturing syntactic information in a manner that aligns with the overall goals of the system.
-
-
 #### What Are Syntactic Underpinnings?
 {: .fs-3 .fw-700}
 
-To recall, the _syntactic underpinnings_ refer to the foundational principles and structures that dictate the formation of sentences and phrases in a language. These include rules for word order, phrase structure, grammatical categories, syntactic dependencies and hierarchies.
+To recall, the _syntactic underpinnings_ refer to `the foundational principles and structures that dictate the formation of sentences and phrases in a language.` These include rules for word order, phrase structure, grammatical categories, syntactic dependencies and hierarchies.
 
 Here are a few strategies that could be employed to directly address syntactic underpinnings:
 
