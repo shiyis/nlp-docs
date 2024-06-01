@@ -290,7 +290,7 @@ The meaning of a word is a set of semantic features used to determine its real-w
 #### Non-overlapping Mapping Mechanism: A Connectionism Approach To Representing Complex Phrasal/Syntactic Structures
 {: .fs-3 .fw-700}
 
-This is another important attempt at bridging these two different schools of LOTH theory development together - the non-overlapping mapping mechanism (Rager and Berg, 1992). At a simpler level, a breath-first representation as a mapping was provided to capture the d-structure of a phrasal structure to a row and column representation with constituent parts highlighted (where the constituents preceding a constituent form the elements of the column above it as demonstrated in the graph above). This mapping also needs to satisfy the above constraints, which we will go into more depth in the subsequent sections.
+This is another important attempt at bridging these two different schools of LOTH theory development together - the non-overlapping mapping mechanism (Rager and Berg, 1992). At a simpler level, a breath-first representation as a mapping was provided to capture the d-structure of a phrasal structure to a row and column representation with constituent parts highlighted (where the constituents preceding a constituent form the elements of the column above it as demonstrated in the graph below). This mapping also needs to satisfy the below constraints, which we will go into more depth in the subsequent sections.
 
 A breakdown of such a structure in depth goes as,
 
@@ -416,7 +416,7 @@ Sample Code:
       train_data = [...]
       test_data = [...]
       train_mlp(train_data, test_data)
-      
+
 ```
 
 The architecture of the network could be broken down as such,
@@ -427,8 +427,11 @@ The architecture of the network could be broken down as such,
 
 The network was given the task of mapping input patterns of the form "trajector verb(over) landmark" as we have already demonstrated in previous sections. The above figure shows the entirety, including # layers, connections between layers, and the contents of the input and output layers.
 
-_The output layer_. The output layer consists of six units, one for each of the three schemas, and three to indicate whether the landmark and trajector make 'contact', meaning whether if the path has an 'end-point' or 'upward' component.
 
+{:.note}
+_The output layer_. The output layer consists of six units, one for each of the three schemas, and three to indicate whether the landmark and trajector make 'contact', meaning whether if the path has an 'end-point' or 'upward' component.
+\\
+\\
 _The input layer_. The input layer is reduced to only cover the necessary schema for the network, so a vocab of 18 trajectors, 15 verbs, and 15 landmarks. Also, notably no semantic information was given to the model of the sentence that could be constructed under the schema as a whole (represented in a localist fashion; means encoding each individual piece of information as a distinct and separate unit, rather than embedding it within a larger context or structure.
 
 In the context of neural networks, this often involves representing each element of a set (such as words in a vocabulary or components of a schema) as its own distinct vector or activation). That being said, they were preprocessed as separate units (activated in the vector) in hope that the model could capture some independent inference.

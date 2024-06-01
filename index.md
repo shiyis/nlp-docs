@@ -19,8 +19,7 @@ In essence, my journey is defined by a relentless pursuit of innovation, fueled 
 
 Beyond my professional pursuits, I find solace and inspiration in the company of my beloved pet rabbit. As a devoted rabbit owner, I've learned valuable lessons in patience, compassion, and the art of companionship. Whether it's sharing quiet moments of contemplation or delighting in playful antics, my furry friend serves as a constant source of joy and comfort amidst life's trials.
 
-Here is a photo of him! 🫶🏻
+[Here](./assets/images/oreo.jpeg) is a photo of him! 🫶🏻
 
-![oreo](./assets/images/oreo.jpeg)
 
-I have created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech & language processing, and computational linguistics to provide more context and background.
+I have also created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech & language processing, and computational linguistics to provide more context and background.
