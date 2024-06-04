@@ -6,12 +6,12 @@ nav_order: 5
 ---
 {% include latex_template.html %}
 
-## Discussions on markov processes Contitnued 
+## Discussions on markov processes Contitnued
 {: .text-delta .fs-5 .fw-700}
 
-In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept. 
+In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept.
 
-We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding. 
+We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding.
 
 **Table Of Contents**
 {: .no-toc .fs-3 .fw-700 .text-delta}
@@ -39,7 +39,7 @@ A Markov chain is a mathematical system that undergoes transitions from one stat
 
 $$
     P = \begin{pmatrix}
-    P_{11} & P_{12} & \cdots & P_{1n} \\ 
+    P_{11} & P_{12} & \cdots & P_{1n} \\
     P_{21} & P_{22} & \cdots & P_{2n} \\
     \vdots & \vdots & \ddots & \vdots \\
     P_{n1} & P_{n2} & \cdots & P_{nn}
@@ -82,6 +82,7 @@ Determine the probabilities of moving from one state to another. For example, th
 - $ P_{33} = 0.5 $ (probability of rainy to rainy)
 
 These can be represented in the transition matrix $ P $:
+
 $$ P = \begin{pmatrix}
     0.7 & 0.2 & 0.1 \\
     0.3 & 0.4 & 0.3 \\
@@ -92,11 +93,12 @@ $$ P = \begin{pmatrix}
 {: .fs-2 .fw-700 }
 
 Define the initial state distribution vector $ \pi $, which represents the probability distribution of starting in each state. For example, if we start with a 100% chance of it being sunny:
-$ \pi = \begin{pmatrix}
+
+$$ \pi = \begin{pmatrix}
     1 \\
     0 \\
     0
-\end{pmatrix} $
+\end{pmatrix} $$
 
 #### Step 4: State Prediction
 {: .fs-2 .fw-700 }
@@ -107,11 +109,11 @@ To predict the state distribution after one step, multiply the initial state dis
 $$ \pi^{(1)} = \pi P $$
 
 $$ \pi^{(1)} = \begin{pmatrix}
-    1 & 0 & 0 
+    1 & 0 & 0
 \end{pmatrix}  \begin{pmatrix}
     0.7 & 0.2 & 0.1 \\
     0.3 & 0.4 & 0.3 \\
-    0.2 & 0.3 & 0.5 
+    0.2 & 0.3 & 0.5
 \end{pmatrix} $$
 
 
@@ -213,7 +215,7 @@ This section breaks down a simple example of how to build a simple markov chain 
         # Simulate the Markov process for 100 steps
         state_history = simulate_markov(P, N, 100)
         print(state_history)    
-        
+
 
 
 ```
@@ -391,7 +393,7 @@ We will model customer loyalty, predicting transitions between different custome
 ## Summary
 {: .fs-4 .fw-700 .text-delta}
 
-This framework can be extended to simulate other processes like economic forecasting, pharmacokinetics, network protocols, etc. 
+This framework can be extended to simulate other processes like economic forecasting, pharmacokinetics, network protocols, etc.
 
 Each simulation contains these properties:
 
@@ -425,7 +427,7 @@ A Markov chain is a specific type of Markov process that deals with discrete sta
 
 A Markov chain is defined by:
 - A set of states $ S $.
-- A transition probability matrix $ P $, where $ P_{ij} $ represents the probability of moving from state $ s_i $ to state $ s_j $. The full formula looks like below. 
+- A transition probability matrix $ P $, where $ P_{ij} $ represents the probability of moving from state $ s_i $ to state $ s_j $. The full formula looks like below.
 
 $$ P(X_{t+1} = s_j \mid X_t = s_i) = P_{ij} $$
 
@@ -452,7 +454,7 @@ A Markov process is a more general concept that includes both discrete and conti
 {:.note}
 $\quad$ **Continuous-Time Markov Chain (CTMC)**
 \\
-$\qquad$ A CTMC is a specific type of Markov process where: 
+$\qquad$ A CTMC is a specific type of Markov process where:
     \\
 $\qquad \qquad$· The state space is discrete.
     \\
