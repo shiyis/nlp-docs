@@ -485,6 +485,7 @@ Consider a simple weather model with three states: Sunny, Cloudy, and Rainy. The
 
 - States: $ S = \{ \text{Sunny}, \text{Cloudy}, \text{Rainy} \} $
 - Transition Matrix $ P $:
+
   $$
   P = \begin{pmatrix}
       0.7 & 0.2 & 0.1 \\
@@ -500,6 +501,7 @@ Consider a population model where individuals can be in different health states:
 
 - States: $ S = \{ \text{Healthy}, \text{Sick}, \text{Recovered} \} $
 - Rate Matrix $ Q $:
+
   $$
   Q = \begin{pmatrix}
       -\lambda & \lambda & 0 \\
@@ -507,6 +509,7 @@ Consider a population model where individuals can be in different health states:
       0 & 0 & 0
   \end{pmatrix}
   $$
-  where $\lambda$ is the rate of getting sick, and $\mu$ is the rate of recovery.
+
+where $\lambda$ is the rate of getting sick, and $\mu$ is the rate of recovery.
 
 In summary, a Markov chain is a special case of a Markov process with discrete states and discrete time steps, whereas a Markov process can have a broader definition, encompassing both discrete and continuous states and time.
