@@ -7,6 +7,8 @@ layout: home
 
 # What Constitutes As The Philosophy of Mind？
 
+_(click [here](https://shiyis.github.io/nlp-docs/docs/tldr/phil-o-mind-short) for TL;DRs)_
+
 This blog will summarize articles, papers, and material I have gone through that touch on the \\
 subject of _The Computational Theory of Mind_.
 
@@ -237,10 +239,6 @@ and Simon 1956) which proved 38 of the first 52 theorems from _Principia Mathema
 Since the discrete nature of the system, it's concerned with its competency of whether it could model the continuous
 nature of human cognition.
 
-The Turing machine also proved the existence of a _Universal Turing Machine_ (UTM), which results in the ultimate
-development of current computer logic and system. More importantly, a personal computer can mimic any Turing machine
-_until it exhausts its limited memory supply_.
-
 #### A Turing Style Computational System
 {: .fs-3 .fw-700}
 
@@ -414,20 +412,16 @@ These approaches directly target the study and understanding of syntactic struct
 Philosophers only started to become interested in connectionism because it offers an alternative to the classical
 computational theory of mind.
 
-> Connectionism is a movement that has been put out in the field of
-> cognitive science in hope to explain and extrapolate the mental
-> processes of a brain. It's composed of a simplified emulation of
+> Connectionism is a research program or approach within cognitive science
+> that emphasizes the role of distributed processing and learning from
+> experience. It's composed of a simplified emulation of
 > the actual cognitive compositions of a brain, by having connected
 > neurons or units (the analogs of neurons) within which are assigned
 > weights that measure how strongly the connections are there between
 > units. We could picture these weights as a replica of the synapse
 > in our actual biological brain that link one neuron to each other.
 
-
-The bridging and departure between classicist and connectionist's view became that a lot of connectionists view cognitive processes as analogous while most classicists would agree that they are digital in nature.
-
-Many connectionists argue that weight units that are dynamic, continuous, and analogous in nature which therefore
-reflect better the way that human brain processes information through different mental states.
+Many connectionists argue that the weights in a neural network reflect the strength of the connections between units, which can be interpreted as analogous to the strength of connections between neurons in the brain.
 
 On the other hand, classicists view information processing done by humans as similar to a computational system where
 information is stored symbolically and processed systematically through automatons.
