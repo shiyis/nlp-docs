@@ -1,6 +1,8 @@
-<!-- ---
+---
 title: Philosophy of Mind - TL;DR version
---- -->
+layout: home
+hide_title: true
+---
 
 Here is the shorten version of the whole Philosophy of Mind article
 
