@@ -93,7 +93,7 @@ function initSearch() {
         this.metadataWhitelist = ['position']
 
         for (var i in docs) {
-          
+
           this.add({
             id: i,
             title: docs[i].title,
@@ -568,5 +568,3 @@ jtd.onReady(function(){
 });
 
 })(window.jtd = window.jtd || {});
-
-

@@ -2190,6 +2190,11 @@ figure.highlight :not(pre) > code {
   border-top-right-radius: 0;
 }
 
+.nav-list .nav-list-item .nav-list-link.tldr {
+
+  display: none;
+}
+
 code.language-mermaid {
   padding: 0;
   background-color: inherit;
