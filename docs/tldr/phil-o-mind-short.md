@@ -104,6 +104,14 @@ The Representational Theory of Mind (RTM) is a theoretical framework that posits
 
 RTM is often seen as a form of functionalism, because it defines mental states in terms of their functional properties rather than their internal structure.
 
+One of the main limitations of CTM is that it assumes that mental states are computational states, and that cognitive processes are the result of the manipulation of these computational states. However, this view does not account for the fact that mental states are often rich and complex, and cannot always be reduced to simple computational operations.
+
+RTM addresses this limitation by positing that mental states are representational states, and that cognitive processes are the result of the manipulation of these representations. This allows for a more nuanced and flexible view of mental states and cognitive processes.
+
+Additionally, RTM offers a potential solution to the Symbol Grounding Problem by emphasizing the importance of grounding mental representations in perception and action. This means that mental representations are connected to the real world through the sensory experiences and motor actions of the organism.
+
+However, it is important to note that RTM is not a perfect solution to all of the limitations of CTM. For example, RTM still faces the challenge of explaining how abstract concepts can be grounded in perception and action. Additionally, RTM does not necessarily address the issue of consciousness, which is a major limitation of CTM.
+
 ### The Implications of Human Beings As Conscious Automata
 
 The implications of human beings as conscious automata are far-reaching and profound. If we are conscious automata, then our consciousness and mental states are the result of computational processes in the brain.
