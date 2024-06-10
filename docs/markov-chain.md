@@ -148,9 +148,9 @@ $$ \pi^{(2)} = \begin{pmatrix}
 \end{pmatrix} $$
 
 $$ \pi^{(2)} = \begin{pmatrix}
-    0.7 \cdot 0.7 + 0.2 \cdot 0.3 + 0.1 \cdot 0.2 & \\
-    0.7 \cdot 0.2 + 0.2 \cdot 0.4 + 0.1 \cdot 0.3 & \\
-    0.7 \cdot 0.1 + 0.2 \cdot 0.3 + 0.1 \cdot 0.5
+  0.7 \cdot 0.7 + 0.2 \cdot 0.3 + 0.1 \cdot 0.2 \\
+  0.7 \cdot 0.2 + 0.2 \cdot 0.4 + 0.1 \cdot 0.3 \\
+  0.7 \cdot 0.1 + 0.2 \cdot 0.3 + 0.1 \cdot 0.5
 \end{pmatrix} $$
 
 $$ \pi^{(2)} = \begin{pmatrix}
