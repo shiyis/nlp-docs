@@ -4,7 +4,7 @@ layout: home
 nav_exclude: true
 ---
 
-Here is the shorten version of the whole Philosophy of Mind article
+Here is the shorten version of the whole Philosophy of Mind article.
 
 ## Introduction
 
