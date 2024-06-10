@@ -307,8 +307,6 @@ reflects poorly the productivity of these mental processes. On top of that there
 
 > **Flexibility and Adaptability**: `CTM` often assumes rigid rule-based processing, which may not fully capture the flexible and adaptive nature of human cognition.
 
-However, it is important to note that RTM is not a perfect solution to all of the limitations of CTM. For example, RTM still faces the challenge of explaining how abstract concepts can be grounded in perception and action. Additionally, RTM does not necessarily address the issue of consciousness, which is a major limitation of CTM.
-
 
 <!--
 Coming back to the important discussion around consciousness. Now we could ask that,
@@ -382,7 +380,6 @@ More importantly, with a shift in the representation of information toward a sub
 
 > **Syntactic Analysis**: Distributional representations can also be used as features for downstream syntactic analysis tasks, such as parsing and part-of-speech tagging. By leveraging the syntactic information implicitly encoded in these representations, AI models can improve their performance on these tasks.
 
-
 #### What Are Syntactic Underpinnings?
 {: .fs-3 .fw-700}
 
@@ -407,7 +404,7 @@ Here are a few strategies that could be employed to directly address syntactic u
 
 These approaches directly target the study and understanding of syntactic structures and rules within a language, aiming to develop systems capable of accurately representing and processing the syntactic aspects of a natural language.
 
-
+However, it is important to note that RTM is not a perfect solution to all of the limitations of CTM. For example, RTM still faces the challenge of explaining how abstract concepts can be grounded in perception and action. Additionally, RTM does not necessarily address the issue of consciousness, which is a major limitation of CTM.
 
 ### Tying Everything Together and Connecting The Dots
 
