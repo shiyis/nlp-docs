@@ -307,6 +307,8 @@ reflects poorly the productivity of these mental processes. On top of that there
 
 > **Flexibility and Adaptability**: `CTM` often assumes rigid rule-based processing, which may not fully capture the flexible and adaptive nature of human cognition.
 
+However, it is important to note that RTM is not a perfect solution to all of the limitations of CTM. For example, RTM still faces the challenge of explaining how abstract concepts can be grounded in perception and action. Additionally, RTM does not necessarily address the issue of consciousness, which is a major limitation of CTM.
+
 
 <!--
 Coming back to the important discussion around consciousness. Now we could ask that,
