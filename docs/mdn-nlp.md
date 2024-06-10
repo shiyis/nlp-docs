@@ -8,7 +8,7 @@ layout: home
 
 # What Is Modern Natural Language Processing About?
 
-(_click [here](https://shiyis.github.io/nlp-docs/docs/mdn-nlp-short/) for TL;DRs_) 
+(_click [here](https://shiyis.github.io/nlp-docs/docs/tldr/mdn-nlp-short/) for TL;DRs_) 
 
 To answer this major question, it's important to draw inference from some of the important concepts in psychology. The first one is _The Language of Thought Hypothesis_ and the second one _The Representational Theory of Mind_.
 
