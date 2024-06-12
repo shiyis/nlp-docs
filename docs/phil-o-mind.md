@@ -24,10 +24,10 @@ other mental processes.
 
 ### The Implications of Human Beings As Conscious Automata and The Definition of Consciousness
 
-Advances in computing raise the prospect known as _The Computational Theory of Mind_ (`CTM`). Computationalists understand this paradigm as the principle to cognitive science (Rescorla 2020). Then later two schools of thoughts challenged this orthodox position.
+Advances in computing raise the prospect known as _The Computational Theory of Mind_ (``CTM``). Computationalists understand this paradigm as the principle to cognitive science (Rescorla 2020). Then later two schools of thoughts challenged this orthodox position.
 
 One pertains to the neurological properties of the mind and body and the other emphasized representational mental
-states. To have a better understanding overall, we have to first know where these premises in the realm of `CTM` stemmed
+states. To have a better understanding overall, we have to first know where these premises in the realm of ``CTM`` stemmed
 from. Below are some very important and relevant theories in Cognitive Science.
 
 #### Consciousness As The Fundamental Property of Nature
@@ -213,12 +213,12 @@ These theories represent diverse perspectives on the nature of consciousness and
 
 ### Computationalism and The Computational Theory of Mind
 
-In a similar light, `CTM` or the Computational Theory of Mind was established in accordance with functionalism without addressing the qualitative or subjective aspects of mental processes.
+In a similar light, ``CTM`` or the Computational Theory of Mind was established in accordance with functionalism without addressing the qualitative or subjective aspects of mental processes.
 
-According to `CTM`, the mind is a computational system similar in important respects to a Turing machine, and core mental processes (e.g., reasoning, decision-making, and problem solving) are computations similar in important respects to computations executed by a Turing machine.
+According to ``CTM``, the mind is a computational system similar in important respects to a Turing machine, and core mental processes (e.g., reasoning, decision-making, and problem solving) are computations similar in important respects to computations executed by a Turing machine.
 
 {: .note }
-First, `CTM` is better formulated by describing the mind as a “computing system” or a
+First, ``CTM`` is better formulated by describing the mind as a “computing system” or a
 “computational system” rather than a “computer”. As David Chalmers - an Australian philosopher
 and cognitive scientist specializing in the areas of philosophy of mind and philosophy of
 language - (2011) notes, describing a system as a “computer” strongly suggests that the system
@@ -226,10 +226,10 @@ is programmable. As Chalmers also notes, one need not claim that the mind is pro
 simply because one regards it as a Turing-style computational system.
 
 {: .note }
-Second, `CTM` is not intended metaphorically. `CTM` does not simply hold that the mind is like a
-computing system. `CTM` holds that the mind `literally is a computing system`. The most familiar
+Second, ``CTM`` is not intended metaphorically. ``CTM`` does not simply hold that the mind is like a
+computing system. ``CTM`` holds that the mind `literally is a computing system`. The most familiar
 artificial computing systems are made from silicon chips or similar materials, whereas the
-human body is made from flesh and blood. But `CTM` holds that this difference disguises a more
+human body is made from flesh and blood. But ``CTM`` holds that this difference disguises a more
 fundamental similarity, which we can capture through a Turing-style computational model.
 
 
@@ -285,7 +285,7 @@ representations that central processor is able to manipulate, operate on, and ma
 {: .fs-3 .fw-700}
 
 In offering such a model, we prescind from physical details. We attain an abstract computational description that could
-be physically implemented in diverse ways (e.g., through silicon chips, or neurons, or pulleys and levers). `CTM` holds
+be physically implemented in diverse ways (e.g., through silicon chips, or neurons, or pulleys and levers). ``CTM`` holds
 that a `suitable abstract computational model offers a literally true description of core mental processes`.
 
 
@@ -301,11 +301,11 @@ a dead end and a period of stagnation called the winter period. The weakness of 
 cognition has limitations and couldn't entertain infinite amount of propositions and rules, which entails that it
 reflects poorly the productivity of these mental processes. On top of that there are some other major limitations,
 
-> **Symbol Grounding Problem**: `CTM` struggles to explain how abstract symbols in the mind acquire meaning. It doesn't account for how symbols connect to the external world.
+> **Symbol Grounding Problem**: ``CTM`` struggles to explain how abstract symbols in the mind acquire meaning. It doesn't account for how symbols connect to the external world.
 
-> **Qualia and Consciousness**: `CTM` has difficulty explaining subjective experiences (qualia) and consciousness. It tends to focus on functional aspects without addressing the qualitative nature of mental states.
+> **Qualia and Consciousness**: ``CTM`` has difficulty explaining subjective experiences (qualia) and consciousness. It tends to focus on functional aspects without addressing the qualitative nature of mental states.
 
-> **Flexibility and Adaptability**: `CTM` often assumes rigid rule-based processing, which may not fully capture the flexible and adaptive nature of human cognition.
+> **Flexibility and Adaptability**: ``CTM`` often assumes rigid rule-based processing, which may not fully capture the flexible and adaptive nature of human cognition.
 
 
 <!--
@@ -325,19 +325,19 @@ Another objection to the byproduct hypothesis would be that, -->
 #### The Emergence of The Representational Theory of Mind
 {: .fs-3 .fw-700}
 
-In addressing these challenges, researchers looked for alternative approaches to better understand and replicate human cognition. This led to the development and adoption of the Representational Theory of Mind (RTM), which shared some foundational principles with CTM but offered additional insights and solutions.
+In addressing these challenges, researchers looked for alternative approaches to better understand and replicate human cognition. This led to the development and adoption of the Representational Theory of Mind (`RTM`), which shared some foundational principles with `CTM` but offered additional insights and solutions.
 
-RTM posits that mental states are representations of the world, emphasizing the role of mental content. It incorporates elements from traditional rationalism and symbolicist ideals but also adapts to address the limitations of CTM:
+`RTM` posits that mental states are representations of the world, emphasizing the role of mental content. It incorporates elements from traditional rationalism and symbolicist ideals but also adapts to address the limitations of `CTM`:
 
-> **Emphasis on Representations**: `RTM` places a central focus on mental representations, acknowledging that cognitive processes involve manipulating and interpreting these representations.
+> **Emphasis on Representations**: ``RTM`` places a central focus on mental representations, acknowledging that cognitive processes involve manipulating and interpreting these representations.
 
-> **Connection to the External World**: `RTM` attempts to tackle the Symbol Grounding Problem by emphasizing the connection between mental representations and the external world. It explores how representations acquire meaning through their relationship to real-world objects or events.
+> **Connection to the External World**: ``RTM`` attempts to tackle the Symbol Grounding Problem by emphasizing the connection between mental representations and the external world. It explores how representations acquire meaning through their relationship to real-world objects or events.
 
-> **Integration of Qualitative Aspects**: `RTM` accommodates the qualitative aspects of consciousness and subjective experiences by acknowledging the role of mental representations in shaping our perception of the world.
+> **Integration of Qualitative Aspects**: ``RTM`` accommodates the qualitative aspects of consciousness and subjective experiences by acknowledging the role of mental representations in shaping our perception of the world.
 
-> **Flexibility in Cognitive Processing**: `RTM` allows for more flexibility in cognitive processing by recognizing that mental representations can be dynamic and context-dependent.
+> **Flexibility in Cognitive Processing**: ``RTM`` allows for more flexibility in cognitive processing by recognizing that mental representations can be dynamic and context-dependent.
 
-RTM is able to accomplish the above by assuming,
+`RTM` is able to accomplish the above by assuming,
 
 ```
 
@@ -350,8 +350,8 @@ RTM is able to accomplish the above by assuming,
 
 ```
 
-Note that this is different fromhow CTM tackles Productivity and Systematicity of
-thoughts. CTM explains theproductivity of thoughts by extrapolating,
+Note that this is different fromhow `CTM` tackles Productivity and Systematicity of
+thoughts. `CTM` explains theproductivity of thoughts by extrapolating,
 
 ```
 
@@ -366,9 +366,9 @@ thoughts. CTM explains theproductivity of thoughts by extrapolating,
 
 ```
 
-During this period of evolution, connectionism also gained prominence. Connectionist models, such as neural networks, focused on distributed processing and learning from experience, providing a stark contrast to the rule-based systems of CTM. These models were grounded in the idea that cognitive processes arise from the interactions of simple units, similar to neurons in the brain.
+During this period of evolution, connectionism also gained prominence. Connectionist models, such as neural networks, focused on distributed processing and learning from experience, providing a stark contrast to the rule-based systems of `CTM`. These models were grounded in the idea that cognitive processes arise from the interactions of simple units, similar to neurons in the brain.
 
-The renaissance of AI saw the integration of connectionist ideas with representational theories, leading to hybrid models that leveraged the strengths of both approaches. These models aimed to address the symbolic manipulation capabilities of CTM while incorporating the learning and adaptability features of connectionism.
+The renaissance of AI saw the integration of connectionist ideas with representational theories, leading to hybrid models that leveraged the strengths of both approaches. These models aimed to address the symbolic manipulation capabilities of `CTM` while incorporating the learning and adaptability features of connectionism.
 
 More importantly, with a shift in the representation of information toward a sub-symbolic, universally distributed approach. While the specific mention is about solving a philosophical conundrum related to representations of meaning, we can consider how this shift might also address the potential conundrum faced by classicists - the syntactic underpinnings. Here are some ways in which this approach could be relevant:
 
@@ -404,7 +404,7 @@ Here are a few strategies that could be employed to directly address syntactic u
 
 These approaches directly target the study and understanding of syntactic structures and rules within a language, aiming to develop systems capable of accurately representing and processing the syntactic aspects of a natural language.
 
-However, it is important to note that RTM is not a perfect solution to all of the limitations of CTM. For example, RTM still faces the challenge of explaining how abstract concepts can be grounded in perception and action. Additionally, RTM does not necessarily address the issue of consciousness, which is a major limitation of CTM.
+However, it is important to note that `RTM` is not a perfect solution to all of the limitations of `CTM`. For example, `RTM` still faces the challenge of explaining how abstract concepts can be grounded in perception and action. Additionally, `RTM` does not necessarily directly address the issue of consciousness, which is a major limitation of `CTM`.
 
 ### Tying Everything Together and Connecting The Dots
 
@@ -471,7 +471,7 @@ when parts go wrong.
 ##### In A Nutshell
 
 
-In this blog, we explored the Computational Theory of Mind (`CTM`) and its implications. We have discussed about consciousness as a fundamental property of nature and various hypotheses on the emergence and origin of consciousness. We have also addressed the mind-body problem, theories like Type vs. Token Identity Theory, Functionalism, and Mind-Body Dualism. It introduces `CTM`, a Turing-style computational system, and compares it with the Representational Theory of Mind. We have also touched on limitations of `CTM`, including the Symbol Grounding Problem and its difficulty in explaining consciousness. Finally, Connectionism (grounded in the Representational Theory of Mind (`RTM`) was introduced as an alternative approach, emphasizing representations, contextual embeddings, and flexibility in cognitive processing).
+In this blog, we explored the Computational Theory of Mind (``CTM``) and its implications. We have discussed about consciousness as a fundamental property of nature and various hypotheses on the emergence and origin of consciousness. We have also addressed the mind-body problem, theories like Type vs. Token Identity Theory, Functionalism, and Mind-Body Dualism. It introduces ``CTM``, a Turing-style computational system, and compares it with the Representational Theory of Mind. We have also touched on limitations of ``CTM``, including the Symbol Grounding Problem and its difficulty in explaining consciousness. Finally, Connectionism (grounded in the Representational Theory of Mind (``RTM``) was introduced as an alternative approach, emphasizing representations, contextual embeddings, and flexibility in cognitive processing).
 
 Namely, connectionism involves simplified emulation of brain's cognitive compositions through interconnected units akin to neurons. Connectionists view cognitive processes as analogous and argue for dynamic, continuous weight units reflecting brain's mechanism. Classicists see human information processing as computational, with symbolic storage and systematic processing. Some connectionists aim to bridge these paradigms, while radical connectionists advocate for eliminating symbolic treatment. Hybrid mechanisms have been proposed to mediate clashes, drawing inspiration from classical and connectionist approaches. This distributed style of representation and sub-symbolic nature might offer insights into how brain actually processes information.
 
