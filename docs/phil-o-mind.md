@@ -96,7 +96,7 @@ A “strong” form of emergence would suggest that something truly new comes in
 
 The example used was when we talk about atoms and other physical properties, it might not be suitable to talk about free will, but under the philosophical discussions about human consciousness, motivation, and behavior, it may be otherwise.
 
-In such case, explaining what a weak emergence is, we may ask the question: 💭 **if we take the view that consciousness does affect our thoughts and behavior, is that view applicable at the level of atoms and particles, or only at the level appropriate for describing human psychology ?**
+In such case, explaining what a weak emergence is, we may ask the question: 💭 **if we take the view that consciousness does affect our thoughts and behavior, is that view applicable at the level of atoms and particles, or only at the level appropriate for describing human psychology?**
 
 In answering this question, the article used a different analogy;
 consider the mechanism that regulates the constriction and
