@@ -5,7 +5,7 @@ layout: home
 ---
 
 
-# What Constitutes As The Philosophy of Mind？
+# What Constitutes The Philosophy of Mind？
 
 _(click [here](https://shiyis.github.io/nlp-docs/docs/tldr/phil-o-mind-short) for TL;DRs)_
 
@@ -23,6 +23,10 @@ other mental processes.
 {:toc}
 
 ### The Implications of Human Beings As Conscious Automata and The Definition of Consciousness
+
+Consciousness is often seen as what makes humans unique among automata, posing challenges in defining and explaining it. Philosopher David Chalmers distinguishes between the "easy problems" of consciousness and the "hard problem." The easy problems involve understanding the mechanisms of perception, attention, and behavior, which can be explained by neural and cognitive processes.
+
+The hard problem, however, concerns subjective experience or qualia—the personal, intrinsic experiences of perception, such as the redness of red or the pain of a headache. Qualia pose a challenge because they are deeply subjective and cannot be directly observed or measured, making it difficult to explain how and why they arise from physical processes in the brain.
 
 Advances in computing raise the prospect known as _The Computational Theory of Mind_ (``CTM``). Computationalists understand this paradigm as the principle to cognitive science (Rescorla 2020). Then later two schools of thoughts challenged this orthodox position.
 
@@ -71,7 +75,7 @@ Each one of them is a hypothesis over the emergence and origin of consciousness,
 
 {: .note }
 **Strong Emergence**
-Downward causation is one manifestation of this strong-emergence attitude. It’s the idea that what happens at lower levels can be directly influenced (causally acted upon) by what is happening at the higher levels. The idea, in other words, that you can’t really understand the microscopic behavior without knowing something about the macroscopic.
+Higher-level properties that are fundamentally new and cannot be reduced to lower-level explanations. An example might be the phenomenon of consciousness itself, which some argue cannot be fully explained by neural activity alone because it involves subjective experiences that do not seem to be directly deducible from physical processes.
 
 This is the position that is too good to be true and therefore argued against. As it's not very
 much plausible that it's the downward causal direction, where the emergence of consciousness caused the microscopic and molecular changes happening at a lower-level.
@@ -86,7 +90,7 @@ instead as proposed.
 {: .note }
 
 **Weak Emergence**
-The so-called “weak” emergence suggests that higher-level notions like the fluidity or solidity of a material substance emerge out of the properties of its microscopic constituents. In principle, if not in practice, the microscopic description is absolutely complete and comprehensive.
+Higher-level properties that are unexpected but fully explainable by lower-level processes. For example, the behavior of a flock of birds can be explained by the simple rules followed by individual birds, such as alignment and separation, leading to complex patterns of movement.
 
 A “strong” form of emergence would suggest that something truly new comes into being at the higher levels, something that just isn’t there in the microscopic description.
 
@@ -115,8 +119,7 @@ light reaching them.
 Therefore, instead of agreeing on each extreme end of the spectrum, below might help construe and reach the ultimate conclusion.
 
 {: .note }
-**Normal Emergence** The visual sensor is obviously affecting the behavior of the pupil, yet it doesn't follow that it's affecting the behavior of the underlying atoms in a way that contradicts or is incompatible with our understanding
-of how atoms behave.
+**Normal Emergence** Properties that arise predictably from underlying processes. For instance, the temperature of a gas is a normal emergent property resulting from the average kinetic energy of its molecules. The visual sensor is obviously affecting the behavior of the pupil, yet it doesn't follow that it's affecting the behavior of the underlying atoms in a way that contradicts or is incompatible with our understanding of how atoms behave.
 
 Without the sensor, the atoms wouldn't behave as they do, and in that sense the sensor is necessary for the pupil to
 constrict and dilate; it's that it's necessary to know the existence of the sensor to predict what the atoms of the eye will do next.
