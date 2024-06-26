@@ -146,7 +146,7 @@ mere byproduct of mechanics of the brain. An epiphenomenon that is not the cause
 Hypothesis that Animals Are Automata, and Its History" he wrote:
 
 
-💭 **So What Does It Mean By Having Conscious Thoughts in A Purely Physical Sense ?**
+💭 **So What Does It Mean By Having Conscious Thoughts in A Purely Physical Sense?**
 {: .fs-3 .fw-700}
 
 ```
