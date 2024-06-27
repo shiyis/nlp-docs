@@ -221,8 +221,8 @@ In a similar light, ``CTM`` or the Computational Theory of Mind was established 
 According to ``CTM``, the mind is a computational system similar in important respects to a Turing machine, and core mental processes (e.g., reasoning, decision-making, and problem solving) are computations similar in important respects to computations executed by a Turing machine.
 
 {: .note }
-First, ``CTM`` is better formulated by describing the mind as a “computing system” or a
-“computational system” rather than a “computer”. As David Chalmers - an Australian philosopher
+First, ``CTM`` is better formulated by describing the mind as a `“computing system”` or a
+`“computational system”` rather than a “computer”. As David Chalmers - an Australian philosopher
 and cognitive scientist specializing in the areas of philosophy of mind and philosophy of
 language - (2011) notes, describing a system as a “computer” strongly suggests that the system
 is programmable. As Chalmers also notes, one need not claim that the mind is programmable
@@ -452,7 +452,7 @@ computational way of thinking aka the turing style information processing and st
 
 Also one interesting discovery about the connectionism
 representation of information processing inside the brain
-might have a good give away of how brain actually processes
+might have a good give away of how the brain actually processes
 information.
 
 
