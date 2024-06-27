@@ -151,20 +151,20 @@ Hypothesis that Animals Are Automata, and Its History" he wrote:
 
 ```
 
-  The consciousness of brutes would appear to be related to the mechanism of their body simply as
-  a collateral product of its working, and to be as completely without any power of modifying that
-  working as the steam-whistle which accompanies the work of a locomotive engine is without
-  influence upon its machinery.
+  The consciousness of brutes would appear to be related to the mechanism of their body
+  simply as a collateral product of its working, and to be as completely without any power
+  of modifying that working as the steam-whistle which accompanies the work of a locomotive
+  engine is without influence upon its machinery.
 
-   · Their volition, if they have any, is an emotion indicative of physical changes, not a cause
-     of such changes. […]
+   · Their volition, if they have any, is an emotion indicative of physical changes, not
+   a cause of such changes. […]
 
-  It is quite true that, to the best of my judgment, the argumentation which applies to brutes
-  holds equally good of men; and, therefore, that all states of consciousness in us, as in them,
-  are immediately caused by molecular changes of the brain-substance.
+  It is quite true that, to the best of my judgment, the argumentation which applies to
+  brutes holds equally good of men; and, therefore, that all states of consciousness in
+  us, as in them, are immediately caused by molecular changes of the brain-substance.
 
-  It seems to me that in men, as in brutes, there is no proof that any state of consciousness is
-  the cause of change in the motion of the matter of the organism.
+  It seems to me that in men, as in brutes, there is no proof that any state of consciousness
+  is the cause of change in the motion of the matter of the organism.
 
 ```
 
