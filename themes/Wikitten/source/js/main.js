@@ -1,5 +1,6 @@
-(function($){
+(function($) {
     var toTop = ($('#sidebar').height() - $(window).height()) + 60;
+
     // Caption
     $('.article-entry').each(function(i) {
         $(this).find('img').each(function() {
@@ -7,13 +8,14 @@
                 $(this).after('<span class="caption">' + this.alt + '</span>');
             }
 
-            // 对于已经包含在链接内的图片不适用lightGallery
+            // For images not already wrapped in a link, apply lightGallery
             if ($(this).parent().prop("tagName") !== 'A') {
                 $(this).wrap('<a href="' + this.src + '" title="' + this.alt + '" class="gallery-item"></a>');
             }
         });
     });
-    if (lightGallery) {
+
+    if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item',
         };
@@ -22,7 +24,8 @@
         });
         lightGallery($('.article-gallery')[0], options);
     }
-    if (!!$.prototype.justifiedGallery) {  // if justifiedGallery method is defined
+
+    if (!!$.prototype.justifiedGallery) {
         var options = {
             rowHeight: 140,
             margins: 4,
@@ -58,10 +61,11 @@
             $('body, html').animate({ scrollTop: 0 }, 600);
         });
     }
-    $(document).ready(function() {
-        $('#allExpand').click(); // Simulate a click to expand all categories on page load
-    });
 
+    // Expand all categories on page load
+    $(document).ready(function() {
+        $('#allExpand').click();
+    });
 
     // Task lists in markdown
     $('.article-entry ul > li').each(function() {
@@ -91,8 +95,35 @@
                 update(string[0], "");
             }
         }
-    })
-    $(document).on('click', 'input[type="checkbox"]', function (event) {
-        event.preventDefault();
     });
+
+    // Hide .timeline-icon when .timeline-post-title a is clicked
+    $(document).on('click', '.timeline-post-title a', function(event) {
+        var timelineRow = $(this).closest('.timeline-row');
+        var timelineIcon = timelineRow.find('.timeline-icon');
+
+        if (timelineIcon.length) {
+            timelineIcon.css('display', 'none');
+
+            // Save the state using localStorage
+            var clickedLinks = JSON.parse(localStorage.getItem('clickedLinks')) || [];
+            clickedLinks.push($(this).attr('href'));
+            localStorage.setItem('clickedLinks', JSON.stringify(clickedLinks));
+        }
+    });
+
+    // On page load, check localStorage and hide icons for previously clicked links
+    $(document).ready(function() {
+        var clickedLinks = JSON.parse(localStorage.getItem('clickedLinks')) || [];
+        clickedLinks.forEach(function(link) {
+            var anchor = $('.timeline-post-title a[href="' + link + '"]');
+            if (anchor.length) {
+                var timelineIcon = anchor.closest('.timeline-row').find('.timeline-icon');
+                if (timelineIcon.length) {
+                    timelineIcon.css('display', 'none');
+                }
+            }
+        });
+    });
+
 })(jQuery);

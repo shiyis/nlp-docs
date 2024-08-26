@@ -19,9 +19,9 @@
         }
     %>
     <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-    <% 
+    <%
        var keywords_content = undefined;
-       if (page.keywords) { 
+       if (page.keywords) {
            keywords_content = page.keywords;
        } else if (page.tags && page.tags.length) {
            keywords_content = page.tags.toArray().map(tag => tag.name).join(",");
@@ -65,4 +65,6 @@
     <% if (theme.plugins.busuanzi_count) { %>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <% } %>
+
+
 </head>
