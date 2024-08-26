@@ -1,18 +1,10 @@
 (function($) {
-    // Apply hidden styles before the page fully loads
-    var clickedLinks = JSON.parse(localStorage.getItem('clickedLinks')) || [];
-    clickedLinks.forEach(function(link) {
-        var anchor = document.querySelector('.timeline-post-title a[href="' + link + '"]');
-        if (anchor) {
-            var timelineIcon = anchor.closest('.timeline-row').querySelector('.timeline-icon');
-            if (timelineIcon) {
-                timelineIcon.style.display = 'none';
-            }
-        }
-    });
-
     $(document).ready(function() {
-        var toTop = ($('#sidebar').height() - $(window).height()) + 60;
+        // Ensure all dots are visible on page load
+        $('.timeline-icon').css('display', '');
+
+        // Clear the clicked links when the page is loaded (reset)
+        localStorage.removeItem('clickedLinks');
 
         // Caption
         $('.article-entry').each(function(i) {
@@ -59,6 +51,7 @@
 
         // To Top
         if ($('#sidebar').length) {
+            var toTop = ($('#sidebar').height() - $(window).height()) + 60;
             $(document).on('scroll', function () {
                 if ($(document).width() >= 800) {
                     if(($(this).scrollTop() > toTop) && ($(this).scrollTop() > 0)) {
@@ -108,6 +101,9 @@
             }
         });
 
+        // Array to store clicked links within the session
+        var clickedLinks = [];
+
         // Hide .timeline-icon when .timeline-post-title a is clicked
         $(document).on('click', '.timeline-post-title a', function(event) {
             var timelineRow = $(this).closest('.timeline-row');
@@ -116,11 +112,20 @@
             if (timelineIcon.length) {
                 timelineIcon.css('display', 'none');
 
-                // Save the state using localStorage
-                var clickedLinks = JSON.parse(localStorage.getItem('clickedLinks')) || [];
+                // Store the clicked link in the array (only for this session)
                 clickedLinks.push($(this).attr('href'));
-                localStorage.setItem('clickedLinks', JSON.stringify(clickedLinks));
             }
         });
+
+        $(window).on('beforeunload', function() {
+            if (clickedLinks.length >= totalPosts) {
+                // Recover all dots by making them visible again
+                $('.timeline-icon').css('display', '');
+
+                // Clear the clickedLinks array from localStorage
+                localStorage.removeItem('clickedLinks');
+            }
+        });
+
     });
 })(jQuery);
