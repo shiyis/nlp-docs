@@ -1,10 +1,8 @@
 (function($) {
-    $(document).ready(function() {
-        // Ensure all dots are visible on page load
-        $('.timeline-icon').css('display', '');
 
-        // Clear the clicked links when the page is loaded (reset)
-        localStorage.removeItem('clickedLinks');
+
+    $(document).ready(function() {
+        var toTop = ($('#sidebar').height() - $(window).height()) + 60;
 
         // Caption
         $('.article-entry').each(function(i) {
@@ -51,7 +49,6 @@
 
         // To Top
         if ($('#sidebar').length) {
-            var toTop = ($('#sidebar').height() - $(window).height()) + 60;
             $(document).on('scroll', function () {
                 if ($(document).width() >= 800) {
                     if(($(this).scrollTop() > toTop) && ($(this).scrollTop() > 0)) {
@@ -100,32 +97,4 @@
                 }
             }
         });
-
-        // Array to store clicked links within the session
-        var clickedLinks = [];
-
-        // Hide .timeline-icon when .timeline-post-title a is clicked
-        $(document).on('click', '.timeline-post-title a', function(event) {
-            var timelineRow = $(this).closest('.timeline-row');
-            var timelineIcon = timelineRow.find('.timeline-icon');
-
-            if (timelineIcon.length) {
-                timelineIcon.css('display', 'none');
-
-                // Store the clicked link in the array (only for this session)
-                clickedLinks.push($(this).attr('href'));
-            }
-        });
-
-        $(window).on('beforeunload', function() {
-            if (clickedLinks.length >= totalPosts) {
-                // Recover all dots by making them visible again
-                $('.timeline-icon').css('display', '');
-
-                // Clear the clickedLinks array from localStorage
-                localStorage.removeItem('clickedLinks');
-            }
-        });
-
-    });
 })(jQuery);
