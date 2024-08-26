@@ -33,9 +33,11 @@
         // Clear localStorage and reset dots when all posts are clicked
         if ($('.timeline-post-title a').length === clickedLinks.length) {
             $(window).on('beforeunload', function() {
-                $('.timeline-icon').css('display', 'block');
+                $('.timeline-icon').css('display', '');
                 localStorage.removeItem('clickedLinks');
             });
         }
     });
+
+    $('#allExpand').click();
 })(jQuery);

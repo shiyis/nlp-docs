@@ -66,7 +66,6 @@
         }
 
         // Expand all categories on page load
-        $('#allExpand').click();
 
         // Task lists in markdown
         $('.article-entry ul > li').each(function() {
