@@ -2,7 +2,6 @@
 title: Variational Autoencoders
 categories:
   - Math
-layout: search
 date: 2024-07-27 09:16:00
 ---
 
@@ -29,13 +28,13 @@ The tricky part is that the VAE learns to write codes in a way that they can be 
 
 **Simple Math Example:**
 
-If your color is described by a number, say \( x \), the VAE learns a new number, \( z \), that is simpler and can still be used to recreate \( x \).
+If your color is described by a number, say $ x $, the VAE learns a new number, $ z $, that is simpler and can still be used to recreate $ x $.
 
 The VAE tries to make sure that:
 
-\[
+$$
 \text{Original Data} \approx \text{Decoder}(\text{Encoder}(\text{Original Data}))
-\]
+$$
 
 This means the data recreated by the VAE should be very close to the original data.
 
