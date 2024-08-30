@@ -1,6 +1,6 @@
 ---
 title: Auto Differentiation
-date: 2024-07-14 13:40:00
+date: 2024-07-14 13:40
 categories:
   - Math
 tags:
@@ -8,51 +8,70 @@ tags:
   - math
 ---
 
-
-### Intro to Automatic Differentiation  
+### Intro to Automatic Differentiation
 
 In this blog, we will go through the foundations behind Automatic Differentiation.
 
-<p style="margin-left:1px;  margin-top: 30px">
-
-
-<iframe id="iframe-yt-video" width="100%" height="520" src="https://www.youtube.com/embed/56WUlMEeAuA?autoplay=1" frameborder="0" ></iframe>
-
-</p>
+<div style="margin-left:1px; margin-top: 30px">
+  <iframe id="iframe-yt-video" width="100%" height="520" src="https://www.youtube.com/embed/56WUlMEeAuA?enablejsapi=1" frameborder="0"></iframe>
+</div>
 
 #### The Breakdown of The Video Into Parts
-
-<ul class="video-timestamps">
-  <li><a href="#" onclick="seekTo(0)">0:00 - Introduction</a></li>
-  <li><a href="#" onclick="seekTo(60)">1:00 - First Topic</a></li>
-  <li><a href="#" onclick="seekTo(120)">2:00 - Second Topic</a></li>
-  <li><a href="#" onclick="seekTo(180)">3:00 - Third Topic</a></li>
-</ul>
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
-  function seekTo(seconds) {
-    const iframe = document.getElementById('iframe-yt-video');
-    const player = new YT.Player(iframe, {
-      events: {
-        'onReady': function(event) {
-          event.target.seekTo(seconds, true);
-        }
-      }
-    });
-  }
+    var player;
 
-  // Load the IFrame Player API code asynchronously.
-  const tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  const firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // This function is called by the YouTube IFrame API when it's ready
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('iframe-yt-video', {
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    // This function is called when the player is ready
+    function onPlayerReady(event) {
+        console.log("YouTube Player is ready");
+
+        // Attach event listeners to the buttons
+        document.querySelectorAll('.btn-timestamp').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var seconds = parseInt(this.getAttribute('data-seconds'), 10);
+                seekTo(seconds);
+            });
+        });
+    }
+
+    // Function to seek to the specified time in the video
+    function seekTo(seconds) {
+        if (player && typeof player.seekTo === 'function') {
+            player.pauseVideo(); // Pause the video first
+            player.seekTo(seconds, true); // Seek to the specified time
+            setTimeout(function() {
+                player.playVideo(); // Attempt to play after a short delay
+            }, 500); // Adjust delay as needed
+            console.log("Seeking to:", seconds, "seconds");
+        } else {
+            console.log("Player is not ready yet");
+        }
+    }
 </script>
 
+<div class="video-timestamps">
+  <button class="btn-timestamp" data-seconds="0">Introduction</button>
+  <button class="btn-timestamp" data-seconds="53">Topic 1 - Diff in ML</button>
+  <button class="btn-timestamp" data-seconds="316">Topic 2 - Numerical Diff</button>
+  <button class="btn-timestamp" data-seconds="697">Topic 2 - Gradient Checking</button>
+  <button class="btn-timestamp" data-seconds="848">Topic 3 - Symbolic Diff</button>
+  <button class="btn-timestamp" data-seconds="1108">Topic 4 - Computational Graphs</button>
+  <button class="btn-timestamp" data-seconds="1367">Topic 5 - Forward Automatic Diff</button>
+  <button class="btn-timestamp" data-seconds="1992">Topic 6 - Reverse Auto Diff</button>
+  <button class="btn-timestamp" data-seconds="2532">Topic 6 - Reverse AD Algorithm</button>
+  <button class="btn-timestamp" data-seconds="3299">Topic 7 - RAD vs Backprop</button>
 
-Important transcripts of the video  
+</div>
 
-<span class="label label-danger">Q</span> What are the gists that are covered in this video?</span>
 
-<span class="label label-success">A</span> At the heart of my endeavors lies a profound appreciation for machine learning, deep learning, and Natural Language Processing. As an advocate for data-driven decision-making, I thrive on unraveling the complexities of algorithms and patterns, harnessing their power to transform raw data into actionable intelligence. From predictive modeling in finance to image recognition tasks using deep learning architectures, I relish the challenge of pushing the boundaries of what’s possible with data.
-
-<span class="label label-danger">Q</span> What is my expertise in Natural Language Processing?</span>
+#### Important Transcripts of the Video
