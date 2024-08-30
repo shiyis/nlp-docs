@@ -13,7 +13,7 @@ tags:
 In this blog, we will go through the foundations behind Automatic Differentiation.
 
 <div style="margin-left:1px; margin-top: 30px">
-  <iframe id="iframe-yt-video" width="100%" height="520" src="https://www.youtube.com/embed/56WUlMEeAuA?enablejsapi=1" frameborder="0"></iframe>
+  <iframe id="iframe-yt-video" width="100%" height="520" src="https://www.youtube.com/embed/56WUlMEeAuA?enablejsapi=1&autoplay=1" frameborder="0"></iframe>
 </div>
 
 #### The Breakdown of The Video Into Parts
