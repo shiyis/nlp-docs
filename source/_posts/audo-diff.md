@@ -4,7 +4,7 @@ date: 2024-07-14 13:40
 categories:
   - Math
 tags:
-  - auto-diff
+  - stochastic
   - math
 ---
 

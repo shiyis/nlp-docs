@@ -4,6 +4,9 @@ categories:
   - Math
 date: 2024-07-16 08:13:20
 layout: search
+tags:
+  - math
+  - stochastic
 ---
 ### Discussions on Markov Processes Contitnued
 

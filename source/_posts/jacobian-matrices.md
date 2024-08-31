@@ -5,6 +5,7 @@ categories:
   - Math
 tags:
   - math
+  - determinism
 ---
 
 

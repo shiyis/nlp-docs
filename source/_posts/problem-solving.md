@@ -4,6 +4,8 @@ date: 2024-07-17 09:27:00
 layout: search
 categories:
   - Linguistics
+tags:
+  - semantics
 ---
 
 ### More on Logic And Problem Solving

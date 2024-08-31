@@ -4,6 +4,8 @@ categories:
   - NLP Related
 layout: search
 date: 2024-07-17 09:16:00
+tags:
+  - nlp-theories
 ---
 ### Summary and breakdown of the code that form the Generative Pre-trained Transformer architecture continued
 
