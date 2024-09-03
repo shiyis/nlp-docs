@@ -1,6 +1,6 @@
 ---
 title: Philosophy of Mind
-date: 2024-07-13 18:27:10
+date: 2024-08-13 18:27:10
 categories:
   - Linguistics
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Variational Autoencoders
+title: Variational Families
 categories:
   - Math
 date: 2024-07-27 09:16:00

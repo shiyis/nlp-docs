@@ -1,8 +1,8 @@
 ---
 title: Modern NLP
-date: 2024-07-13 18:27:14
+date: 2024-08-13 18:27:14
 categories:
-  - NLP Related 
+  - NLP Related
 tags:
   - nlp-theories
 ---

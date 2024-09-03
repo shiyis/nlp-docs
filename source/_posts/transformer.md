@@ -3,7 +3,7 @@ title: The GPT Architecture
 categories:
   - NLP Related
 layout: search
-date: 2024-07-17 09:16:00
+date: 2024-08-17 09:16:00
 tags:
   - nlp-theories
 ---
