@@ -43,7 +43,7 @@ _**Dependence on Context**_:
   - **Presupposition**: Partially dependent on context. It relies on shared knowledge but is less flexible than implicature.
 
 _**Truth Conditions**_:
-  - **Implicature**: Can be canceled or denied without contradiction.For example, "It’s cold in here" doesn’t necessarily mean the speaker wants the window closed if they follow up with, "But I like it that way."
+  - **Implicature**: Can be canceled or denied without contradiction. For example, "It’s cold in here" doesn’t necessarily mean the speaker wants the window closed if they follow up with, "But I like it that way."
   - **Entailment**:
   Cannot be canceled without contradiction. If "All cats are animals" is true, saying "No cats are animals" would be a direct contradiction.
   - **Presupposition**: Remains even if the statement is negated. For example, "John's brother is not tall" still presupposes that John has a brother.
