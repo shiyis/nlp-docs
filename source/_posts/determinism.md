@@ -21,4 +21,4 @@ In information theory and computational linguistics, determinism can be discusse
 These concepts illustrate how determinism and randomness are addressed in both fields, often blending the two to model complex systems.
 
 
-### Discussing The Applications of Deterministic and Non-deterministic Finite Automata's Capabilities of Handling Different Tasks
+### Discussing Deterministic and Non-deterministic Finite Automata's Capabilities of Handling Different Tasks
