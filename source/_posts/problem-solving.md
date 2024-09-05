@@ -96,7 +96,7 @@ In lambda calculus, expressions are built using variables, lambda abstractions, 
 Lambda calculus defines computation through the process of **reduction**, which simplifies lambda expressions. There are two main types of reduction:
 
 1. **Alpha Conversion (α conversion)**:
-    **Explanation**: Renaming the bound variables in a lambda expression. For example, `λx. x` can be alphaconverted to `λy. y`.
+    **Explanation**: Renaming the bound variables in a lambda expression. For example, `λx. x` can be alpha-converted to `λy. y`.
     **Purpose**: Avoids name collisions.
 
 2. **Beta Reduction (β reduction)**:
