@@ -101,6 +101,165 @@ pmi_scores = calculate_pmi_corpus(corpus)
 print(pmi_scores)
 ```
 
+A walkthrough of the code part by part.
+
+### **Imports**
+
+```python
+import math
+import collections
+```
+
+- **`import math`**: Imports the `math` module, which provides mathematical functions such as logarithms.
+- **`import collections`**: Imports the `collections` module, which provides specialized container datatypes, like `defaultdict`.
+
+### **Function Definitions**
+
+#### **1. `calculate_pmi` Function**
+
+```python
+def calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2):
+    """
+    Calculate the point-wise mutual information (PMI) between two words.
+
+    :param word1: The first word
+    :param word2: The second word
+    :param joint_prob: The joint probability of the two words
+    :param marginal_prob1: The marginal probability of the first word
+    :param marginal_prob2: The marginal probability of the second word
+    :return: The PMI score
+    """
+    pmi = math.log(joint_prob / (marginal_prob1 * marginal_prob2), 2)
+    return pmi
+```
+
+- **Purpose**: Calculates the Pointwise Mutual Information (PMI) score between two words.
+- **Parameters**:
+  - `word1` and `word2`: Words for which PMI is calculated.
+  - `joint_prob`: Probability of both words appearing together.
+  - `marginal_prob1`: Probability of `word1` appearing.
+  - `marginal_prob2`: Probability of `word2` appearing.
+- **`pmi` Calculation**:
+  - `math.log(joint_prob / (marginal_prob1 * marginal_prob2), 2)`: Computes the logarithm (base 2) of the ratio of the joint probability to the product of the marginal probabilities.
+- **Returns**: PMI score.
+
+#### **2. `calculate_joint_prob` Function**
+
+```python
+def calculate_joint_prob(word1, word2, corpus):
+    """
+    Calculate the joint probability of two words in a corpus.
+
+    :param word1: The first word
+    :param word2: The second word
+    :param corpus: The corpus of text
+    :return: The joint probability
+    """
+    joint_count = 0
+    for sentence in corpus:
+        if word1 in sentence and word2 in sentence:
+            joint_count += 1
+    joint_prob = joint_count / len(corpus)
+    return joint_prob
+```
+
+- **Purpose**: Calculates the joint probability of two words appearing together in the same sentence.
+- **Parameters**:
+  - `word1` and `word2`: Words to check.
+  - `corpus`: List of sentences (each sentence is a list of words).
+- **`joint_count`**: Counts how many sentences contain both `word1` and `word2`.
+- **`joint_prob` Calculation**: Divides `joint_count` by the total number of sentences to get the joint probability.
+- **Returns**: Joint probability of the two words.
+
+#### **3. `calculate_marginal_prob` Function**
+
+```python
+def calculate_marginal_prob(word, corpus):
+    """
+    Calculate the marginal probability of a word in a corpus.
+
+    :param word: The word
+    :param corpus: The corpus of text
+    :return: The marginal probability
+    """
+    word_count = 0
+    for sentence in corpus:
+        if word in sentence:
+            word_count += 1
+    marginal_prob = word_count / len(corpus)
+    return marginal_prob
+```
+
+- **Purpose**: Calculates the marginal probability of a single word.
+- **Parameters**:
+  - `word`: The word for which probability is calculated.
+  - `corpus`: List of sentences.
+- **`word_count`**: Counts how many sentences contain `word`.
+- **`marginal_prob` Calculation**: Divides `word_count` by the total number of sentences to get the marginal probability.
+- **Returns**: Marginal probability of the word.
+
+#### **4. `calculate_pmi_corpus` Function**
+
+```python
+def calculate_pmi_corpus(corpus):
+    """
+    Calculate the PMI scores for all pairs of words in a corpus.
+
+    :param corpus: The corpus of text
+    :return: A dictionary of PMI scores
+    """
+    pmi_scores = {}
+    word_counts = collections.defaultdict(int)
+    for sentence in corpus:
+        for word in sentence:
+            word_counts[word] += 1
+
+    for word1 in word_counts:
+        for word2 in word_counts:
+            if word1 != word2:
+                joint_prob = calculate_joint_prob(word1, word2, corpus)
+                marginal_prob1 = calculate_marginal_prob(word1, corpus)
+                marginal_prob2 = calculate_marginal_prob(word2, corpus)
+                pmi = calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2)
+                pmi_scores[(word1, word2)] = pmi
+
+    return pmi_scores
+```
+
+- **Purpose**: Calculates PMI scores for all pairs of words in the corpus.
+- **Parameters**:
+  - `corpus`: List of sentences.
+- **`word_counts`**: A `defaultdict` to count occurrences of each word.
+- **Count Words**: Iterates over each sentence to count occurrences of each word.
+- **Compute PMI**:
+  - Iterates over all pairs of words (excluding pairs where `word1` is the same as `word2`).
+  - Calculates joint and marginal probabilities, then computes PMI for each pair.
+- **Returns**: A dictionary of PMI scores for all word pairs.
+
+### **Example Usage**
+
+```python
+corpus = [
+    ["this", "is", "a", "foo", "bar"],
+    ["bar", "black", "sheep"],
+    ["foo", "bar", "black", "sheep"],
+    ["sheep", "bar", "black"]
+]
+
+pmi_scores = calculate_pmi_corpus(corpus)
+print(pmi_scores)
+```
+
+- **Purpose**: Runs the PMI calculations on a sample corpus and prints the PMI scores for all word pairs.
+
+### **Summary**
+
+- **`calculate_pmi`** computes PMI given probabilities.
+- **`calculate_joint_prob`** finds how often two words appear together.
+- **`calculate_marginal_prob`** finds how often one word appears.
+- **`calculate_pmi_corpus`** calculates PMI for all word pairs in a corpus.
+
+This code helps measure how strongly two words are associated compared to what you would expect by chance.
 
 ### Comparing Mutural Informaiton, WAPPWI, VAE, and KL Divergence.
 
