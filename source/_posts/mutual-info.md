@@ -10,11 +10,11 @@ tags:
 
 ### More on Mutual Information
 
-Below is the code for WAPPWI or the Weighted Average Point-wise Mutual Information. And this code measures the distance between two probabilities distributions.
+Below is the code for WAPMI or the Weighted Average Point-wise Mutual Information. And this code measures the distance between two probabilities distributions.
 
 It is a method used in computational linguistics to measure the strength of association between words in a given context, typically in the analysis of text data.
 
-Imagine you have a box of different colored marbles, and you want to know which colors tend to appear together. Wappmi helps you figure out how often certain words (or colors) appear together more often than by random chance. It's like a smart way to understand word relationships in sentences!
+Imagine you have a box of different colored marbles, and you want to know which colors tend to appear together. WAPMI helps you figure out how often certain words (or colors) appear together more often than by random chance. It's like a smart way to understand word relationships in sentences!
 
 ```python
 import math
@@ -261,7 +261,7 @@ print(pmi_scores)
 
 This code helps measure how strongly two words are associated compared to what you would expect by chance.
 
-### Comparing Mutural Informaiton, WAPPWI, VAE, and KL Divergence.
+### Comparing Mutural Informaiton, WAPMI, VAE, and KL Divergence.
 
 
 Let's break down Wappmi, mutual information, and how they relate to Variational Autoencoders (VAEs) and KL divergence in simple terms, like you're five.
