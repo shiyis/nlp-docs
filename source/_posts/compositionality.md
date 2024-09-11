@@ -12,7 +12,7 @@ This blog will introduce the research done in syntax that addressed compositiona
 
 And the demonstration of the non-overlap map is below
 
-![Description of the image](/images/non-overlap.png)
+![Description of the image](/images/non-overlap.jpg)
 
 
 #### Non-Overlap Constraint Explained
