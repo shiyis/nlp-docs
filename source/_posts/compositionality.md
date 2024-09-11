@@ -8,7 +8,12 @@ categories:
 
 ### Dealing with Compositionality
 
-This blog will introduce the research done in syntax that addressed compositionality.
+This blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it touches on government binding theory proposed by Chomsky, and the paper tried to model the motion from d-structure to s-structure in GB theory through the non-overlap constraint and chain map combined with NNs.
+
+And the demonstration of the non-overlap map is below
+
+![Description of the image](/images/non-overlap.png)
+
 
 #### Non-Overlap Constraint Explained
 
