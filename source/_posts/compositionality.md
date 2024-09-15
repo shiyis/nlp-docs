@@ -27,16 +27,19 @@ The non-overlap constraint is a rule in cognitive models or neural networks that
 
    - Represents the initial activation of units.
    - Units in this map correspond to elements or tokens that can be active.
+
 2. **Non-Overlap Map (Red Text):**
 
    - Corresponds to the chain map and enforces non-overlapping activations.
    - Units in this map prevent other units in the same diagonal from activating.
-3. **Diagonal, Non-Lateral Links (Red Arrows):**
 
-   - These links are inhibitory and prevent other units in the same diagonal from activating if a unit in the non-overlap map is active.
-4. **Inhibitory Links (Orange Text):**
+3. **Diagonal, Non-Lateral Inhibitory Links (Black Bold Arrows):**
 
    - These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.
+
+4. **Activation of Corresponding Unit In The Non-Overlap Map (Red Arrow)**
+
+   - The red arrow or the lateral link indicates an activation process from the chain map where there is a unit activated. Correspondingly, there is a unit in direct parallel in the non-overlap map being activated.
 
 ###### Process:
 
@@ -44,46 +47,10 @@ The non-overlap constraint is a rule in cognitive models or neural networks that
 2. The active unit in the non-overlap map then inhibits all other units in the same diagonal in the chain map.
 3. This ensures no two units in the chain map, which represent the same syntactic marker, can be active simultaneously.
 
-#### Pseudo Code Explanation
 
-Here's the pseudo code that models this behavior:
+#### Code Example with Explanation
 
-```python
-
-        class Unit:
-            def __init__(self, identifier):
-                self.identifier = identifier
-                self.active = False
-
-        class Map:
-            def __init__(self):
-                self.units = [[Unit(f"{chr(65+i)}{j+1}") for j in range(3)]
-                                                         for i in range(3)]
-
-            def activate_unit(self, row, col):
-                self.units[row][col].active = True
-                self.enforce_non_overlap(row, col)
-
-            def enforce_non_overlap(self, row, col):
-                for i in range(3):
-                    if i != row:
-                        self.units[i][col].active = False
-
-        # Chain Map and Non-Overlap Map
-        chain_map = Map()
-        non_overlap_map = Map()
-
-        # Activate unit in Chain Map
-        chain_map.activate_unit(0, 0)
-
-        # Corresponding unit in Non-Overlap Map becomes active
-        non_overlap_map.activate_unit(0, 0)
-
-```
-
-#### Detailed Code Example with Explanation
-
-Let's look at a more detailed implementation that matches the diagram:
+Let's look at a pseudo implementation that matches the diagram:
 
 ```python
 

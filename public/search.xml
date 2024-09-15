@@ -75,6 +75,65 @@
       </tags>
   </entry>
   <entry>
+    <title>Compositionality</title>
+    <url>/nlp-docs/2024/08/17/compositionality/</url>
+    <content><![CDATA[<h3 id="Dealing-with-Compositionality"><a href="#Dealing-with-Compositionality" class="headerlink" title="Dealing with Compositionality"></a>Dealing with Compositionality</h3><p>This blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it touches on government binding theory proposed by Chomsky, and the paper tried to model the motion from d-structure to s-structure in GB theory through the non-overlap constraint and chain map combined with NNs.</p>
+<p>And the demonstration of the non-overlap map is below</p>
+<p><img src="/nlp-docs/images/non-overlap.jpg" alt="Description of the image"></p>
+<h4 id="Non-Overlap-Constraint-Explained"><a href="#Non-Overlap-Constraint-Explained" class="headerlink" title="Non-Overlap Constraint Explained"></a>Non-Overlap Constraint Explained</h4><p>The non-overlap constraint is a rule in cognitive models or neural networks that prevents overlapping activations of units in a chain map. This ensures that no two units representing the same syntactic marker can be active simultaneously, which helps maintain clear and distinct representations.</p>
+<h4 id="Diagram-Breakdown"><a href="#Diagram-Breakdown" class="headerlink" title="Diagram Breakdown"></a>Diagram Breakdown</h4><h6 id="Components"><a href="#Components" class="headerlink" title="Components:"></a>Components:</h6><ol>
+<li><p><strong>Chain Map (Green Text):</strong></p>
+<ul>
+<li>Represents the initial activation of units.</li>
+<li>Units in this map correspond to elements or tokens that can be active.</li>
+</ul>
+</li>
+<li><p><strong>Non-Overlap Map (Red Text):</strong></p>
+<ul>
+<li>Corresponds to the chain map and enforces non-overlapping activations.</li>
+<li>Units in this map prevent other units in the same diagonal from activating.</li>
+</ul>
+</li>
+<li><p><strong>Diagonal, Non-Lateral Inhibitory Links (Black Bold Arrows):</strong></p>
+<ul>
+<li>These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.</li>
+</ul>
+</li>
+<li><p><strong>Activation of Corresponding Unit In The Non-Overlap Map (Red Arrow)</strong></p>
+<ul>
+<li>The red arrow or the lateral link indicates an activation process from the chain map where there is a unit activated. Correspondingly, there is a unit in direct parallel in the non-overlap map being activated.</li>
+</ul>
+</li>
+</ol>
+<h6 id="Process"><a href="#Process" class="headerlink" title="Process:"></a>Process:</h6><ol>
+<li>When a unit in the chain map is activated, it activates its corresponding unit in the non-overlap map.</li>
+<li>The active unit in the non-overlap map then inhibits all other units in the same diagonal in the chain map.</li>
+<li>This ensures no two units in the chain map, which represent the same syntactic marker, can be active simultaneously.</li>
+</ol>
+<h4 id="Code-Example-with-Explanation"><a href="#Code-Example-with-Explanation" class="headerlink" title="Code Example with Explanation"></a>Code Example with Explanation</h4><p>Let’s look at a pseudo implementation that matches the diagram:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Unit(<span class="subst">&#123;self.identifier&#125;</span>, active=<span class="subst">&#123;self.active&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">                                                       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Activating <span class="subst">&#123;self.units[row][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map.&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">if</span> i != row:</span><br><span class="line">                <span class="variable language_">self</span>.units[i][col].active = <span class="literal">False</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span></span></span><br><span class="line"><span class="string">                map due tonon-overlap constraint.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map(<span class="string">&quot;ChainMap&quot;</span>)</span><br><span class="line">non_overlap_map = Map(<span class="string">&quot;NonOverlapMap&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output the state of maps</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Chain Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> chain_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nNon-Overlap Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> non_overlap_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ol>
+<li><p><strong>Chain Map Activation:</strong></p>
+<ul>
+<li>Activating a unit in the chain map triggers the corresponding unit in the non-overlap map.</li>
+<li>Example: Activating <code>ChainMapA1</code> will activate <code>NonOverlapMapA1</code>.</li>
+</ul>
+</li>
+<li><p><strong>Non-Overlap Map Enforces Constraint:</strong></p>
+<ul>
+<li>The activated unit in the non-overlap map inhibits other units in the same diagonal in the chain map.</li>
+<li>This ensures that other units in the corresponding diagonal of the chain map remain inactive, preserving the non-overlap constraint.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>By combining the visual diagram with the detailed code example, we’ve illustrated how the non-overlap constraint is implemented and enforced in a cognitive or neural model. The non-overlap map plays a crucial role in ensuring that units representing the same syntactic marker do not overlap in their activation, maintaining a clear and distinct representation of information.</p>
+]]></content>
+      <categories>
+        <category>Linguistics</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Intro to Determinism</title>
     <url>/nlp-docs/2024/09/02/determinism/</url>
     <content><![CDATA[<h3 id="Probing-Both-The-Philosophical-and-Mathematical-Aspects-of-Determinism"><a href="#Probing-Both-The-Philosophical-and-Mathematical-Aspects-of-Determinism" class="headerlink" title="Probing Both The Philosophical and Mathematical Aspects of Determinism"></a>Probing Both The Philosophical and Mathematical Aspects of Determinism</h3><p>In information theory and computational linguistics, determinism can be discussed through concepts such as:</p>
@@ -91,6 +150,227 @@
       <categories>
         <category>Math</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Markov Processes</title>
+    <url>/nlp-docs/2024/07/16/markov-chains/</url>
+    <content><![CDATA[<h3 id="Discussions-on-Markov-Processes-Continued"><a href="#Discussions-on-Markov-Processes-Continued" class="headerlink" title="Discussions on Markov Processes Continued"></a>Discussions on Markov Processes Continued</h3><p>In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept.</p>
+<p>We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding.</p>
+<h4 id="Markov-Chain-Basics"><a href="#Markov-Chain-Basics" class="headerlink" title="Markov Chain Basics"></a>Markov Chain Basics</h4><p>A Markov chain is a mathematical system that undergoes transitions from one state to another within a finite or countable number of states. It is a stochastic process that satisfies the Markov property, which states that the future state depends only on the current state and not on the sequence of events that preceded it.</p>
+<h4 id="Components-of-a-Markov-Chain"><a href="#Components-of-a-Markov-Chain" class="headerlink" title="Components of a Markov Chain"></a>Components of a Markov Chain</h4><ol>
+<li><p><strong>States</strong>: The different possible conditions or configurations the system can be in.</p>
+<ul>
+<li>Let’s denote the set of all states as $ S &#x3D; { s_1, s_2, \ldots, s_n } $.</li>
+</ul>
+</li>
+<li><p><strong>Transition Probabilities</strong>: The probabilities of moving from one state to another.</p>
+<ul>
+<li>Denoted by $ P_{ij} &#x3D; P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) $, where $ P_{ij} $ is the probability of transitioning from state $ s_i $ to state $ s_j $.</li>
+</ul>
+</li>
+<li><p><strong>Transition Matrix</strong>: A matrix $ P $ where each element $ P_{ij} $ represents the transition probability from state $ s_i $ to state $ s_j $.<br>$$<br>  P &#x3D; \begin{pmatrix}<br>  P_{11} &amp; P_{12} &amp; \cdots &amp; P_{1n} \cr<br>  P_{21} &amp; P_{22} &amp; \cdots &amp; P_{2n} \cr<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \cr<br>  P_{n1} &amp; P_{n2} &amp; \cdots &amp; P_{nn}<br>  \end{pmatrix}<br>$$</p>
+</li>
+</ol>
+<h4 id="Markov-Property"><a href="#Markov-Property" class="headerlink" title="Markov Property"></a>Markov Property</h4><p>The Markov property states that the probability of transitioning to the next state depends only on the current state and not on the past states:<br>$ P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i, X_{t-1} &#x3D; s_{i-1}, \ldots, X_0 &#x3D; s_0) &#x3D; P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) $</p>
+<h4 id="Step-by-Step-Process"><a href="#Step-by-Step-Process" class="headerlink" title="Step-by-Step Process"></a>Step-by-Step Process</h4><p>Let’s go through the process of a Markov chain step by step.</p>
+<h4 id="Step-1-Define-the-States"><a href="#Step-1-Define-the-States" class="headerlink" title="Step 1: Define the States"></a>Step 1: Define the States</h4><p>Identify all possible states of the system. Suppose we have a simple weather system with three states:</p>
+<ul>
+<li>$ s_1 $: Sunny</li>
+<li>$ s_2 $: Cloudy</li>
+<li>$ s_3 $: Rainy</li>
+</ul>
+<h4 id="Step-2-Define-the-Transition-Probabilities"><a href="#Step-2-Define-the-Transition-Probabilities" class="headerlink" title="Step 2: Define the Transition Probabilities"></a>Step 2: Define the Transition Probabilities</h4><p>Determine the probabilities of moving from one state to another. For example, the transition probabilities might be:</p>
+<ul>
+<li>$ P_{11} &#x3D; 0.7 $ (probability of sunny to sunny)</li>
+<li>$ P_{12} &#x3D; 0.2 $ (probability of sunny to cloudy)</li>
+<li>$ P_{13} &#x3D; 0.1 $ (probability of sunny to rainy)</li>
+<li>$ P_{21} &#x3D; 0.3 $ (probability of cloudy to sunny)</li>
+<li>$ P_{22} &#x3D; 0.4 $ (probability of cloudy to cloudy)</li>
+<li>$ P_{23} &#x3D; 0.3 $ (probability of cloudy to rainy)</li>
+<li>$ P_{31} &#x3D; 0.2 $ (probability of rainy to sunny)</li>
+<li>$ P_{32} &#x3D; 0.3 $ (probability of rainy to cloudy)</li>
+<li>$ P_{33} &#x3D; 0.5 $ (probability of rainy to rainy)</li>
+</ul>
+<p>These can be represented in the transition matrix $ P $:</p>
+<p>$$ P &#x3D; \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1 \cr<br>    0.3 &amp; 0.4 &amp; 0.3 \cr<br>    0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix} $$</p>
+<h4 id="Step-3-Initial-State-Distribution"><a href="#Step-3-Initial-State-Distribution" class="headerlink" title="Step 3: Initial State Distribution"></a>Step 3: Initial State Distribution</h4><p>Define the initial state distribution vector $ \pi $, which represents the probability distribution of starting in each state. For example, if we start with a 100% chance of it being sunny:</p>
+<p>$$ \pi &#x3D; \begin{pmatrix}<br>    1 \cr<br>    0 \cr<br>    0<br>\end{pmatrix} $$</p>
+<h4 id="Step-4-State-Prediction"><a href="#Step-4-State-Prediction" class="headerlink" title="Step 4: State Prediction"></a>Step 4: State Prediction</h4><p>To predict the state distribution after one step, multiply the initial state distribution vector $ \pi $ by the transition matrix $ P $:</p>
+<p>$$ \pi^{(1)} &#x3D; \pi P $$</p>
+<p>$$ \pi^{(1)} &#x3D; \begin{pmatrix}<br>    1 &amp; 0 &amp; 0<br>\end{pmatrix}  \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1 \cr<br>    0.3 &amp; 0.4 &amp; 0.3 \cr<br>    0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix} $$</p>
+<p>$$ \pi^{(1)} &#x3D; \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1<br>\end{pmatrix} $$</p>
+<p>This tells us that after one step, there’s a 70% chance of it being sunny, a 20% chance of it being cloudy, and a 10% chance of it being rainy.</p>
+<h4 id="Step-5-Long-Term-Behavior"><a href="#Step-5-Long-Term-Behavior" class="headerlink" title="Step 5: Long-Term Behavior"></a>Step 5: Long-Term Behavior</h4><p>To find the steady-state distribution (long-term behavior), solve for $ \pi $ in the equation:<br>$ \pi P &#x3D; \pi $<br>This often involves solving a system of linear equations. The steady-state distribution is the vector $ \pi $ that remains unchanged after application of the transition matrix $ P $.</p>
+<h4 id="Example-Calculation"><a href="#Example-Calculation" class="headerlink" title="Example Calculation"></a>Example Calculation</h4><p>If we continue the prediction for multiple steps, we can see how the state distribution evolves over time. For example, after two steps:</p>
+<p>$$ \pi^{(2)} &#x3D; \pi^{(1)} P $$</p>
+<p>$$ \pi^{(2)} &#x3D; \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1<br>\end{pmatrix} \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1 \cr<br>    0.3 &amp; 0.4 &amp; 0.3 \cr<br>    0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix} $$</p>
+<p>$$ \pi^{(2)} &#x3D; \begin{pmatrix}<br>  0.7 \cdot 0.7 + 0.2 \cdot 0.3 + 0.1 \cdot 0.2 \cr<br>  0.7 \cdot 0.2 + 0.2 \cdot 0.4 + 0.1 \cdot 0.3 \cr<br>  0.7 \cdot 0.1 + 0.2 \cdot 0.3 + 0.1 \cdot 0.5<br>\end{pmatrix} $$</p>
+<p>$$ \pi^{(2)} &#x3D; \begin{pmatrix}<br>    0.53 &amp; 0.26 &amp; 0.21<br>\end{pmatrix} $$</p>
+<p>So after two steps, there’s a 53% chance of it being sunny, a 26% chance of it being cloudy, and a 21% chance of it being rainy.</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>A Markov chain is a powerful tool for modeling stochastic processes where the next state depends only on the current state. The key components include states, transition probabilities, and the transition matrix. The process involves defining the states and transition probabilities, computing state predictions, and analyzing long-term behavior through steady-state distributions.</p>
+<p>In this example, we define a transition matrix P for a 3-state Markov process. We then define a function simulate_markov that takes the transition matrix, the number of states, and the number of steps to simulate as input, and returns a list of the system’s states at each time step.</p>
+<p>The function initializes the state vector to all zeros, with a 1 in the first position to indicate that the system starts in state 0. It then simulates the Markov process by iteratively selecting the next state based on the current state and the transition probabilities. The current state is added to a history list at each time step.</p>
+<p>Finally, we simulate the Markov process for 100 steps and print the resulting state history.</p>
+<h3 id="In-What-Scenarios-Is-Markov-Chain-Applicable"><a href="#In-What-Scenarios-Is-Markov-Chain-Applicable" class="headerlink" title="In What Scenarios Is Markov Chain Applicable?"></a>In What Scenarios Is Markov Chain Applicable?</h3><p>Simulating all these processes using Markov processes can be quite extensive. However, I can provide a basic framework and example for a few of these applications, demonstrating how Markov processes can be applied. We will use Python and some common libraries such as NumPy for these simulations.</p>
+<p>This section breaks down a simple example of how to build a simple markov chain in code example.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the number of states and the transition matrix</span></span><br><span class="line">N = <span class="number">3</span></span><br><span class="line">P = np.array([[<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.0</span>],</span><br><span class="line">            [<span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>],</span><br><span class="line">            [<span class="number">0.5</span>, <span class="number">0.0</span>, <span class="number">0.5</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define a function to simulate the Markov process</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">simulate_markov</span>(<span class="params">P, N, num_steps</span>):</span><br><span class="line">    <span class="comment"># Initialize the state vector</span></span><br><span class="line">    state = np.zeros(N)</span><br><span class="line">    state[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Initialize the state history</span></span><br><span class="line">    state_history = [state]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Simulate the Markov process</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_steps):</span><br><span class="line">        <span class="comment"># Determine the next state</span></span><br><span class="line">        next_state = np.random.choice(N, p=P[:, state])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Update the state vector</span></span><br><span class="line">        state = next_state</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Add the current state to the history</span></span><br><span class="line">        state_history.append(state)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> state_history</span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process for 100 steps</span></span><br><span class="line">state_history = simulate_markov(P, N, <span class="number">100</span>)</span><br><span class="line"><span class="built_in">print</span>(state_history)    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Example-1-Modeling-Stock-Prices"><a href="#Example-1-Modeling-Stock-Prices" class="headerlink" title="Example 1: Modeling Stock Prices"></a>Example 1: Modeling Stock Prices</h4><p>We will model the stock price as a Markov process where each state represents a certain price level, and transitions occur based on market conditions.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define states (price levels)</span></span><br><span class="line">states = np.array([<span class="number">90</span>, <span class="number">100</span>, <span class="number">110</span>, <span class="number">120</span>])</span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.7</span>, <span class="number">0.2</span>, <span class="number">0.1</span>, <span class="number">0.0</span>],  <span class="comment"># From 90</span></span><br><span class="line">    [<span class="number">0.1</span>, <span class="number">0.7</span>, <span class="number">0.2</span>, <span class="number">0.0</span>],  <span class="comment"># From 100</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.2</span>, <span class="number">0.7</span>, <span class="number">0.1</span>],  <span class="comment"># From 110</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.7</span>],  <span class="comment"># From 120</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state (starting price)</span></span><br><span class="line">initial_state = <span class="number">1</span>  <span class="comment"># Assume starting price is 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">price_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    price_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the results</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">plt.plot(price_history)</span><br><span class="line">plt.title(<span class="string">&#x27;Simulated Stock Prices Using Markov Process&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Time Steps&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Price&#x27;</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Example-2-Disease-Progression"><a href="#Example-2-Disease-Progression" class="headerlink" title="Example 2: Disease Progression"></a>Example 2: Disease Progression</h4><p>We will model the progression of a disease over time, where states represent different health conditions (e.g., Healthy, Sick, Recovered).</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Define states (health conditions)</span></span><br><span class="line">states = [<span class="string">&quot;Healthy&quot;</span>, <span class="string">&quot;Sick&quot;</span>, <span class="string">&quot;Recovered&quot;</span>]</span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.85</span>, <span class="number">0.10</span>, <span class="number">0.05</span>],  <span class="comment"># From Healthy</span></span><br><span class="line">    [<span class="number">0.15</span>, <span class="number">0.70</span>, <span class="number">0.15</span>],  <span class="comment"># From Sick</span></span><br><span class="line">    [<span class="number">0.05</span>, <span class="number">0.10</span>, <span class="number">0.85</span>],  <span class="comment"># From Recovered</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state</span></span><br><span class="line">initial_state = <span class="number">0</span>  <span class="comment"># Assume starting state is Healthy</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">health_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    health_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the results</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Health Condition Over Time:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; -&gt; &quot;</span>.join(health_history))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Example-3-Queueing-Systems-in-a-Service-System"><a href="#Example-3-Queueing-Systems-in-a-Service-System" class="headerlink" title="Example 3: Queueing Systems in a Service System"></a>Example 3: Queueing Systems in a Service System</h4><p>We will model a queueing system where states represent the number of customers in a queue.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Define states (number of customers in queue)</span></span><br><span class="line">states = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]  <span class="comment"># Queue capacity is 5</span></span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.1</span>, <span class="number">0.9</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 0 customers</span></span><br><span class="line">    [<span class="number">0.5</span>, <span class="number">0.4</span>, <span class="number">0.1</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 1 customer</span></span><br><span class="line">    [<span class="number">0.2</span>, <span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 2 customers</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.3</span>, <span class="number">0.5</span>, <span class="number">0.2</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 3 customers</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.4</span>, <span class="number">0.5</span>, <span class="number">0.1</span>, <span class="number">0.0</span>],  <span class="comment"># From 4 customers</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.4</span>, <span class="number">0.1</span>],  <span class="comment"># From 5 customers</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state</span></span><br><span class="line">initial_state = <span class="number">0</span>  <span class="comment"># Assume starting with an empty queue</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">queue_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    queue_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the results</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">plt.plot(queue_history)</span><br><span class="line">plt.title(<span class="string">&#x27;Simulated Queue Length Using Markov Process&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Time Steps&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Number of Customers in Queue&#x27;</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Example-4-Customer-Loyalty"><a href="#Example-4-Customer-Loyalty" class="headerlink" title="Example 4: Customer Loyalty"></a>Example 4: Customer Loyalty</h4><p>We will model customer loyalty, predicting transitions between different customer states (Active, Inactive, Loyal).</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Define states (customer states)</span></span><br><span class="line">states = [<span class="string">&quot;Active&quot;</span>, <span class="string">&quot;Inactive&quot;</span>, <span class="string">&quot;Loyal&quot;</span>]</span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.7</span>, <span class="number">0.2</span>, <span class="number">0.1</span>],  <span class="comment"># From Active</span></span><br><span class="line">    [<span class="number">0.3</span>, <span class="number">0.6</span>, <span class="number">0.1</span>],  <span class="comment"># From Inactive</span></span><br><span class="line">    [<span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.7</span>],  <span class="comment"># From Loyal</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state</span></span><br><span class="line">initial_state = <span class="number">0</span>  <span class="comment"># Assume starting state is Active</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">loyalty_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    loyalty_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the results</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Customer Loyalty Over Time:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; -&gt; &quot;</span>.join(loyalty_history))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><p>This framework can be extended to simulate other processes like economic forecasting, pharmacokinetics, network protocols, etc.</p>
+<p>Each simulation contains these properties:</p>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Concept</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.</td>
+<td><strong>States</strong></td>
+<td>A system can exist in different states, representing distinct configurations or conditions. Denoted by symbols, numbers, or labels.</td>
+</tr>
+<tr>
+<td>2.</td>
+<td><strong>Transition Probabilities</strong></td>
+<td>Markov processes are characterized by transition probabilities, which determine the likelihood of moving from one state to another in the next time step. These probabilities are often organized into a transition probability matrix.</td>
+</tr>
+<tr>
+<td>3.</td>
+<td><strong>Transition Probability Matrix</strong></td>
+<td>A square matrix where each element represents the probability of transitioning from one state to another. Rows correspond to the current state, and columns correspond to the next state.</td>
+</tr>
+<tr>
+<td>4.</td>
+<td><strong>Markov Property</strong></td>
+<td>The key feature of Markov processes is the Markov property, stating that the future evolution of the system depends only on its current state and is independent of how the system reached its current state.</td>
+</tr>
+<tr>
+<td>5.</td>
+<td><strong>Homogeneity</strong></td>
+<td>Markov processes are often assumed to be homogeneous, meaning that transition probabilities do not change over time. The system’s dynamics are consistent throughout.</td>
+</tr>
+<tr>
+<td>6.</td>
+<td><strong>Continuous and Discrete Time</strong></td>
+<td>Markov processes can be classified into continuous-time and discrete-time processes based on whether the state transitions occur at every instant or at discrete time intervals.</td>
+</tr>
+<tr>
+<td>7.</td>
+<td><strong>Stationary Distribution</strong></td>
+<td>In a steady state, the system may reach a stationary distribution, where the probabilities of being in each state remain constant over time.</td>
+</tr>
+<tr>
+<td>8.</td>
+<td><strong>Absorbing and Transient States</strong></td>
+<td>Some states may be absorbing, meaning that once entered, the system stays in that state permanently. Transient states are those from which the system may leave and not return.</td>
+</tr>
+<tr>
+<td>9.</td>
+<td><strong>Applications</strong></td>
+<td>Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions.</td>
+</tr>
+<tr>
+<td>10.</td>
+<td><strong>Markov Chain</strong></td>
+<td>A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values.</td>
+</tr>
+</tbody></table>
+<p>This basic approach can be adapted and extended to suit the specific characteristics and requirements of each application.</p>
+<h4 id="Markov-Chain"><a href="#Markov-Chain" class="headerlink" title="Markov Chain"></a>Markov Chain</h4><p>A Markov chain is a specific type of Markov process that deals with discrete states and discrete time steps. It is characterized by the following:</p>
+<ol>
+<li><strong>Discrete State Space</strong>: The set of possible states $ S &#x3D; {s_1, s_2, \ldots, s_n} $ is finite or countable.</li>
+<li><strong>Discrete Time Steps</strong>: The process evolves in discrete time steps $ t &#x3D; 0, 1, 2, \ldots $.</li>
+<li><strong>Markov Property</strong>: The probability of transitioning to the next state depends only on the current state and not on the sequence of events that preceded it.</li>
+</ol>
+<h6 id="Formal-Definition"><a href="#Formal-Definition" class="headerlink" title="Formal Definition"></a>Formal Definition</h6><p>A Markov chain is defined by:</p>
+<ul>
+<li>A set of states $ S $.</li>
+<li>A transition probability matrix $ P $, where $ P_{ij} $ represents the probability of moving from state $ s_i $ to state $ s_j $. The full formula looks like below.</li>
+</ul>
+<p>$$ P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) &#x3D; P_{ij} $$</p>
+<h4 id="Markov-Process"><a href="#Markov-Process" class="headerlink" title="Markov Process"></a>Markov Process</h4><p>A Markov process is a more general concept that includes both discrete and continuous cases. It is characterized by:</p>
+<ol>
+<li><strong>State Space</strong>: The set of possible states can be discrete (finite or countable) or continuous.</li>
+<li><strong>Time Steps</strong>: The process can evolve in either discrete time steps (like in a Markov chain) or continuous time.</li>
+<li><strong>Markov Property</strong>: Similar to the Markov chain, the future state depends only on the current state and not on past states.</li>
+</ol>
+<h4 id="Types-of-Markov-Processes"><a href="#Types-of-Markov-Processes" class="headerlink" title="Types of Markov Processes"></a>Types of Markov Processes</h4><ol>
+<li><p><strong>Discrete-Time Markov Process (Markov Chain)</strong>:</p>
+<ul>
+<li>As described above, it deals with discrete states and discrete time steps.</li>
+</ul>
+</li>
+<li><p><strong>Continuous-Time Markov Process</strong>:</p>
+<ul>
+<li>The state space can be discrete or continuous.</li>
+<li>The process evolves continuously over time.</li>
+<li>Transition probabilities are often described using a rate matrix (or generator matrix) instead of a transition matrix.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Continuous-Time Markov Chain (CTMC)</strong></p>
+<p>A CTMC is a specific type of Markov process where:</p>
+<p>· The state space is discrete.<br>· Time is continuous.<br>· The transitions are governed by rates, often described using a rate matrix $ Q $.</p>
+<h4 id="Summary-of-Differences"><a href="#Summary-of-Differences" class="headerlink" title="Summary of Differences"></a>Summary of Differences</h4><ul>
+<li><p><strong>State Space</strong>:</p>
+<ul>
+<li><strong>Markov Chain</strong>: Discrete state space.</li>
+<li><strong>Markov Process</strong>: Can be discrete or continuous state space.</li>
+</ul>
+</li>
+<li><p><strong>Time</strong>:</p>
+<ul>
+<li><strong>Markov Chain</strong>: Discrete time steps.</li>
+<li><strong>Markov Process</strong>: Can be discrete or continuous time.</li>
+</ul>
+</li>
+<li><p><strong>Transition Mechanism</strong>:</p>
+<ul>
+<li><strong>Markov Chain</strong>: Defined by a transition probability matrix.</li>
+<li><strong>Markov Process</strong>: Defined by transition probabilities for discrete time or transition rates for continuous time.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Markov-Chain-Discrete-Time-Discrete-State"><a href="#Markov-Chain-Discrete-Time-Discrete-State" class="headerlink" title="Markov Chain (Discrete-Time, Discrete State)"></a>Markov Chain (Discrete-Time, Discrete State)</h4><p>Consider a simple weather model with three states: Sunny, Cloudy, and Rainy. The transitions are defined for each day (discrete time steps).</p>
+<ul>
+<li><p>States: $ S &#x3D; { \text{Sunny}, \text{Cloudy}, \text{Rainy} } $</p>
+</li>
+<li><p>Transition Matrix $ P $:</p>
+<p>$$<br>P &#x3D; \begin{pmatrix}<br>0.7 &amp; 0.2 &amp; 0.1 \cr<br>0.3 &amp; 0.4 &amp; 0.3 \cr<br>0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix}<br>$$</p>
+</li>
+</ul>
+<h4 id="Continuous-Time-Markov-Process-Continuous-Time-Discrete-State"><a href="#Continuous-Time-Markov-Process-Continuous-Time-Discrete-State" class="headerlink" title="Continuous-Time Markov Process (Continuous-Time, Discrete State)"></a>Continuous-Time Markov Process (Continuous-Time, Discrete State)</h4><p>Consider a population model where individuals can be in different health states: Healthy, Sick, and Recovered. The transitions happen continuously over time, with certain rates.</p>
+<ul>
+<li><p>States: $ S &#x3D; { \text{Healthy}, \text{Sick}, \text{Recovered} } $</p>
+</li>
+<li><p>Rate Matrix $ Q $:</p>
+<p>$$<br>Q &#x3D; \begin{pmatrix}<br>-\lambda &amp; \lambda &amp; 0 \cr<br>0 &amp; -\mu &amp; \mu \cr<br>0 &amp; 0 &amp; 0<br>\end{pmatrix}<br>$$</p>
+</li>
+</ul>
+<p>where $\lambda$ is the rate of getting sick, and $\mu$ is the rate of recovery.</p>
+<p>In summary, a Markov chain is a special case of a Markov process with discrete states and discrete time steps, whereas a Markov process can have a broader definition, encompassing both discrete and continuous states and time.</p>
+]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
+      <tags>
+        <tag>stochastic</tag>
+        <tag>math</tag>
+      </tags>
   </entry>
   <entry>
     <title>Jacobian Matrices</title>
@@ -391,227 +671,6 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
-    <title>Markov Processes</title>
-    <url>/nlp-docs/2024/07/16/markov-chains/</url>
-    <content><![CDATA[<h3 id="Discussions-on-Markov-Processes-Continued"><a href="#Discussions-on-Markov-Processes-Continued" class="headerlink" title="Discussions on Markov Processes Continued"></a>Discussions on Markov Processes Continued</h3><p>In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept.</p>
-<p>We will go through some code in the subsequent paragraph with respect to how to simulate Markov Chain in coding.</p>
-<h4 id="Markov-Chain-Basics"><a href="#Markov-Chain-Basics" class="headerlink" title="Markov Chain Basics"></a>Markov Chain Basics</h4><p>A Markov chain is a mathematical system that undergoes transitions from one state to another within a finite or countable number of states. It is a stochastic process that satisfies the Markov property, which states that the future state depends only on the current state and not on the sequence of events that preceded it.</p>
-<h4 id="Components-of-a-Markov-Chain"><a href="#Components-of-a-Markov-Chain" class="headerlink" title="Components of a Markov Chain"></a>Components of a Markov Chain</h4><ol>
-<li><p><strong>States</strong>: The different possible conditions or configurations the system can be in.</p>
-<ul>
-<li>Let’s denote the set of all states as $ S &#x3D; { s_1, s_2, \ldots, s_n } $.</li>
-</ul>
-</li>
-<li><p><strong>Transition Probabilities</strong>: The probabilities of moving from one state to another.</p>
-<ul>
-<li>Denoted by $ P_{ij} &#x3D; P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) $, where $ P_{ij} $ is the probability of transitioning from state $ s_i $ to state $ s_j $.</li>
-</ul>
-</li>
-<li><p><strong>Transition Matrix</strong>: A matrix $ P $ where each element $ P_{ij} $ represents the transition probability from state $ s_i $ to state $ s_j $.<br>$$<br>  P &#x3D; \begin{pmatrix}<br>  P_{11} &amp; P_{12} &amp; \cdots &amp; P_{1n} \cr<br>  P_{21} &amp; P_{22} &amp; \cdots &amp; P_{2n} \cr<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \cr<br>  P_{n1} &amp; P_{n2} &amp; \cdots &amp; P_{nn}<br>  \end{pmatrix}<br>$$</p>
-</li>
-</ol>
-<h4 id="Markov-Property"><a href="#Markov-Property" class="headerlink" title="Markov Property"></a>Markov Property</h4><p>The Markov property states that the probability of transitioning to the next state depends only on the current state and not on the past states:<br>$ P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i, X_{t-1} &#x3D; s_{i-1}, \ldots, X_0 &#x3D; s_0) &#x3D; P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) $</p>
-<h4 id="Step-by-Step-Process"><a href="#Step-by-Step-Process" class="headerlink" title="Step-by-Step Process"></a>Step-by-Step Process</h4><p>Let’s go through the process of a Markov chain step by step.</p>
-<h4 id="Step-1-Define-the-States"><a href="#Step-1-Define-the-States" class="headerlink" title="Step 1: Define the States"></a>Step 1: Define the States</h4><p>Identify all possible states of the system. Suppose we have a simple weather system with three states:</p>
-<ul>
-<li>$ s_1 $: Sunny</li>
-<li>$ s_2 $: Cloudy</li>
-<li>$ s_3 $: Rainy</li>
-</ul>
-<h4 id="Step-2-Define-the-Transition-Probabilities"><a href="#Step-2-Define-the-Transition-Probabilities" class="headerlink" title="Step 2: Define the Transition Probabilities"></a>Step 2: Define the Transition Probabilities</h4><p>Determine the probabilities of moving from one state to another. For example, the transition probabilities might be:</p>
-<ul>
-<li>$ P_{11} &#x3D; 0.7 $ (probability of sunny to sunny)</li>
-<li>$ P_{12} &#x3D; 0.2 $ (probability of sunny to cloudy)</li>
-<li>$ P_{13} &#x3D; 0.1 $ (probability of sunny to rainy)</li>
-<li>$ P_{21} &#x3D; 0.3 $ (probability of cloudy to sunny)</li>
-<li>$ P_{22} &#x3D; 0.4 $ (probability of cloudy to cloudy)</li>
-<li>$ P_{23} &#x3D; 0.3 $ (probability of cloudy to rainy)</li>
-<li>$ P_{31} &#x3D; 0.2 $ (probability of rainy to sunny)</li>
-<li>$ P_{32} &#x3D; 0.3 $ (probability of rainy to cloudy)</li>
-<li>$ P_{33} &#x3D; 0.5 $ (probability of rainy to rainy)</li>
-</ul>
-<p>These can be represented in the transition matrix $ P $:</p>
-<p>$$ P &#x3D; \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1 \cr<br>    0.3 &amp; 0.4 &amp; 0.3 \cr<br>    0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix} $$</p>
-<h4 id="Step-3-Initial-State-Distribution"><a href="#Step-3-Initial-State-Distribution" class="headerlink" title="Step 3: Initial State Distribution"></a>Step 3: Initial State Distribution</h4><p>Define the initial state distribution vector $ \pi $, which represents the probability distribution of starting in each state. For example, if we start with a 100% chance of it being sunny:</p>
-<p>$$ \pi &#x3D; \begin{pmatrix}<br>    1 \cr<br>    0 \cr<br>    0<br>\end{pmatrix} $$</p>
-<h4 id="Step-4-State-Prediction"><a href="#Step-4-State-Prediction" class="headerlink" title="Step 4: State Prediction"></a>Step 4: State Prediction</h4><p>To predict the state distribution after one step, multiply the initial state distribution vector $ \pi $ by the transition matrix $ P $:</p>
-<p>$$ \pi^{(1)} &#x3D; \pi P $$</p>
-<p>$$ \pi^{(1)} &#x3D; \begin{pmatrix}<br>    1 &amp; 0 &amp; 0<br>\end{pmatrix}  \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1 \cr<br>    0.3 &amp; 0.4 &amp; 0.3 \cr<br>    0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix} $$</p>
-<p>$$ \pi^{(1)} &#x3D; \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1<br>\end{pmatrix} $$</p>
-<p>This tells us that after one step, there’s a 70% chance of it being sunny, a 20% chance of it being cloudy, and a 10% chance of it being rainy.</p>
-<h4 id="Step-5-Long-Term-Behavior"><a href="#Step-5-Long-Term-Behavior" class="headerlink" title="Step 5: Long-Term Behavior"></a>Step 5: Long-Term Behavior</h4><p>To find the steady-state distribution (long-term behavior), solve for $ \pi $ in the equation:<br>$ \pi P &#x3D; \pi $<br>This often involves solving a system of linear equations. The steady-state distribution is the vector $ \pi $ that remains unchanged after application of the transition matrix $ P $.</p>
-<h4 id="Example-Calculation"><a href="#Example-Calculation" class="headerlink" title="Example Calculation"></a>Example Calculation</h4><p>If we continue the prediction for multiple steps, we can see how the state distribution evolves over time. For example, after two steps:</p>
-<p>$$ \pi^{(2)} &#x3D; \pi^{(1)} P $$</p>
-<p>$$ \pi^{(2)} &#x3D; \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1<br>\end{pmatrix} \begin{pmatrix}<br>    0.7 &amp; 0.2 &amp; 0.1 \cr<br>    0.3 &amp; 0.4 &amp; 0.3 \cr<br>    0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix} $$</p>
-<p>$$ \pi^{(2)} &#x3D; \begin{pmatrix}<br>  0.7 \cdot 0.7 + 0.2 \cdot 0.3 + 0.1 \cdot 0.2 \cr<br>  0.7 \cdot 0.2 + 0.2 \cdot 0.4 + 0.1 \cdot 0.3 \cr<br>  0.7 \cdot 0.1 + 0.2 \cdot 0.3 + 0.1 \cdot 0.5<br>\end{pmatrix} $$</p>
-<p>$$ \pi^{(2)} &#x3D; \begin{pmatrix}<br>    0.53 &amp; 0.26 &amp; 0.21<br>\end{pmatrix} $$</p>
-<p>So after two steps, there’s a 53% chance of it being sunny, a 26% chance of it being cloudy, and a 21% chance of it being rainy.</p>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>A Markov chain is a powerful tool for modeling stochastic processes where the next state depends only on the current state. The key components include states, transition probabilities, and the transition matrix. The process involves defining the states and transition probabilities, computing state predictions, and analyzing long-term behavior through steady-state distributions.</p>
-<p>In this example, we define a transition matrix P for a 3-state Markov process. We then define a function simulate_markov that takes the transition matrix, the number of states, and the number of steps to simulate as input, and returns a list of the system’s states at each time step.</p>
-<p>The function initializes the state vector to all zeros, with a 1 in the first position to indicate that the system starts in state 0. It then simulates the Markov process by iteratively selecting the next state based on the current state and the transition probabilities. The current state is added to a history list at each time step.</p>
-<p>Finally, we simulate the Markov process for 100 steps and print the resulting state history.</p>
-<h3 id="In-What-Scenarios-Is-Markov-Chain-Applicable"><a href="#In-What-Scenarios-Is-Markov-Chain-Applicable" class="headerlink" title="In What Scenarios Is Markov Chain Applicable?"></a>In What Scenarios Is Markov Chain Applicable?</h3><p>Simulating all these processes using Markov processes can be quite extensive. However, I can provide a basic framework and example for a few of these applications, demonstrating how Markov processes can be applied. We will use Python and some common libraries such as NumPy for these simulations.</p>
-<p>This section breaks down a simple example of how to build a simple markov chain in code example.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the number of states and the transition matrix</span></span><br><span class="line">N = <span class="number">3</span></span><br><span class="line">P = np.array([[<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.0</span>],</span><br><span class="line">            [<span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.5</span>],</span><br><span class="line">            [<span class="number">0.5</span>, <span class="number">0.0</span>, <span class="number">0.5</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define a function to simulate the Markov process</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">simulate_markov</span>(<span class="params">P, N, num_steps</span>):</span><br><span class="line">    <span class="comment"># Initialize the state vector</span></span><br><span class="line">    state = np.zeros(N)</span><br><span class="line">    state[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Initialize the state history</span></span><br><span class="line">    state_history = [state]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Simulate the Markov process</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_steps):</span><br><span class="line">        <span class="comment"># Determine the next state</span></span><br><span class="line">        next_state = np.random.choice(N, p=P[:, state])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Update the state vector</span></span><br><span class="line">        state = next_state</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Add the current state to the history</span></span><br><span class="line">        state_history.append(state)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> state_history</span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process for 100 steps</span></span><br><span class="line">state_history = simulate_markov(P, N, <span class="number">100</span>)</span><br><span class="line"><span class="built_in">print</span>(state_history)    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="Example-1-Modeling-Stock-Prices"><a href="#Example-1-Modeling-Stock-Prices" class="headerlink" title="Example 1: Modeling Stock Prices"></a>Example 1: Modeling Stock Prices</h4><p>We will model the stock price as a Markov process where each state represents a certain price level, and transitions occur based on market conditions.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define states (price levels)</span></span><br><span class="line">states = np.array([<span class="number">90</span>, <span class="number">100</span>, <span class="number">110</span>, <span class="number">120</span>])</span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.7</span>, <span class="number">0.2</span>, <span class="number">0.1</span>, <span class="number">0.0</span>],  <span class="comment"># From 90</span></span><br><span class="line">    [<span class="number">0.1</span>, <span class="number">0.7</span>, <span class="number">0.2</span>, <span class="number">0.0</span>],  <span class="comment"># From 100</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.2</span>, <span class="number">0.7</span>, <span class="number">0.1</span>],  <span class="comment"># From 110</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.7</span>],  <span class="comment"># From 120</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state (starting price)</span></span><br><span class="line">initial_state = <span class="number">1</span>  <span class="comment"># Assume starting price is 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">price_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    price_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the results</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">plt.plot(price_history)</span><br><span class="line">plt.title(<span class="string">&#x27;Simulated Stock Prices Using Markov Process&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Time Steps&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Price&#x27;</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Example-2-Disease-Progression"><a href="#Example-2-Disease-Progression" class="headerlink" title="Example 2: Disease Progression"></a>Example 2: Disease Progression</h4><p>We will model the progression of a disease over time, where states represent different health conditions (e.g., Healthy, Sick, Recovered).</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Define states (health conditions)</span></span><br><span class="line">states = [<span class="string">&quot;Healthy&quot;</span>, <span class="string">&quot;Sick&quot;</span>, <span class="string">&quot;Recovered&quot;</span>]</span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.85</span>, <span class="number">0.10</span>, <span class="number">0.05</span>],  <span class="comment"># From Healthy</span></span><br><span class="line">    [<span class="number">0.15</span>, <span class="number">0.70</span>, <span class="number">0.15</span>],  <span class="comment"># From Sick</span></span><br><span class="line">    [<span class="number">0.05</span>, <span class="number">0.10</span>, <span class="number">0.85</span>],  <span class="comment"># From Recovered</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state</span></span><br><span class="line">initial_state = <span class="number">0</span>  <span class="comment"># Assume starting state is Healthy</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">health_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    health_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the results</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Health Condition Over Time:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; -&gt; &quot;</span>.join(health_history))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Example-3-Queueing-Systems-in-a-Service-System"><a href="#Example-3-Queueing-Systems-in-a-Service-System" class="headerlink" title="Example 3: Queueing Systems in a Service System"></a>Example 3: Queueing Systems in a Service System</h4><p>We will model a queueing system where states represent the number of customers in a queue.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Define states (number of customers in queue)</span></span><br><span class="line">states = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]  <span class="comment"># Queue capacity is 5</span></span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.1</span>, <span class="number">0.9</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 0 customers</span></span><br><span class="line">    [<span class="number">0.5</span>, <span class="number">0.4</span>, <span class="number">0.1</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 1 customer</span></span><br><span class="line">    [<span class="number">0.2</span>, <span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 2 customers</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.3</span>, <span class="number">0.5</span>, <span class="number">0.2</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],  <span class="comment"># From 3 customers</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.4</span>, <span class="number">0.5</span>, <span class="number">0.1</span>, <span class="number">0.0</span>],  <span class="comment"># From 4 customers</span></span><br><span class="line">    [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">0.4</span>, <span class="number">0.1</span>],  <span class="comment"># From 5 customers</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state</span></span><br><span class="line">initial_state = <span class="number">0</span>  <span class="comment"># Assume starting with an empty queue</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">queue_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    queue_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the results</span></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">plt.plot(queue_history)</span><br><span class="line">plt.title(<span class="string">&#x27;Simulated Queue Length Using Markov Process&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Time Steps&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Number of Customers in Queue&#x27;</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Example-4-Customer-Loyalty"><a href="#Example-4-Customer-Loyalty" class="headerlink" title="Example 4: Customer Loyalty"></a>Example 4: Customer Loyalty</h4><p>We will model customer loyalty, predicting transitions between different customer states (Active, Inactive, Loyal).</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Define states (customer states)</span></span><br><span class="line">states = [<span class="string">&quot;Active&quot;</span>, <span class="string">&quot;Inactive&quot;</span>, <span class="string">&quot;Loyal&quot;</span>]</span><br><span class="line">n_states = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define transition matrix</span></span><br><span class="line">P = np.array([</span><br><span class="line">    [<span class="number">0.7</span>, <span class="number">0.2</span>, <span class="number">0.1</span>],  <span class="comment"># From Active</span></span><br><span class="line">    [<span class="number">0.3</span>, <span class="number">0.6</span>, <span class="number">0.1</span>],  <span class="comment"># From Inactive</span></span><br><span class="line">    [<span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.7</span>],  <span class="comment"># From Loyal</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial state</span></span><br><span class="line">initial_state = <span class="number">0</span>  <span class="comment"># Assume starting state is Active</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Number of steps to simulate</span></span><br><span class="line">n_steps = <span class="number">50</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simulate the Markov process</span></span><br><span class="line">current_state = initial_state</span><br><span class="line">loyalty_history = [states[current_state]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n_steps):</span><br><span class="line">    next_state = np.random.choice(n_states, p=P[current_state])</span><br><span class="line">    loyalty_history.append(states[next_state])</span><br><span class="line">    current_state = next_state</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the results</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Customer Loyalty Over Time:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; -&gt; &quot;</span>.join(loyalty_history))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><p>This framework can be extended to simulate other processes like economic forecasting, pharmacokinetics, network protocols, etc.</p>
-<p>Each simulation contains these properties:</p>
-<table>
-<thead>
-<tr>
-<th>Number</th>
-<th>Concept</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1.</td>
-<td><strong>States</strong></td>
-<td>A system can exist in different states, representing distinct configurations or conditions. Denoted by symbols, numbers, or labels.</td>
-</tr>
-<tr>
-<td>2.</td>
-<td><strong>Transition Probabilities</strong></td>
-<td>Markov processes are characterized by transition probabilities, which determine the likelihood of moving from one state to another in the next time step. These probabilities are often organized into a transition probability matrix.</td>
-</tr>
-<tr>
-<td>3.</td>
-<td><strong>Transition Probability Matrix</strong></td>
-<td>A square matrix where each element represents the probability of transitioning from one state to another. Rows correspond to the current state, and columns correspond to the next state.</td>
-</tr>
-<tr>
-<td>4.</td>
-<td><strong>Markov Property</strong></td>
-<td>The key feature of Markov processes is the Markov property, stating that the future evolution of the system depends only on its current state and is independent of how the system reached its current state.</td>
-</tr>
-<tr>
-<td>5.</td>
-<td><strong>Homogeneity</strong></td>
-<td>Markov processes are often assumed to be homogeneous, meaning that transition probabilities do not change over time. The system’s dynamics are consistent throughout.</td>
-</tr>
-<tr>
-<td>6.</td>
-<td><strong>Continuous and Discrete Time</strong></td>
-<td>Markov processes can be classified into continuous-time and discrete-time processes based on whether the state transitions occur at every instant or at discrete time intervals.</td>
-</tr>
-<tr>
-<td>7.</td>
-<td><strong>Stationary Distribution</strong></td>
-<td>In a steady state, the system may reach a stationary distribution, where the probabilities of being in each state remain constant over time.</td>
-</tr>
-<tr>
-<td>8.</td>
-<td><strong>Absorbing and Transient States</strong></td>
-<td>Some states may be absorbing, meaning that once entered, the system stays in that state permanently. Transient states are those from which the system may leave and not return.</td>
-</tr>
-<tr>
-<td>9.</td>
-<td><strong>Applications</strong></td>
-<td>Markov processes find applications in various fields, including physics, economics, biology, and computer science, for modeling dynamic systems with probabilistic transitions.</td>
-</tr>
-<tr>
-<td>10.</td>
-<td><strong>Markov Chain</strong></td>
-<td>A specific type of Markov process where the state space is discrete and the time parameter takes on discrete values.</td>
-</tr>
-</tbody></table>
-<p>This basic approach can be adapted and extended to suit the specific characteristics and requirements of each application.</p>
-<h4 id="Markov-Chain"><a href="#Markov-Chain" class="headerlink" title="Markov Chain"></a>Markov Chain</h4><p>A Markov chain is a specific type of Markov process that deals with discrete states and discrete time steps. It is characterized by the following:</p>
-<ol>
-<li><strong>Discrete State Space</strong>: The set of possible states $ S &#x3D; {s_1, s_2, \ldots, s_n} $ is finite or countable.</li>
-<li><strong>Discrete Time Steps</strong>: The process evolves in discrete time steps $ t &#x3D; 0, 1, 2, \ldots $.</li>
-<li><strong>Markov Property</strong>: The probability of transitioning to the next state depends only on the current state and not on the sequence of events that preceded it.</li>
-</ol>
-<h6 id="Formal-Definition"><a href="#Formal-Definition" class="headerlink" title="Formal Definition"></a>Formal Definition</h6><p>A Markov chain is defined by:</p>
-<ul>
-<li>A set of states $ S $.</li>
-<li>A transition probability matrix $ P $, where $ P_{ij} $ represents the probability of moving from state $ s_i $ to state $ s_j $. The full formula looks like below.</li>
-</ul>
-<p>$$ P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) &#x3D; P_{ij} $$</p>
-<h4 id="Markov-Process"><a href="#Markov-Process" class="headerlink" title="Markov Process"></a>Markov Process</h4><p>A Markov process is a more general concept that includes both discrete and continuous cases. It is characterized by:</p>
-<ol>
-<li><strong>State Space</strong>: The set of possible states can be discrete (finite or countable) or continuous.</li>
-<li><strong>Time Steps</strong>: The process can evolve in either discrete time steps (like in a Markov chain) or continuous time.</li>
-<li><strong>Markov Property</strong>: Similar to the Markov chain, the future state depends only on the current state and not on past states.</li>
-</ol>
-<h4 id="Types-of-Markov-Processes"><a href="#Types-of-Markov-Processes" class="headerlink" title="Types of Markov Processes"></a>Types of Markov Processes</h4><ol>
-<li><p><strong>Discrete-Time Markov Process (Markov Chain)</strong>:</p>
-<ul>
-<li>As described above, it deals with discrete states and discrete time steps.</li>
-</ul>
-</li>
-<li><p><strong>Continuous-Time Markov Process</strong>:</p>
-<ul>
-<li>The state space can be discrete or continuous.</li>
-<li>The process evolves continuously over time.</li>
-<li>Transition probabilities are often described using a rate matrix (or generator matrix) instead of a transition matrix.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Continuous-Time Markov Chain (CTMC)</strong></p>
-<p>A CTMC is a specific type of Markov process where:</p>
-<p>· The state space is discrete.<br>· Time is continuous.<br>· The transitions are governed by rates, often described using a rate matrix $ Q $.</p>
-<h4 id="Summary-of-Differences"><a href="#Summary-of-Differences" class="headerlink" title="Summary of Differences"></a>Summary of Differences</h4><ul>
-<li><p><strong>State Space</strong>:</p>
-<ul>
-<li><strong>Markov Chain</strong>: Discrete state space.</li>
-<li><strong>Markov Process</strong>: Can be discrete or continuous state space.</li>
-</ul>
-</li>
-<li><p><strong>Time</strong>:</p>
-<ul>
-<li><strong>Markov Chain</strong>: Discrete time steps.</li>
-<li><strong>Markov Process</strong>: Can be discrete or continuous time.</li>
-</ul>
-</li>
-<li><p><strong>Transition Mechanism</strong>:</p>
-<ul>
-<li><strong>Markov Chain</strong>: Defined by a transition probability matrix.</li>
-<li><strong>Markov Process</strong>: Defined by transition probabilities for discrete time or transition rates for continuous time.</li>
-</ul>
-</li>
-</ul>
-<h4 id="Markov-Chain-Discrete-Time-Discrete-State"><a href="#Markov-Chain-Discrete-Time-Discrete-State" class="headerlink" title="Markov Chain (Discrete-Time, Discrete State)"></a>Markov Chain (Discrete-Time, Discrete State)</h4><p>Consider a simple weather model with three states: Sunny, Cloudy, and Rainy. The transitions are defined for each day (discrete time steps).</p>
-<ul>
-<li><p>States: $ S &#x3D; { \text{Sunny}, \text{Cloudy}, \text{Rainy} } $</p>
-</li>
-<li><p>Transition Matrix $ P $:</p>
-<p>$$<br>P &#x3D; \begin{pmatrix}<br>0.7 &amp; 0.2 &amp; 0.1 \cr<br>0.3 &amp; 0.4 &amp; 0.3 \cr<br>0.2 &amp; 0.3 &amp; 0.5<br>\end{pmatrix}<br>$$</p>
-</li>
-</ul>
-<h4 id="Continuous-Time-Markov-Process-Continuous-Time-Discrete-State"><a href="#Continuous-Time-Markov-Process-Continuous-Time-Discrete-State" class="headerlink" title="Continuous-Time Markov Process (Continuous-Time, Discrete State)"></a>Continuous-Time Markov Process (Continuous-Time, Discrete State)</h4><p>Consider a population model where individuals can be in different health states: Healthy, Sick, and Recovered. The transitions happen continuously over time, with certain rates.</p>
-<ul>
-<li><p>States: $ S &#x3D; { \text{Healthy}, \text{Sick}, \text{Recovered} } $</p>
-</li>
-<li><p>Rate Matrix $ Q $:</p>
-<p>$$<br>Q &#x3D; \begin{pmatrix}<br>-\lambda &amp; \lambda &amp; 0 \cr<br>0 &amp; -\mu &amp; \mu \cr<br>0 &amp; 0 &amp; 0<br>\end{pmatrix}<br>$$</p>
-</li>
-</ul>
-<p>where $\lambda$ is the rate of getting sick, and $\mu$ is the rate of recovery.</p>
-<p>In summary, a Markov chain is a special case of a Markov process with discrete states and discrete time steps, whereas a Markov process can have a broader definition, encompassing both discrete and continuous states and time.</p>
-]]></content>
-      <categories>
-        <category>Math</category>
-      </categories>
-      <tags>
-        <tag>stochastic</tag>
-        <tag>math</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Philosophy of Mind</title>
     <url>/nlp-docs/2024/08/13/philo-o-mind/</url>
     <content><![CDATA[<h3 id="Cognitive-Science-and-The-Philosophy-of-Mind"><a href="#Cognitive-Science-and-The-Philosophy-of-Mind" class="headerlink" title="Cognitive Science and The Philosophy of Mind"></a>Cognitive Science and The Philosophy of Mind</h3><p><span class="label label-danger">Q</span> What is the focus of this blog?</span></p>
@@ -711,173 +770,6 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </categories>
       <tags>
         <tag>nlp-theories</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Compositionality</title>
-    <url>/nlp-docs/2024/08/17/compositionality/</url>
-    <content><![CDATA[<h3 id="Dealing-with-Compositionality"><a href="#Dealing-with-Compositionality" class="headerlink" title="Dealing with Compositionality"></a>Dealing with Compositionality</h3><p>This blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it touches on government binding theory proposed by Chomsky, and the paper tried to model the motion from d-structure to s-structure in GB theory through the non-overlap constraint and chain map combined with NNs.</p>
-<p>And the demonstration of the non-overlap map is below</p>
-<p><img src="/nlp-docs/images/non-overlap.jpg" alt="Description of the image"></p>
-<h4 id="Non-Overlap-Constraint-Explained"><a href="#Non-Overlap-Constraint-Explained" class="headerlink" title="Non-Overlap Constraint Explained"></a>Non-Overlap Constraint Explained</h4><p>The non-overlap constraint is a rule in cognitive models or neural networks that prevents overlapping activations of units in a chain map. This ensures that no two units representing the same syntactic marker can be active simultaneously, which helps maintain clear and distinct representations.</p>
-<h4 id="Diagram-Breakdown"><a href="#Diagram-Breakdown" class="headerlink" title="Diagram Breakdown"></a>Diagram Breakdown</h4><h6 id="Components"><a href="#Components" class="headerlink" title="Components:"></a>Components:</h6><ol>
-<li><p><strong>Chain Map (Green Text):</strong></p>
-<ul>
-<li>Represents the initial activation of units.</li>
-<li>Units in this map correspond to elements or tokens that can be active.</li>
-</ul>
-</li>
-<li><p><strong>Non-Overlap Map (Red Text):</strong></p>
-<ul>
-<li>Corresponds to the chain map and enforces non-overlapping activations.</li>
-<li>Units in this map prevent other units in the same diagonal from activating.</li>
-</ul>
-</li>
-<li><p><strong>Diagonal, Non-Lateral Links (Red Arrows):</strong></p>
-<ul>
-<li>These links are inhibitory and prevent other units in the same diagonal from activating if a unit in the non-overlap map is active.</li>
-</ul>
-</li>
-<li><p><strong>Inhibitory Links (Orange Text):</strong></p>
-<ul>
-<li>These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.</li>
-</ul>
-</li>
-</ol>
-<h6 id="Process"><a href="#Process" class="headerlink" title="Process:"></a>Process:</h6><ol>
-<li>When a unit in the chain map is activated, it activates its corresponding unit in the non-overlap map.</li>
-<li>The active unit in the non-overlap map then inhibits all other units in the same diagonal in the chain map.</li>
-<li>This ensures no two units in the chain map, which represent the same syntactic marker, can be active simultaneously.</li>
-</ol>
-<h4 id="Pseudo-Code-Explanation"><a href="#Pseudo-Code-Explanation" class="headerlink" title="Pseudo Code Explanation"></a>Pseudo Code Explanation</h4><p>Here’s the pseudo code that models this behavior:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">                                                 <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            <span class="keyword">if</span> i != row:</span><br><span class="line">                <span class="variable language_">self</span>.units[i][col].active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map()</span><br><span class="line">non_overlap_map = Map()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Detailed-Code-Example-with-Explanation"><a href="#Detailed-Code-Example-with-Explanation" class="headerlink" title="Detailed Code Example with Explanation"></a>Detailed Code Example with Explanation</h4><p>Let’s look at a more detailed implementation that matches the diagram:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Unit(<span class="subst">&#123;self.identifier&#125;</span>, active=<span class="subst">&#123;self.active&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">                                                       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Activating <span class="subst">&#123;self.units[row][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map.&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">if</span> i != row:</span><br><span class="line">                <span class="variable language_">self</span>.units[i][col].active = <span class="literal">False</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span></span></span><br><span class="line"><span class="string">                map due tonon-overlap constraint.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map(<span class="string">&quot;ChainMap&quot;</span>)</span><br><span class="line">non_overlap_map = Map(<span class="string">&quot;NonOverlapMap&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output the state of maps</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Chain Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> chain_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nNon-Overlap Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> non_overlap_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ol>
-<li><p><strong>Chain Map Activation:</strong></p>
-<ul>
-<li>Activating a unit in the chain map triggers the corresponding unit in the non-overlap map.</li>
-<li>Example: Activating <code>ChainMapA1</code> will activate <code>NonOverlapMapA1</code>.</li>
-</ul>
-</li>
-<li><p><strong>Non-Overlap Map Enforces Constraint:</strong></p>
-<ul>
-<li>The activated unit in the non-overlap map inhibits other units in the same diagonal in the chain map.</li>
-<li>This ensures that other units in the corresponding diagonal of the chain map remain inactive, preserving the non-overlap constraint.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>By combining the visual diagram with the detailed code example, we’ve illustrated how the non-overlap constraint is implemented and enforced in a cognitive or neural model. The non-overlap map plays a crucial role in ensuring that units representing the same syntactic marker do not overlap in their activation, maintaining a clear and distinct representation of information.</p>
-]]></content>
-      <categories>
-        <category>Linguistics</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Intro &amp; Overview</title>
-    <url>/nlp-docs/2024/07/11/place-holder/</url>
-    <content><![CDATA[<h1 id="Hello-There-Welcome-To-This-Blog"><a href="#Hello-There-Welcome-To-This-Blog" class="headerlink" title="Hello There! Welcome To This Blog."></a><span id="title-intro">Hello There! Welcome To This Blog.</span></h1><p>I’m Shiyi. I’m deeply passionate about the intricate dance between data and innovation. With a fervent zeal for leveraging technology to extract insights and create a meaningful impact, I’ve embarked on a journey that spans the realms of Data Science, research, and creative expression.</p>
-<p><span class="label label-danger">Q</span> What drives my work in Data Science and Machine Learning?</span></p>
-<p><span class="label label-success">A</span> At the heart of my endeavors lies a profound appreciation for machine learning, deep learning, and Natural Language Processing. As an advocate for data-driven decision-making, I thrive on unraveling the complexities of algorithms and patterns, harnessing their power to transform raw data into actionable intelligence. From predictive modeling in finance to image recognition tasks using deep learning architectures, I relish the challenge of pushing the boundaries of what’s possible with data.</p>
-<p><span class="label label-danger">Q</span> What is my expertise in Natural Language Processing?</span></p>
-<p><span class="label label-success">A</span> My expertise extends to the captivating domain of Natural Language Processing. In an era inundated with information, I’m committed to empowering systems to understand, analyze, and generate insights from vast textual data. Whether it’s sentiment analysis to decipher the mood of social media conversations or language translation to bridge communication gaps, I’m fascinated by the potential of NLP to revolutionize how we interact with language.</p>
-<p><span class="label label-danger">Q</span> How do I combine creativity with my data-driven work?</span></p>
-<p><span class="label label-success">A</span> My passion for crafting extends beyond the digital realm to embrace a hands-on approach to creativity. From knitting intricate patterns inspired by my rabbit’s playful nature to sketching designed to stimulate curiosity and exploration, I find immense fulfillment in blending data-driven insights with the artistry of crafting.</p>
-<p><span class="label label-danger">Q</span> What is the essence of my journey?</span></p>
-<p><span class="label label-success">A</span> In essence, my journey is defined by a relentless pursuit of innovation, fueled by the boundless possibilities that arise at the nexus of data, creativity, and companionship. With each endeavor, I strive to push the boundaries of what’s possible, shaping a future where technology not only empowers but also enriches our lives in meaningful and unexpected ways. To channel such a passion, I created this blog to document the things I find helpful and important in understanding some of the most crucial concepts. I hope in such a format, I can grow with you or someone who is interested in learning these cool things.</p>
-<p><span class="label label-danger">Q</span> Is this the only blog? </span></p>
-<p><span class="label label-success">A</span> I have also created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech &amp; language processing, and computational linguistics to provide more context.</p>
-<h4></h4>
-]]></content>
-      <tags>
-        <tag>intro</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Problem Solving</title>
-    <url>/nlp-docs/2024/07/17/problem-solving/</url>
-    <content><![CDATA[<h3 id="More-on-Logic-And-Problem-Solving"><a href="#More-on-Logic-And-Problem-Solving" class="headerlink" title="More on Logic And Problem Solving"></a>More on Logic And Problem Solving</h3><p>In a different <a href="https://shiyis.github.io/nlpwme/modules/1h-semantics/">blog</a>, I have briefly introduced some of the most important concepts of logic and problem solving, including but not limited to predicate calculus, propositional logic, and lambda calculus.</p>
-<p>In this blog, the notes will be more in detail and introduce relevant ideas.</p>
-<h4 id="Defining-Entailment-Implicatures-and-Presuppositions"><a href="#Defining-Entailment-Implicatures-and-Presuppositions" class="headerlink" title="Defining Entailment, Implicatures, and Presuppositions"></a>Defining Entailment, Implicatures, and Presuppositions</h4><p><strong>Implicatures</strong>: What’s suggested in an utterance, even though it is not explicitly stated or entailed by the utterance.</p>
-<p><strong>Entailment</strong>: Entailment is a relationship between statements where one statement necessarily follows from another. If statement A entails statement B, then if A is true, B must also be true.</p>
-<p><strong>Presuppositions</strong>: A presupposition is an assumption that as speaker makes about what the listener already knows or believes to be true. It’s information taken for granted in the utterance.</p>
-<h4 id="Differences-Between-The-Above-Three"><a href="#Differences-Between-The-Above-Three" class="headerlink" title="Differences Between The Above Three"></a>Differences Between The Above Three</h4><p>Let’s define implicatures, entailments, and presuppositions and compare their differences in simple terms</p>
-<p><em><strong>Nature of Meaning</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>: Implied meaning that relies on context and shared understanding. It is not directly stated but inferred.</li>
-<li><strong>Entailment</strong>: Logical meaning that follows necessarily from the truth of another statement. It is a strict logical relationship.</li>
-<li><strong>Presupposition</strong>: Assumed background information or beliefs. It is taken for granted by the speaker as known to the listener.</li>
-</ul>
-<p><em><strong>Dependence on Context</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>: Highly dependent on context. The same statement can imply different things in different situations.</li>
-<li><strong>Entailment</strong>: Not dependent on context. If the antecedent is true, the consequent must be true regardless of context.</li>
-<li><strong>Presupposition</strong>: Partially dependent on context. It relies on shared knowledge but is less flexible than implicature.</li>
-</ul>
-<p><em><strong>Truth Conditions</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>: Can be canceled or denied without contradiction. For example, “It’s cold in here” doesn’t necessarily mean the speaker wants the window closed if they follow up with, “But I like it that way.”</li>
-<li><strong>Entailment</strong>:<br>  Cannot be canceled without contradiction. If “All cats are animals” is true, saying “No cats are animals” would be a direct contradiction.</li>
-<li><strong>Presupposition</strong>: Remains even if the statement is negated. For example, “John’s brother is not tall” still presupposes that John has a brother.</li>
-</ul>
-<p><em><strong>Example Comparisons</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>:<br>  Statement: “Can you pass the salt?”<br>  Implicature: The speaker is asking you to pass the salt, not questioning your ability to do so.</li>
-<li><strong>Entailment</strong>:<br>  Statement: “She is a mother.”<br>  Entailment: She has a child. If “She is a mother” is true, it logically follows that “She has a child” must be true.</li>
-<li><strong>Presupposition</strong>:<br>  Statement: “The king of France is bald.”<br>  Presupposition: There is a king of France. This assumption is taken for granted by the speaker.</li>
-</ul>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><strong>Implicatures</strong> are implied meanings that depend on context and can be canceled without contradiction.<br><strong>Entailments</strong> are logical consequences that must be true if the initial statement is true, and they cannot be canceled without contradiction.<br><strong>Presuppositions</strong> are background assumptions that remain true even if the statement is negated and depend on shared knowledge between the speaker and listener.<br>By understanding these differences, we can better analyze and interpret the subtleties of communication and language use.</p>
-<p>Lambda calculus is a formal system in mathematical logic and computer science for expressing computation based on function abstraction and application. It was introduced by Alonzo Church in the 1930s as part of his work on the foundations of mathematics.</p>
-<h4 id="Basic-Concepts-of-Lambda-Calculus"><a href="#Basic-Concepts-of-Lambda-Calculus" class="headerlink" title="Basic Concepts of Lambda Calculus"></a>Basic Concepts of Lambda Calculus</h4><h4 id="1-Lambda-Abstraction"><a href="#1-Lambda-Abstraction" class="headerlink" title="1. Lambda Abstraction:"></a>1. <strong>Lambda Abstraction</strong>:</h4><ul>
-<li><strong>Syntax</strong>: <code>λx. E</code></li>
-<li><strong>Explanation</strong>: This denotes an anonymous function with a parameter <code>x</code> and body <code>E</code>. For example, <code>λx. x + 1</code> represents a function that takes an argument <code>x</code> and returns <code>x + 1</code>.</li>
-</ul>
-<h4 id="2-Application"><a href="#2-Application" class="headerlink" title="2. Application:"></a>2. <strong>Application</strong>:</h4><ul>
-<li><strong>Syntax</strong>: <code>(F A)</code></li>
-<li><strong>Explanation</strong>: This denotes the application of function <code>F</code> to argument <code>A</code>. For example, <code>(λx. x + 1) 2</code> applies the function <code>λx. x + 1</code> to <code>2</code>, resulting in <code>3</code>.</li>
-</ul>
-<h4 id="3-Variables"><a href="#3-Variables" class="headerlink" title="3. Variables:"></a>3. <strong>Variables</strong>:</h4><ul>
-<li><strong>Syntax</strong>: <code>x</code></li>
-<li><strong>Explanation</strong>: Variables are placeholders for values or other expressions. In <code>λx. x</code>, <code>x</code> is a variable.</li>
-</ul>
-<h4 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h4><p>In lambda calculus, expressions are built using variables, lambda abstractions, and applications. These are called lambda expressions or terms. The grammar of lambda expressions is defined as:</p>
-<ul>
-<li><strong>Variables</strong>: <code>x, y, z, ...</code></li>
-<li><strong>Lambda Abstraction</strong>: <code>λx. E</code> where <code>x</code> is a variable and <code>E</code> is a lambda expression.</li>
-<li><strong>Application</strong>: <code>(E1 E2)</code> where <code>E1</code> and <code>E2</code> are lambda expressions.</li>
-</ul>
-<h4 id="Reduction"><a href="#Reduction" class="headerlink" title="Reduction"></a>Reduction</h4><p>Lambda calculus defines computation through the process of <strong>reduction</strong>, which simplifies lambda expressions. There are two main types of reduction:</p>
-<ol>
-<li><p><strong>Alpha Conversion (α conversion)</strong>:<br> <strong>Explanation</strong>: Renaming the bound variables in a lambda expression. For example, <code>λx. x</code> can be alpha-converted to <code>λy. y</code>.<br> <strong>Purpose</strong>: Avoids name collisions.</p>
-</li>
-<li><p><strong>Beta Reduction (β reduction)</strong>:<br> <strong>Explanation</strong>: Applying a lambda function to an argument. For example, <code>(λx. x + 1) 2</code> reduces to <code>2 + 1</code> which further reduces to <code>3</code>.<br> <strong>Process</strong>: Replace the bound variable with the argument in the body of the abstraction. <code>(λx. E1) E2</code> reduces to <code>E1[E2/x]</code>, where <code>E1[E2/x]</code> denotes substitution of <code>E2</code> for <code>x</code> in <code>E1</code>.</p>
-</li>
-</ol>
-<h4 id="Example-of-Beta-Reduction"><a href="#Example-of-Beta-Reduction" class="headerlink" title="Example of Beta Reduction"></a>Example of Beta Reduction</h4><p>Consider the expression: <code>(λx. (λy. x + y) 2) 3</code>.</p>
-<ol>
-<li><p>Apply the outer function <code>(λx. (λy. x + y) 2)</code> to <code>3</code>:<br> <code>((λx. (λy. x + y) 2) 3)</code><br> Substitute <code>3</code> for <code>x</code> in <code>(λy. x + y) 2</code>: <code>(λy. 3 + y) 2</code>.</p>
-</li>
-<li><p>Apply the inner function <code>(λy. 3 + y)</code> to <code>2</code>:<br> <code>((λy. 3 + y) 2)</code><br> Substitute <code>2</code> for <code>y</code> in <code>3 + y</code>: <code>3 + 2</code>.</p>
-</li>
-<li><p>Simplify the expression:<br> <code>3 + 2</code> reduces to <code>5</code>.</p>
-</li>
-</ol>
-<h4 id="Significance-in-Computer-Science"><a href="#Significance-in-Computer-Science" class="headerlink" title="Significance in Computer Science"></a>Significance in Computer Science</h4><p>Lambda calculus serves as the foundation for understanding computation and functional programming languages. Key aspects include:</p>
-<ul>
-<li><strong>Functional Programming</strong>: Languages like Haskell, Lisp, and Scheme are heavily influenced by lambda calculus.</li>
-<li><strong>Programming Language Theory</strong>: Lambda calculus provides a framework for studying the properties of functions and recursive definitions.</li>
-<li><strong>Type Systems</strong>: Extensions of lambda calculus, such as the simply typed lambda calculus, form the basis for type systems in programming languages.</li>
-</ul>
-<h4 id="Church-Turing-Thesis"><a href="#Church-Turing-Thesis" class="headerlink" title="Church-Turing Thesis"></a>Church-Turing Thesis</h4><p>Lambda calculus is also central to the <strong>Church-Turing thesis</strong>, which posits that any computable function can be computed by a Turing machine, and equivalently, can be expressed in lambda calculus. This establishes lambda calculus as a universal model of computation.</p>
-<p>In summary, lambda calculus is a powerful mathematical formalism for defining and studying computation. Its simplicity and expressiveness make it a cornerstone of theoretical computer science and a valuable tool for understanding the foundations of programming languages.</p>
-]]></content>
-      <categories>
-        <category>Linguistics</category>
-      </categories>
-      <tags>
-        <tag>semantics</tag>
       </tags>
   </entry>
   <entry>
@@ -1057,6 +949,26 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
+    <title>Intro &amp; Overview</title>
+    <url>/nlp-docs/2024/07/11/place-holder/</url>
+    <content><![CDATA[<h1 id="Hello-There-Welcome-To-This-Blog"><a href="#Hello-There-Welcome-To-This-Blog" class="headerlink" title="Hello There! Welcome To This Blog."></a><span id="title-intro">Hello There! Welcome To This Blog.</span></h1><p>I’m Shiyi. I’m deeply passionate about the intricate dance between data and innovation. With a fervent zeal for leveraging technology to extract insights and create a meaningful impact, I’ve embarked on a journey that spans the realms of Data Science, research, and creative expression.</p>
+<p><span class="label label-danger">Q</span> What drives my work in Data Science and Machine Learning?</span></p>
+<p><span class="label label-success">A</span> At the heart of my endeavors lies a profound appreciation for machine learning, deep learning, and Natural Language Processing. As an advocate for data-driven decision-making, I thrive on unraveling the complexities of algorithms and patterns, harnessing their power to transform raw data into actionable intelligence. From predictive modeling in finance to image recognition tasks using deep learning architectures, I relish the challenge of pushing the boundaries of what’s possible with data.</p>
+<p><span class="label label-danger">Q</span> What is my expertise in Natural Language Processing?</span></p>
+<p><span class="label label-success">A</span> My expertise extends to the captivating domain of Natural Language Processing. In an era inundated with information, I’m committed to empowering systems to understand, analyze, and generate insights from vast textual data. Whether it’s sentiment analysis to decipher the mood of social media conversations or language translation to bridge communication gaps, I’m fascinated by the potential of NLP to revolutionize how we interact with language.</p>
+<p><span class="label label-danger">Q</span> How do I combine creativity with my data-driven work?</span></p>
+<p><span class="label label-success">A</span> My passion for crafting extends beyond the digital realm to embrace a hands-on approach to creativity. From knitting intricate patterns inspired by my rabbit’s playful nature to sketching designed to stimulate curiosity and exploration, I find immense fulfillment in blending data-driven insights with the artistry of crafting.</p>
+<p><span class="label label-danger">Q</span> What is the essence of my journey?</span></p>
+<p><span class="label label-success">A</span> In essence, my journey is defined by a relentless pursuit of innovation, fueled by the boundless possibilities that arise at the nexus of data, creativity, and companionship. With each endeavor, I strive to push the boundaries of what’s possible, shaping a future where technology not only empowers but also enriches our lives in meaningful and unexpected ways. To channel such a passion, I created this blog to document the things I find helpful and important in understanding some of the most crucial concepts. I hope in such a format, I can grow with you or someone who is interested in learning these cool things.</p>
+<p><span class="label label-danger">Q</span> Is this the only blog? </span></p>
+<p><span class="label label-success">A</span> I have also created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech &amp; language processing, and computational linguistics to provide more context.</p>
+<h4></h4>
+]]></content>
+      <tags>
+        <tag>intro</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Variational Families</title>
     <url>/nlp-docs/2024/07/27/vae/</url>
     <content><![CDATA[<h3 id="Introducing-The-Gists-of-Variational-Autoencoders-VAEs"><a href="#Introducing-The-Gists-of-Variational-Autoencoders-VAEs" class="headerlink" title="Introducing The Gists of Variational Autoencoders (VAEs)"></a>Introducing The Gists of Variational Autoencoders (VAEs)</h3><h4 id="What-is-a-Variational-Autoencoder-VAE"><a href="#What-is-a-Variational-Autoencoder-VAE" class="headerlink" title="What is a Variational Autoencoder (VAE)?"></a>What is a Variational Autoencoder (VAE)?</h4><p>Imagine you have a magical machine that can take a picture of your favorite toy, turn it into a secret code, and then use that code to recreate the toy’s picture. This is kind of what a Variational Autoencoder (VAE) does, but instead of toys, it works with things like images, sounds, or even words.</p>
@@ -1103,6 +1015,128 @@ $$ \text{Jacobian} = \begin{pmatrix}
       <tags>
         <tag>stochastic</tag>
         <tag>math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Problem Solving</title>
+    <url>/nlp-docs/2024/07/17/problem-solving/</url>
+    <content><![CDATA[<h3 id="More-on-Logic-And-Problem-Solving"><a href="#More-on-Logic-And-Problem-Solving" class="headerlink" title="More on Logic And Problem Solving"></a>More on Logic And Problem Solving</h3><p>In a different <a href="https://shiyis.github.io/nlpwme/modules/1h-semantics/">blog</a>, I have briefly introduced some of the most important concepts of logic and problem solving, including but not limited to predicate calculus, propositional logic, and lambda calculus.</p>
+<p>In this blog, the notes will be more in detail and introduce relevant ideas.</p>
+<h4 id="Defining-Entailment-Implicatures-and-Presuppositions"><a href="#Defining-Entailment-Implicatures-and-Presuppositions" class="headerlink" title="Defining Entailment, Implicatures, and Presuppositions"></a>Defining Entailment, Implicatures, and Presuppositions</h4><p><strong>Implicatures</strong>: What’s suggested in an utterance, even though it is not explicitly stated or entailed by the utterance.</p>
+<p><strong>Entailment</strong>: Entailment is a relationship between statements where one statement necessarily follows from another. If statement A entails statement B, then if A is true, B must also be true.</p>
+<p><strong>Presuppositions</strong>: A presupposition is an assumption that as speaker makes about what the listener already knows or believes to be true. It’s information taken for granted in the utterance.</p>
+<h4 id="Differences-Between-The-Above-Three"><a href="#Differences-Between-The-Above-Three" class="headerlink" title="Differences Between The Above Three"></a>Differences Between The Above Three</h4><p>Let’s define implicatures, entailments, and presuppositions and compare their differences in simple terms</p>
+<p><em><strong>Nature of Meaning</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>: Implied meaning that relies on context and shared understanding. It is not directly stated but inferred.</li>
+<li><strong>Entailment</strong>: Logical meaning that follows necessarily from the truth of another statement. It is a strict logical relationship.</li>
+<li><strong>Presupposition</strong>: Assumed background information or beliefs. It is taken for granted by the speaker as known to the listener.</li>
+</ul>
+<p><em><strong>Dependence on Context</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>: Highly dependent on context. The same statement can imply different things in different situations.</li>
+<li><strong>Entailment</strong>: Not dependent on context. If the antecedent is true, the consequent must be true regardless of context.</li>
+<li><strong>Presupposition</strong>: Partially dependent on context. It relies on shared knowledge but is less flexible than implicature.</li>
+</ul>
+<p><em><strong>Truth Conditions</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>: Can be canceled or denied without contradiction. For example, “It’s cold in here” doesn’t necessarily mean the speaker wants the window closed if they follow up with, “But I like it that way.”</li>
+<li><strong>Entailment</strong>:<br>  Cannot be canceled without contradiction. If “All cats are animals” is true, saying “No cats are animals” would be a direct contradiction.</li>
+<li><strong>Presupposition</strong>: Remains even if the statement is negated. For example, “John’s brother is not tall” still presupposes that John has a brother.</li>
+</ul>
+<p><em><strong>Example Comparisons</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>:<br>  Statement: “Can you pass the salt?”<br>  Implicature: The speaker is asking you to pass the salt, not questioning your ability to do so.</li>
+<li><strong>Entailment</strong>:<br>  Statement: “She is a mother.”<br>  Entailment: She has a child. If “She is a mother” is true, it logically follows that “She has a child” must be true.</li>
+<li><strong>Presupposition</strong>:<br>  Statement: “The king of France is bald.”<br>  Presupposition: There is a king of France. This assumption is taken for granted by the speaker.</li>
+</ul>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><strong>Implicatures</strong> are implied meanings that depend on context and can be canceled without contradiction.<br><strong>Entailments</strong> are logical consequences that must be true if the initial statement is true, and they cannot be canceled without contradiction.<br><strong>Presuppositions</strong> are background assumptions that remain true even if the statement is negated and depend on shared knowledge between the speaker and listener.<br>By understanding these differences, we can better analyze and interpret the subtleties of communication and language use.</p>
+<h4 id="The-Gists-of-Predicate-Calculus-and-Propositional-Logic"><a href="#The-Gists-of-Predicate-Calculus-and-Propositional-Logic" class="headerlink" title="The Gists of Predicate Calculus and Propositional Logic"></a>The Gists of Predicate Calculus and Propositional Logic</h4><h4 id="Basic-Concepts-of-Lambda-Calculus"><a href="#Basic-Concepts-of-Lambda-Calculus" class="headerlink" title="Basic Concepts of Lambda Calculus"></a>Basic Concepts of Lambda Calculus</h4><p>Lambda calculus is a formal system in mathematical logic and computer science for expressing computation based on function abstraction and application. It was introduced by Alonzo Church in the 1930s as part of his work on the foundations of mathematics.</p>
+<h4 id="1-Lambda-Abstraction"><a href="#1-Lambda-Abstraction" class="headerlink" title="1. Lambda Abstraction:"></a>1. <strong>Lambda Abstraction</strong>:</h4><ul>
+<li><strong>Syntax</strong>: <code>λx. E</code></li>
+<li><strong>Explanation</strong>: This denotes an anonymous function with a parameter <code>x</code> and body <code>E</code>. For example, <code>λx. x + 1</code> represents a function that takes an argument <code>x</code> and returns <code>x + 1</code>.</li>
+</ul>
+<h4 id="2-Application"><a href="#2-Application" class="headerlink" title="2. Application:"></a>2. <strong>Application</strong>:</h4><ul>
+<li><strong>Syntax</strong>: <code>(F A)</code></li>
+<li><strong>Explanation</strong>: This denotes the application of function <code>F</code> to argument <code>A</code>. For example, <code>(λx. x + 1) 2</code> applies the function <code>λx. x + 1</code> to <code>2</code>, resulting in <code>3</code>.</li>
+</ul>
+<h4 id="3-Variables"><a href="#3-Variables" class="headerlink" title="3. Variables:"></a>3. <strong>Variables</strong>:</h4><ul>
+<li><strong>Syntax</strong>: <code>x</code></li>
+<li><strong>Explanation</strong>: Variables are placeholders for values or other expressions. In <code>λx. x</code>, <code>x</code> is a variable.</li>
+</ul>
+<h4 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h4><p>In lambda calculus, expressions are built using variables, lambda abstractions, and applications. These are called lambda expressions or terms. The grammar of lambda expressions is defined as:</p>
+<ul>
+<li><strong>Variables</strong>: <code>x, y, z, ...</code></li>
+<li><strong>Lambda Abstraction</strong>: <code>λx. E</code> where <code>x</code> is a variable and <code>E</code> is a lambda expression.</li>
+<li><strong>Application</strong>: <code>(E1 E2)</code> where <code>E1</code> and <code>E2</code> are lambda expressions.</li>
+</ul>
+<h4 id="Reduction"><a href="#Reduction" class="headerlink" title="Reduction"></a>Reduction</h4><p>Lambda calculus defines computation through the process of <strong>reduction</strong>, which simplifies lambda expressions. There are two main types of reduction:</p>
+<ol>
+<li><p><strong>Alpha Conversion (α conversion)</strong>:<br> <strong>Explanation</strong>: Renaming the bound variables in a lambda expression. For example, <code>λx. x</code> can be alpha-converted to <code>λy. y</code>.<br> <strong>Purpose</strong>: Avoids name collisions.</p>
+</li>
+<li><p><strong>Beta Reduction (β reduction)</strong>:<br> <strong>Explanation</strong>: Applying a lambda function to an argument. For example, <code>(λx. x + 1) 2</code> reduces to <code>2 + 1</code> which further reduces to <code>3</code>.<br> <strong>Process</strong>: Replace the bound variable with the argument in the body of the abstraction. <code>(λx. E1) E2</code> reduces to <code>E1[E2/x]</code>, where <code>E1[E2/x]</code> denotes substitution of <code>E2</code> for <code>x</code> in <code>E1</code>.</p>
+</li>
+</ol>
+<h4 id="Example-of-Beta-Reduction"><a href="#Example-of-Beta-Reduction" class="headerlink" title="Example of Beta Reduction"></a>Example of Beta Reduction</h4><p>Consider the expression: <code>(λx. (λy. x + y) 2) 3</code>.</p>
+<ol>
+<li><p>Apply the outer function <code>(λx. (λy. x + y) 2)</code> to <code>3</code>:<br> <code>((λx. (λy. x + y) 2) 3)</code><br> Substitute <code>3</code> for <code>x</code> in <code>(λy. x + y) 2</code>: <code>(λy. 3 + y) 2</code>.</p>
+</li>
+<li><p>Apply the inner function <code>(λy. 3 + y)</code> to <code>2</code>:<br> <code>((λy. 3 + y) 2)</code><br> Substitute <code>2</code> for <code>y</code> in <code>3 + y</code>: <code>3 + 2</code>.</p>
+</li>
+<li><p>Simplify the expression:<br> <code>3 + 2</code> reduces to <code>5</code>.</p>
+</li>
+</ol>
+<h4 id="Significance-in-Computer-Science"><a href="#Significance-in-Computer-Science" class="headerlink" title="Significance in Computer Science"></a>Significance in Computer Science</h4><p>Lambda calculus serves as the foundation for understanding computation and functional programming languages. Key aspects include:</p>
+<ul>
+<li><strong>Functional Programming</strong>: Languages like Haskell, Lisp, and Scheme are heavily influenced by lambda calculus.</li>
+<li><strong>Programming Language Theory</strong>: Lambda calculus provides a framework for studying the properties of functions and recursive definitions.</li>
+<li><strong>Type Systems</strong>: Extensions of lambda calculus, such as the simply typed lambda calculus, form the basis for type systems in programming languages.</li>
+</ul>
+<h4 id="Church-Turing-Alonzo-Church-and-Alan-Turing-Thesis"><a href="#Church-Turing-Alonzo-Church-and-Alan-Turing-Thesis" class="headerlink" title="Church-Turing (Alonzo Church and Alan Turing) Thesis"></a>Church-Turing (Alonzo Church and Alan Turing) Thesis</h4><p>Lambda calculus is also central to the <strong>Church-Turing thesis</strong>, which posits that any computable function can be computed by a Turing machine, and equivalently, can be expressed in lambda calculus. This establishes lambda calculus as a universal model of computation.</p>
+<p>In summary, lambda calculus is a powerful mathematical formalism for defining and studying computation. Its simplicity and expressiveness make it a cornerstone of theoretical computer science and a valuable tool for understanding the foundations of programming languages.</p>
+<h4 id="In-A-Nutshell"><a href="#In-A-Nutshell" class="headerlink" title="In A Nutshell"></a>In A Nutshell</h4><p>The contributions of <strong>Alonzo Church</strong> and <strong>Alan Turing</strong>, particularly their work on the <strong>Church-Turing thesis</strong> and the development of <strong>lambda calculus</strong> and <strong>Turing machines</strong>, can indeed be discussed under the broader umbrella of <strong>problem-solving</strong> and <strong>logical reasoning</strong>. Their ideas fit well within the same conceptual framework as <strong>traditional syllogistic logic</strong>, such as <strong>propositional logic</strong> and <strong>predicate logic</strong>, since all of these approaches are aimed at formalizing methods of reasoning and solving problems in structured, logical ways.</p>
+<p>Here’s how these ideas fit together:</p>
+<h3 id="1-Problem-Solving-and-Formal-Logic"><a href="#1-Problem-Solving-and-Formal-Logic" class="headerlink" title="1. Problem-Solving and Formal Logic:"></a>1. <strong>Problem-Solving and Formal Logic</strong>:</h3><ul>
+<li><strong>Syllogistic logic</strong> (like <strong>propositional</strong> and <strong>predicate logic</strong>) provides a formal framework for reasoning about statements and their relationships. These systems are designed to model how humans think logically and make inferences based on <strong>premises</strong> and <strong>conclusions</strong>.<ul>
+<li><strong>Propositional logic</strong> deals with <strong>truth values</strong> of propositions and how they combine (e.g., “if A, then B”).</li>
+<li><strong>Predicate logic</strong> (or first-order logic) extends this by allowing the use of <strong>quantifiers</strong> (like “for all” or “there exists”) and <strong>predicates</strong> to express relationships between objects (e.g., “All humans are mortal”).</li>
+</ul>
+</li>
+<li>These systems are crucial for formal <strong>problem-solving</strong> because they allow complex reasoning processes to be broken down into simpler logical components that can be analyzed and manipulated algorithmically.</li>
+</ul>
+<h3 id="2-Computational-Problem-Solving-Church-and-Turing"><a href="#2-Computational-Problem-Solving-Church-and-Turing" class="headerlink" title="2. Computational Problem-Solving (Church and Turing):"></a>2. <strong>Computational Problem-Solving (Church and Turing)</strong>:</h3><ul>
+<li>The work of Church and Turing focuses on the <strong>formalization of computation</strong>, which can also be seen as a form of problem-solving.<ul>
+<li><strong>Lambda calculus</strong> (Church) is a way of representing <strong>computation</strong> through function definition and application, providing an abstract model of how problems can be solved by computing devices.</li>
+<li>The <strong>Turing machine</strong> (Turing) is an abstract mathematical model that describes how a problem can be solved by breaking it down into a series of simple, mechanical steps.</li>
+</ul>
+</li>
+<li>Both models attempt to define what it means for a problem to be <strong>computable</strong> and explore the limits of mechanical or algorithmic problem-solving.</li>
+<li><strong>Problem-solving in computation</strong> is about taking an input, performing a series of logical or mechanical steps (an algorithm), and producing an output, much like how traditional logic takes premises and derives conclusions.</li>
+</ul>
+<h3 id="3-Bringing-Logic-and-Computation-Together"><a href="#3-Bringing-Logic-and-Computation-Together" class="headerlink" title="3. Bringing Logic and Computation Together:"></a>3. <strong>Bringing Logic and Computation Together</strong>:</h3><ul>
+<li><strong>Propositional and predicate logic</strong> are often used in <strong>algorithm design</strong> and <strong>computer science</strong> to reason about programs and computational processes.<ul>
+<li>For instance, <strong>propositional logic</strong> is used to reason about program correctness (e.g., ensuring a program produces the right outputs given specific inputs).</li>
+<li><strong>Predicate logic</strong> is often used in <strong>databases</strong> (SQL) and <strong>artificial intelligence</strong> (knowledge representation) to model relationships between objects and reason about their properties.</li>
+</ul>
+</li>
+<li><strong>Lambda calculus</strong> and <strong>Turing machines</strong> are also foundational to modern <strong>programming languages</strong> and <strong>computation theory</strong>, which are forms of <strong>applied logic</strong> used to solve real-world problems algorithmically.</li>
+</ul>
+<h3 id="4-Formalizing-Problem-Solving"><a href="#4-Formalizing-Problem-Solving" class="headerlink" title="4. Formalizing Problem Solving:"></a>4. <strong>Formalizing Problem Solving</strong>:</h3><ul>
+<li>The <strong>Church-Turing thesis</strong> effectively formalizes the concept of <strong>problem-solving</strong> by defining what kinds of problems can be solved by a mechanical process. It states that anything that can be solved algorithmically can be computed by a Turing machine (or expressed via lambda calculus).</li>
+<li>In this sense, the <strong>logical problem-solving</strong> framework provided by <strong>traditional logic</strong> (propositional, predicate) merges with <strong>computational problem-solving</strong> (lambda calculus, Turing machines) to form a unified view of how problems can be solved using structured reasoning processes.</li>
+</ul>
+<h3 id="5-Higher-Level-Abstraction"><a href="#5-Higher-Level-Abstraction" class="headerlink" title="5. Higher-Level Abstraction:"></a>5. <strong>Higher-Level Abstraction</strong>:</h3><ul>
+<li>Both <strong>traditional logic</strong> and <strong>computation theory</strong> aim to <strong>abstract away</strong> the specifics of individual problems and focus on the <strong>general principles</strong> of reasoning and problem-solving.</li>
+<li><strong>Propositional logic</strong>, for example, abstracts the logical structure of sentences, while <strong>lambda calculus</strong> abstracts the structure of computation.</li>
+<li>This makes these systems highly useful for solving a wide range of problems, from proving mathematical theorems to developing complex algorithms for computers.</li>
+</ul>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion:"></a>Conclusion:</h3><p>The work of <strong>Church</strong> and <strong>Turing</strong> can be discussed alongside traditional logical systems like <strong>propositional</strong> and <strong>predicate logic</strong> under the broader concept of <strong>problem-solving</strong>. Both fields—logic and computation—are concerned with formalizing reasoning processes, and both are essential for understanding how we can solve problems systematically, either through logical inference or algorithmic computation. In a sense, they are different <strong>tools</strong> in the same <strong>problem-solving toolbox</strong>—with traditional logic focusing more on the structure of reasoning and computation providing a model for how problems can be mechanically or algorithmically solved.</p>
+]]></content>
+      <categories>
+        <category>Linguistics</category>
+      </categories>
+      <tags>
+        <tag>semantics</tag>
       </tags>
   </entry>
 </search>
