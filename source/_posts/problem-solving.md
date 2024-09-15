@@ -134,7 +134,7 @@ Lambda calculus serves as the foundation for understanding computation and funct
 
 Lambda calculus is also central to the **Church-Turing thesis**, which posits that any computable function can be computed by a Turing machine, and equivalently, can be expressed in lambda calculus. This establishes lambda calculus as a universal model of computation.
 
-In summary, lambda calculus is a powerful mathematical formalism for defining and studying computation. Its simplicity and expressiveness make it a cornerstone of theoretical computer science and a valuable tool for understanding the foundations of programming languages.
+In summary, lambda calculus is a powerful mathematical formalism for defining and studying computation. Its simplicity and expressiveness make it a cornerstone of theoretical computer science and a valuable tool for understanding the base of programming languages.
 
 #### In A Nutshell
 
