@@ -1,6 +1,5 @@
 (function($) {
 
-
     $(document).ready(function() {
         var toTop = ($('#sidebar').height() - $(window).height()) + 60;
 
@@ -65,7 +64,7 @@
             });
         }
 
-        // Expand all categories on page load
+
 
         // Task lists in markdown
         $('.article-entry ul > li').each(function() {
@@ -96,4 +95,18 @@
                 }
             }
         });
+
+    }); // Closing $(document).ready()
+
+    $(document).ready(function() {
+        // Show the category list on page load (ensure it's visible by default)
+        $('#category-list').show(); // This directly shows the category list on page load
+
+        // Attach click event to #allExpand for manual toggle functionality
+        $('#allExpand').click(function() {
+            $('#category-list').toggle(); // Toggle the visibility of the category list
+        });
+    });
+
+
 })(jQuery);

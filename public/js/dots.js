@@ -39,5 +39,4 @@
         }
     });
 
-    $('#allExpand').click();
 })(jQuery);
