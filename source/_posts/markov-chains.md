@@ -39,7 +39,8 @@ $$
 #### Markov Property
 
 The Markov property states that the probability of transitioning to the next state depends only on the current state and not on the past states:
-$ P(X_{t+1} = s_j \mid X_t = s_i, X_{t-1} = s_{i-1}, \ldots, X_0 = s_0) = P(X_{t+1} = s_j \mid X_t = s_i) $
+$$ P(X_{t+1} = s_j \mid X_t = s_i, X_{t-1} = s_{i-1}, \ldots, X_0 = s_0) $$
+$$ \qquad \quad = P(X_{t+1} = s_j \mid X_t = s_i) $$
 
 #### Step-by-Step Process
 

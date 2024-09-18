@@ -68,6 +68,16 @@ plugins:
     baidu_analytics: # enter Baidu Analytics hash key
     busuanzi_count: false # options: true, false - to enable busuanzi site pv statistics
 
+
+math:
+  enable: true
+  per_page: false
+  engine: mathjax
+  mathjax:
+    version: 2.7.7
+    config: TeX-AMS_HTML
+    cdn: //cdn.jsdelivr.net/npm/mathjax@2/MathJax.js
+
 # Miscellaneous
 miscellaneous:
     open_graph: # see http://ogp.me

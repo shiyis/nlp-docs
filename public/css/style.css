@@ -2510,3 +2510,14 @@ li {
 .hide-dot .timeline-icon {
   display: none;
 }
+.MathJax_Display {
+  margin: 1em -2em;
+}
+@media only screen and (max-width: 500px) {
+  .MathJax {
+    font-size: 11px;
+  }
+  .MathJax_Display {
+    font-size: 11px;
+  }
+}
