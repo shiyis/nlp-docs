@@ -1,7 +1,7 @@
 ---
 title: Compositionality
 layout: search
-date: 2024-08-17 09:41:30
+date: 2024-09-17 09:41:30
 categories:
   - Linguistics
 ---

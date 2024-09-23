@@ -1,6 +1,6 @@
 ---
 title: Mutual Information
-date: 2024-09-03 8:45:14
+date: 2024-08-03 8:45:14
 categories:
   - Math
 tags:
