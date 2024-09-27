@@ -169,7 +169,7 @@
                             &nbsp;
                             Math
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/nlp-docs/2024/07/14/audo-diff/">Auto Differentiation</a></li>  <li class="file"><a href="/nlp-docs/2024/07/16/markov-chains/">Markov Processes</a></li>  <li class="file"><a href="/nlp-docs/2024/07/17/jacobian-matrices/">Jacobian Matrices</a></li>  <li class="file"><a href="/nlp-docs/2024/07/27/vae/">Variational Families</a></li>  <li class="file"><a href="/nlp-docs/2024/08/03/mutual-info/">Mutual Information</a></li>  <li class="file"><a href="/nlp-docs/2024/09/02/determinism/">Intro to Determinism</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/nlp-docs/2024/07/14/audo-diff/">Auto Differentiation</a></li>  <li class="file"><a href="/nlp-docs/2024/07/16/markov-chains/">Markov Processes</a></li>  <li class="file"><a href="/nlp-docs/2024/07/17/jacobian-matrices/">Jacobian Matrices</a></li>  <li class="file"><a href="/nlp-docs/2024/07/27/vae/">Variational Families</a></li>  <li class="file"><a href="/nlp-docs/2024/08/03/mutual-info/">Mutual Information</a></li>  <li class="file"><a href="/nlp-docs/2024/09/02/determinism/">Intro to Determinism</a></li>  <li class="file"><a href="/nlp-docs/2024/09/02/human-psyche/">Intro to Human Psyche</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -252,7 +252,7 @@
     <div class="widget-wrap" id="archives">
         <h3 class="widget-title"><span>archives</span></h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/nlp-docs/archives/2024/09/">September 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/nlp-docs/archives/2024/08/">August 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/nlp-docs/archives/2024/07/">July 2024</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/nlp-docs/archives/2024/09/">September 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/nlp-docs/archives/2024/08/">August 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/nlp-docs/archives/2024/07/">July 2024</a><span class="archive-list-count">7</span></li></ul>
         </div>
 
 
@@ -321,107 +321,6 @@
             <!-- Main Content -->
             <section id="main">
                 
-        <article id="post-jacobian-matrices" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/nlp-docs/categories/Math/">Math</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/nlp-docs/tags/determinism/" rel="tag">determinism</a>, <a class="tag-link-link" href="/nlp-docs/tags/math/" rel="tag">math</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/nlp-docs/2024/07/17/jacobian-matrices/">
-            <time datetime="2024-07-17T17:47:00.000Z" itemprop="datePublished">2024-07-17</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/raw/writing/source/_posts/jacobian-matrices.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/edit/writing/source/_posts/jacobian-matrices.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/commits/writing/source/_posts/jacobian-matrices.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/nlp-docs/2024/07/17/jacobian-matrices/">Jacobian Matrices</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h3 id="Discussions-on-Jacobian-Matrices-Continued"><a href="#Discussions-on-Jacobian-Matrices-Continued" class="headerlink" title="Discussions on Jacobian Matrices Continued"></a>Discussions on Jacobian Matrices Continued</h3><p>This blog will break down and continue explaining Jacobian matrices and Taylor expansions in plain language and explore how they are connected.</p>
-<h4 id="Jacobian-Matrix"><a href="#Jacobian-Matrix" class="headerlink" title="Jacobian Matrix"></a>Jacobian Matrix</h4><p><strong>What it is:</strong></p>
-<ul>
-<li>Imagine you have a function that takes multiple inputs and gives multiple outputs. For example, you might have a function that takes two numbers (like coordinates $x$ and $y$) and gives back two other numbers.</li>
-<li>The Jacobian matrix is a way to capture how small changes in each input affect each output.</li>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/nlp-docs/2024/07/17/jacobian-matrices/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <article id="post-viterbi" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -481,11 +380,30 @@
                     
                     
                 
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="This-Blog-Will-Explain-The-Mechanism-of-The-Viterbi-Algorithm"><a href="#This-Blog-Will-Explain-The-Mechanism-of-The-Viterbi-Algorithm" class="headerlink" title="This Blog Will Explain The Mechanism of The Viterbi Algorithm"></a>This Blog Will Explain The Mechanism of The Viterbi Algorithm</h3><p>In this blog, we will introduce the Viterbi Algorithm explanation along with a Python code demonstration for a sequence prediction task.</p>
+<hr>
+<h2 id="Viterbi-Algorithm-Explanation-and-Code-Demonstration"><a href="#Viterbi-Algorithm-Explanation-and-Code-Demonstration" class="headerlink" title="Viterbi Algorithm: Explanation and Code Demonstration"></a>Viterbi Algorithm: Explanation and Code Demonstration</h2><p>The <strong>Viterbi Algorithm</strong> is a dynamic programming technique used to find the most probable sequence of hidden states in a <strong>Hidden Markov Model (HMM)</strong>. It’s widely applied in sequence prediction tasks like speech recognition, natural language processing, and bioinformatics.</p>
+<p>In this post, we’ll not only break down the algorithm’s mechanism but also provide a practical <strong>Python code demonstration</strong> to predict hidden states based on observed data.</p>
+<h3 id="Components-of-the-Viterbi-Algorithm"><a href="#Components-of-the-Viterbi-Algorithm" class="headerlink" title="Components of the Viterbi Algorithm"></a>Components of the Viterbi Algorithm</h3><p>Before diving into the algorithm, let’s review the core components of a <strong>Hidden Markov Model</strong>:</p>
+<p>
+                
             
         
         
-            <h3 id="This-Blog-Will-Explain-The-Mechanism-of-The-Viterbi-Algorithm"><a href="#This-Blog-Will-Explain-The-Mechanism-of-The-Viterbi-Algorithm" class="headerlink" title="This Blog Will Explain The Mechanism of The Viterbi Algorithm"></a>This Blog Will Explain The Mechanism of The Viterbi Algorithm</h3><p>s</p>
-
+            </div>   
+            <div class="article-more-link">
+                <a href="/nlp-docs/2024/07/23/viterbi/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
@@ -1201,6 +1119,79 @@
 
 
     
+        <article id="search-human-psyche" class="article article-type-search" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/nlp-docs/categories/Math/">Math</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/nlp-docs/2024/09/02/human-psyche/">
+            <time datetime="2024-09-02T13:15:30.000Z" itemprop="datePublished">2024-09-02</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/raw/writing/source/_posts/human-psyche.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/edit/writing/source/_posts/human-psyche.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/commits/writing/source/_posts/human-psyche.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/nlp-docs/2024/09/02/human-psyche/">Intro to Human Psyche</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+            
+        
+        
+            
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="search-compositionality" class="article article-type-search" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1318,7 +1309,7 @@
                 <!-- Month Marker -->
                 <div class="timeline-row timeline-month">
                     <span class="timeline-icon"><i class="fa fa-calendar"></i></span>
-                    <h3 class="timeline-title">2024-09 (3)</h3>
+                    <h3 class="timeline-title">2024-09 (4)</h3>
                 </div>
                 <div class="timeline-posts"> <!-- Open a new month's timeline-posts -->
         
@@ -1359,6 +1350,20 @@
                     <div class="timeline-post-meta">
                         <span><i class="fa fa-calendar"></i> 2024-09-02</span>
                         <span><i class="fa fa-folder-open"></i> Linguistics</span>
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <!-- Post Entry -->
+            <div class="timeline-row timeline-post">
+                <span class="timeline-icon"></span>
+                <div class="timeline-content">
+                    <h4 class="timeline-post-title"><a href="https://shiyis.github.io/nlp-docs/2024/09/02/human-psyche/">Intro to Human Psyche</a></h4>
+                    <div class="timeline-post-meta">
+                        <span><i class="fa fa-calendar"></i> 2024-09-02</span>
+                        <span><i class="fa fa-folder-open"></i> Math</span>
                     </div>
                 </div>
             </div>

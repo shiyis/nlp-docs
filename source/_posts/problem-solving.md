@@ -138,38 +138,4 @@ In summary, lambda calculus is a powerful mathematical formalism for defining an
 
 #### In A Nutshell
 
-
 The contributions of **Alonzo Church** and **Alan Turing**, particularly their work on the **Church-Turing thesis** and the development of **lambda calculus** and **Turing machines**, can indeed be discussed under the broader umbrella of **problem-solving** and **logical reasoning**. Their ideas fit well within the same conceptual framework as **traditional syllogistic logic**, such as **propositional logic** and **predicate logic**, since all of these approaches are aimed at formalizing methods of reasoning and solving problems in structured, logical ways.
-
-Here’s how these ideas fit together:
-
-##### 1. **Problem-Solving and Formal Logic**:
-   - **Syllogistic logic** (like **propositional** and **predicate logic**) provides a formal framework for reasoning about statements and their relationships. These systems are designed to model how humans think logically and make inferences based on **premises** and **conclusions**.
-     - **Propositional logic** deals with **truth values** of propositions and how they combine (e.g., "if A, then B").
-     - **Predicate logic** (or first-order logic) extends this by allowing the use of **quantifiers** (like "for all" or "there exists") and **predicates** to express relationships between objects (e.g., "All humans are mortal").
-   - These systems are crucial for formal **problem-solving** because they allow complex reasoning processes to be broken down into simpler logical components that can be analyzed and manipulated algorithmically.
-
-##### 2. **Computational Problem-Solving (Church and Turing)**:
-   - The work of Church and Turing focuses on the **formalization of computation**, which can also be seen as a form of problem-solving.
-     - **Lambda calculus** (Church) is a way of representing **computation** through function definition and application, providing an abstract model of how problems can be solved by computing devices.
-     - The **Turing machine** (Turing) is an abstract mathematical model that describes how a problem can be solved by breaking it down into a series of simple, mechanical steps.
-   - Both models attempt to define what it means for a problem to be **computable** and explore the limits of mechanical or algorithmic problem-solving.
-   - **Problem-solving in computation** is about taking an input, performing a series of logical or mechanical steps (an algorithm), and producing an output, much like how traditional logic takes premises and derives conclusions.
-
-##### 3. **Bringing Logic and Computation Together**:
-   - **Propositional and predicate logic** are often used in **algorithm design** and **computer science** to reason about programs and computational processes.
-     - For instance, **propositional logic** is used to reason about program correctness (e.g., ensuring a program produces the right outputs given specific inputs).
-     - **Predicate logic** is often used in **databases** (SQL) and **artificial intelligence** (knowledge representation) to model relationships between objects and reason about their properties.
-   - **Lambda calculus** and **Turing machines** are also foundational to modern **programming languages** and **computation theory**, which are forms of **applied logic** used to solve real-world problems algorithmically.
-
-##### 4. **Formalizing Problem Solving**:
-   - The **Church-Turing thesis** effectively formalizes the concept of **problem-solving** by defining what kinds of problems can be solved by a mechanical process. It states that anything that can be solved algorithmically can be computed by a Turing machine (or expressed via lambda calculus).
-   - In this sense, the **logical problem-solving** framework provided by **traditional logic** (propositional, predicate) merges with **computational problem-solving** (lambda calculus, Turing machines) to form a unified view of how problems can be solved using structured reasoning processes.
-
-##### 5. **Higher-Level Abstraction**:
-   - Both **traditional logic** and **computation theory** aim to **abstract away** the specifics of individual problems and focus on the **general principles** of reasoning and problem-solving.
-   - **Propositional logic**, for example, abstracts the logical structure of sentences, while **lambda calculus** abstracts the structure of computation.
-   - This makes these systems highly useful for solving a wide range of problems, from proving mathematical theorems to developing complex algorithms for computers.
-
-##### Conclusion:
-The work of **Church** and **Turing** can be discussed alongside traditional logical systems like **propositional** and **predicate logic** under the broader concept of **problem-solving**. Both fields—logic and computation—are concerned with formalizing reasoning processes, and both are essential for understanding how we can solve problems systematically, either through logical inference or algorithmic computation. In a sense, they are different **tools** in the same **problem-solving toolbox**—with traditional logic focusing more on the structure of reasoning and computation providing a model for how problems can be mechanically or algorithmically solved.
