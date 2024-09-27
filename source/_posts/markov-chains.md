@@ -161,7 +161,9 @@ Simulating all these processes using Markov processes can be quite extensive. Ho
 
 This section breaks down a simple example of how to build a simple markov chain in code example.
 
-### Example 1: Modeling Stock Prices with Dot Product
+Sure! Here's an updated version of all the examples where we retain the **calculated state vector** (probability distribution) between steps, avoiding the unnecessary reset to a one-hot encoded vector.
+
+### Updated Example 1: Modeling Stock Prices with Dot Product
 
 ```python
 import numpy as np
@@ -179,29 +181,24 @@ P = np.array([
     [0.0, 0.1, 0.2, 0.7],  # From 120
 ])
 
-# Initial state (starting price, represented as a state vector)
-initial_state_vector = np.zeros(n_states)
-initial_state_vector[1] = 1  # Start from state 100
+# Initial state (one-hot vector for state 100)
+state_vector = np.zeros(n_states)
+state_vector[1] = 1  # Start in state 100
 
 # Number of steps to simulate
 n_steps = 100
 
-# Simulate the Markov process
-state_vector = initial_state_vector
+# Track price history
 price_history = [states[np.argmax(state_vector)]]  # Start price history
 
 for _ in range(n_steps):
     # Perform dot product to get the next state probabilities
-    next_state_probabilities = np.dot(state_vector, P)
+    state_vector = np.dot(state_vector, P)
 
     # Choose the next state based on the resulting probabilities
-    next_state = np.random.choice(n_states, p=next_state_probabilities)
+    next_state = np.random.choice(n_states, p=state_vector)
 
-    # Update the state vector to reflect the next state
-    state_vector = np.zeros(n_states)
-    state_vector[next_state] = 1
-
-    # Store the price history
+    # Store the price history for the next state
     price_history.append(states[next_state])
 
 # Plot the results
@@ -216,7 +213,7 @@ plt.show()
 
 ---
 
-### Example 2: Disease Progression with Dot Product
+### Updated Example 2: Disease Progression with Dot Product
 
 ```python
 import numpy as np
@@ -232,27 +229,22 @@ P = np.array([
     [0.05, 0.10, 0.85],  # From Recovered
 ])
 
-# Initial state (starting state as a vector)
-initial_state_vector = np.zeros(n_states)
-initial_state_vector[0] = 1  # Start as Healthy
+# Initial state (one-hot vector for Healthy)
+state_vector = np.zeros(n_states)
+state_vector[0] = 1  # Start as Healthy
 
 # Number of steps to simulate
 n_steps = 50
 
-# Simulate the Markov process
-state_vector = initial_state_vector
+# Track health history
 health_history = [states[np.argmax(state_vector)]]
 
 for _ in range(n_steps):
     # Perform dot product to get the next state probabilities
-    next_state_probabilities = np.dot(state_vector, P)
+    state_vector = np.dot(state_vector, P)
 
     # Choose the next state based on the resulting probabilities
-    next_state = np.random.choice(n_states, p=next_state_probabilities)
-
-    # Update the state vector to reflect the next state
-    state_vector = np.zeros(n_states)
-    state_vector[next_state] = 1
+    next_state = np.random.choice(n_states, p=state_vector)
 
     # Store the health history
     health_history.append(states[next_state])
@@ -264,7 +256,7 @@ print(" -> ".join(health_history))
 
 ---
 
-### Example 3: Queueing Systems with Dot Product
+### Updated Example 3: Queueing Systems with Dot Product
 
 ```python
 import numpy as np
@@ -284,27 +276,22 @@ P = np.array([
     [0.0, 0.0, 0.0, 0.5, 0.4, 0.1],  # From 5 customers
 ])
 
-# Initial state (empty queue as a state vector)
-initial_state_vector = np.zeros(n_states)
-initial_state_vector[0] = 1  # Start with empty queue
+# Initial state (one-hot vector for an empty queue)
+state_vector = np.zeros(n_states)
+state_vector[0] = 1  # Start with empty queue
 
 # Number of steps to simulate
 n_steps = 50
 
-# Simulate the Markov process
-state_vector = initial_state_vector
+# Track queue history
 queue_history = [states[np.argmax(state_vector)]]
 
 for _ in range(n_steps):
     # Perform dot product to get the next state probabilities
-    next_state_probabilities = np.dot(state_vector, P)
+    state_vector = np.dot(state_vector, P)
 
     # Choose the next state based on the resulting probabilities
-    next_state = np.random.choice(n_states, p=next_state_probabilities)
-
-    # Update the state vector to reflect the next state
-    state_vector = np.zeros(n_states)
-    state_vector[next_state] = 1
+    next_state = np.random.choice(n_states, p=state_vector)
 
     # Store the queue history
     queue_history.append(states[next_state])
@@ -321,7 +308,7 @@ plt.show()
 
 ---
 
-### Example 4: Customer Loyalty with Dot Product
+### Updated Example 4: Customer Loyalty with Dot Product
 
 ```python
 import numpy as np
@@ -337,27 +324,22 @@ P = np.array([
     [0.1, 0.2, 0.7],  # From Loyal
 ])
 
-# Initial state (starting as a state vector)
-initial_state_vector = np.zeros(n_states)
-initial_state_vector[0] = 1  # Start as Active
+# Initial state (one-hot vector for Active)
+state_vector = np.zeros(n_states)
+state_vector[0] = 1  # Start as Active
 
 # Number of steps to simulate
 n_steps = 50
 
-# Simulate the Markov process
-state_vector = initial_state_vector
+# Track loyalty history
 loyalty_history = [states[np.argmax(state_vector)]]
 
 for _ in range(n_steps):
     # Perform dot product to get the next state probabilities
-    next_state_probabilities = np.dot(state_vector, P)
+    state_vector = np.dot(state_vector, P)
 
     # Choose the next state based on the resulting probabilities
-    next_state = np.random.choice(n_states, p=next_state_probabilities)
-
-    # Update the state vector to reflect the next state
-    state_vector = np.zeros(n_states)
-    state_vector[next_state] = 1
+    next_state = np.random.choice(n_states, p=state_vector)
 
     # Store the loyalty history
     loyalty_history.append(states[next_state])
@@ -366,7 +348,6 @@ for _ in range(n_steps):
 print("Customer Loyalty Over Time:")
 print(" -> ".join(loyalty_history))
 ```
-
 ### Summary
 
 This framework can be extended to simulate other processes like economic forecasting, pharmacokinetics, network protocols, etc.
