@@ -1,5 +1,5 @@
 ---
-title: Modern NLP
+title: Contemporary NLP
 date: 2024-08-13 18:27:14
 categories:
   - NLP Related
