@@ -273,70 +273,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Jacobian Matrices</title>
-    <url>/nlp-docs/2024/07/17/jacobian-matrices/</url>
-    <content><![CDATA[<h3 id="Discussions-on-Jacobian-Matrices-Continued"><a href="#Discussions-on-Jacobian-Matrices-Continued" class="headerlink" title="Discussions on Jacobian Matrices Continued"></a>Discussions on Jacobian Matrices Continued</h3><p>This blog will break down and continue explaining Jacobian matrices and Taylor expansions in plain language and explore how they are connected.</p>
-<h4 id="Jacobian-Matrix"><a href="#Jacobian-Matrix" class="headerlink" title="Jacobian Matrix"></a>Jacobian Matrix</h4><p><strong>What it is:</strong></p>
-<ul>
-<li>Imagine you have a function that takes multiple inputs and gives multiple outputs. For example, you might have a function that takes two numbers (like coordinates $x$ and $y$) and gives back two other numbers.</li>
-<li>The Jacobian matrix is a way to capture how small changes in each input affect each output.</li>
-</ul>
-<p><strong>How it works:</strong></p>
-<ul>
-<li>Suppose you have a function $f(x, y)$ that gives outputs $u$ and $v$.</li>
-<li>The Jacobian matrix for this function is like a grid that shows how $u$ and $v$ change when $x$ and $y$ change.</li>
-<li>Mathematically, it’s a 2x2 matrix (in this case) where each entry is a partial derivative. It looks like this:<div class="latex" style="text-align: center">
-$$ \text{Jacobian} = \begin{pmatrix}
-\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
-\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
-\end{pmatrix} $$</li>
-</ul>
-<p><strong>What it tells you:</strong></p>
-<ul>
-<li>Each entry in the Jacobian matrix tells you how one output changes with respect to one input.</li>
-<li>For instance, $\frac{\partial u}{\partial x}$  tells you how $u$ changes when you make a tiny change in $x$.</li>
-</ul>
-<h4 id="Taylor-Expansion"><a href="#Taylor-Expansion" class="headerlink" title="Taylor Expansion"></a>Taylor Expansion</h4><p><strong>What it is:</strong></p>
-<ul>
-<li>The Taylor expansion is a way to approximate a complex function using simpler polynomial terms.</li>
-<li>Think of it as breaking down a complicated function into a sum of easy-to-handle pieces.</li>
-</ul>
-<p><strong>How it works:</strong></p>
-<ul>
-<li>Suppose you have a function $f(x)$ and you want to approximate it near a point $a$ .</li>
-<li>The Taylor expansion uses the value of the function at $a$ and its derivatives (rates of change) at $a$ to build this approximation.</li>
-<li>The formula for the Taylor expansion up to the first few terms looks like this:</li>
-</ul>
-<p>$$ f(x) \approx f(a) + f’(a)(x-a) + \frac{f’’(a)}{2!}(x-a)^2 + \cdots $$</p>
-<p><strong>What it tells you:</strong></p>
-<ul>
-<li>The first term $f(a)$ is the function’s value at $a$ .</li>
-<li>The second term $f’(a)(x-a)$ shows how the function changes linearly around $a$ .</li>
-<li>The higher-order terms $\frac{f’’(a)}{2!}(x-a)^2$ , etc., show more complex changes (like curvature).</li>
-</ul>
-<h4 id="Connection-Between-Jacobian-Matrix-and-Taylor-Expansion"><a href="#Connection-Between-Jacobian-Matrix-and-Taylor-Expansion" class="headerlink" title="Connection Between Jacobian Matrix and Taylor Expansion"></a>Connection Between Jacobian Matrix and Taylor Expansion</h4><p><strong>How they are connected:</strong></p>
-<ul>
-<li>When you use the Taylor expansion for functions with multiple inputs and outputs, the Jacobian matrix comes into play.</li>
-<li>For a function with multiple variables, the first-order Taylor expansion looks like this:</li>
-</ul>
-<p>$$ f(\mathbf{x}) \approx f(\mathbf{a}) + J(\mathbf{a})(\mathbf{x} - \mathbf{a}) $$</p>
-<p>  where $\mathbf{x}$ and $\mathbf{a}$ are vectors (like coordinates), and $J(\mathbf{a})$ is the Jacobian matrix at $\mathbf{a}$.</p>
-<p><strong>What this means:</strong></p>
-<ul>
-<li>The Jacobian matrix $J(\mathbf{a})$ captures how the function changes in all directions from the point $\mathbf{a}$.</li>
-<li>The term $J(\mathbf{a})(\mathbf{x} - \mathbf{a})$ is like a multi-dimensional linear approximation, showing how small changes in inputs affect the outputs.</li>
-</ul>
-<p>In summary, the Jacobian matrix gives you a snapshot of how changes in inputs affect outputs for functions with multiple variables. The Taylor expansion uses this information (and higher-order derivatives) to build an approximation of the function near a specific point.</p>
-]]></content>
-      <categories>
-        <category>Math</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>determinism</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markov Processes</title>
     <url>/nlp-docs/2024/07/16/markov-chains/</url>
     <content><![CDATA[<h3 id="Discussions-on-Markov-Processes-Continued"><a href="#Discussions-on-Markov-Processes-Continued" class="headerlink" title="Discussions on Markov Processes Continued"></a>Discussions on Markov Processes Continued</h3><p>In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept.</p>
@@ -554,145 +490,71 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
-    <title>Mutual Information</title>
-    <url>/nlp-docs/2024/08/03/mutual-info/</url>
-    <content><![CDATA[<h3 id="More-on-Mutual-Information"><a href="#More-on-Mutual-Information" class="headerlink" title="More on Mutual Information"></a>More on Mutual Information</h3><p>Below is the code for WAPMI or the Weighted Average Point-wise Mutual Information. And this code measures the distance between two probabilities distributions.</p>
-<p>It is a method used in computational linguistics to measure the strength of association between words in a given context, typically in the analysis of text data.</p>
-<p>Imagine you have a box of different colored marbles, and you want to know which colors tend to appear together. WAPMI helps you figure out how often certain words (or colors) appear together more often than by random chance. It’s like a smart way to understand word relationships in sentences!</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi</span>(<span class="params">word1, word2, joint_prob, marginal_prob1, marginal_prob2</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the point-wise mutual information (PMI) between two words.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param joint_prob: The joint probability of the two words</span></span><br><span class="line"><span class="string">    :param marginal_prob1: The marginal probability of the first word</span></span><br><span class="line"><span class="string">    :param marginal_prob2: The marginal probability of the second word</span></span><br><span class="line"><span class="string">    :return: The PMI score</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi = math.log(joint_prob / (marginal_prob1 * marginal_prob2), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> pmi</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_joint_prob</span>(<span class="params">word1, word2, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the joint probability of two words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The joint probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    joint_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word1 <span class="keyword">in</span> sentence <span class="keyword">and</span> word2 <span class="keyword">in</span> sentence:</span><br><span class="line">            joint_count += <span class="number">1</span></span><br><span class="line">    joint_prob = joint_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> joint_prob</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_marginal_prob</span>(<span class="params">word, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the marginal probability of a word in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word: The word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The marginal probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    word_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_count += <span class="number">1</span></span><br><span class="line">    marginal_prob = word_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> marginal_prob</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi_corpus</span>(<span class="params">corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the PMI scores for all pairs of words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: A dictionary of PMI scores</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi_scores = &#123;&#125;</span><br><span class="line">    word_counts = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_counts[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> word1 <span class="keyword">in</span> word_counts:</span><br><span class="line">        <span class="keyword">for</span> word2 <span class="keyword">in</span> word_counts:</span><br><span class="line">            <span class="keyword">if</span> word1 != word2:</span><br><span class="line">                joint_prob = calculate_joint_prob(word1, word2, corpus)</span><br><span class="line">                marginal_prob1 = calculate_marginal_prob(word1, corpus)</span><br><span class="line">                marginal_prob2 = calculate_marginal_prob(word2, corpus)</span><br><span class="line">                pmi = calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2)</span><br><span class="line">                pmi_scores[(word1, word2)] = pmi</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pmi_scores</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example usage</span></span><br><span class="line">corpus = [</span><br><span class="line">    [<span class="string">&quot;this&quot;</span>, <span class="string">&quot;is&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;sheep&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">pmi_scores = calculate_pmi_corpus(corpus)</span><br><span class="line"><span class="built_in">print</span>(pmi_scores)</span><br></pre></td></tr></table></figure>
-
-<p>A walkthrough of the code part by part.</p>
-<h3 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a><strong>Imports</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> collections</span><br></pre></td></tr></table></figure>
-
+    <title>Jacobian Matrices</title>
+    <url>/nlp-docs/2024/07/17/jacobian-matrices/</url>
+    <content><![CDATA[<h3 id="Discussions-on-Jacobian-Matrices-Continued"><a href="#Discussions-on-Jacobian-Matrices-Continued" class="headerlink" title="Discussions on Jacobian Matrices Continued"></a>Discussions on Jacobian Matrices Continued</h3><p>This blog will break down and continue explaining Jacobian matrices and Taylor expansions in plain language and explore how they are connected.</p>
+<h4 id="Jacobian-Matrix"><a href="#Jacobian-Matrix" class="headerlink" title="Jacobian Matrix"></a>Jacobian Matrix</h4><p><strong>What it is:</strong></p>
 <ul>
-<li><strong><code>import math</code></strong>: Imports the <code>math</code> module, which provides mathematical functions such as logarithms.</li>
-<li><strong><code>import collections</code></strong>: Imports the <code>collections</code> module, which provides specialized container datatypes, like <code>defaultdict</code>.</li>
+<li>Imagine you have a function that takes multiple inputs and gives multiple outputs. For example, you might have a function that takes two numbers (like coordinates $x$ and $y$) and gives back two other numbers.</li>
+<li>The Jacobian matrix is a way to capture how small changes in each input affect each output.</li>
 </ul>
-<h3 id="Function-Definitions"><a href="#Function-Definitions" class="headerlink" title="Function Definitions"></a><strong>Function Definitions</strong></h3><h4 id="1-calculate-pmi-Function"><a href="#1-calculate-pmi-Function" class="headerlink" title="1. calculate_pmi Function"></a><strong>1. <code>calculate_pmi</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi</span>(<span class="params">word1, word2, joint_prob, marginal_prob1, marginal_prob2</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the point-wise mutual information (PMI) between two words.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param joint_prob: The joint probability of the two words</span></span><br><span class="line"><span class="string">    :param marginal_prob1: The marginal probability of the first word</span></span><br><span class="line"><span class="string">    :param marginal_prob2: The marginal probability of the second word</span></span><br><span class="line"><span class="string">    :return: The PMI score</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi = math.log(joint_prob / (marginal_prob1 * marginal_prob2), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> pmi</span><br></pre></td></tr></table></figure>
-
+<p><strong>How it works:</strong></p>
 <ul>
-<li><strong>Purpose</strong>: Calculates the Pointwise Mutual Information (PMI) score between two words.</li>
-<li><strong>Parameters</strong>:<ul>
-<li><code>word1</code> and <code>word2</code>: Words for which PMI is calculated.</li>
-<li><code>joint_prob</code>: Probability of both words appearing together.</li>
-<li><code>marginal_prob1</code>: Probability of <code>word1</code> appearing.</li>
-<li><code>marginal_prob2</code>: Probability of <code>word2</code> appearing.</li>
+<li>Suppose you have a function $f(x, y)$ that gives outputs $u$ and $v$.</li>
+<li>The Jacobian matrix for this function is like a grid that shows how $u$ and $v$ change when $x$ and $y$ change.</li>
+<li>Mathematically, it’s a 2x2 matrix (in this case) where each entry is a partial derivative. It looks like this:<div class="latex" style="text-align: center">
+$$ \text{Jacobian} = \begin{pmatrix}
+\frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} \\
+\frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}
+\end{pmatrix} $$</li>
 </ul>
-</li>
-<li><strong><code>pmi</code> Calculation</strong>:<ul>
-<li><code>math.log(joint_prob / (marginal_prob1 * marginal_prob2), 2)</code>: Computes the logarithm (base 2) of the ratio of the joint probability to the product of the marginal probabilities.</li>
-</ul>
-</li>
-<li><strong>Returns</strong>: PMI score.</li>
-</ul>
-<h4 id="2-calculate-joint-prob-Function"><a href="#2-calculate-joint-prob-Function" class="headerlink" title="2. calculate_joint_prob Function"></a><strong>2. <code>calculate_joint_prob</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_joint_prob</span>(<span class="params">word1, word2, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the joint probability of two words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The joint probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    joint_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word1 <span class="keyword">in</span> sentence <span class="keyword">and</span> word2 <span class="keyword">in</span> sentence:</span><br><span class="line">            joint_count += <span class="number">1</span></span><br><span class="line">    joint_prob = joint_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> joint_prob</span><br></pre></td></tr></table></figure>
-
+<p><strong>What it tells you:</strong></p>
 <ul>
-<li><strong>Purpose</strong>: Calculates the joint probability of two words appearing together in the same sentence.</li>
-<li><strong>Parameters</strong>:<ul>
-<li><code>word1</code> and <code>word2</code>: Words to check.</li>
-<li><code>corpus</code>: List of sentences (each sentence is a list of words).</li>
+<li>Each entry in the Jacobian matrix tells you how one output changes with respect to one input.</li>
+<li>For instance, $\frac{\partial u}{\partial x}$  tells you how $u$ changes when you make a tiny change in $x$.</li>
 </ul>
-</li>
-<li><strong><code>joint_count</code></strong>: Counts how many sentences contain both <code>word1</code> and <code>word2</code>.</li>
-<li><strong><code>joint_prob</code> Calculation</strong>: Divides <code>joint_count</code> by the total number of sentences to get the joint probability.</li>
-<li><strong>Returns</strong>: Joint probability of the two words.</li>
-</ul>
-<h4 id="3-calculate-marginal-prob-Function"><a href="#3-calculate-marginal-prob-Function" class="headerlink" title="3. calculate_marginal_prob Function"></a><strong>3. <code>calculate_marginal_prob</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_marginal_prob</span>(<span class="params">word, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the marginal probability of a word in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word: The word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The marginal probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    word_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_count += <span class="number">1</span></span><br><span class="line">    marginal_prob = word_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> marginal_prob</span><br></pre></td></tr></table></figure>
-
+<h4 id="Taylor-Expansion"><a href="#Taylor-Expansion" class="headerlink" title="Taylor Expansion"></a>Taylor Expansion</h4><p><strong>What it is:</strong></p>
 <ul>
-<li><strong>Purpose</strong>: Calculates the marginal probability of a single word.</li>
-<li><strong>Parameters</strong>:<ul>
-<li><code>word</code>: The word for which probability is calculated.</li>
-<li><code>corpus</code>: List of sentences.</li>
+<li>The Taylor expansion is a way to approximate a complex function using simpler polynomial terms.</li>
+<li>Think of it as breaking down a complicated function into a sum of easy-to-handle pieces.</li>
 </ul>
-</li>
-<li><strong><code>word_count</code></strong>: Counts how many sentences contain <code>word</code>.</li>
-<li><strong><code>marginal_prob</code> Calculation</strong>: Divides <code>word_count</code> by the total number of sentences to get the marginal probability.</li>
-<li><strong>Returns</strong>: Marginal probability of the word.</li>
-</ul>
-<h4 id="4-calculate-pmi-corpus-Function"><a href="#4-calculate-pmi-corpus-Function" class="headerlink" title="4. calculate_pmi_corpus Function"></a><strong>4. <code>calculate_pmi_corpus</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi_corpus</span>(<span class="params">corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the PMI scores for all pairs of words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: A dictionary of PMI scores</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi_scores = &#123;&#125;</span><br><span class="line">    word_counts = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_counts[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> word1 <span class="keyword">in</span> word_counts:</span><br><span class="line">        <span class="keyword">for</span> word2 <span class="keyword">in</span> word_counts:</span><br><span class="line">            <span class="keyword">if</span> word1 != word2:</span><br><span class="line">                joint_prob = calculate_joint_prob(word1, word2, corpus)</span><br><span class="line">                marginal_prob1 = calculate_marginal_prob(word1, corpus)</span><br><span class="line">                marginal_prob2 = calculate_marginal_prob(word2, corpus)</span><br><span class="line">                pmi = calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2)</span><br><span class="line">                pmi_scores[(word1, word2)] = pmi</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pmi_scores</span><br></pre></td></tr></table></figure>
-
+<p><strong>How it works:</strong></p>
 <ul>
-<li><strong>Purpose</strong>: Calculates PMI scores for all pairs of words in the corpus.</li>
-<li><strong>Parameters</strong>:<ul>
-<li><code>corpus</code>: List of sentences.</li>
+<li>Suppose you have a function $f(x)$ and you want to approximate it near a point $a$ .</li>
+<li>The Taylor expansion uses the value of the function at $a$ and its derivatives (rates of change) at $a$ to build this approximation.</li>
+<li>The formula for the Taylor expansion up to the first few terms looks like this:</li>
 </ul>
-</li>
-<li><strong><code>word_counts</code></strong>: A <code>defaultdict</code> to count occurrences of each word.</li>
-<li><strong>Count Words</strong>: Iterates over each sentence to count occurrences of each word.</li>
-<li><strong>Compute PMI</strong>:<ul>
-<li>Iterates over all pairs of words (excluding pairs where <code>word1</code> is the same as <code>word2</code>).</li>
-<li>Calculates joint and marginal probabilities, then computes PMI for each pair.</li>
-</ul>
-</li>
-<li><strong>Returns</strong>: A dictionary of PMI scores for all word pairs.</li>
-</ul>
-<h3 id="Example-Usage"><a href="#Example-Usage" class="headerlink" title="Example Usage"></a><strong>Example Usage</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">corpus = [</span><br><span class="line">    [<span class="string">&quot;this&quot;</span>, <span class="string">&quot;is&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;sheep&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">pmi_scores = calculate_pmi_corpus(corpus)</span><br><span class="line"><span class="built_in">print</span>(pmi_scores)</span><br></pre></td></tr></table></figure>
-
+<p>$$ f(x) \approx f(a) + f’(a)(x-a) + \frac{f’’(a)}{2!}(x-a)^2 + \cdots $$</p>
+<p><strong>What it tells you:</strong></p>
 <ul>
-<li><strong>Purpose</strong>: Runs the PMI calculations on a sample corpus and prints the PMI scores for all word pairs.</li>
+<li>The first term $f(a)$ is the function’s value at $a$ .</li>
+<li>The second term $f’(a)(x-a)$ shows how the function changes linearly around $a$ .</li>
+<li>The higher-order terms $\frac{f’’(a)}{2!}(x-a)^2$ , etc., show more complex changes (like curvature).</li>
 </ul>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a><strong>Summary</strong></h3><ul>
-<li><strong><code>calculate_pmi</code></strong> computes PMI given probabilities.</li>
-<li><strong><code>calculate_joint_prob</code></strong> finds how often two words appear together.</li>
-<li><strong><code>calculate_marginal_prob</code></strong> finds how often one word appears.</li>
-<li><strong><code>calculate_pmi_corpus</code></strong> calculates PMI for all word pairs in a corpus.</li>
+<h4 id="Connection-Between-Jacobian-Matrix-and-Taylor-Expansion"><a href="#Connection-Between-Jacobian-Matrix-and-Taylor-Expansion" class="headerlink" title="Connection Between Jacobian Matrix and Taylor Expansion"></a>Connection Between Jacobian Matrix and Taylor Expansion</h4><p><strong>How they are connected:</strong></p>
+<ul>
+<li>When you use the Taylor expansion for functions with multiple inputs and outputs, the Jacobian matrix comes into play.</li>
+<li>For a function with multiple variables, the first-order Taylor expansion looks like this:</li>
 </ul>
-<p>This code helps measure how strongly two words are associated compared to what you would expect by chance.</p>
-<h3 id="Comparing-Mutural-Informaiton-WAPMI-VAE-and-KL-Divergence"><a href="#Comparing-Mutural-Informaiton-WAPMI-VAE-and-KL-Divergence" class="headerlink" title="Comparing Mutural Informaiton, WAPMI, VAE, and KL Divergence."></a>Comparing Mutural Informaiton, WAPMI, VAE, and KL Divergence.</h3><p>Let’s break down Wappmi, mutual information, and how they relate to Variational Autoencoders (VAEs) and KL divergence in simple terms, like you’re five.</p>
-<h3 id="Mutual-Information"><a href="#Mutual-Information" class="headerlink" title="Mutual Information"></a>Mutual Information</h3><p>Imagine you have two sets of toys, and you want to know how much one set tells you about the other. Mutual information is a way to measure how much knowing about one set of toys helps you predict what’s in the other set. If you always find a red truck when you find a blue car, that’s high mutual information.</p>
-<h3 id="Wappmi-Weighted-Average-Prediction-Pointwise-Mutual-Information"><a href="#Wappmi-Weighted-Average-Prediction-Pointwise-Mutual-Information" class="headerlink" title="Wappmi (Weighted Average Prediction Pointwise Mutual Information)"></a>Wappmi (Weighted Average Prediction Pointwise Mutual Information)</h3><p>Now, Wappmi takes this idea of mutual information and looks at words in sentences. It asks, “How often do these words appear together, and is it more than just by chance?” It’s like seeing if certain toys always end up next to each other more than they would randomly.</p>
-<h3 id="Variational-Autoencoders-VAEs-and-KL-Divergence"><a href="#Variational-Autoencoders-VAEs-and-KL-Divergence" class="headerlink" title="Variational Autoencoders (VAEs) and KL Divergence"></a>Variational Autoencoders (VAEs) and KL Divergence</h3><p>Imagine you have a machine that tries to guess which toys you might pull out of a box based on previous toys. VAEs are like that machine—they learn patterns to predict what comes next.</p>
-<p>The KL Divergence (Kullback-Leibler Divergence) is a way for the machine to measure how different its guesses (predictions) are from what actually happens. It helps the machine get better by adjusting its guesses to be more like what it observes.</p>
-<h3 id="How-They-Relate"><a href="#How-They-Relate" class="headerlink" title="How They Relate"></a>How They Relate</h3><ul>
-<li><strong>Mutual Information:</strong> Helps understand how related different pieces of data are, like words in a sentence.</li>
-<li><strong>Wappmi:</strong> Uses the idea of mutual information to find strong word pairings in text.</li>
-<li><strong>VAE:</strong> Tries to model data (like sentences) to understand it better.</li>
-<li><strong>KL Divergence:</strong> Helps the VAE improve its understanding by comparing its guesses to reality and adjusting accordingly.</li>
+<p>$$ f(\mathbf{x}) \approx f(\mathbf{a}) + J(\mathbf{a})(\mathbf{x} - \mathbf{a}) $$</p>
+<p>  where $\mathbf{x}$ and $\mathbf{a}$ are vectors (like coordinates), and $J(\mathbf{a})$ is the Jacobian matrix at $\mathbf{a}$.</p>
+<p><strong>What this means:</strong></p>
+<ul>
+<li>The Jacobian matrix $J(\mathbf{a})$ captures how the function changes in all directions from the point $\mathbf{a}$.</li>
+<li>The term $J(\mathbf{a})(\mathbf{x} - \mathbf{a})$ is like a multi-dimensional linear approximation, showing how small changes in inputs affect the outputs.</li>
 </ul>
-<h3 id="Example-Code-Walkthrough"><a href="#Example-Code-Walkthrough" class="headerlink" title="Example Code Walkthrough"></a>Example Code Walkthrough</h3><p>Let’s imagine you have a simple code where you’re trying to guess if two words often appear together:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_stats</span>(<span class="params">vocab</span>):</span><br><span class="line">    pairs = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    <span class="keyword">for</span> word, freq <span class="keyword">in</span> vocab.items():</span><br><span class="line">        symbols = word.split()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(symbols) - <span class="number">1</span>):</span><br><span class="line">            pairs[symbols[i], symbols[i + <span class="number">1</span>]] += freq</span><br><span class="line">    <span class="keyword">return</span> pairs</span><br><span class="line"></span><br><span class="line">vocab = &#123;<span class="string">&#x27;new&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;news&#x27;</span>: <span class="number">6</span>, <span class="string">&#x27;newer&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line">pairs = get_stats(vocab)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(pairs)</span><br></pre></td></tr></table></figure>
-
-<p>This code checks how often pairs of words (or symbols) appear together. If “new” and “news” show up together a lot, the program will tell you. This is similar to how Wappmi works.</p>
-<p>In a VAE, you might use something like KL divergence to measure how far off your model’s guesses are from reality, then adjust it to improve. The model might then get better at understanding the relationships between words (like mutual information).</p>
-<p>This approach helps in building smarter models that can understand and predict data more accurately.</p>
-<h3 id="Simple-code-demonstration-of-each-one-of-them"><a href="#Simple-code-demonstration-of-each-one-of-them" class="headerlink" title="Simple code demonstration of each one of them"></a>Simple code demonstration of each one of them</h3><h3 id="1-Mutual-Information"><a href="#1-Mutual-Information" class="headerlink" title="1. Mutual Information"></a>1. <strong>Mutual Information</strong></h3><p><strong>Concept</strong>:<br>Mutual Information (MI) measures how much knowing one random variable reduces uncertainty about another. It quantifies the “shared information” between two variables.</p>
-<p><strong>Code Example</strong>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mutual_info_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example data</span></span><br><span class="line">X = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">Y = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate mutual information</span></span><br><span class="line">mi = mutual_info_score(X, Y)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Mutual Information: <span class="subst">&#123;mi&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>Explanation</strong>:<br>In this example, <code>mutual_info_score</code> from <code>sklearn</code> calculates the MI between two lists <code>X</code> and <code>Y</code>. MI quantifies how much knowing <code>X</code> helps predict <code>Y</code>.</p>
-<h3 id="2-WAPPMI-Weighted-Average-Pointwise-Mutual-Information"><a href="#2-WAPPMI-Weighted-Average-Pointwise-Mutual-Information" class="headerlink" title="2. WAPPMI (Weighted Average Pointwise Mutual Information)"></a>2. <strong>WAPPMI (Weighted Average Pointwise Mutual Information)</strong></h3><p><strong>Concept</strong>:<br>WAPPMI is used in NLP to find out how often words co-occur in a text corpus beyond what would be expected by chance. It gives more weight to frequently co-occurring pairs.</p>
-<p><strong>Code Example</strong>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pmi</span>(<span class="params">x, y, corpus</span>):</span><br><span class="line">    px = corpus.count(x) / <span class="built_in">len</span>(corpus)</span><br><span class="line">    py = corpus.count(y) / <span class="built_in">len</span>(corpus)</span><br><span class="line">    pxy = corpus.count(x + <span class="string">&#x27; &#x27;</span> + y) / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> math.log(pxy / (px * py), <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">corpus = <span class="string">&quot;this is a simple corpus with some simple words in this simple text&quot;</span></span><br><span class="line">pairs = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example calculation</span></span><br><span class="line">words = corpus.split()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(words) - <span class="number">1</span>):</span><br><span class="line">    pairs[(words[i], words[i + <span class="number">1</span>])] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pair, freq <span class="keyword">in</span> pairs.items():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;PMI(<span class="subst">&#123;pair&#125;</span>): <span class="subst">&#123;pmi(pair[<span class="number">0</span>], pair[<span class="number">1</span>], corpus)&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>Explanation</strong>:<br>The PMI function calculates the pointwise mutual information between word pairs in the <code>corpus</code>. WAPPMI extends this by weighting these values.</p>
-<h3 id="3-Variational-Autoencoder-VAE"><a href="#3-Variational-Autoencoder-VAE" class="headerlink" title="3. Variational Autoencoder (VAE)"></a>3. <strong>Variational Autoencoder (VAE)</strong></h3><p><strong>Concept</strong>:<br>VAEs are used to generate data that’s similar to a given dataset. They work by learning a probabilistic model of the data and then sampling from it.</p>
-<p><strong>Code Example</strong>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VAE</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_dim, hidden_dim, z_dim</span>):</span><br><span class="line">        <span class="built_in">super</span>(VAE, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.encoder = nn.Sequential(</span><br><span class="line">            nn.Linear(input_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, z_dim * <span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.decoder = nn.Sequential(</span><br><span class="line">            nn.Linear(z_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, input_dim),</span><br><span class="line">            nn.Sigmoid()</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        mu_logvar = <span class="variable language_">self</span>.encoder(x)</span><br><span class="line">        mu, logvar = mu_logvar.chunk(<span class="number">2</span>, dim=-<span class="number">1</span>)</span><br><span class="line">        std = torch.exp(<span class="number">0.5</span> * logvar)</span><br><span class="line">        z = mu + std * torch.randn_like(std)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.decoder(z), mu, logvar</span><br><span class="line"></span><br><span class="line"><span class="comment"># Instantiate and run the model</span></span><br><span class="line">vae = VAE(input_dim=<span class="number">784</span>, hidden_dim=<span class="number">400</span>, z_dim=<span class="number">20</span>)</span><br><span class="line">sample_input = torch.randn((<span class="number">64</span>, <span class="number">784</span>))</span><br><span class="line">output, mu, logvar = vae(sample_input)</span><br></pre></td></tr></table></figure>
-
-<p><strong>Explanation</strong>:<br>The VAE class in this example defines an encoder and decoder. The encoder outputs a mean (<code>mu</code>) and log-variance (<code>logvar</code>) for a latent variable <code>z</code>. The decoder reconstructs the input data from <code>z</code>. The KL divergence between the latent distribution and a normal distribution helps regularize the model.</p>
-<h3 id="4-KL-Divergence"><a href="#4-KL-Divergence" class="headerlink" title="4. KL Divergence"></a>4. <strong>KL Divergence</strong></h3><p><strong>Concept</strong>:<br>KL Divergence measures how one probability distribution diverges from a second, expected probability distribution. It’s used in VAEs to ensure that the latent variables follow a desired distribution (usually a Gaussian).</p>
-<p><strong>Code Example</strong>:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="comment"># KL Divergence between the prior (standard normal) and the approximate posterior (q(z|x))</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">kl_divergence</span>(<span class="params">mu, logvar</span>):</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">0.5</span> * torch.<span class="built_in">sum</span>(<span class="number">1</span> + logvar - mu.<span class="built_in">pow</span>(<span class="number">2</span>) - logvar.exp())</span><br><span class="line"></span><br><span class="line">mu = torch.zeros(<span class="number">64</span>, <span class="number">20</span>)</span><br><span class="line">logvar = torch.zeros(<span class="number">64</span>, <span class="number">20</span>)</span><br><span class="line">kl = kl_divergence(mu, logvar)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;KL Divergence: <span class="subst">&#123;kl&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>Explanation</strong>:<br>This code calculates the KL Divergence for a batch of latent variables with <code>mu</code> and <code>logvar</code> as parameters. It shows how much the approximate posterior (the learned distribution) diverges from the prior (standard normal distribution).</p>
-<h3 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison:"></a><strong>Comparison</strong>:</h3><ul>
-<li><strong>Mutual Information</strong> tells us how much knowing one variable helps us know another.</li>
-<li><strong>WAPPMI</strong> applies this idea to words in text, showing how often they appear together.</li>
-<li><strong>VAEs</strong> are generative models that learn to create data similar to a training set. They use <strong>KL Divergence</strong> to ensure the generated data follows a specific distribution.</li>
-</ul>
-<p><strong>Overall</strong>, these concepts are connected through their use in understanding and modeling the relationships within data, whether through measuring information (MI, WAPPMI) or generating and adjusting data distributions (VAEs, KL Divergence).</p>
+<p>In summary, the Jacobian matrix gives you a snapshot of how changes in inputs affect outputs for functions with multiple variables. The Taylor expansion uses this information (and higher-order derivatives) to build an approximation of the function near a specific point.</p>
 ]]></content>
       <categories>
         <category>Math</category>
       </categories>
       <tags>
-        <tag>nlp-theories</tag>
+        <tag>math</tag>
+        <tag>determinism</tag>
       </tags>
   </entry>
   <entry>
-    <title>Modern NLP</title>
+    <title>Contemporary NLP</title>
     <url>/nlp-docs/2024/08/13/mdn-nlp/</url>
     <content><![CDATA[<h3 id="Introduction-to-Contemporary-NLP"><a href="#Introduction-to-Contemporary-NLP" class="headerlink" title="Introduction to Contemporary NLP"></a>Introduction to Contemporary NLP</h3><p><span class="label label-danger">Q</span> What is the importance of psychological concepts in NLP?</p>
 <p><span class="label label-success">A</span> To understand modern natural language processing (NLP), it’s essential to draw inferences from crucial psychological concepts like the <strong>Language of Thought Hypothesis</strong> and the <strong>Representational Theory of Mind</strong>. These concepts help explain how our brain processes and produces language and mental representations, which are foundational for NLP.</p>
@@ -890,23 +752,141 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
-    <title>Intro &amp; Overview</title>
-    <url>/nlp-docs/2024/07/11/place-holder/</url>
-    <content><![CDATA[<h1 id="Hello-There-Welcome-To-This-Blog"><a href="#Hello-There-Welcome-To-This-Blog" class="headerlink" title="Hello There! Welcome To This Blog."></a><span id="title-intro">Hello There! Welcome To This Blog.</span></h1><p>I’m Shiyi. I’m deeply passionate about the intricate dance between data and innovation. With a fervent zeal for leveraging technology to extract insights and create a meaningful impact, I’ve embarked on a journey that spans the realms of Data Science, research, and creative expression.</p>
-<p><span class="label label-danger">Q</span> What drives my work in Data Science and Machine Learning?</span></p>
-<p><span class="label label-success">A</span> At the heart of my endeavors lies a profound appreciation for machine learning, deep learning, and Natural Language Processing. As an advocate for data-driven decision-making, I thrive on unraveling the complexities of algorithms and patterns, harnessing their power to transform raw data into actionable intelligence. From predictive modeling in finance to image recognition tasks using deep learning architectures, I relish the challenge of pushing the boundaries of what’s possible with data.</p>
-<p><span class="label label-danger">Q</span> What is my expertise in Natural Language Processing?</span></p>
-<p><span class="label label-success">A</span> My expertise extends to the captivating domain of Natural Language Processing. In an era inundated with information, I’m committed to empowering systems to understand, analyze, and generate insights from vast textual data. Whether it’s sentiment analysis to decipher the mood of social media conversations or language translation to bridge communication gaps, I’m fascinated by the potential of NLP to revolutionize how we interact with language.</p>
-<p><span class="label label-danger">Q</span> How do I combine creativity with my data-driven work?</span></p>
-<p><span class="label label-success">A</span> My passion for crafting extends beyond the digital realm to embrace a hands-on approach to creativity. From knitting intricate patterns inspired by my rabbit’s playful nature to sketching designed to stimulate curiosity and exploration, I find immense fulfillment in blending data-driven insights with the artistry of crafting.</p>
-<p><span class="label label-danger">Q</span> What is the essence of my journey?</span></p>
-<p><span class="label label-success">A</span> In essence, my journey is defined by a relentless pursuit of innovation, fueled by the boundless possibilities that arise at the nexus of data, creativity, and companionship. With each endeavor, I strive to push the boundaries of what’s possible, shaping a future where technology not only empowers but also enriches our lives in meaningful and unexpected ways. To channel such a passion, I created this blog to document the things I find helpful and important in understanding some of the most crucial concepts. I hope in such a format, I can grow with you or someone who is interested in learning these cool things.</p>
-<p><span class="label label-danger">Q</span> Is this the only blog? </span></p>
-<p><span class="label label-success">A</span> I have also created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech &amp; language processing, and computational linguistics to provide more context.</p>
-<h4></h4>
+    <title>Mutual Information</title>
+    <url>/nlp-docs/2024/08/03/mutual-info/</url>
+    <content><![CDATA[<h3 id="More-on-Mutual-Information"><a href="#More-on-Mutual-Information" class="headerlink" title="More on Mutual Information"></a>More on Mutual Information</h3><p>Below is the code for WAPMI or the Weighted Average Point-wise Mutual Information. And this code measures the distance between two probabilities distributions.</p>
+<p>It is a method used in computational linguistics to measure the strength of association between words in a given context, typically in the analysis of text data.</p>
+<p>Imagine you have a box of different colored marbles, and you want to know which colors tend to appear together. WAPMI helps you figure out how often certain words (or colors) appear together more often than by random chance. It’s like a smart way to understand word relationships in sentences!</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi</span>(<span class="params">word1, word2, joint_prob, marginal_prob1, marginal_prob2</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the point-wise mutual information (PMI) between two words.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param joint_prob: The joint probability of the two words</span></span><br><span class="line"><span class="string">    :param marginal_prob1: The marginal probability of the first word</span></span><br><span class="line"><span class="string">    :param marginal_prob2: The marginal probability of the second word</span></span><br><span class="line"><span class="string">    :return: The PMI score</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi = math.log(joint_prob / (marginal_prob1 * marginal_prob2), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> pmi</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_joint_prob</span>(<span class="params">word1, word2, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the joint probability of two words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The joint probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    joint_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word1 <span class="keyword">in</span> sentence <span class="keyword">and</span> word2 <span class="keyword">in</span> sentence:</span><br><span class="line">            joint_count += <span class="number">1</span></span><br><span class="line">    joint_prob = joint_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> joint_prob</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_marginal_prob</span>(<span class="params">word, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the marginal probability of a word in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word: The word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The marginal probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    word_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_count += <span class="number">1</span></span><br><span class="line">    marginal_prob = word_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> marginal_prob</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi_corpus</span>(<span class="params">corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the PMI scores for all pairs of words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: A dictionary of PMI scores</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi_scores = &#123;&#125;</span><br><span class="line">    word_counts = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_counts[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> word1 <span class="keyword">in</span> word_counts:</span><br><span class="line">        <span class="keyword">for</span> word2 <span class="keyword">in</span> word_counts:</span><br><span class="line">            <span class="keyword">if</span> word1 != word2:</span><br><span class="line">                joint_prob = calculate_joint_prob(word1, word2, corpus)</span><br><span class="line">                marginal_prob1 = calculate_marginal_prob(word1, corpus)</span><br><span class="line">                marginal_prob2 = calculate_marginal_prob(word2, corpus)</span><br><span class="line">                pmi = calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2)</span><br><span class="line">                pmi_scores[(word1, word2)] = pmi</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pmi_scores</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example usage</span></span><br><span class="line">corpus = [</span><br><span class="line">    [<span class="string">&quot;this&quot;</span>, <span class="string">&quot;is&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;sheep&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">pmi_scores = calculate_pmi_corpus(corpus)</span><br><span class="line"><span class="built_in">print</span>(pmi_scores)</span><br></pre></td></tr></table></figure>
+
+<p>A walkthrough of the code part by part.</p>
+<h3 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a><strong>Imports</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> collections</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>import math</code></strong>: Imports the <code>math</code> module, which provides mathematical functions such as logarithms.</li>
+<li><strong><code>import collections</code></strong>: Imports the <code>collections</code> module, which provides specialized container datatypes, like <code>defaultdict</code>.</li>
+</ul>
+<h3 id="Function-Definitions"><a href="#Function-Definitions" class="headerlink" title="Function Definitions"></a><strong>Function Definitions</strong></h3><h4 id="1-calculate-pmi-Function"><a href="#1-calculate-pmi-Function" class="headerlink" title="1. calculate_pmi Function"></a><strong>1. <code>calculate_pmi</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi</span>(<span class="params">word1, word2, joint_prob, marginal_prob1, marginal_prob2</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the point-wise mutual information (PMI) between two words.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param joint_prob: The joint probability of the two words</span></span><br><span class="line"><span class="string">    :param marginal_prob1: The marginal probability of the first word</span></span><br><span class="line"><span class="string">    :param marginal_prob2: The marginal probability of the second word</span></span><br><span class="line"><span class="string">    :return: The PMI score</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi = math.log(joint_prob / (marginal_prob1 * marginal_prob2), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> pmi</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Purpose</strong>: Calculates the Pointwise Mutual Information (PMI) score between two words.</li>
+<li><strong>Parameters</strong>:<ul>
+<li><code>word1</code> and <code>word2</code>: Words for which PMI is calculated.</li>
+<li><code>joint_prob</code>: Probability of both words appearing together.</li>
+<li><code>marginal_prob1</code>: Probability of <code>word1</code> appearing.</li>
+<li><code>marginal_prob2</code>: Probability of <code>word2</code> appearing.</li>
+</ul>
+</li>
+<li><strong><code>pmi</code> Calculation</strong>:<ul>
+<li><code>math.log(joint_prob / (marginal_prob1 * marginal_prob2), 2)</code>: Computes the logarithm (base 2) of the ratio of the joint probability to the product of the marginal probabilities.</li>
+</ul>
+</li>
+<li><strong>Returns</strong>: PMI score.</li>
+</ul>
+<h4 id="2-calculate-joint-prob-Function"><a href="#2-calculate-joint-prob-Function" class="headerlink" title="2. calculate_joint_prob Function"></a><strong>2. <code>calculate_joint_prob</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_joint_prob</span>(<span class="params">word1, word2, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the joint probability of two words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word1: The first word</span></span><br><span class="line"><span class="string">    :param word2: The second word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The joint probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    joint_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word1 <span class="keyword">in</span> sentence <span class="keyword">and</span> word2 <span class="keyword">in</span> sentence:</span><br><span class="line">            joint_count += <span class="number">1</span></span><br><span class="line">    joint_prob = joint_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> joint_prob</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Purpose</strong>: Calculates the joint probability of two words appearing together in the same sentence.</li>
+<li><strong>Parameters</strong>:<ul>
+<li><code>word1</code> and <code>word2</code>: Words to check.</li>
+<li><code>corpus</code>: List of sentences (each sentence is a list of words).</li>
+</ul>
+</li>
+<li><strong><code>joint_count</code></strong>: Counts how many sentences contain both <code>word1</code> and <code>word2</code>.</li>
+<li><strong><code>joint_prob</code> Calculation</strong>: Divides <code>joint_count</code> by the total number of sentences to get the joint probability.</li>
+<li><strong>Returns</strong>: Joint probability of the two words.</li>
+</ul>
+<h4 id="3-calculate-marginal-prob-Function"><a href="#3-calculate-marginal-prob-Function" class="headerlink" title="3. calculate_marginal_prob Function"></a><strong>3. <code>calculate_marginal_prob</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_marginal_prob</span>(<span class="params">word, corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the marginal probability of a word in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param word: The word</span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: The marginal probability</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    word_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_count += <span class="number">1</span></span><br><span class="line">    marginal_prob = word_count / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> marginal_prob</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Purpose</strong>: Calculates the marginal probability of a single word.</li>
+<li><strong>Parameters</strong>:<ul>
+<li><code>word</code>: The word for which probability is calculated.</li>
+<li><code>corpus</code>: List of sentences.</li>
+</ul>
+</li>
+<li><strong><code>word_count</code></strong>: Counts how many sentences contain <code>word</code>.</li>
+<li><strong><code>marginal_prob</code> Calculation</strong>: Divides <code>word_count</code> by the total number of sentences to get the marginal probability.</li>
+<li><strong>Returns</strong>: Marginal probability of the word.</li>
+</ul>
+<h4 id="4-calculate-pmi-corpus-Function"><a href="#4-calculate-pmi-corpus-Function" class="headerlink" title="4. calculate_pmi_corpus Function"></a><strong>4. <code>calculate_pmi_corpus</code> Function</strong></h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_pmi_corpus</span>(<span class="params">corpus</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Calculate the PMI scores for all pairs of words in a corpus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param corpus: The corpus of text</span></span><br><span class="line"><span class="string">    :return: A dictionary of PMI scores</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    pmi_scores = &#123;&#125;</span><br><span class="line">    word_counts = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    <span class="keyword">for</span> sentence <span class="keyword">in</span> corpus:</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> sentence:</span><br><span class="line">            word_counts[word] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> word1 <span class="keyword">in</span> word_counts:</span><br><span class="line">        <span class="keyword">for</span> word2 <span class="keyword">in</span> word_counts:</span><br><span class="line">            <span class="keyword">if</span> word1 != word2:</span><br><span class="line">                joint_prob = calculate_joint_prob(word1, word2, corpus)</span><br><span class="line">                marginal_prob1 = calculate_marginal_prob(word1, corpus)</span><br><span class="line">                marginal_prob2 = calculate_marginal_prob(word2, corpus)</span><br><span class="line">                pmi = calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2)</span><br><span class="line">                pmi_scores[(word1, word2)] = pmi</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pmi_scores</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Purpose</strong>: Calculates PMI scores for all pairs of words in the corpus.</li>
+<li><strong>Parameters</strong>:<ul>
+<li><code>corpus</code>: List of sentences.</li>
+</ul>
+</li>
+<li><strong><code>word_counts</code></strong>: A <code>defaultdict</code> to count occurrences of each word.</li>
+<li><strong>Count Words</strong>: Iterates over each sentence to count occurrences of each word.</li>
+<li><strong>Compute PMI</strong>:<ul>
+<li>Iterates over all pairs of words (excluding pairs where <code>word1</code> is the same as <code>word2</code>).</li>
+<li>Calculates joint and marginal probabilities, then computes PMI for each pair.</li>
+</ul>
+</li>
+<li><strong>Returns</strong>: A dictionary of PMI scores for all word pairs.</li>
+</ul>
+<h3 id="Example-Usage"><a href="#Example-Usage" class="headerlink" title="Example Usage"></a><strong>Example Usage</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">corpus = [</span><br><span class="line">    [<span class="string">&quot;this&quot;</span>, <span class="string">&quot;is&quot;</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="string">&quot;sheep&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;sheep&quot;</span>, <span class="string">&quot;bar&quot;</span>, <span class="string">&quot;black&quot;</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">pmi_scores = calculate_pmi_corpus(corpus)</span><br><span class="line"><span class="built_in">print</span>(pmi_scores)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Purpose</strong>: Runs the PMI calculations on a sample corpus and prints the PMI scores for all word pairs.</li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a><strong>Summary</strong></h3><ul>
+<li><strong><code>calculate_pmi</code></strong> computes PMI given probabilities.</li>
+<li><strong><code>calculate_joint_prob</code></strong> finds how often two words appear together.</li>
+<li><strong><code>calculate_marginal_prob</code></strong> finds how often one word appears.</li>
+<li><strong><code>calculate_pmi_corpus</code></strong> calculates PMI for all word pairs in a corpus.</li>
+</ul>
+<p>This code helps measure how strongly two words are associated compared to what you would expect by chance.</p>
+<h3 id="Comparing-Mutural-Informaiton-WAPMI-VAE-and-KL-Divergence"><a href="#Comparing-Mutural-Informaiton-WAPMI-VAE-and-KL-Divergence" class="headerlink" title="Comparing Mutural Informaiton, WAPMI, VAE, and KL Divergence."></a>Comparing Mutural Informaiton, WAPMI, VAE, and KL Divergence.</h3><p>Let’s break down Wappmi, mutual information, and how they relate to Variational Autoencoders (VAEs) and KL divergence in simple terms, like you’re five.</p>
+<h3 id="Mutual-Information"><a href="#Mutual-Information" class="headerlink" title="Mutual Information"></a>Mutual Information</h3><p>Imagine you have two sets of toys, and you want to know how much one set tells you about the other. Mutual information is a way to measure how much knowing about one set of toys helps you predict what’s in the other set. If you always find a red truck when you find a blue car, that’s high mutual information.</p>
+<h3 id="Wappmi-Weighted-Average-Prediction-Pointwise-Mutual-Information"><a href="#Wappmi-Weighted-Average-Prediction-Pointwise-Mutual-Information" class="headerlink" title="Wappmi (Weighted Average Prediction Pointwise Mutual Information)"></a>Wappmi (Weighted Average Prediction Pointwise Mutual Information)</h3><p>Now, Wappmi takes this idea of mutual information and looks at words in sentences. It asks, “How often do these words appear together, and is it more than just by chance?” It’s like seeing if certain toys always end up next to each other more than they would randomly.</p>
+<h3 id="Variational-Autoencoders-VAEs-and-KL-Divergence"><a href="#Variational-Autoencoders-VAEs-and-KL-Divergence" class="headerlink" title="Variational Autoencoders (VAEs) and KL Divergence"></a>Variational Autoencoders (VAEs) and KL Divergence</h3><p>Imagine you have a machine that tries to guess which toys you might pull out of a box based on previous toys. VAEs are like that machine—they learn patterns to predict what comes next.</p>
+<p>The KL Divergence (Kullback-Leibler Divergence) is a way for the machine to measure how different its guesses (predictions) are from what actually happens. It helps the machine get better by adjusting its guesses to be more like what it observes.</p>
+<h3 id="How-They-Relate"><a href="#How-They-Relate" class="headerlink" title="How They Relate"></a>How They Relate</h3><ul>
+<li><strong>Mutual Information:</strong> Helps understand how related different pieces of data are, like words in a sentence.</li>
+<li><strong>Wappmi:</strong> Uses the idea of mutual information to find strong word pairings in text.</li>
+<li><strong>VAE:</strong> Tries to model data (like sentences) to understand it better.</li>
+<li><strong>KL Divergence:</strong> Helps the VAE improve its understanding by comparing its guesses to reality and adjusting accordingly.</li>
+</ul>
+<h3 id="Example-Code-Walkthrough"><a href="#Example-Code-Walkthrough" class="headerlink" title="Example Code Walkthrough"></a>Example Code Walkthrough</h3><p>Let’s imagine you have a simple code where you’re trying to guess if two words often appear together:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_stats</span>(<span class="params">vocab</span>):</span><br><span class="line">    pairs = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    <span class="keyword">for</span> word, freq <span class="keyword">in</span> vocab.items():</span><br><span class="line">        symbols = word.split()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(symbols) - <span class="number">1</span>):</span><br><span class="line">            pairs[symbols[i], symbols[i + <span class="number">1</span>]] += freq</span><br><span class="line">    <span class="keyword">return</span> pairs</span><br><span class="line"></span><br><span class="line">vocab = &#123;<span class="string">&#x27;new&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;news&#x27;</span>: <span class="number">6</span>, <span class="string">&#x27;newer&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line">pairs = get_stats(vocab)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(pairs)</span><br></pre></td></tr></table></figure>
+
+<p>This code checks how often pairs of words (or symbols) appear together. If “new” and “news” show up together a lot, the program will tell you. This is similar to how Wappmi works.</p>
+<p>In a VAE, you might use something like KL divergence to measure how far off your model’s guesses are from reality, then adjust it to improve. The model might then get better at understanding the relationships between words (like mutual information).</p>
+<p>This approach helps in building smarter models that can understand and predict data more accurately.</p>
+<h3 id="Simple-code-demonstration-of-each-one-of-them"><a href="#Simple-code-demonstration-of-each-one-of-them" class="headerlink" title="Simple code demonstration of each one of them"></a>Simple code demonstration of each one of them</h3><h3 id="1-Mutual-Information"><a href="#1-Mutual-Information" class="headerlink" title="1. Mutual Information"></a>1. <strong>Mutual Information</strong></h3><p><strong>Concept</strong>:<br>Mutual Information (MI) measures how much knowing one random variable reduces uncertainty about another. It quantifies the “shared information” between two variables.</p>
+<p><strong>Code Example</strong>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mutual_info_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example data</span></span><br><span class="line">X = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">Y = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Calculate mutual information</span></span><br><span class="line">mi = mutual_info_score(X, Y)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Mutual Information: <span class="subst">&#123;mi&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Explanation</strong>:<br>In this example, <code>mutual_info_score</code> from <code>sklearn</code> calculates the MI between two lists <code>X</code> and <code>Y</code>. MI quantifies how much knowing <code>X</code> helps predict <code>Y</code>.</p>
+<h3 id="2-WAPPMI-Weighted-Average-Pointwise-Mutual-Information"><a href="#2-WAPPMI-Weighted-Average-Pointwise-Mutual-Information" class="headerlink" title="2. WAPPMI (Weighted Average Pointwise Mutual Information)"></a>2. <strong>WAPPMI (Weighted Average Pointwise Mutual Information)</strong></h3><p><strong>Concept</strong>:<br>WAPPMI is used in NLP to find out how often words co-occur in a text corpus beyond what would be expected by chance. It gives more weight to frequently co-occurring pairs.</p>
+<p><strong>Code Example</strong>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pmi</span>(<span class="params">x, y, corpus</span>):</span><br><span class="line">    px = corpus.count(x) / <span class="built_in">len</span>(corpus)</span><br><span class="line">    py = corpus.count(y) / <span class="built_in">len</span>(corpus)</span><br><span class="line">    pxy = corpus.count(x + <span class="string">&#x27; &#x27;</span> + y) / <span class="built_in">len</span>(corpus)</span><br><span class="line">    <span class="keyword">return</span> math.log(pxy / (px * py), <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">corpus = <span class="string">&quot;this is a simple corpus with some simple words in this simple text&quot;</span></span><br><span class="line">pairs = collections.defaultdict(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example calculation</span></span><br><span class="line">words = corpus.split()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(words) - <span class="number">1</span>):</span><br><span class="line">    pairs[(words[i], words[i + <span class="number">1</span>])] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pair, freq <span class="keyword">in</span> pairs.items():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;PMI(<span class="subst">&#123;pair&#125;</span>): <span class="subst">&#123;pmi(pair[<span class="number">0</span>], pair[<span class="number">1</span>], corpus)&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Explanation</strong>:<br>The PMI function calculates the pointwise mutual information between word pairs in the <code>corpus</code>. WAPPMI extends this by weighting these values.</p>
+<h3 id="3-Variational-Autoencoder-VAE"><a href="#3-Variational-Autoencoder-VAE" class="headerlink" title="3. Variational Autoencoder (VAE)"></a>3. <strong>Variational Autoencoder (VAE)</strong></h3><p><strong>Concept</strong>:<br>VAEs are used to generate data that’s similar to a given dataset. They work by learning a probabilistic model of the data and then sampling from it.</p>
+<p><strong>Code Example</strong>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VAE</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_dim, hidden_dim, z_dim</span>):</span><br><span class="line">        <span class="built_in">super</span>(VAE, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.encoder = nn.Sequential(</span><br><span class="line">            nn.Linear(input_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, z_dim * <span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        <span class="variable language_">self</span>.decoder = nn.Sequential(</span><br><span class="line">            nn.Linear(z_dim, hidden_dim),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(hidden_dim, input_dim),</span><br><span class="line">            nn.Sigmoid()</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        mu_logvar = <span class="variable language_">self</span>.encoder(x)</span><br><span class="line">        mu, logvar = mu_logvar.chunk(<span class="number">2</span>, dim=-<span class="number">1</span>)</span><br><span class="line">        std = torch.exp(<span class="number">0.5</span> * logvar)</span><br><span class="line">        z = mu + std * torch.randn_like(std)</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.decoder(z), mu, logvar</span><br><span class="line"></span><br><span class="line"><span class="comment"># Instantiate and run the model</span></span><br><span class="line">vae = VAE(input_dim=<span class="number">784</span>, hidden_dim=<span class="number">400</span>, z_dim=<span class="number">20</span>)</span><br><span class="line">sample_input = torch.randn((<span class="number">64</span>, <span class="number">784</span>))</span><br><span class="line">output, mu, logvar = vae(sample_input)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Explanation</strong>:<br>The VAE class in this example defines an encoder and decoder. The encoder outputs a mean (<code>mu</code>) and log-variance (<code>logvar</code>) for a latent variable <code>z</code>. The decoder reconstructs the input data from <code>z</code>. The KL divergence between the latent distribution and a normal distribution helps regularize the model.</p>
+<h3 id="4-KL-Divergence"><a href="#4-KL-Divergence" class="headerlink" title="4. KL Divergence"></a>4. <strong>KL Divergence</strong></h3><p><strong>Concept</strong>:<br>KL Divergence measures how one probability distribution diverges from a second, expected probability distribution. It’s used in VAEs to ensure that the latent variables follow a desired distribution (usually a Gaussian).</p>
+<p><strong>Code Example</strong>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="comment"># KL Divergence between the prior (standard normal) and the approximate posterior (q(z|x))</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">kl_divergence</span>(<span class="params">mu, logvar</span>):</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">0.5</span> * torch.<span class="built_in">sum</span>(<span class="number">1</span> + logvar - mu.<span class="built_in">pow</span>(<span class="number">2</span>) - logvar.exp())</span><br><span class="line"></span><br><span class="line">mu = torch.zeros(<span class="number">64</span>, <span class="number">20</span>)</span><br><span class="line">logvar = torch.zeros(<span class="number">64</span>, <span class="number">20</span>)</span><br><span class="line">kl = kl_divergence(mu, logvar)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;KL Divergence: <span class="subst">&#123;kl&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Explanation</strong>:<br>This code calculates the KL Divergence for a batch of latent variables with <code>mu</code> and <code>logvar</code> as parameters. It shows how much the approximate posterior (the learned distribution) diverges from the prior (standard normal distribution).</p>
+<h3 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison:"></a><strong>Comparison</strong>:</h3><ul>
+<li><strong>Mutual Information</strong> tells us how much knowing one variable helps us know another.</li>
+<li><strong>WAPPMI</strong> applies this idea to words in text, showing how often they appear together.</li>
+<li><strong>VAEs</strong> are generative models that learn to create data similar to a training set. They use <strong>KL Divergence</strong> to ensure the generated data follows a specific distribution.</li>
+</ul>
+<p><strong>Overall</strong>, these concepts are connected through their use in understanding and modeling the relationships within data, whether through measuring information (MI, WAPPMI) or generating and adjusting data distributions (VAEs, KL Divergence).</p>
 ]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
       <tags>
-        <tag>intro</tag>
+        <tag>nlp-theories</tag>
       </tags>
   </entry>
   <entry>
@@ -993,6 +973,110 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </categories>
       <tags>
         <tag>semantics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quantifying Beliefs</title>
+    <url>/nlp-docs/2024/09/29/quant-belief/</url>
+    <content><![CDATA[<p>The relationship between <strong>Bayesian conditional probability</strong> and theological discussions, particularly the existence or understanding of God, has been a subject of philosophical and theological debate for centuries. I will first explain the <strong>Bayesian conditional probability equation</strong> in a simple way and then explore how it might relate to theological concepts like belief in God.</p>
+<h3 id="Bayesian-Conditional-Probability"><a href="#Bayesian-Conditional-Probability" class="headerlink" title="Bayesian Conditional Probability"></a><strong>Bayesian Conditional Probability</strong></h3><p>At its core, <strong>Bayes’ Theorem</strong> helps us <strong>update our beliefs</strong> when we receive new evidence. It tells us how likely something is to be true (the <strong>posterior probability</strong>) given what we already believe (the <strong>prior probability</strong>) and the new evidence we observe.</p>
+<p>Bayes’ Theorem is expressed as:</p>
+<p>$$<br>P(A | B) &#x3D; \frac{P(B | A) \cdot P(A)}{P(B)}<br>$$</p>
+<p>Where:</p>
+<ul>
+<li>$ P(A | B) $ is the <strong>posterior probability</strong>: the probability of $ A $ being true given that we observe $ B $.</li>
+<li>$ P(B | A) $ is the <strong>likelihood</strong>: how likely we would be to observe $ B $ if $ A $ is true.</li>
+<li>$ P(A) $ is the <strong>prior probability</strong>: our initial belief about $ A $ before seeing any evidence.</li>
+<li>$ P(B) $ is the <strong>marginal probability</strong>: the total probability of observing $ B $, regardless of whether $ A $ is true or not.</li>
+</ul>
+<p>In essence, <strong>Bayes’ Theorem</strong> helps us <strong>update our beliefs</strong> in the light of new evidence. For example, it is often used in medical diagnostics, where we update the likelihood of a patient having a disease based on new test results.</p>
+<h3 id="Bayesian-Reasoning-and-God"><a href="#Bayesian-Reasoning-and-God" class="headerlink" title="Bayesian Reasoning and God"></a><strong>Bayesian Reasoning and God</strong></h3><p>Now, how does this relate to God or theology?</p>
+<ol>
+<li><p><strong>Belief in God as a Hypothesis</strong>:</p>
+<ul>
+<li>You can think of <strong>belief in God</strong> as the hypothesis $ A $, and some kind of <strong>evidence</strong> as $ B $. This evidence could be anything that people consider relevant, such as personal experiences, miracles, the existence of the universe, or moral values.</li>
+</ul>
+</li>
+<li><p><strong>Prior Probability</strong> $ P(A) $:</p>
+<ul>
+<li>This represents a person’s initial belief about whether God exists before considering the evidence. Different people have different prior probabilities depending on their background, education, culture, and other factors. Some people may have a strong belief in God’s existence (high prior), while others may be more skeptical (low prior).</li>
+</ul>
+</li>
+<li><p><strong>Likelihood</strong> $ P(B | A) $:</p>
+<ul>
+<li>This is the probability of observing the evidence $ B $ if God exists. For example, if the hypothesis is that God exists and the evidence is the fine-tuning of the universe, you would ask: how likely is it that this fine-tuning would exist if God exists?</li>
+</ul>
+</li>
+<li><p><strong>Posterior Probability</strong> $ P(A | B) $:</p>
+<ul>
+<li>After considering the evidence (e.g., personal experiences, philosophical arguments, scientific observations), Bayes’ Theorem helps us calculate the updated probability (posterior) of the hypothesis (i.e., belief in God). This represents how our belief in the existence of God changes after taking the new evidence into account.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Using-Bayes’-Theorem-to-Argue-for-or-Against-God’s-Existence"><a href="#Using-Bayes’-Theorem-to-Argue-for-or-Against-God’s-Existence" class="headerlink" title="Using Bayes’ Theorem to Argue for or Against God’s Existence:"></a><strong>Using Bayes’ Theorem to Argue for or Against God’s Existence</strong>:</h3><p>Bayes’ Theorem has been used in debates both <strong>for</strong> and <strong>against</strong> the existence of God. Here’s how different arguments might be framed using Bayesian reasoning:</p>
+<ol>
+<li><p><strong>Theistic Argument (Evidence Supporting God)</strong>:</p>
+<ul>
+<li>A common theistic argument might use the <strong>fine-tuning</strong> of the universe as the evidence $ B $. Proponents argue that the existence of such precise conditions for life is much more likely if God exists (high $ P(B | A) $) than if God does not exist (low $ P(B) $).</li>
+<li>If we assign a reasonable prior probability $ P(A) $ to God’s existence, then the posterior probability $ P(A | B) $ might be higher after considering the evidence.</li>
+</ul>
+</li>
+<li><p><strong>Atheistic Argument (Evidence Against God)</strong>:</p>
+<ul>
+<li>On the other hand, someone skeptical of the existence of God might point to the <strong>problem of evil</strong> as evidence $ B $. They could argue that the existence of so much suffering and evil in the world is more likely if God does not exist than if He does (i.e., $ P(B | A) $ is low if God exists).</li>
+<li>This would reduce the posterior probability $ P(A | B) $, leading to a lower belief in God’s existence after considering the evidence of evil.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Bayesian-Belief-and-Faith"><a href="#Bayesian-Belief-and-Faith" class="headerlink" title="Bayesian Belief and Faith:"></a><strong>Bayesian Belief and Faith</strong>:</h3><p>It’s important to note that while <strong>Bayesian reasoning</strong> is a powerful tool for updating beliefs in light of evidence, religious belief often involves elements of <strong>faith</strong> that may not be easily reducible to probabilistic reasoning. Faith can involve trust, personal experiences, and relationships that go beyond mere empirical evidence.</p>
+<ul>
+<li><strong>Faith</strong> might be seen as an area where prior beliefs are so strong that evidence $ B $ doesn’t significantly shift the posterior probability. For example, for a devout person, negative evidence might have little effect on belief in God because their prior probability $ P(A) $ is so high.</li>
+</ul>
+<h3 id="Limitations-of-Bayesian-Reasoning-in-Theological-Contexts"><a href="#Limitations-of-Bayesian-Reasoning-in-Theological-Contexts" class="headerlink" title="Limitations of Bayesian Reasoning in Theological Contexts:"></a><strong>Limitations of Bayesian Reasoning in Theological Contexts</strong>:</h3><ol>
+<li><p><strong>Subjectivity of Priors</strong>:</p>
+<ul>
+<li>The choice of the <strong>prior probability</strong> $ P(A) $ (belief in God before evidence) is subjective and varies significantly between individuals. What one person considers a strong prior (e.g., due to cultural or personal reasons) might be weak for another.</li>
+</ul>
+</li>
+<li><p><strong>Interpretation of Evidence</strong>:</p>
+<ul>
+<li>Evidence $ B $ can also be interpreted differently. For example, a natural disaster might be seen by some as evidence against God (because of suffering), while others might interpret it as a test of faith or part of a divine plan.</li>
+</ul>
+</li>
+<li><p><strong>Non-empirical Nature of Religious Experience</strong>:</p>
+<ul>
+<li>Many aspects of religious belief, such as spiritual experiences or faith in sacred texts, may not be directly quantifiable in the same way that physical or scientific evidence is.</li>
+</ul>
+</li>
+</ol>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion:"></a>Conclusion:</h3><p>Bayesian conditional probability provides a <strong>formal way to update beliefs</strong> based on new evidence, and it can certainly be applied to discussions about the existence of God. However, the Bayesian framework relies heavily on <strong>subjective priors</strong> and how evidence is interpreted, which can vary greatly among individuals. While it can be a useful tool in philosophical debates about God’s existence, belief in God often transcends empirical evidence and enters the realm of <strong>faith</strong>, which might not fit neatly into a probabilistic model.</p>
+]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>determinism</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intro &amp; Overview</title>
+    <url>/nlp-docs/2024/07/11/place-holder/</url>
+    <content><![CDATA[<h1 id="Hello-There-Welcome-To-This-Blog"><a href="#Hello-There-Welcome-To-This-Blog" class="headerlink" title="Hello There! Welcome To This Blog."></a><span id="title-intro">Hello There! Welcome To This Blog.</span></h1><p>I’m Shiyi. I’m deeply passionate about the intricate dance between data and innovation. With a fervent zeal for leveraging technology to extract insights and create a meaningful impact, I’ve embarked on a journey that spans the realms of Data Science, research, and creative expression.</p>
+<p><span class="label label-danger">Q</span> What drives my work in Data Science and Machine Learning?</span></p>
+<p><span class="label label-success">A</span> At the heart of my endeavors lies a profound appreciation for machine learning, deep learning, and Natural Language Processing. As an advocate for data-driven decision-making, I thrive on unraveling the complexities of algorithms and patterns, harnessing their power to transform raw data into actionable intelligence. From predictive modeling in finance to image recognition tasks using deep learning architectures, I relish the challenge of pushing the boundaries of what’s possible with data.</p>
+<p><span class="label label-danger">Q</span> What is my expertise in Natural Language Processing?</span></p>
+<p><span class="label label-success">A</span> My expertise extends to the captivating domain of Natural Language Processing. In an era inundated with information, I’m committed to empowering systems to understand, analyze, and generate insights from vast textual data. Whether it’s sentiment analysis to decipher the mood of social media conversations or language translation to bridge communication gaps, I’m fascinated by the potential of NLP to revolutionize how we interact with language.</p>
+<p><span class="label label-danger">Q</span> How do I combine creativity with my data-driven work?</span></p>
+<p><span class="label label-success">A</span> My passion for crafting extends beyond the digital realm to embrace a hands-on approach to creativity. From knitting intricate patterns inspired by my rabbit’s playful nature to sketching designed to stimulate curiosity and exploration, I find immense fulfillment in blending data-driven insights with the artistry of crafting.</p>
+<p><span class="label label-danger">Q</span> What is the essence of my journey?</span></p>
+<p><span class="label label-success">A</span> In essence, my journey is defined by a relentless pursuit of innovation, fueled by the boundless possibilities that arise at the nexus of data, creativity, and companionship. With each endeavor, I strive to push the boundaries of what’s possible, shaping a future where technology not only empowers but also enriches our lives in meaningful and unexpected ways. To channel such a passion, I created this blog to document the things I find helpful and important in understanding some of the most crucial concepts. I hope in such a format, I can grow with you or someone who is interested in learning these cool things.</p>
+<p><span class="label label-danger">Q</span> Is this the only blog? </span></p>
+<p><span class="label label-success">A</span> I have also created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech &amp; language processing, and computational linguistics to provide more context.</p>
+<h4></h4>
+]]></content>
+      <tags>
+        <tag>intro</tag>
       </tags>
   </entry>
   <entry>
@@ -1314,90 +1398,6 @@ $$ \text{Jacobian} = \begin{pmatrix}
 ]]></content>
       <tags>
         <tag>math</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Quantifying Belief Systems</title>
-    <url>/nlp-docs/2024/07/17/quant-belief/</url>
-    <content><![CDATA[<p>The relationship between <strong>Bayesian conditional probability</strong> and theological discussions, particularly the existence or understanding of God, has been a subject of philosophical and theological debate for centuries. I will first explain the <strong>Bayesian conditional probability equation</strong> in a simple way and then explore how it might relate to theological concepts like belief in God.</p>
-<h3 id="Bayesian-Conditional-Probability"><a href="#Bayesian-Conditional-Probability" class="headerlink" title="Bayesian Conditional Probability"></a><strong>Bayesian Conditional Probability</strong></h3><p>At its core, <strong>Bayes’ Theorem</strong> helps us <strong>update our beliefs</strong> when we receive new evidence. It tells us how likely something is to be true (the <strong>posterior probability</strong>) given what we already believe (the <strong>prior probability</strong>) and the new evidence we observe.</p>
-<p>Bayes’ Theorem is expressed as:</p>
-<p>$$<br>P(A | B) &#x3D; \frac{P(B | A) \cdot P(A)}{P(B)}<br>$$</p>
-<p>Where:</p>
-<ul>
-<li>$ P(A | B) $ is the <strong>posterior probability</strong>: the probability of $ A $ being true given that we observe $ B $.</li>
-<li>$ P(B | A) $ is the <strong>likelihood</strong>: how likely we would be to observe $ B $ if $ A $ is true.</li>
-<li>$ P(A) $ is the <strong>prior probability</strong>: our initial belief about $ A $ before seeing any evidence.</li>
-<li>$ P(B) $ is the <strong>marginal probability</strong>: the total probability of observing $ B $, regardless of whether $ A $ is true or not.</li>
-</ul>
-<p>In essence, <strong>Bayes’ Theorem</strong> helps us <strong>update our beliefs</strong> in the light of new evidence. For example, it is often used in medical diagnostics, where we update the likelihood of a patient having a disease based on new test results.</p>
-<h3 id="Bayesian-Reasoning-and-God"><a href="#Bayesian-Reasoning-and-God" class="headerlink" title="Bayesian Reasoning and God"></a><strong>Bayesian Reasoning and God</strong></h3><p>Now, how does this relate to God or theology?</p>
-<ol>
-<li><p><strong>Belief in God as a Hypothesis</strong>:</p>
-<ul>
-<li>You can think of <strong>belief in God</strong> as the hypothesis $ A $, and some kind of <strong>evidence</strong> as $ B $. This evidence could be anything that people consider relevant, such as personal experiences, miracles, the existence of the universe, or moral values.</li>
-</ul>
-</li>
-<li><p><strong>Prior Probability</strong> $ P(A) $:</p>
-<ul>
-<li>This represents a person’s initial belief about whether God exists before considering the evidence. Different people have different prior probabilities depending on their background, education, culture, and other factors. Some people may have a strong belief in God’s existence (high prior), while others may be more skeptical (low prior).</li>
-</ul>
-</li>
-<li><p><strong>Likelihood</strong> $ P(B | A) $:</p>
-<ul>
-<li>This is the probability of observing the evidence $ B $ if God exists. For example, if the hypothesis is that God exists and the evidence is the fine-tuning of the universe, you would ask: how likely is it that this fine-tuning would exist if God exists?</li>
-</ul>
-</li>
-<li><p><strong>Posterior Probability</strong> $ P(A | B) $:</p>
-<ul>
-<li>After considering the evidence (e.g., personal experiences, philosophical arguments, scientific observations), Bayes’ Theorem helps us calculate the updated probability (posterior) of the hypothesis (i.e., belief in God). This represents how our belief in the existence of God changes after taking the new evidence into account.</li>
-</ul>
-</li>
-</ol>
-<h3 id="Using-Bayes’-Theorem-to-Argue-for-or-Against-God’s-Existence"><a href="#Using-Bayes’-Theorem-to-Argue-for-or-Against-God’s-Existence" class="headerlink" title="Using Bayes’ Theorem to Argue for or Against God’s Existence:"></a><strong>Using Bayes’ Theorem to Argue for or Against God’s Existence</strong>:</h3><p>Bayes’ Theorem has been used in debates both <strong>for</strong> and <strong>against</strong> the existence of God. Here’s how different arguments might be framed using Bayesian reasoning:</p>
-<ol>
-<li><p><strong>Theistic Argument (Evidence Supporting God)</strong>:</p>
-<ul>
-<li>A common theistic argument might use the <strong>fine-tuning</strong> of the universe as the evidence $ B $. Proponents argue that the existence of such precise conditions for life is much more likely if God exists (high $ P(B | A) $) than if God does not exist (low $ P(B) $).</li>
-<li>If we assign a reasonable prior probability $ P(A) $ to God’s existence, then the posterior probability $ P(A | B) $ might be higher after considering the evidence.</li>
-</ul>
-</li>
-<li><p><strong>Atheistic Argument (Evidence Against God)</strong>:</p>
-<ul>
-<li>On the other hand, someone skeptical of the existence of God might point to the <strong>problem of evil</strong> as evidence $ B $. They could argue that the existence of so much suffering and evil in the world is more likely if God does not exist than if He does (i.e., $ P(B | A) $ is low if God exists).</li>
-<li>This would reduce the posterior probability $ P(A | B) $, leading to a lower belief in God’s existence after considering the evidence of evil.</li>
-</ul>
-</li>
-</ol>
-<h3 id="Bayesian-Belief-and-Faith"><a href="#Bayesian-Belief-and-Faith" class="headerlink" title="Bayesian Belief and Faith:"></a><strong>Bayesian Belief and Faith</strong>:</h3><p>It’s important to note that while <strong>Bayesian reasoning</strong> is a powerful tool for updating beliefs in light of evidence, religious belief often involves elements of <strong>faith</strong> that may not be easily reducible to probabilistic reasoning. Faith can involve trust, personal experiences, and relationships that go beyond mere empirical evidence.</p>
-<ul>
-<li><strong>Faith</strong> might be seen as an area where prior beliefs are so strong that evidence $ B $ doesn’t significantly shift the posterior probability. For example, for a devout person, negative evidence might have little effect on belief in God because their prior probability $ P(A) $ is so high.</li>
-</ul>
-<h3 id="Limitations-of-Bayesian-Reasoning-in-Theological-Contexts"><a href="#Limitations-of-Bayesian-Reasoning-in-Theological-Contexts" class="headerlink" title="Limitations of Bayesian Reasoning in Theological Contexts:"></a><strong>Limitations of Bayesian Reasoning in Theological Contexts</strong>:</h3><ol>
-<li><p><strong>Subjectivity of Priors</strong>:</p>
-<ul>
-<li>The choice of the <strong>prior probability</strong> $ P(A) $ (belief in God before evidence) is subjective and varies significantly between individuals. What one person considers a strong prior (e.g., due to cultural or personal reasons) might be weak for another.</li>
-</ul>
-</li>
-<li><p><strong>Interpretation of Evidence</strong>:</p>
-<ul>
-<li>Evidence $ B $ can also be interpreted differently. For example, a natural disaster might be seen by some as evidence against God (because of suffering), while others might interpret it as a test of faith or part of a divine plan.</li>
-</ul>
-</li>
-<li><p><strong>Non-empirical Nature of Religious Experience</strong>:</p>
-<ul>
-<li>Many aspects of religious belief, such as spiritual experiences or faith in sacred texts, may not be directly quantifiable in the same way that physical or scientific evidence is.</li>
-</ul>
-</li>
-</ol>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion:"></a>Conclusion:</h3><p>Bayesian conditional probability provides a <strong>formal way to update beliefs</strong> based on new evidence, and it can certainly be applied to discussions about the existence of God. However, the Bayesian framework relies heavily on <strong>subjective priors</strong> and how evidence is interpreted, which can vary greatly among individuals. While it can be a useful tool in philosophical debates about God’s existence, belief in God often transcends empirical evidence and enters the realm of <strong>faith</strong>, which might not fit neatly into a probabilistic model.</p>
-]]></content>
-      <categories>
-        <category>Math</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>determinism</tag>
       </tags>
   </entry>
 </search>
