@@ -2,7 +2,7 @@
 title: Quantifying Beliefs
 date: 2024-09-29 09:47:00
 categories:
-  - Offbeat  
+  - Random  
 tags:
   - math
   - determinism
