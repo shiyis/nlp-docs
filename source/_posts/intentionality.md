@@ -1,7 +1,7 @@
 ---
 title: Naturalizing Intentions
 categories:
-  - Linguistics
+  - Other
 layout: search
 date: 2024-09-2 09:15:30
 tags:

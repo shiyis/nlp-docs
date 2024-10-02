@@ -2,7 +2,8 @@
 title: Viterbi Algorithm
 default: true
 date: 2024-07-23 17:43:00
-nav_exclude: true
+categories:
+  - Math
 tags:
   - math
 ---
