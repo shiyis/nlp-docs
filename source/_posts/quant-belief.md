@@ -9,7 +9,8 @@ tags:
 ---
 
 ### This Blog Will Go Through Some Fun Things About Modeling Beliefs with Bayesian Methods
-®
+
+
 The relationship between **Bayesian conditional probability** and theological discussions, particularly the existence or understanding of God, has been a subject of philosophical and theological debate for centuries. I will first explain the **Bayesian conditional probability equation** in a simple way and then explore how it might relate to theological concepts like belief in God.
 
 ### **Bayesian Conditional Probability**

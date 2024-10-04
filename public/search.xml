@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Compositionality</title>
+    <url>/nlp-docs/2024/09/17/compositionality/</url>
+    <content><![CDATA[<h3 id="Dealing-with-Compositionality"><a href="#Dealing-with-Compositionality" class="headerlink" title="Dealing with Compositionality"></a>Dealing with Compositionality</h3><p>This blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it touches on government binding theory proposed by Chomsky, and the paper tried to model the motion from d-structure to s-structure in GB theory through the non-overlap constraint and chain map combined with NNs.</p>
+<p>And the demonstration of the non-overlap map is below</p>
+<p><img src="/nlp-docs/images/non-overlap.jpg"></p>
+<h4 id="Non-Overlap-Constraint-Explained"><a href="#Non-Overlap-Constraint-Explained" class="headerlink" title="Non-Overlap Constraint Explained"></a>Non-Overlap Constraint Explained</h4><p>The non-overlap constraint is a rule in cognitive models or neural networks that prevents overlapping activations of units in a chain map. This ensures that no two units representing the same syntactic marker can be active simultaneously, which helps maintain clear and distinct representations.</p>
+<h4 id="Diagram-Breakdown"><a href="#Diagram-Breakdown" class="headerlink" title="Diagram Breakdown"></a>Diagram Breakdown</h4><h6 id="Components"><a href="#Components" class="headerlink" title="Components:"></a>Components:</h6><ol>
+<li><p><strong>Chain Map (Green Text):</strong></p>
+<ul>
+<li>Represents the initial activation of units.</li>
+<li>Units in this map correspond to elements or tokens that can be active.</li>
+</ul>
+</li>
+<li><p><strong>Non-Overlap Map (Red Text):</strong></p>
+<ul>
+<li>Corresponds to the chain map and enforces non-overlapping activations.</li>
+<li>Units in this map prevent other units in the same diagonal from activating.</li>
+</ul>
+</li>
+<li><p><strong>Diagonal, Non-Lateral Inhibitory Links (Black Bold Arrows):</strong></p>
+<ul>
+<li>These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.</li>
+</ul>
+</li>
+<li><p><strong>Activation of Corresponding Unit In The Non-Overlap Map (Red Arrow)</strong></p>
+<ul>
+<li>The red arrow or the lateral link indicates an activation process from the chain map where there is a unit activated. Correspondingly, there is a unit in direct parallel in the non-overlap map being activated.</li>
+</ul>
+</li>
+</ol>
+<h6 id="Process"><a href="#Process" class="headerlink" title="Process:"></a>Process:</h6><ol>
+<li>When a unit in the chain map is activated, it activates its corresponding unit in the non-overlap map.</li>
+<li>The active unit in the non-overlap map then inhibits all other units in the same diagonal in the chain map.</li>
+<li>This ensures no two units in the chain map, which represent the same syntactic marker, can be active simultaneously.</li>
+</ol>
+<h4 id="Code-Example-with-Explanation"><a href="#Code-Example-with-Explanation" class="headerlink" title="Code Example with Explanation"></a>Code Example with Explanation</h4><p>Let’s look at a pseudo implementation that matches the diagram:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Unit(<span class="subst">&#123;self.identifier&#125;</span>, active=<span class="subst">&#123;self.active&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">                                                       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Activating <span class="subst">&#123;self.units[row][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map.&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">if</span> i != row:</span><br><span class="line">                <span class="variable language_">self</span>.units[i][col].active = <span class="literal">False</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span></span></span><br><span class="line"><span class="string">                map due tonon-overlap constraint.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map(<span class="string">&quot;ChainMap&quot;</span>)</span><br><span class="line">non_overlap_map = Map(<span class="string">&quot;NonOverlapMap&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output the state of maps</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Chain Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> chain_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nNon-Overlap Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> non_overlap_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ol>
+<li><p><strong>Chain Map Activation:</strong></p>
+<ul>
+<li>Activating a unit in the chain map triggers the corresponding unit in the non-overlap map.</li>
+<li>Example: Activating <code>ChainMapA1</code> will activate <code>NonOverlapMapA1</code>.</li>
+</ul>
+</li>
+<li><p><strong>Non-Overlap Map Enforces Constraint:</strong></p>
+<ul>
+<li>The activated unit in the non-overlap map inhibits other units in the same diagonal in the chain map.</li>
+<li>This ensures that other units in the corresponding diagonal of the chain map remain inactive, preserving the non-overlap constraint.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>By combining the visual diagram with the detailed code example, we’ve illustrated how the non-overlap constraint is implemented and enforced in a cognitive or neural model. The non-overlap map plays a crucial role in ensuring that units representing the same syntactic marker do not overlap in their activation, maintaining a clear and distinct representation of information.</p>
+]]></content>
+      <categories>
+        <category>Linguistics</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Auto Differentiation</title>
     <url>/nlp-docs/2024/07/14/audo-diff/</url>
     <content><![CDATA[<h3 id="Intro-to-Automatic-Differentiation"><a href="#Intro-to-Automatic-Differentiation" class="headerlink" title="Intro to Automatic Differentiation"></a>Intro to Automatic Differentiation</h3><p>In this blog, we will go through the foundations behind Automatic Differentiation.</p>
@@ -72,128 +131,6 @@
       <tags>
         <tag>stochastic</tag>
         <tag>math</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Compositionality</title>
-    <url>/nlp-docs/2024/09/17/compositionality/</url>
-    <content><![CDATA[<h3 id="Dealing-with-Compositionality"><a href="#Dealing-with-Compositionality" class="headerlink" title="Dealing with Compositionality"></a>Dealing with Compositionality</h3><p>This blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it touches on government binding theory proposed by Chomsky, and the paper tried to model the motion from d-structure to s-structure in GB theory through the non-overlap constraint and chain map combined with NNs.</p>
-<p>And the demonstration of the non-overlap map is below</p>
-<p><img src="/nlp-docs/images/non-overlap.jpg"></p>
-<h4 id="Non-Overlap-Constraint-Explained"><a href="#Non-Overlap-Constraint-Explained" class="headerlink" title="Non-Overlap Constraint Explained"></a>Non-Overlap Constraint Explained</h4><p>The non-overlap constraint is a rule in cognitive models or neural networks that prevents overlapping activations of units in a chain map. This ensures that no two units representing the same syntactic marker can be active simultaneously, which helps maintain clear and distinct representations.</p>
-<h4 id="Diagram-Breakdown"><a href="#Diagram-Breakdown" class="headerlink" title="Diagram Breakdown"></a>Diagram Breakdown</h4><h6 id="Components"><a href="#Components" class="headerlink" title="Components:"></a>Components:</h6><ol>
-<li><p><strong>Chain Map (Green Text):</strong></p>
-<ul>
-<li>Represents the initial activation of units.</li>
-<li>Units in this map correspond to elements or tokens that can be active.</li>
-</ul>
-</li>
-<li><p><strong>Non-Overlap Map (Red Text):</strong></p>
-<ul>
-<li>Corresponds to the chain map and enforces non-overlapping activations.</li>
-<li>Units in this map prevent other units in the same diagonal from activating.</li>
-</ul>
-</li>
-<li><p><strong>Diagonal, Non-Lateral Inhibitory Links (Black Bold Arrows):</strong></p>
-<ul>
-<li>These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.</li>
-</ul>
-</li>
-<li><p><strong>Activation of Corresponding Unit In The Non-Overlap Map (Red Arrow)</strong></p>
-<ul>
-<li>The red arrow or the lateral link indicates an activation process from the chain map where there is a unit activated. Correspondingly, there is a unit in direct parallel in the non-overlap map being activated.</li>
-</ul>
-</li>
-</ol>
-<h6 id="Process"><a href="#Process" class="headerlink" title="Process:"></a>Process:</h6><ol>
-<li>When a unit in the chain map is activated, it activates its corresponding unit in the non-overlap map.</li>
-<li>The active unit in the non-overlap map then inhibits all other units in the same diagonal in the chain map.</li>
-<li>This ensures no two units in the chain map, which represent the same syntactic marker, can be active simultaneously.</li>
-</ol>
-<h4 id="Code-Example-with-Explanation"><a href="#Code-Example-with-Explanation" class="headerlink" title="Code Example with Explanation"></a>Code Example with Explanation</h4><p>Let’s look at a pseudo implementation that matches the diagram:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Unit(<span class="subst">&#123;self.identifier&#125;</span>, active=<span class="subst">&#123;self.active&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">                                                       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Activating <span class="subst">&#123;self.units[row][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map.&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">if</span> i != row:</span><br><span class="line">                <span class="variable language_">self</span>.units[i][col].active = <span class="literal">False</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span></span></span><br><span class="line"><span class="string">                map due tonon-overlap constraint.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map(<span class="string">&quot;ChainMap&quot;</span>)</span><br><span class="line">non_overlap_map = Map(<span class="string">&quot;NonOverlapMap&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output the state of maps</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Chain Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> chain_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nNon-Overlap Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> non_overlap_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ol>
-<li><p><strong>Chain Map Activation:</strong></p>
-<ul>
-<li>Activating a unit in the chain map triggers the corresponding unit in the non-overlap map.</li>
-<li>Example: Activating <code>ChainMapA1</code> will activate <code>NonOverlapMapA1</code>.</li>
-</ul>
-</li>
-<li><p><strong>Non-Overlap Map Enforces Constraint:</strong></p>
-<ul>
-<li>The activated unit in the non-overlap map inhibits other units in the same diagonal in the chain map.</li>
-<li>This ensures that other units in the corresponding diagonal of the chain map remain inactive, preserving the non-overlap constraint.</li>
-</ul>
-</li>
-</ol>
-<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>By combining the visual diagram with the detailed code example, we’ve illustrated how the non-overlap constraint is implemented and enforced in a cognitive or neural model. The non-overlap map plays a crucial role in ensuring that units representing the same syntactic marker do not overlap in their activation, maintaining a clear and distinct representation of information.</p>
-]]></content>
-      <categories>
-        <category>Linguistics</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Naturalizing Intentions</title>
-    <url>/nlp-docs/2024/09/02/intentionality/</url>
-    <content><![CDATA[<h3 id="The-Hard-Problem-in-Naturalizing-Intentionality"><a href="#The-Hard-Problem-in-Naturalizing-Intentionality" class="headerlink" title="The Hard Problem in Naturalizing Intentionality"></a><strong>The Hard Problem in Naturalizing Intentionality</strong></h3><p>The <strong>Hard Problem of Intentionality</strong> mirrors the broader <strong>Hard Problem of Consciousness</strong>, focusing on a specific aspect of mental life: <strong>intentionality</strong>—the mind’s ability to represent, think about, or be “about” things. Both problems grapple with the difficulty of explaining <strong>subjective mental phenomena</strong> in purely naturalistic or physical terms.</p>
-<p>Let’s break this down into key concepts and challenges in a comprehensive way:</p>
-<h3 id="1-What-is-Intentionality"><a href="#1-What-is-Intentionality" class="headerlink" title="1. What is Intentionality?"></a>1. <strong>What is Intentionality?</strong></h3><p><strong>Intentionality</strong> is the capacity of the mind to be directed toward objects, states, or events. When we think, perceive, believe, or desire, our mental states are always <em>about</em> something:</p>
-<ul>
-<li>Thinking about a tree.</li>
-<li>Perceiving the sound of a car horn.</li>
-<li>Believing that it will rain tomorrow.</li>
-</ul>
-<p>This “aboutness”—the idea that our thoughts are directed at or represent things—is what makes intentionality a unique feature of the mind. The mind doesn’t just generate random activity; it <em>represents</em> things in the world.</p>
-<h3 id="2-The-Naturalization-of-Intentionality"><a href="#2-The-Naturalization-of-Intentionality" class="headerlink" title="2. The Naturalization of Intentionality"></a>2. <strong>The Naturalization of Intentionality</strong></h3><p>The goal of <strong>naturalizing intentionality</strong> is to explain this mental “aboutness” in terms of <strong>physical processes</strong>, such as brain activity, evolutionary biology, or cognitive systems. Naturalism seeks to show how the mind’s ability to represent the world can be explained as part of the natural world, without invoking anything supernatural or mysterious.</p>
-<p>Many philosophers and cognitive scientists believe that intentionality can be reduced to <strong>causal relationships</strong>, <strong>information processing</strong>, or <strong>evolutionary functions</strong>. For example:</p>
-<ul>
-<li><strong>Causal Theories</strong> suggest that our mental representations are caused by the things they represent. You have a mental image of a tree because the tree caused certain sensory processes (light entering the eyes, neurons firing, etc.).</li>
-<li><strong>Teleosemantics</strong> explains intentionality in terms of <strong>biological functions</strong>: a mental state represents something because it evolved to fulfill a particular function, such as guiding behavior in response to environmental stimuli.</li>
-<li><strong>Information-Theoretic Approaches</strong> view mental states as <strong>information processors</strong>, analogous to computers that process inputs and outputs, where the inputs are representations of the external world.</li>
-</ul>
-<h3 id="3-The-Subjective-Nature-of-Intentionality-The-Hard-Problem"><a href="#3-The-Subjective-Nature-of-Intentionality-The-Hard-Problem" class="headerlink" title="3. The Subjective Nature of Intentionality: The Hard Problem"></a>3. <strong>The Subjective Nature of Intentionality: The Hard Problem</strong></h3><p>Despite these approaches, many philosophers argue that these <strong>naturalistic explanations leave out something essential</strong>—the <strong>subjective aspect</strong> of intentionality. This is known as the <strong>Hard Problem of Intentionality</strong>.</p>
-<h4 id="A-Subjective-“Aboutness”"><a href="#A-Subjective-“Aboutness”" class="headerlink" title="A. Subjective “Aboutness”"></a>A. <strong>Subjective “Aboutness”</strong></h4><p>At the heart of the hard problem is the issue of <strong>subjectivity</strong>. When you have a thought about a tree, that thought is experienced from your <strong>first-person perspective</strong>. It’s not just that brain activity happens; you <strong>experience</strong> that thought as being about something in the world. This subjective experience of “aboutness” seems qualitatively different from the purely physical processes that naturalistic theories describe.</p>
-<p>For example:</p>
-<ul>
-<li>A causal theory might explain that seeing a tree causes certain brain states, but <strong>why does that brain state have the subjective character of “being about a tree”?</strong></li>
-<li>Teleosemantics might explain that certain brain processes evolved to represent environmental features for survival, but <strong>how does that give rise to the feeling of “thinking about” something in a first-person, subjective way?</strong></li>
-</ul>
-<p>This challenge is often compared to the <strong>Hard Problem of Consciousness</strong>, which philosopher <strong>David Chalmers</strong> famously articulated. The hard problem of consciousness asks how **subjective experience (qualia)**—the “what it’s like” aspect of experience—arises from physical processes in the brain. Similarly, the hard problem of intentionality asks how the subjective aspect of intentionality arises from natural processes.</p>
-<h4 id="B-Intentionality-as-Normative"><a href="#B-Intentionality-as-Normative" class="headerlink" title="B. Intentionality as Normative"></a>B. <strong>Intentionality as Normative</strong></h4><p>Another element that naturalistic explanations struggle with is the <strong>normativity</strong> of intentionality. Intentional states are not just about things—they can also be <strong>correct</strong> or <strong>incorrect</strong>. For example:</p>
-<ul>
-<li>If you believe that the sky is blue, and it is blue, your belief is <strong>correct</strong>.</li>
-<li>If you believe the sky is green, your belief is <strong>incorrect</strong>.</li>
-</ul>
-<p>This capacity for mental states to be <strong>evaluated</strong> (correct vs. incorrect) makes intentionality normative—mental states can succeed or fail at representing the world. The hard problem of intentionality asks how <strong>purely physical processes</strong> (which are generally described in <strong>descriptive</strong>, not normative, terms) can give rise to <strong>normative mental properties</strong>.</p>
-<h3 id="4-How-is-This-Like-the-Hard-Problem-of-Consciousness"><a href="#4-How-is-This-Like-the-Hard-Problem-of-Consciousness" class="headerlink" title="4. How is This Like the Hard Problem of Consciousness?"></a>4. <strong>How is This Like the Hard Problem of Consciousness?</strong></h3><p>The hard problem of intentionality is closely related to the hard problem of consciousness because both deal with <strong>subjective experience</strong> and its relationship to physical processes. In both cases, naturalistic explanations tend to focus on the <strong>objective</strong>, <strong>third-person</strong> description of processes, but they struggle to account for the <strong>first-person experience</strong> of those processes.</p>
-<ul>
-<li>The <strong>hard problem of consciousness</strong> asks: “How do <strong>subjective experiences</strong> (what it’s like to feel pain, see red, etc.) arise from the firing of neurons in the brain?”</li>
-<li>The <strong>hard problem of intentionality</strong> asks: “How does the mind’s ability to be <em>about</em> things (representing a tree, desiring an outcome, etc.) arise from brain activity and causal relationships?”</li>
-</ul>
-<p>In both cases, the difficulty is explaining the <strong>qualitative, subjective</strong> aspect of mental life, which seems to resist explanation in terms of <strong>objective physical processes</strong>.</p>
-<h3 id="5-Philosophical-Challenges"><a href="#5-Philosophical-Challenges" class="headerlink" title="5. Philosophical Challenges"></a>5. <strong>Philosophical Challenges</strong></h3><p>There are several reasons why naturalizing intentionality faces deep philosophical challenges:</p>
-<h4 id="A-The-Explanatory-Gap"><a href="#A-The-Explanatory-Gap" class="headerlink" title="A. The Explanatory Gap"></a>A. <strong>The Explanatory Gap</strong></h4><p>Just as with consciousness, there seems to be an <strong>explanatory gap</strong> between physical processes and the subjective “aboutness” of intentionality. Even if we can fully map the brain processes involved in thinking about a tree, it’s unclear <strong>how</strong> or <strong>why</strong> those processes lead to the experience of <em>“thinking about the tree.”</em></p>
-<p>This gap is sometimes described as a <strong>difference in kinds</strong>: physical processes and subjective intentional states are so different in their nature that it’s hard to see how one could reduce to or explain the other.</p>
-<h4 id="B-Non-reductive-Views"><a href="#B-Non-reductive-Views" class="headerlink" title="B. Non-reductive Views"></a>B. <strong>Non-reductive Views</strong></h4><p>Some philosophers argue that intentionality, like consciousness, might not be <strong>reducible</strong> to physical processes. <strong>Non-reductive physicalism</strong> or <strong>property dualism</strong> are philosophical views suggesting that while mental states are grounded in the physical, they involve <strong>emergent properties</strong> that cannot be fully explained by physical processes alone.</p>
-<p>For instance, <strong>John Searle</strong> argues that while intentionality is a biological feature of the brain, it cannot be reduced to mere causal or functional processes—it’s a higher-level feature that arises from, but isn’t identical to, brain processes.</p>
-<h4 id="C-Phenomenology-and-First-Person-Perspective"><a href="#C-Phenomenology-and-First-Person-Perspective" class="headerlink" title="C. Phenomenology and First-Person Perspective"></a>C. <strong>Phenomenology and First-Person Perspective</strong></h4><p><strong>Phenomenologists</strong>, like <strong>Edmund Husserl</strong> and <strong>Maurice Merleau-Ponty</strong>, argue that intentionality can only be fully understood by focusing on the <strong>first-person experience</strong> of being directed toward the world. They believe that trying to reduce intentionality to objective, third-person descriptions (such as causal processes or information flow) misses its core feature: the <strong>lived, subjective experience</strong> of being directed toward the world.</p>
-<h3 id="6-Responses-to-the-Hard-Problem-of-Intentionality"><a href="#6-Responses-to-the-Hard-Problem-of-Intentionality" class="headerlink" title="6. Responses to the Hard Problem of Intentionality"></a>6. <strong>Responses to the Hard Problem of Intentionality</strong></h3><p>Some responses to the hard problem of intentionality propose that the subjective aspect of intentionality might not be as intractable as it seems:</p>
-<ul>
-<li><p><strong>Cognitive Science</strong>: Some cognitive scientists believe that advances in understanding the brain’s <strong>computational processes</strong> will eventually bridge the gap. By explaining how the brain processes information, stores representations, and learns from the environment, they hope to explain the <strong>emergence of intentionality</strong> in a way that accounts for both its subjective and objective aspects.</p>
-</li>
-<li><p><strong>Emergentism</strong>: Some philosophers suggest that intentionality is an <strong>emergent property</strong> of complex brain systems. While the individual parts of the brain may not be intentional, intentionality may emerge from the complex interaction of those parts. However, explaining how emergence happens in detail remains a challenge.</p>
-</li>
-<li><p><strong>Panpsychism</strong>: In a more radical response, some philosophers (like <strong>David Chalmers</strong>) propose <strong>panpsychism</strong>, the view that consciousness (and perhaps intentionality) is a fundamental feature of the universe, much like space, time, or matter. In this view, intentionality wouldn’t need to be “reduced” to physical processes because it would be a <strong>basic feature</strong> of reality.</p>
-</li>
-</ul>
-<h3 id="7-Conclusion"><a href="#7-Conclusion" class="headerlink" title="7. Conclusion"></a>7. <strong>Conclusion</strong></h3><p>The <strong>Hard Problem of Intentionality</strong> raises profound questions about how the mind represents the world and how subjective mental states can arise from physical processes. While naturalistic theories of intentionality (like causal, teleosemantic, and information-theoretic approaches) have made progress in explaining aspects of mental representation, the <strong>subjective aspect of intentionality</strong>—the first-person experience of “aboutness”—remains elusive. This challenge parallels the <strong>Hard Problem of Consciousness</strong>, leaving open fundamental questions about the nature of the mind and its relationship to the physical world.</p>
-]]></content>
-      <categories>
-        <category>Other</category>
-      </categories>
-      <tags>
-        <tag>nlp-theories</tag>
       </tags>
   </entry>
   <entry>
@@ -650,6 +587,69 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
+    <title>Naturalizing Intentions</title>
+    <url>/nlp-docs/2024/09/02/intentionality/</url>
+    <content><![CDATA[<h3 id="The-Hard-Problem-in-Naturalizing-Intentionality"><a href="#The-Hard-Problem-in-Naturalizing-Intentionality" class="headerlink" title="The Hard Problem in Naturalizing Intentionality"></a><strong>The Hard Problem in Naturalizing Intentionality</strong></h3><p>The <strong>Hard Problem of Intentionality</strong> mirrors the broader <strong>Hard Problem of Consciousness</strong>, focusing on a specific aspect of mental life: <strong>intentionality</strong>—the mind’s ability to represent, think about, or be “about” things. Both problems grapple with the difficulty of explaining <strong>subjective mental phenomena</strong> in purely naturalistic or physical terms.</p>
+<p>Let’s break this down into key concepts and challenges in a comprehensive way:</p>
+<h3 id="1-What-is-Intentionality"><a href="#1-What-is-Intentionality" class="headerlink" title="1. What is Intentionality?"></a>1. <strong>What is Intentionality?</strong></h3><p><strong>Intentionality</strong> is the capacity of the mind to be directed toward objects, states, or events. When we think, perceive, believe, or desire, our mental states are always <em>about</em> something:</p>
+<ul>
+<li>Thinking about a tree.</li>
+<li>Perceiving the sound of a car horn.</li>
+<li>Believing that it will rain tomorrow.</li>
+</ul>
+<p>This “aboutness”—the idea that our thoughts are directed at or represent things—is what makes intentionality a unique feature of the mind. The mind doesn’t just generate random activity; it <em>represents</em> things in the world.</p>
+<h3 id="2-The-Naturalization-of-Intentionality"><a href="#2-The-Naturalization-of-Intentionality" class="headerlink" title="2. The Naturalization of Intentionality"></a>2. <strong>The Naturalization of Intentionality</strong></h3><p>The goal of <strong>naturalizing intentionality</strong> is to explain this mental “aboutness” in terms of <strong>physical processes</strong>, such as brain activity, evolutionary biology, or cognitive systems. Naturalism seeks to show how the mind’s ability to represent the world can be explained as part of the natural world, without invoking anything supernatural or mysterious.</p>
+<p>Many philosophers and cognitive scientists believe that intentionality can be reduced to <strong>causal relationships</strong>, <strong>information processing</strong>, or <strong>evolutionary functions</strong>. For example:</p>
+<ul>
+<li><strong>Causal Theories</strong> suggest that our mental representations are caused by the things they represent. You have a mental image of a tree because the tree caused certain sensory processes (light entering the eyes, neurons firing, etc.).</li>
+<li><strong>Teleosemantics</strong> explains intentionality in terms of <strong>biological functions</strong>: a mental state represents something because it evolved to fulfill a particular function, such as guiding behavior in response to environmental stimuli.</li>
+<li><strong>Information-Theoretic Approaches</strong> view mental states as <strong>information processors</strong>, analogous to computers that process inputs and outputs, where the inputs are representations of the external world.</li>
+</ul>
+<h3 id="3-The-Subjective-Nature-of-Intentionality-The-Hard-Problem"><a href="#3-The-Subjective-Nature-of-Intentionality-The-Hard-Problem" class="headerlink" title="3. The Subjective Nature of Intentionality: The Hard Problem"></a>3. <strong>The Subjective Nature of Intentionality: The Hard Problem</strong></h3><p>Despite these approaches, many philosophers argue that these <strong>naturalistic explanations leave out something essential</strong>—the <strong>subjective aspect</strong> of intentionality. This is known as the <strong>Hard Problem of Intentionality</strong>.</p>
+<h4 id="A-Subjective-“Aboutness”"><a href="#A-Subjective-“Aboutness”" class="headerlink" title="A. Subjective “Aboutness”"></a>A. <strong>Subjective “Aboutness”</strong></h4><p>At the heart of the hard problem is the issue of <strong>subjectivity</strong>. When you have a thought about a tree, that thought is experienced from your <strong>first-person perspective</strong>. It’s not just that brain activity happens; you <strong>experience</strong> that thought as being about something in the world. This subjective experience of “aboutness” seems qualitatively different from the purely physical processes that naturalistic theories describe.</p>
+<p>For example:</p>
+<ul>
+<li>A causal theory might explain that seeing a tree causes certain brain states, but <strong>why does that brain state have the subjective character of “being about a tree”?</strong></li>
+<li>Teleosemantics might explain that certain brain processes evolved to represent environmental features for survival, but <strong>how does that give rise to the feeling of “thinking about” something in a first-person, subjective way?</strong></li>
+</ul>
+<p>This challenge is often compared to the <strong>Hard Problem of Consciousness</strong>, which philosopher <strong>David Chalmers</strong> famously articulated. The hard problem of consciousness asks how **subjective experience (qualia)**—the “what it’s like” aspect of experience—arises from physical processes in the brain. Similarly, the hard problem of intentionality asks how the subjective aspect of intentionality arises from natural processes.</p>
+<h4 id="B-Intentionality-as-Normative"><a href="#B-Intentionality-as-Normative" class="headerlink" title="B. Intentionality as Normative"></a>B. <strong>Intentionality as Normative</strong></h4><p>Another element that naturalistic explanations struggle with is the <strong>normativity</strong> of intentionality. Intentional states are not just about things—they can also be <strong>correct</strong> or <strong>incorrect</strong>. For example:</p>
+<ul>
+<li>If you believe that the sky is blue, and it is blue, your belief is <strong>correct</strong>.</li>
+<li>If you believe the sky is green, your belief is <strong>incorrect</strong>.</li>
+</ul>
+<p>This capacity for mental states to be <strong>evaluated</strong> (correct vs. incorrect) makes intentionality normative—mental states can succeed or fail at representing the world. The hard problem of intentionality asks how <strong>purely physical processes</strong> (which are generally described in <strong>descriptive</strong>, not normative, terms) can give rise to <strong>normative mental properties</strong>.</p>
+<h3 id="4-How-is-This-Like-the-Hard-Problem-of-Consciousness"><a href="#4-How-is-This-Like-the-Hard-Problem-of-Consciousness" class="headerlink" title="4. How is This Like the Hard Problem of Consciousness?"></a>4. <strong>How is This Like the Hard Problem of Consciousness?</strong></h3><p>The hard problem of intentionality is closely related to the hard problem of consciousness because both deal with <strong>subjective experience</strong> and its relationship to physical processes. In both cases, naturalistic explanations tend to focus on the <strong>objective</strong>, <strong>third-person</strong> description of processes, but they struggle to account for the <strong>first-person experience</strong> of those processes.</p>
+<ul>
+<li>The <strong>hard problem of consciousness</strong> asks: “How do <strong>subjective experiences</strong> (what it’s like to feel pain, see red, etc.) arise from the firing of neurons in the brain?”</li>
+<li>The <strong>hard problem of intentionality</strong> asks: “How does the mind’s ability to be <em>about</em> things (representing a tree, desiring an outcome, etc.) arise from brain activity and causal relationships?”</li>
+</ul>
+<p>In both cases, the difficulty is explaining the <strong>qualitative, subjective</strong> aspect of mental life, which seems to resist explanation in terms of <strong>objective physical processes</strong>.</p>
+<h3 id="5-Philosophical-Challenges"><a href="#5-Philosophical-Challenges" class="headerlink" title="5. Philosophical Challenges"></a>5. <strong>Philosophical Challenges</strong></h3><p>There are several reasons why naturalizing intentionality faces deep philosophical challenges:</p>
+<h4 id="A-The-Explanatory-Gap"><a href="#A-The-Explanatory-Gap" class="headerlink" title="A. The Explanatory Gap"></a>A. <strong>The Explanatory Gap</strong></h4><p>Just as with consciousness, there seems to be an <strong>explanatory gap</strong> between physical processes and the subjective “aboutness” of intentionality. Even if we can fully map the brain processes involved in thinking about a tree, it’s unclear <strong>how</strong> or <strong>why</strong> those processes lead to the experience of <em>“thinking about the tree.”</em></p>
+<p>This gap is sometimes described as a <strong>difference in kinds</strong>: physical processes and subjective intentional states are so different in their nature that it’s hard to see how one could reduce to or explain the other.</p>
+<h4 id="B-Non-reductive-Views"><a href="#B-Non-reductive-Views" class="headerlink" title="B. Non-reductive Views"></a>B. <strong>Non-reductive Views</strong></h4><p>Some philosophers argue that intentionality, like consciousness, might not be <strong>reducible</strong> to physical processes. <strong>Non-reductive physicalism</strong> or <strong>property dualism</strong> are philosophical views suggesting that while mental states are grounded in the physical, they involve <strong>emergent properties</strong> that cannot be fully explained by physical processes alone.</p>
+<p>For instance, <strong>John Searle</strong> argues that while intentionality is a biological feature of the brain, it cannot be reduced to mere causal or functional processes—it’s a higher-level feature that arises from, but isn’t identical to, brain processes.</p>
+<h4 id="C-Phenomenology-and-First-Person-Perspective"><a href="#C-Phenomenology-and-First-Person-Perspective" class="headerlink" title="C. Phenomenology and First-Person Perspective"></a>C. <strong>Phenomenology and First-Person Perspective</strong></h4><p><strong>Phenomenologists</strong>, like <strong>Edmund Husserl</strong> and <strong>Maurice Merleau-Ponty</strong>, argue that intentionality can only be fully understood by focusing on the <strong>first-person experience</strong> of being directed toward the world. They believe that trying to reduce intentionality to objective, third-person descriptions (such as causal processes or information flow) misses its core feature: the <strong>lived, subjective experience</strong> of being directed toward the world.</p>
+<h3 id="6-Responses-to-the-Hard-Problem-of-Intentionality"><a href="#6-Responses-to-the-Hard-Problem-of-Intentionality" class="headerlink" title="6. Responses to the Hard Problem of Intentionality"></a>6. <strong>Responses to the Hard Problem of Intentionality</strong></h3><p>Some responses to the hard problem of intentionality propose that the subjective aspect of intentionality might not be as intractable as it seems:</p>
+<ul>
+<li><p><strong>Cognitive Science</strong>: Some cognitive scientists believe that advances in understanding the brain’s <strong>computational processes</strong> will eventually bridge the gap. By explaining how the brain processes information, stores representations, and learns from the environment, they hope to explain the <strong>emergence of intentionality</strong> in a way that accounts for both its subjective and objective aspects.</p>
+</li>
+<li><p><strong>Emergentism</strong>: Some philosophers suggest that intentionality is an <strong>emergent property</strong> of complex brain systems. While the individual parts of the brain may not be intentional, intentionality may emerge from the complex interaction of those parts. However, explaining how emergence happens in detail remains a challenge.</p>
+</li>
+<li><p><strong>Panpsychism</strong>: In a more radical response, some philosophers (like <strong>David Chalmers</strong>) propose <strong>panpsychism</strong>, the view that consciousness (and perhaps intentionality) is a fundamental feature of the universe, much like space, time, or matter. In this view, intentionality wouldn’t need to be “reduced” to physical processes because it would be a <strong>basic feature</strong> of reality.</p>
+</li>
+</ul>
+<h3 id="7-Conclusion"><a href="#7-Conclusion" class="headerlink" title="7. Conclusion"></a>7. <strong>Conclusion</strong></h3><p>The <strong>Hard Problem of Intentionality</strong> raises profound questions about how the mind represents the world and how subjective mental states can arise from physical processes. While naturalistic theories of intentionality (like causal, teleosemantic, and information-theoretic approaches) have made progress in explaining aspects of mental representation, the <strong>subjective aspect of intentionality</strong>—the first-person experience of “aboutness”—remains elusive. This challenge parallels the <strong>Hard Problem of Consciousness</strong>, leaving open fundamental questions about the nature of the mind and its relationship to the physical world.</p>
+]]></content>
+      <categories>
+        <category>Other</category>
+      </categories>
+      <tags>
+        <tag>nlp-theories</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mutual Information</title>
     <url>/nlp-docs/2024/08/03/mutual-info/</url>
     <content><![CDATA[<h3 id="More-on-Mutual-Information"><a href="#More-on-Mutual-Information" class="headerlink" title="More on Mutual Information"></a>More on Mutual Information</h3><p>Below is the code for WAPMI or the Weighted Average Point-wise Mutual Information. And this code measures the distance between two probabilities distributions.</p>
@@ -808,6 +808,92 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
+    <title>Problem Solving</title>
+    <url>/nlp-docs/2024/07/17/problem-solving/</url>
+    <content><![CDATA[<h3 id="More-on-Logic-And-Problem-Solving"><a href="#More-on-Logic-And-Problem-Solving" class="headerlink" title="More on Logic And Problem Solving"></a>More on Logic And Problem Solving</h3><p>In a different <a href="https://shiyis.github.io/nlpwme/modules/1h-semantics/">blog</a>, I have briefly introduced some of the most important concepts of logic and problem solving, including but not limited to predicate calculus, propositional logic, and lambda calculus.</p>
+<p>In this blog, the notes will be more in detail and introduce relevant ideas.</p>
+<h4 id="Defining-Entailment-Implicatures-and-Presuppositions"><a href="#Defining-Entailment-Implicatures-and-Presuppositions" class="headerlink" title="Defining Entailment, Implicatures, and Presuppositions"></a>Defining Entailment, Implicatures, and Presuppositions</h4><p><strong>Implicatures</strong>: What’s suggested in an utterance, even though it is not explicitly stated or entailed by the utterance.</p>
+<p><strong>Entailment</strong>: Entailment is a relationship between statements where one statement necessarily follows from another. If statement A entails statement B, then if A is true, B must also be true.</p>
+<p><strong>Presuppositions</strong>: A presupposition is an assumption that as speaker makes about what the listener already knows or believes to be true. It’s information taken for granted in the utterance.</p>
+<h4 id="Differences-Between-The-Above-Three"><a href="#Differences-Between-The-Above-Three" class="headerlink" title="Differences Between The Above Three"></a>Differences Between The Above Three</h4><p>Let’s define implicatures, entailments, and presuppositions and compare their differences in simple terms</p>
+<p><em><strong>Nature of Meaning</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>: Implied meaning that relies on context and shared understanding. It is not directly stated but inferred.</li>
+<li><strong>Entailment</strong>: Logical meaning that follows necessarily from the truth of another statement. It is a strict logical relationship.</li>
+<li><strong>Presupposition</strong>: Assumed background information or beliefs. It is taken for granted by the speaker as known to the listener.</li>
+</ul>
+<p><em><strong>Dependence on Context</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>: Highly dependent on context. The same statement can imply different things in different situations.</li>
+<li><strong>Entailment</strong>: Not dependent on context. If the antecedent is true, the consequent must be true regardless of context.</li>
+<li><strong>Presupposition</strong>: Partially dependent on context. It relies on shared knowledge but is less flexible than implicature.</li>
+</ul>
+<p><em><strong>Truth Conditions</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>: Can be canceled or denied without contradiction. For example, “It’s cold in here” doesn’t necessarily mean the speaker wants the window closed if they follow up with, “But I like it that way.”</li>
+<li><strong>Entailment</strong>:<br>  Cannot be canceled without contradiction. If “All cats are animals” is true, saying “No cats are animals” would be a direct contradiction.</li>
+<li><strong>Presupposition</strong>: Remains even if the statement is negated. For example, “John’s brother is not tall” still presupposes that John has a brother.</li>
+</ul>
+<p><em><strong>Example Comparisons</strong></em>:</p>
+<ul>
+<li><strong>Implicature</strong>:<br>  Statement: “Can you pass the salt?”<br>  Implicature: The speaker is asking you to pass the salt, not questioning your ability to do so.</li>
+<li><strong>Entailment</strong>:<br>  Statement: “She is a mother.”<br>  Entailment: She has a child. If “She is a mother” is true, it logically follows that “She has a child” must be true.</li>
+<li><strong>Presupposition</strong>:<br>  Statement: “The king of France is bald.”<br>  Presupposition: There is a king of France. This assumption is taken for granted by the speaker.</li>
+</ul>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><strong>Implicatures</strong> are implied meanings that depend on context and can be canceled without contradiction.<br><strong>Entailments</strong> are logical consequences that must be true if the initial statement is true, and they cannot be canceled without contradiction.<br><strong>Presuppositions</strong> are background assumptions that remain true even if the statement is negated and depend on shared knowledge between the speaker and listener.<br>By understanding these differences, we can better analyze and interpret the subtleties of communication and language use.</p>
+<h4 id="The-Gists-of-Predicate-Calculus-and-Propositional-Logic"><a href="#The-Gists-of-Predicate-Calculus-and-Propositional-Logic" class="headerlink" title="The Gists of Predicate Calculus and Propositional Logic"></a>The Gists of Predicate Calculus and Propositional Logic</h4><h4 id="Basic-Concepts-of-Lambda-Calculus"><a href="#Basic-Concepts-of-Lambda-Calculus" class="headerlink" title="Basic Concepts of Lambda Calculus"></a>Basic Concepts of Lambda Calculus</h4><p>Lambda calculus is a formal system in mathematical logic and computer science for expressing computation based on function abstraction and application. It was introduced by Alonzo Church in the 1930s as part of his work on the foundations of mathematics.</p>
+<h4 id="1-Lambda-Abstraction"><a href="#1-Lambda-Abstraction" class="headerlink" title="1. Lambda Abstraction:"></a>1. <strong>Lambda Abstraction</strong>:</h4><ul>
+<li><strong>Syntax</strong>: <code>λx. E</code></li>
+<li><strong>Explanation</strong>: This denotes an anonymous function with a parameter <code>x</code> and body <code>E</code>. For example, <code>λx. x + 1</code> represents a function that takes an argument <code>x</code> and returns <code>x + 1</code>.</li>
+</ul>
+<h4 id="2-Application"><a href="#2-Application" class="headerlink" title="2. Application:"></a>2. <strong>Application</strong>:</h4><ul>
+<li><strong>Syntax</strong>: <code>(F A)</code></li>
+<li><strong>Explanation</strong>: This denotes the application of function <code>F</code> to argument <code>A</code>. For example, <code>(λx. x + 1) 2</code> applies the function <code>λx. x + 1</code> to <code>2</code>, resulting in <code>3</code>.</li>
+</ul>
+<h4 id="3-Variables"><a href="#3-Variables" class="headerlink" title="3. Variables:"></a>3. <strong>Variables</strong>:</h4><ul>
+<li><strong>Syntax</strong>: <code>x</code></li>
+<li><strong>Explanation</strong>: Variables are placeholders for values or other expressions. In <code>λx. x</code>, <code>x</code> is a variable.</li>
+</ul>
+<h4 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h4><p>In lambda calculus, expressions are built using variables, lambda abstractions, and applications. These are called lambda expressions or terms. The grammar of lambda expressions is defined as:</p>
+<ul>
+<li><strong>Variables</strong>: <code>x, y, z, ...</code></li>
+<li><strong>Lambda Abstraction</strong>: <code>λx. E</code> where <code>x</code> is a variable and <code>E</code> is a lambda expression.</li>
+<li><strong>Application</strong>: <code>(E1 E2)</code> where <code>E1</code> and <code>E2</code> are lambda expressions.</li>
+</ul>
+<h4 id="Reduction"><a href="#Reduction" class="headerlink" title="Reduction"></a>Reduction</h4><p>Lambda calculus defines computation through the process of <strong>reduction</strong>, which simplifies lambda expressions. There are two main types of reduction:</p>
+<ol>
+<li><p><strong>Alpha Conversion (α conversion)</strong>:<br> <strong>Explanation</strong>: Renaming the bound variables in a lambda expression. For example, <code>λx. x</code> can be alpha-converted to <code>λy. y</code>.<br> <strong>Purpose</strong>: Avoids name collisions.</p>
+</li>
+<li><p><strong>Beta Reduction (β reduction)</strong>:<br> <strong>Explanation</strong>: Applying a lambda function to an argument. For example, <code>(λx. x + 1) 2</code> reduces to <code>2 + 1</code> which further reduces to <code>3</code>.<br> <strong>Process</strong>: Replace the bound variable with the argument in the body of the abstraction. <code>(λx. E1) E2</code> reduces to <code>E1[E2/x]</code>, where <code>E1[E2/x]</code> denotes substitution of <code>E2</code> for <code>x</code> in <code>E1</code>.</p>
+</li>
+</ol>
+<h4 id="Example-of-Beta-Reduction"><a href="#Example-of-Beta-Reduction" class="headerlink" title="Example of Beta Reduction"></a>Example of Beta Reduction</h4><p>Consider the expression: <code>(λx. (λy. x + y) 2) 3</code>.</p>
+<ol>
+<li><p>Apply the outer function <code>(λx. (λy. x + y) 2)</code> to <code>3</code>:<br> <code>((λx. (λy. x + y) 2) 3)</code><br> Substitute <code>3</code> for <code>x</code> in <code>(λy. x + y) 2</code>: <code>(λy. 3 + y) 2</code>.</p>
+</li>
+<li><p>Apply the inner function <code>(λy. 3 + y)</code> to <code>2</code>:<br> <code>((λy. 3 + y) 2)</code><br> Substitute <code>2</code> for <code>y</code> in <code>3 + y</code>: <code>3 + 2</code>.</p>
+</li>
+<li><p>Simplify the expression:<br> <code>3 + 2</code> reduces to <code>5</code>.</p>
+</li>
+</ol>
+<h4 id="Significance-in-Computer-Science"><a href="#Significance-in-Computer-Science" class="headerlink" title="Significance in Computer Science"></a>Significance in Computer Science</h4><p>Lambda calculus serves as the foundation for understanding computation and functional programming languages. Key aspects include:</p>
+<ul>
+<li><strong>Functional Programming</strong>: Languages like Haskell, Lisp, and Scheme are heavily influenced by lambda calculus.</li>
+<li><strong>Programming Language Theory</strong>: Lambda calculus provides a framework for studying the properties of functions and recursive definitions.</li>
+<li><strong>Type Systems</strong>: Extensions of lambda calculus, such as the simply typed lambda calculus, form the basis for type systems in programming languages.</li>
+</ul>
+<h4 id="Church-Turing-Alonzo-Church-and-Alan-Turing-Thesis"><a href="#Church-Turing-Alonzo-Church-and-Alan-Turing-Thesis" class="headerlink" title="Church-Turing (Alonzo Church and Alan Turing) Thesis"></a>Church-Turing (Alonzo Church and Alan Turing) Thesis</h4><p>Lambda calculus is also central to the <strong>Church-Turing thesis</strong>, which posits that any computable function can be computed by a Turing machine, and equivalently, can be expressed in lambda calculus. This establishes lambda calculus as a universal model of computation.</p>
+<p>In summary, lambda calculus is a powerful mathematical formalism for defining and studying computation. Its simplicity and expressiveness make it a cornerstone of theoretical computer science and a valuable tool for understanding the base of programming languages.</p>
+<h4 id="In-A-Nutshell"><a href="#In-A-Nutshell" class="headerlink" title="In A Nutshell"></a>In A Nutshell</h4><p>The contributions of <strong>Alonzo Church</strong> and <strong>Alan Turing</strong>, particularly their work on the <strong>Church-Turing thesis</strong> and the development of <strong>lambda calculus</strong> and <strong>Turing machines</strong>, can indeed be discussed under the broader umbrella of <strong>problem-solving</strong> and <strong>logical reasoning</strong>. Their ideas fit well within the same conceptual framework as <strong>traditional syllogistic logic</strong>, such as <strong>propositional logic</strong> and <strong>predicate logic</strong>, since all of these approaches are aimed at formalizing methods of reasoning and solving problems in structured, logical ways.</p>
+]]></content>
+      <categories>
+        <category>Linguistics</category>
+      </categories>
+      <tags>
+        <tag>semantics</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Philosophy of Mind</title>
     <url>/nlp-docs/2024/08/13/philo-o-mind/</url>
     <content><![CDATA[<h3 id="Cognitive-Science-and-The-Philosophy-of-Mind"><a href="#Cognitive-Science-and-The-Philosophy-of-Mind" class="headerlink" title="Cognitive Science and The Philosophy of Mind"></a>Cognitive Science and The Philosophy of Mind</h3><p><span class="label label-danger">Q</span> What is the focus of this blog?</span></p>
@@ -910,95 +996,9 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
-    <title>Problem Solving</title>
-    <url>/nlp-docs/2024/07/17/problem-solving/</url>
-    <content><![CDATA[<h3 id="More-on-Logic-And-Problem-Solving"><a href="#More-on-Logic-And-Problem-Solving" class="headerlink" title="More on Logic And Problem Solving"></a>More on Logic And Problem Solving</h3><p>In a different <a href="https://shiyis.github.io/nlpwme/modules/1h-semantics/">blog</a>, I have briefly introduced some of the most important concepts of logic and problem solving, including but not limited to predicate calculus, propositional logic, and lambda calculus.</p>
-<p>In this blog, the notes will be more in detail and introduce relevant ideas.</p>
-<h4 id="Defining-Entailment-Implicatures-and-Presuppositions"><a href="#Defining-Entailment-Implicatures-and-Presuppositions" class="headerlink" title="Defining Entailment, Implicatures, and Presuppositions"></a>Defining Entailment, Implicatures, and Presuppositions</h4><p><strong>Implicatures</strong>: What’s suggested in an utterance, even though it is not explicitly stated or entailed by the utterance.</p>
-<p><strong>Entailment</strong>: Entailment is a relationship between statements where one statement necessarily follows from another. If statement A entails statement B, then if A is true, B must also be true.</p>
-<p><strong>Presuppositions</strong>: A presupposition is an assumption that as speaker makes about what the listener already knows or believes to be true. It’s information taken for granted in the utterance.</p>
-<h4 id="Differences-Between-The-Above-Three"><a href="#Differences-Between-The-Above-Three" class="headerlink" title="Differences Between The Above Three"></a>Differences Between The Above Three</h4><p>Let’s define implicatures, entailments, and presuppositions and compare their differences in simple terms</p>
-<p><em><strong>Nature of Meaning</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>: Implied meaning that relies on context and shared understanding. It is not directly stated but inferred.</li>
-<li><strong>Entailment</strong>: Logical meaning that follows necessarily from the truth of another statement. It is a strict logical relationship.</li>
-<li><strong>Presupposition</strong>: Assumed background information or beliefs. It is taken for granted by the speaker as known to the listener.</li>
-</ul>
-<p><em><strong>Dependence on Context</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>: Highly dependent on context. The same statement can imply different things in different situations.</li>
-<li><strong>Entailment</strong>: Not dependent on context. If the antecedent is true, the consequent must be true regardless of context.</li>
-<li><strong>Presupposition</strong>: Partially dependent on context. It relies on shared knowledge but is less flexible than implicature.</li>
-</ul>
-<p><em><strong>Truth Conditions</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>: Can be canceled or denied without contradiction. For example, “It’s cold in here” doesn’t necessarily mean the speaker wants the window closed if they follow up with, “But I like it that way.”</li>
-<li><strong>Entailment</strong>:<br>  Cannot be canceled without contradiction. If “All cats are animals” is true, saying “No cats are animals” would be a direct contradiction.</li>
-<li><strong>Presupposition</strong>: Remains even if the statement is negated. For example, “John’s brother is not tall” still presupposes that John has a brother.</li>
-</ul>
-<p><em><strong>Example Comparisons</strong></em>:</p>
-<ul>
-<li><strong>Implicature</strong>:<br>  Statement: “Can you pass the salt?”<br>  Implicature: The speaker is asking you to pass the salt, not questioning your ability to do so.</li>
-<li><strong>Entailment</strong>:<br>  Statement: “She is a mother.”<br>  Entailment: She has a child. If “She is a mother” is true, it logically follows that “She has a child” must be true.</li>
-<li><strong>Presupposition</strong>:<br>  Statement: “The king of France is bald.”<br>  Presupposition: There is a king of France. This assumption is taken for granted by the speaker.</li>
-</ul>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><strong>Implicatures</strong> are implied meanings that depend on context and can be canceled without contradiction.<br><strong>Entailments</strong> are logical consequences that must be true if the initial statement is true, and they cannot be canceled without contradiction.<br><strong>Presuppositions</strong> are background assumptions that remain true even if the statement is negated and depend on shared knowledge between the speaker and listener.<br>By understanding these differences, we can better analyze and interpret the subtleties of communication and language use.</p>
-<h4 id="The-Gists-of-Predicate-Calculus-and-Propositional-Logic"><a href="#The-Gists-of-Predicate-Calculus-and-Propositional-Logic" class="headerlink" title="The Gists of Predicate Calculus and Propositional Logic"></a>The Gists of Predicate Calculus and Propositional Logic</h4><h4 id="Basic-Concepts-of-Lambda-Calculus"><a href="#Basic-Concepts-of-Lambda-Calculus" class="headerlink" title="Basic Concepts of Lambda Calculus"></a>Basic Concepts of Lambda Calculus</h4><p>Lambda calculus is a formal system in mathematical logic and computer science for expressing computation based on function abstraction and application. It was introduced by Alonzo Church in the 1930s as part of his work on the foundations of mathematics.</p>
-<h4 id="1-Lambda-Abstraction"><a href="#1-Lambda-Abstraction" class="headerlink" title="1. Lambda Abstraction:"></a>1. <strong>Lambda Abstraction</strong>:</h4><ul>
-<li><strong>Syntax</strong>: <code>λx. E</code></li>
-<li><strong>Explanation</strong>: This denotes an anonymous function with a parameter <code>x</code> and body <code>E</code>. For example, <code>λx. x + 1</code> represents a function that takes an argument <code>x</code> and returns <code>x + 1</code>.</li>
-</ul>
-<h4 id="2-Application"><a href="#2-Application" class="headerlink" title="2. Application:"></a>2. <strong>Application</strong>:</h4><ul>
-<li><strong>Syntax</strong>: <code>(F A)</code></li>
-<li><strong>Explanation</strong>: This denotes the application of function <code>F</code> to argument <code>A</code>. For example, <code>(λx. x + 1) 2</code> applies the function <code>λx. x + 1</code> to <code>2</code>, resulting in <code>3</code>.</li>
-</ul>
-<h4 id="3-Variables"><a href="#3-Variables" class="headerlink" title="3. Variables:"></a>3. <strong>Variables</strong>:</h4><ul>
-<li><strong>Syntax</strong>: <code>x</code></li>
-<li><strong>Explanation</strong>: Variables are placeholders for values or other expressions. In <code>λx. x</code>, <code>x</code> is a variable.</li>
-</ul>
-<h4 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h4><p>In lambda calculus, expressions are built using variables, lambda abstractions, and applications. These are called lambda expressions or terms. The grammar of lambda expressions is defined as:</p>
-<ul>
-<li><strong>Variables</strong>: <code>x, y, z, ...</code></li>
-<li><strong>Lambda Abstraction</strong>: <code>λx. E</code> where <code>x</code> is a variable and <code>E</code> is a lambda expression.</li>
-<li><strong>Application</strong>: <code>(E1 E2)</code> where <code>E1</code> and <code>E2</code> are lambda expressions.</li>
-</ul>
-<h4 id="Reduction"><a href="#Reduction" class="headerlink" title="Reduction"></a>Reduction</h4><p>Lambda calculus defines computation through the process of <strong>reduction</strong>, which simplifies lambda expressions. There are two main types of reduction:</p>
-<ol>
-<li><p><strong>Alpha Conversion (α conversion)</strong>:<br> <strong>Explanation</strong>: Renaming the bound variables in a lambda expression. For example, <code>λx. x</code> can be alpha-converted to <code>λy. y</code>.<br> <strong>Purpose</strong>: Avoids name collisions.</p>
-</li>
-<li><p><strong>Beta Reduction (β reduction)</strong>:<br> <strong>Explanation</strong>: Applying a lambda function to an argument. For example, <code>(λx. x + 1) 2</code> reduces to <code>2 + 1</code> which further reduces to <code>3</code>.<br> <strong>Process</strong>: Replace the bound variable with the argument in the body of the abstraction. <code>(λx. E1) E2</code> reduces to <code>E1[E2/x]</code>, where <code>E1[E2/x]</code> denotes substitution of <code>E2</code> for <code>x</code> in <code>E1</code>.</p>
-</li>
-</ol>
-<h4 id="Example-of-Beta-Reduction"><a href="#Example-of-Beta-Reduction" class="headerlink" title="Example of Beta Reduction"></a>Example of Beta Reduction</h4><p>Consider the expression: <code>(λx. (λy. x + y) 2) 3</code>.</p>
-<ol>
-<li><p>Apply the outer function <code>(λx. (λy. x + y) 2)</code> to <code>3</code>:<br> <code>((λx. (λy. x + y) 2) 3)</code><br> Substitute <code>3</code> for <code>x</code> in <code>(λy. x + y) 2</code>: <code>(λy. 3 + y) 2</code>.</p>
-</li>
-<li><p>Apply the inner function <code>(λy. 3 + y)</code> to <code>2</code>:<br> <code>((λy. 3 + y) 2)</code><br> Substitute <code>2</code> for <code>y</code> in <code>3 + y</code>: <code>3 + 2</code>.</p>
-</li>
-<li><p>Simplify the expression:<br> <code>3 + 2</code> reduces to <code>5</code>.</p>
-</li>
-</ol>
-<h4 id="Significance-in-Computer-Science"><a href="#Significance-in-Computer-Science" class="headerlink" title="Significance in Computer Science"></a>Significance in Computer Science</h4><p>Lambda calculus serves as the foundation for understanding computation and functional programming languages. Key aspects include:</p>
-<ul>
-<li><strong>Functional Programming</strong>: Languages like Haskell, Lisp, and Scheme are heavily influenced by lambda calculus.</li>
-<li><strong>Programming Language Theory</strong>: Lambda calculus provides a framework for studying the properties of functions and recursive definitions.</li>
-<li><strong>Type Systems</strong>: Extensions of lambda calculus, such as the simply typed lambda calculus, form the basis for type systems in programming languages.</li>
-</ul>
-<h4 id="Church-Turing-Alonzo-Church-and-Alan-Turing-Thesis"><a href="#Church-Turing-Alonzo-Church-and-Alan-Turing-Thesis" class="headerlink" title="Church-Turing (Alonzo Church and Alan Turing) Thesis"></a>Church-Turing (Alonzo Church and Alan Turing) Thesis</h4><p>Lambda calculus is also central to the <strong>Church-Turing thesis</strong>, which posits that any computable function can be computed by a Turing machine, and equivalently, can be expressed in lambda calculus. This establishes lambda calculus as a universal model of computation.</p>
-<p>In summary, lambda calculus is a powerful mathematical formalism for defining and studying computation. Its simplicity and expressiveness make it a cornerstone of theoretical computer science and a valuable tool for understanding the base of programming languages.</p>
-<h4 id="In-A-Nutshell"><a href="#In-A-Nutshell" class="headerlink" title="In A Nutshell"></a>In A Nutshell</h4><p>The contributions of <strong>Alonzo Church</strong> and <strong>Alan Turing</strong>, particularly their work on the <strong>Church-Turing thesis</strong> and the development of <strong>lambda calculus</strong> and <strong>Turing machines</strong>, can indeed be discussed under the broader umbrella of <strong>problem-solving</strong> and <strong>logical reasoning</strong>. Their ideas fit well within the same conceptual framework as <strong>traditional syllogistic logic</strong>, such as <strong>propositional logic</strong> and <strong>predicate logic</strong>, since all of these approaches are aimed at formalizing methods of reasoning and solving problems in structured, logical ways.</p>
-]]></content>
-      <categories>
-        <category>Linguistics</category>
-      </categories>
-      <tags>
-        <tag>semantics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Quantifying Beliefs</title>
     <url>/nlp-docs/2024/09/29/quant-belief/</url>
-    <content><![CDATA[<h3 id="This-Blog-Will-Go-Through-Some-Fun-Things-About-Modeling-Beliefs-with-Bayesian-Methods"><a href="#This-Blog-Will-Go-Through-Some-Fun-Things-About-Modeling-Beliefs-with-Bayesian-Methods" class="headerlink" title="This Blog Will Go Through Some Fun Things About Modeling Beliefs with Bayesian Methods"></a>This Blog Will Go Through Some Fun Things About Modeling Beliefs with Bayesian Methods</h3><p>®<br>The relationship between <strong>Bayesian conditional probability</strong> and theological discussions, particularly the existence or understanding of God, has been a subject of philosophical and theological debate for centuries. I will first explain the <strong>Bayesian conditional probability equation</strong> in a simple way and then explore how it might relate to theological concepts like belief in God.</p>
+    <content><![CDATA[<h3 id="This-Blog-Will-Go-Through-Some-Fun-Things-About-Modeling-Beliefs-with-Bayesian-Methods"><a href="#This-Blog-Will-Go-Through-Some-Fun-Things-About-Modeling-Beliefs-with-Bayesian-Methods" class="headerlink" title="This Blog Will Go Through Some Fun Things About Modeling Beliefs with Bayesian Methods"></a>This Blog Will Go Through Some Fun Things About Modeling Beliefs with Bayesian Methods</h3><p>The relationship between <strong>Bayesian conditional probability</strong> and theological discussions, particularly the existence or understanding of God, has been a subject of philosophical and theological debate for centuries. I will first explain the <strong>Bayesian conditional probability equation</strong> in a simple way and then explore how it might relate to theological concepts like belief in God.</p>
 <h3 id="Bayesian-Conditional-Probability"><a href="#Bayesian-Conditional-Probability" class="headerlink" title="Bayesian Conditional Probability"></a><strong>Bayesian Conditional Probability</strong></h3><p>At its core, <strong>Bayes’ Theorem</strong> helps us <strong>update our beliefs</strong> when we receive new evidence. It tells us how likely something is to be true (the <strong>posterior probability</strong>) given what we already believe (the <strong>prior probability</strong>) and the new evidence we observe.</p>
 <p>Bayes’ Theorem is expressed as:</p>
 <p>$$<br>P(A | B) &#x3D; \frac{P(B | A) \cdot P(A)}{P(B)}<br>$$</p>
