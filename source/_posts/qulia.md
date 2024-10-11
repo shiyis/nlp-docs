@@ -7,3 +7,6 @@ categories:
 Tags:
   - Psychology
 ---
+
+
+#### This blog will try to understand Qualia comprehensively.
