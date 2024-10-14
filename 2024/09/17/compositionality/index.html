@@ -3,21 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Tags | NLPwShiyi Docs</title>
+    <title>Compositionality | NLPwShiyi Docs</title>
     
     
-        <meta name="keywords" content="Tags" />
+        <meta name="keywords" content="Compositionality" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Tags">
-<meta property="og:url" content="https://shiyis.github.io/nlp-docs/tags/index.html">
+    <meta name="description" content="Dealing with CompositionalityThis blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compositionality">
+<meta property="og:url" content="https://shiyis.github.io/nlp-docs/2024/09/17/compositionality/index.html">
 <meta property="og:site_name" content="NLPwShiyi Docs">
+<meta property="og:description" content="Dealing with CompositionalityThis blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-14T11:49:39.569Z">
-<meta property="article:modified_time" content="2024-10-14T11:49:39.569Z">
+<meta property="og:image" content="https://shiyis.github.io/nlp-docs/images/non-overlap.jpg">
+<meta property="article:published_time" content="2024-09-17T13:41:30.000Z">
+<meta property="article:modified_time" content="2024-10-14T11:49:39.561Z">
 <meta property="article:author" content="Shiyi S">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shiyis.github.io/nlp-docs/images/non-overlap.jpg">
     
 
     
@@ -156,13 +160,13 @@
         
         
          <ul class="unstyled" id="tree" > 
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             Linguistics
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/nlp-docs/2024/07/17/problem-solving/">Problem Solving</a></li>  <li class="file"><a href="/nlp-docs/2024/08/13/philo-o-mind/">Philosophy of Mind</a></li>  <li class="file"><a href="/nlp-docs/2024/09/17/compositionality/">Compositionality</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/nlp-docs/2024/07/17/problem-solving/">Problem Solving</a></li>  <li class="file"><a href="/nlp-docs/2024/08/13/philo-o-mind/">Philosophy of Mind</a></li>  <li class="file active"><a href="/nlp-docs/2024/09/17/compositionality/">Compositionality</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -331,16 +335,154 @@
 
             <!-- Main Content -->
             <section id="main">
-                <section class="layout-wrap">
-    <div class="layout-title">
-        <span>Tags</span>
-    </div>
-    <div class="layout-wrap-inner tag-cloud">
+                <article id="search-compositionality" class="article article-type-search" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-            <a href="/nlp-docs/tags/determinism/" style="font-size: 17.5px;">determinism</a> <a href="/nlp-docs/tags/intro/" style="font-size: 14px;">intro</a> <a href="/nlp-docs/tags/math/" style="font-size: 28px;">math</a> <a href="/nlp-docs/tags/nlp-theories/" style="font-size: 24.5px;">nlp-theories</a> <a href="/nlp-docs/tags/semantics/" style="font-size: 14px;">semantics</a> <a href="/nlp-docs/tags/stochastic/" style="font-size: 21px;">stochastic</a>
         
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/nlp-docs/categories/Linguistics/">Linguistics</a>
     </div>
-</section>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/nlp-docs/2024/09/17/compositionality/">
+            <time datetime="2024-09-17T13:41:30.000Z" itemprop="datePublished">2024-09-17</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/raw/writing/source/_posts/compositionality.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/edit/writing/source/_posts/compositionality.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/shiyis/Wiki-site/commits/writing/source/_posts/compositionality.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Compositionality
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h3 id="Dealing-with-Compositionality"><a href="#Dealing-with-Compositionality" class="headerlink" title="Dealing with Compositionality"></a>Dealing with Compositionality</h3><p>This blog will introduce the research done in syntax that addressed compositionality. In one of the connectionist natural language processing papers I have read about, it touches on government binding theory proposed by Chomsky, and the paper tried to model the motion from d-structure to s-structure in GB theory through the non-overlap constraint and chain map combined with NNs.</p>
+<p>And the demonstration of the non-overlap map is below</p>
+<p><img src="/nlp-docs/images/non-overlap.jpg"></p>
+<h4 id="Non-Overlap-Constraint-Explained"><a href="#Non-Overlap-Constraint-Explained" class="headerlink" title="Non-Overlap Constraint Explained"></a>Non-Overlap Constraint Explained</h4><p>The non-overlap constraint is a rule in cognitive models or neural networks that prevents overlapping activations of units in a chain map. This ensures that no two units representing the same syntactic marker can be active simultaneously, which helps maintain clear and distinct representations.</p>
+<h4 id="Diagram-Breakdown"><a href="#Diagram-Breakdown" class="headerlink" title="Diagram Breakdown"></a>Diagram Breakdown</h4><h6 id="Components"><a href="#Components" class="headerlink" title="Components:"></a>Components:</h6><ol>
+<li><p><strong>Chain Map (Green Text):</strong></p>
+<ul>
+<li>Represents the initial activation of units.</li>
+<li>Units in this map correspond to elements or tokens that can be active.</li>
+</ul>
+</li>
+<li><p><strong>Non-Overlap Map (Red Text):</strong></p>
+<ul>
+<li>Corresponds to the chain map and enforces non-overlapping activations.</li>
+<li>Units in this map prevent other units in the same diagonal from activating.</li>
+</ul>
+</li>
+<li><p><strong>Diagonal, Non-Lateral Inhibitory Links (Black Bold Arrows):</strong></p>
+<ul>
+<li>These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.</li>
+</ul>
+</li>
+<li><p><strong>Activation of Corresponding Unit In The Non-Overlap Map (Red Arrow)</strong></p>
+<ul>
+<li>The red arrow or the lateral link indicates an activation process from the chain map where there is a unit activated. Correspondingly, there is a unit in direct parallel in the non-overlap map being activated.</li>
+</ul>
+</li>
+</ol>
+<h6 id="Process"><a href="#Process" class="headerlink" title="Process:"></a>Process:</h6><ol>
+<li>When a unit in the chain map is activated, it activates its corresponding unit in the non-overlap map.</li>
+<li>The active unit in the non-overlap map then inhibits all other units in the same diagonal in the chain map.</li>
+<li>This ensures no two units in the chain map, which represent the same syntactic marker, can be active simultaneously.</li>
+</ol>
+<h4 id="Code-Example-with-Explanation"><a href="#Code-Example-with-Explanation" class="headerlink" title="Code Example with Explanation"></a>Code Example with Explanation</h4><p>Let’s look at a pseudo implementation that matches the diagram:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Unit(<span class="subst">&#123;self.identifier&#125;</span>, active=<span class="subst">&#123;self.active&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">                                                       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Activating <span class="subst">&#123;self.units[row][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map.&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">if</span> i != row:</span><br><span class="line">                <span class="variable language_">self</span>.units[i][col].active = <span class="literal">False</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span></span></span><br><span class="line"><span class="string">                map due tonon-overlap constraint.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map(<span class="string">&quot;ChainMap&quot;</span>)</span><br><span class="line">non_overlap_map = Map(<span class="string">&quot;NonOverlapMap&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output the state of maps</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Chain Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> chain_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nNon-Overlap Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> non_overlap_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ol>
+<li><p><strong>Chain Map Activation:</strong></p>
+<ul>
+<li>Activating a unit in the chain map triggers the corresponding unit in the non-overlap map.</li>
+<li>Example: Activating <code>ChainMapA1</code> will activate <code>NonOverlapMapA1</code>.</li>
+</ul>
+</li>
+<li><p><strong>Non-Overlap Map Enforces Constraint:</strong></p>
+<ul>
+<li>The activated unit in the non-overlap map inhibits other units in the same diagonal in the chain map.</li>
+<li>This ensures that other units in the corresponding diagonal of the chain map remain inactive, preserving the non-overlap constraint.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>By combining the visual diagram with the detailed code example, we’ve illustrated how the non-overlap constraint is implemented and enforced in a cognitive or neural model. The non-overlap map plays a crucial role in ensuring that units representing the same syntactic marker do not overlap in their activation, maintaining a clear and distinct representation of information.</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/nlp-docs/2024/09/29/quant-belief/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Quantifying Beliefs
+                
+            </div>
+        </a>
+    
+    
+        <a href="/nlp-docs/2024/09/02/determinism/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Intro to Determinism</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
             </section>
 
             <!-- Right Sidebar -->
