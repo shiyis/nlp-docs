@@ -10,7 +10,7 @@ tags:
 
 ### **The Hard Problem in Naturalizing Intentionality**
 
-The **Hard Problem of Intentionality** mirrors the broader **Hard Problem of Consciousness**, focusing on a specific aspect of mental life: **intentionality**—the mind’s ability to represent, think about, or be "about" things. Both problems grapple with the difficulty of explaining **subjective mental phenomena** in purely naturalistic or physical terms.
+The **Hard Problem of Intentionality** mirrors the broader **Hard Problem of Consciousness**, focusing on a specific aspect of mental life: **intentionality**—the mind’s ability to represent, think about, or be "about" things. Both problems grapple with the difficulty of explaining *subjective mental phenomena* in purely naturalistic or physical terms.
 
 Let’s break this down into key concepts and challenges in a comprehensive way:
 
