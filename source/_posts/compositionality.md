@@ -21,25 +21,25 @@ The non-overlap constraint is a rule in cognitive models or neural networks that
 
 #### Diagram Breakdown
 
-###### Components:
+##### Components:
 
-1. **Chain Map (Green Text):**
+###### Chain Map (Green Text):
 
-   - Represents the initial activation of units.
-   - Units in this map correspond to elements or tokens that can be active.
+- Represents the initial activation of units.
+- Units in this map correspond to elements or tokens that can be active.
 
-2. **Non-Overlap Map (Red Text):**
+###### Non-Overlap Map (Red Text):
 
-   - Corresponds to the chain map and enforces non-overlapping activations.
-   - Units in this map prevent other units in the same diagonal from activating.
+ - Corresponds to the chain map and enforces non-overlapping activations.
+ - Units in this map prevent other units in the same diagonal from activating.
 
-3. **Diagonal, Non-Lateral Inhibitory Links (Black Bold Arrows):**
+###### Diagonal, Non-Lateral Inhibitory Links (Black Bold Arrows):
 
-   - These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.
+ - These links prevent other units in the corresponding diagonal of the chain map from activating, thereby enforcing the non-overlap constraint.
 
-4. **Activation of Corresponding Unit In The Non-Overlap Map (Red Arrow)**
+###### Activation of Corresponding Unit In The Non-Overlap Map (Red Arrow)
 
-   - The red arrow or the lateral link indicates an activation process from the chain map where there is a unit activated. Correspondingly, there is a unit in direct parallel in the non-overlap map being activated.
+ - The red arrow or the lateral link indicates an activation process from the chain map where there is a unit activated. Correspondingly, there is a unit in direct parallel in the non-overlap map being activated.
 
 ###### Process:
 
@@ -103,11 +103,12 @@ Let's look at a pseudo implementation that matches the diagram:
 
 #### Summary
 
-1. **Chain Map Activation:**
+###### Chain Map Activation:
 
    - Activating a unit in the chain map triggers the corresponding unit in the non-overlap map.
    - Example: Activating `ChainMapA1` will activate `NonOverlapMapA1`.
-2. **Non-Overlap Map Enforces Constraint:**
+   
+###### Non-Overlap Map Enforces Constraint:
 
    - The activated unit in the non-overlap map inhibits other units in the same diagonal in the chain map.
    - This ensures that other units in the corresponding diagonal of the chain map remain inactive, preserving the non-overlap constraint.
