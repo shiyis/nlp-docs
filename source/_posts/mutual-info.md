@@ -20,72 +20,48 @@ Imagine you have a box of different colored marbles, and you want to know which 
 import math
 import collections
 
-def calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2):
+def calculate_pmi(joint_prob, marginal_prob1, marginal_prob2):
     """
-    Calculate the point-wise mutual information (PMI) between two words.
+    Calculate the pointwise mutual information (PMI) between two words.
 
-    :param word1: The first word
-    :param word2: The second word
     :param joint_prob: The joint probability of the two words
     :param marginal_prob1: The marginal probability of the first word
     :param marginal_prob2: The marginal probability of the second word
     :return: The PMI score
     """
-    pmi = math.log(joint_prob / (marginal_prob1 * marginal_prob2), 2)
-    return pmi
+    if joint_prob == 0 or marginal_prob1 == 0 or marginal_prob2 == 0:
+        return 0  # Avoid division by zero
+    return math.log(joint_prob / (marginal_prob1 * marginal_prob2), 2)
 
-def calculate_joint_prob(word1, word2, corpus):
-    """
-    Calculate the joint probability of two words in a corpus.
-
-    :param word1: The first word
-    :param word2: The second word
-    :param corpus: The corpus of text
-    :return: The joint probability
-    """
-    joint_count = 0
-    for sentence in corpus:
-        if word1 in sentence and word2 in sentence:
-            joint_count += 1
-    joint_prob = joint_count / len(corpus)
-    return joint_prob
-
-def calculate_marginal_prob(word, corpus):
-    """
-    Calculate the marginal probability of a word in a corpus.
-
-    :param word: The word
-    :param corpus: The corpus of text
-    :return: The marginal probability
-    """
-    word_count = 0
-    for sentence in corpus:
-        if word in sentence:
-            word_count += 1
-    marginal_prob = word_count / len(corpus)
-    return marginal_prob
-
-def calculate_pmi_corpus(corpus):
+def calculate_pmi_corpus_optimized(corpus):
     """
     Calculate the PMI scores for all pairs of words in a corpus.
 
     :param corpus: The corpus of text
     :return: A dictionary of PMI scores
     """
-    pmi_scores = {}
     word_counts = collections.defaultdict(int)
-    for sentence in corpus:
-        for word in sentence:
-            word_counts[word] += 1
+    cooccurrence_counts = collections.defaultdict(int)
+    total_sentences = len(corpus)
 
-    for word1 in word_counts:
-        for word2 in word_counts:
-            if word1 != word2:
-                joint_prob = calculate_joint_prob(word1, word2, corpus)
-                marginal_prob1 = calculate_marginal_prob(word1, corpus)
-                marginal_prob2 = calculate_marginal_prob(word2, corpus)
-                pmi = calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2)
-                pmi_scores[(word1, word2)] = pmi
+    # Precompute word counts and co-occurrence counts
+    for sentence in corpus:
+        unique_words = set(sentence)  # Avoid counting duplicates within the same sentence
+        for word in unique_words:
+            word_counts[word] += 1
+        for word1 in unique_words:
+            for word2 in unique_words:
+                if word1 != word2:
+                    cooccurrence_counts[(word1, word2)] += 1
+
+    # Calculate PMI scores
+    pmi_scores = {}
+    for (word1, word2), joint_count in cooccurrence_counts.items():
+        joint_prob = joint_count / total_sentences
+        marginal_prob1 = word_counts[word1] / total_sentences
+        marginal_prob2 = word_counts[word2] / total_sentences
+        pmi = calculate_pmi(joint_prob, marginal_prob1, marginal_prob2)
+        pmi_scores[(word1, word2)] = pmi
 
     return pmi_scores
 
@@ -97,8 +73,9 @@ corpus = [
     ["sheep", "bar", "black"]
 ]
 
-pmi_scores = calculate_pmi_corpus(corpus)
+pmi_scores = calculate_pmi_corpus_optimized(corpus)
 print(pmi_scores)
+
 ```
 
 A walkthrough of the code part by part.
@@ -201,27 +178,35 @@ def calculate_marginal_prob(word, corpus):
 #### **4. `calculate_pmi_corpus` Function**
 
 ```python
-def calculate_pmi_corpus(corpus):
+def calculate_pmi_corpus_optimized(corpus):
     """
     Calculate the PMI scores for all pairs of words in a corpus.
 
     :param corpus: The corpus of text
     :return: A dictionary of PMI scores
     """
-    pmi_scores = {}
     word_counts = collections.defaultdict(int)
-    for sentence in corpus:
-        for word in sentence:
-            word_counts[word] += 1
+    cooccurrence_counts = collections.defaultdict(int)
+    total_sentences = len(corpus)
 
-    for word1 in word_counts:
-        for word2 in word_counts:
-            if word1 != word2:
-                joint_prob = calculate_joint_prob(word1, word2, corpus)
-                marginal_prob1 = calculate_marginal_prob(word1, corpus)
-                marginal_prob2 = calculate_marginal_prob(word2, corpus)
-                pmi = calculate_pmi(word1, word2, joint_prob, marginal_prob1, marginal_prob2)
-                pmi_scores[(word1, word2)] = pmi
+    # Precompute word counts and co-occurrence counts
+    for sentence in corpus:
+        unique_words = set(sentence)  # Avoid counting duplicates within the same sentence
+        for word in unique_words:
+            word_counts[word] += 1
+        for word1 in unique_words:
+            for word2 in unique_words:
+                if word1 != word2:
+                    cooccurrence_counts[(word1, word2)] += 1
+
+    # Calculate PMI scores
+    pmi_scores = {}
+    for (word1, word2), joint_count in cooccurrence_counts.items():
+        joint_prob = joint_count / total_sentences
+        marginal_prob1 = word_counts[word1] / total_sentences
+        marginal_prob2 = word_counts[word2] / total_sentences
+        pmi = calculate_pmi(joint_prob, marginal_prob1, marginal_prob2)
+        pmi_scores[(word1, word2)] = pmi
 
     return pmi_scores
 ```
