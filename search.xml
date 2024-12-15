@@ -678,108 +678,6 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
-    <title>Philosophy of Mind</title>
-    <url>/nlp-docs/2024/08/13/philo-o-mind/</url>
-    <content><![CDATA[<h3 id="Cognitive-Science-and-The-Philosophy-of-Mind"><a href="#Cognitive-Science-and-The-Philosophy-of-Mind" class="headerlink" title="Cognitive Science and The Philosophy of Mind"></a>Cognitive Science and The Philosophy of Mind</h3><p><span class="label label-danger">Q</span> What is the focus of this blog?</span></p>
-<p><span class="label label-success">A</span> This blog will summarize articles, papers, and materials I have gone through that touch on the subject of Philosophy of Mind and how its presence lays important foundation for the development of general artificial intelligence.</p>
-<p>The blog covers the following topics:</p>
-<ul>
-  <li>What Constitutes The Philosophy of Mind</li>
-  <li>The Implications of Human Beings As Conscious Automata</li>
-  <li>Consciousness As The Fundamental Property of Nature</li>
-  <li>Consciousness As A Weak, Strong, or Normal Emergence</li>
-  <li>The Primal Instincts vs. The Unknown</li>
-  <li>Theories That Address The Mind-Body Problem</li>
-  <li>Computationalism and The Computational Theory of Mind</li>
-  <li>A Turing Style Computational System</li>
-  <li>The Computational vs The Representational Theory of Mind</li>
-  <li>Computationalism vs Functionalism</li>
-  <li>The Emergence of The Representational Theory of Mind</li>
-  <li>What Are Syntactic Underpinnings?</li>
-  <li>Tying Everything Together and Connecting The Dots</li>
-  <li>In A Nutshell</li>
-</ul>
-
-<p><span class="label label-danger">Q</span> What are “easy” and “hard” problems of consciousness?</span></p>
-<p><span class="label label-success">A</span> The <code>easy problems</code> involve understanding mechanisms of perception, attention, and behavior. The <code>hard problem</code> concerns subjective experience or <code>qualia</code>, which are deeply subjective and cannot be directly observed or measured.</p>
-<p><span class="label label-danger">Q</span> What is fundamental property dualism?</span></p>
-<p><span class="label label-success">A</span> Fundamental property dualism regards conscious mental properties as basic constituents of reality, on a par with fundamental physical properties. This view is also referred to as <code>panpsychism</code>.</p>
-<p><span class="label label-danger">Q</span> What are the hypotheses over the emergence and origin of consciousness?</span></p>
-<p><span class="label label-success">A</span> The hypotheses include <code>strong emergence</code>, <code>weak emergence</code>, and <code>normal emergence</code>. Each hypothesis offers a different perspective on how consciousness arises from physical processes:</p>
-<ul>
-  <li><b>Strong Emergence:</b> Higher-level properties that are fundamentally new and cannot be reduced to lower-level explanations. For example, consciousness itself might be considered strongly emergent, involving subjective experiences that cannot be directly deduced from neural activity alone.</li>
-  <li><b>Weak Emergence:</b> Higher-level properties that are unexpected but fully explainable by lower-level processes. For example, the behavior of a flock of birds can be explained by simple rules followed by individual birds, leading to complex patterns.</li>
-  <li><b>Normal Emergence:</b> Properties that arise predictably from underlying processes. For example, the temperature of a gas results from the average kinetic energy of its molecules, and this relationship is well-understood and predictable.</li>
-</ul>
-
-<p><span class="label label-danger">Q</span> What is the <code>Primal Instincts vs. The Unknown</code> theory?</span></p>
-<p><span class="label label-success">A</span> This theory suggests that humans could perform tasks as automata without being aware of it, citing examples such as driving while talking and fight-or-flight responses.</p>
-<p><span class="label label-danger">Q</span> What is the significance of consciousness according to Thomas Henry Huxley?</span></p>
-<p><span class="label label-success">A</span> Huxley believed that sensations and feelings are mere byproducts of the brain’s mechanics, and do not cause any behavior.</p>
-<p><span class="label label-danger">Q</span> What is the <code>&quot;Nomological dangler&quot;</code> according to J.J.C. Smart?</span></p>
-<p><span class="label label-success">A</span> Smart argued that seeing consciousness as a purely physical process eliminates the need to explain the grey area of brain processes in a more scientific and established system.</p>
-<p><span class="label label-danger">Q</span> What are the theories that address the mind-body problem?</span></p>
-<p><span class="label label-success">A</span> Theories include Type vs. Token Identity Theory, Eliminative Materialism, Functionalism, Neutral Monism, and Mind-Body Dualism. These theories offer different perspectives on the relationship between consciousness and the physical world:</p>
-<ul>
-  <li><b>Type vs. Token Identity Theory:</b> Proposes that mental states are identical to specific physical states or processes in the brain. Type identity theory suggests each mental state type corresponds to a specific physical state type, while token identity theory allows for different physical states across different instances.</li>
-  <li><b>Eliminative Materialism:</b> Suggests that current folk psychology and common-sense understandings of mental states, including consciousness, are fundamentally flawed and may be eliminated or revised in light of future scientific understanding.</li>
-  <li><b>Functionalism:</b> Defines consciousness in terms of functional roles within a system, emphasizing the causal relations between inputs, outputs, and other mental states. Consciousness arises from the functional organization of the brain.</li>
-  <li><b>Neutral Monism:</b> Proposes that consciousness and physical phenomena are different manifestations of a neutral substance or property underlying reality. Consciousness is neither purely mental nor purely physical but emerges from a more fundamental neutral substrate.</li>
-  <li><b>Mind-Body Dualism:</b> Posits that consciousness is a non-physical or immaterial aspect of reality. It suggests that consciousness exists independently of physical processes and may have properties that cannot be fully explained in terms of material phenomena.</li>
-</ul>
-
-<p><span class="label label-danger">Q</span> What is Computationalism?</span></p>
-<p><span class="label label-success">A</span> Computationalism holds that the mind is a computational system similar to a Turing machine, and core mental processes are computations similar to those executed by a Turing machine.</p>
-<p><span class="label label-danger">Q</span> What is a <code>Turing-style computational system</code>?</span></p>
-<p><span class="label label-success">A</span> A Turing-style computational system includes memory locations, a central processor, and a machine table that determines the processor’s actions based on its current state and the symbol it is accessing.</p>
-<p><span class="label label-danger">Q</span> How does the Computational Theory of Mind (CTM) compare with the Representational Theory of Mind (RTM)?</span></p>
-<p><span class="label label-success">A</span> CTM focuses on computational processes, while RTM emphasizes mental representations and their connections to the external world. RTM addresses limitations of CTM by incorporating qualitative aspects of consciousness and flexible cognitive processing.</p>
-<p><span class="label label-danger">Q</span> What are <code>productivity</code> and <code>systematicity</code> in CTM and RTM?</span></p>
-<p><span class="label label-success">A1</span>
-<b>CTM:</b>
-  <ul>
-    <li><b>Productivity:</b> CTM explains the productivity of thoughts by assuming that the mind, as a computational system, can generate an infinite number of thoughts from a finite set of symbols and rules.</li>
-    <li><b>Systematicity:</b> CTM assumes systematicity by subscribing to the structural organization of thoughts and the systematic rules of inference that govern them.</li>
-  </ul>
-  <p><span class="label label-success">A2</span>
-  <b>RTM:</b>
-  <ul>
-    <li><b>Productivity:</b> RTM posits that a finite set of symbols in natural language can entertain an infinite number of logical propositions using a finite set of concepts and ideas.</li>
-    <li><b>Systematicity:</b> RTM highlights the inherent systematic relationships between basic cognitive constituents, facilitating coherent and structured thought processes.</li>
-  </ul>
-
-
-<p><span class="label label-danger">Q</span> What are the limitations of CTM?</span></p>
-<p><span class="label label-success">A</span> Limitations include the <code>Symbol Grounding Problem</code>, difficulty in explaining <code>qualia</code> and <code>consciousness</code>, and rigid rule-based processing that may not capture the flexible nature of human cognition.<br><span class="label label-danger">Q</span> What is <code>Connectionism</code>?</span></p>
-<p><span class="label label-success">A</span> Connectionism is an approach within cognitive science that emphasizes distributed processing and learning from experience, using interconnected units similar to neurons in the brain.</p></p>
-<p><span class="label label-danger">Q</span> What is the significance of hybrid models in AI?</span></p>
-<p><span class="label label-success">A</span> Hybrid models integrate connectionist ideas with representational theories, combining symbolic manipulation capabilities with the learning and adaptability features of connectionism.</p></p>
-<p><span class="label label-danger">Q</span> What are <code>syntactic underpinnings</code>?</span></p>
-<p><span class="label label-success">A</span> Syntactic underpinnings refer to the foundational principles and structures that dictate the formation of sentences and phrases in a language, including rules for word order, phrase structure, and grammatical categories.</p></p>
-<p><span class="label label-danger">Q</span> What strategies can address <code>syntactic underpinnings</code>?</span></p>
-<p><span class="label label-success">A</span> Strategies include using grammar formalisms, developing parsing techniques, building rule-based systems, leveraging linguistic resources, and employing machine and deep learning approaches to learn syntactic patterns.</p></p>
-<p><span class="label label-danger">Q</span> How does <code>Connectionism</code> address the limitations of <code>CTM</code>?</span></p>
-<p><span class="label label-success">A</span> Connectionism offers a dynamic, continuous representation of cognitive processes through interconnected units, addressing the rigidity and symbolic limitations of CTM by using distributed representations and learning from experience.</p></p>
-<p><span class="label label-danger">Q</span> What is the main takeaway from this blog?</span></p>
-<p><span class="label label-success">A</span> The blog explores the <code>Computational Theory of Mind (CTM)</code> and its implications, addressing various theories on consciousness, the mind-body problem, and cognitive processes. It highlights the limitations of CTM and introduces <code>Connectionism</code> and the <code>Representational Theory of Mind (RTM)</code> as alternative approaches.</p></p>
-<p><span class="label label-danger">Q</span> Where could I find the resources that help me understand these concepts?</span></p>
-<p><span class="label label-success">A</span> Here are some key references:</p></p>
-<ul>
-  <li>Rescorla, Michael. "The Computational Theory of Mind." The Stanford Encyclopedia of Philosophy, edited by Edward N. Zalta, Fall 2020 Edition.</li> <li>Rumelhart, David E., James L. McClelland, and the PDP Research Group. Parallel Distributed Processing: Explorations in the Microstructure of Cognition, 1986.</li>
-  <li.Clark, Andy. Connectionism and Cognitive Architecture: A Critical Analysis, 1993.</li>
-  <li>Bechtel, William, and George Graham, editors. Connectionism and Cognitive Science, 1998.</li>
-  <li>Horgan, Terence, and John Tienson. Foundations of Connectionism: A Reassessment, 1996.</li>
-  <li>Clark, Andy. Mindware: An Introduction to the Philosophy of Cognitive Science, 2001.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Linguistics</category>
-      </categories>
-      <tags>
-        <tag>nlp-theories</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mutual Information</title>
     <url>/nlp-docs/2024/08/03/mutual-info/</url>
     <content><![CDATA[<h3 id="More-on-Mutual-Information"><a href="#More-on-Mutual-Information" class="headerlink" title="More on Mutual Information"></a>More on Mutual Information</h3><p>Below is the code for WAPMI or the Weighted Average Point-wise Mutual Information. And this code measures the distance between two probabilities distributions.</p>
@@ -918,6 +816,108 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
+    <title>Philosophy of Mind</title>
+    <url>/nlp-docs/2024/08/13/philo-o-mind/</url>
+    <content><![CDATA[<h3 id="Cognitive-Science-and-The-Philosophy-of-Mind"><a href="#Cognitive-Science-and-The-Philosophy-of-Mind" class="headerlink" title="Cognitive Science and The Philosophy of Mind"></a>Cognitive Science and The Philosophy of Mind</h3><p><span class="label label-danger">Q</span> What is the focus of this blog?</span></p>
+<p><span class="label label-success">A</span> This blog will summarize articles, papers, and materials I have gone through that touch on the subject of Philosophy of Mind and how its presence lays important foundation for the development of general artificial intelligence.</p>
+<p>The blog covers the following topics:</p>
+<ul>
+  <li>What Constitutes The Philosophy of Mind</li>
+  <li>The Implications of Human Beings As Conscious Automata</li>
+  <li>Consciousness As The Fundamental Property of Nature</li>
+  <li>Consciousness As A Weak, Strong, or Normal Emergence</li>
+  <li>The Primal Instincts vs. The Unknown</li>
+  <li>Theories That Address The Mind-Body Problem</li>
+  <li>Computationalism and The Computational Theory of Mind</li>
+  <li>A Turing Style Computational System</li>
+  <li>The Computational vs The Representational Theory of Mind</li>
+  <li>Computationalism vs Functionalism</li>
+  <li>The Emergence of The Representational Theory of Mind</li>
+  <li>What Are Syntactic Underpinnings?</li>
+  <li>Tying Everything Together and Connecting The Dots</li>
+  <li>In A Nutshell</li>
+</ul>
+
+<p><span class="label label-danger">Q</span> What are “easy” and “hard” problems of consciousness?</span></p>
+<p><span class="label label-success">A</span> The <code>easy problems</code> involve understanding mechanisms of perception, attention, and behavior. The <code>hard problem</code> concerns subjective experience or <code>qualia</code>, which are deeply subjective and cannot be directly observed or measured.</p>
+<p><span class="label label-danger">Q</span> What is fundamental property dualism?</span></p>
+<p><span class="label label-success">A</span> Fundamental property dualism regards conscious mental properties as basic constituents of reality, on a par with fundamental physical properties. This view is also referred to as <code>panpsychism</code>.</p>
+<p><span class="label label-danger">Q</span> What are the hypotheses over the emergence and origin of consciousness?</span></p>
+<p><span class="label label-success">A</span> The hypotheses include <code>strong emergence</code>, <code>weak emergence</code>, and <code>normal emergence</code>. Each hypothesis offers a different perspective on how consciousness arises from physical processes:</p>
+<ul>
+  <li><b>Strong Emergence:</b> Higher-level properties that are fundamentally new and cannot be reduced to lower-level explanations. For example, consciousness itself might be considered strongly emergent, involving subjective experiences that cannot be directly deduced from neural activity alone.</li>
+  <li><b>Weak Emergence:</b> Higher-level properties that are unexpected but fully explainable by lower-level processes. For example, the behavior of a flock of birds can be explained by simple rules followed by individual birds, leading to complex patterns.</li>
+  <li><b>Normal Emergence:</b> Properties that arise predictably from underlying processes. For example, the temperature of a gas results from the average kinetic energy of its molecules, and this relationship is well-understood and predictable.</li>
+</ul>
+
+<p><span class="label label-danger">Q</span> What is the <code>Primal Instincts vs. The Unknown</code> theory?</span></p>
+<p><span class="label label-success">A</span> This theory suggests that humans could perform tasks as automata without being aware of it, citing examples such as driving while talking and fight-or-flight responses.</p>
+<p><span class="label label-danger">Q</span> What is the significance of consciousness according to Thomas Henry Huxley?</span></p>
+<p><span class="label label-success">A</span> Huxley believed that sensations and feelings are mere byproducts of the brain’s mechanics, and do not cause any behavior.</p>
+<p><span class="label label-danger">Q</span> What is the <code>&quot;Nomological dangler&quot;</code> according to J.J.C. Smart?</span></p>
+<p><span class="label label-success">A</span> Smart argued that seeing consciousness as a purely physical process eliminates the need to explain the grey area of brain processes in a more scientific and established system.</p>
+<p><span class="label label-danger">Q</span> What are the theories that address the mind-body problem?</span></p>
+<p><span class="label label-success">A</span> Theories include Type vs. Token Identity Theory, Eliminative Materialism, Functionalism, Neutral Monism, and Mind-Body Dualism. These theories offer different perspectives on the relationship between consciousness and the physical world:</p>
+<ul>
+  <li><b>Type vs. Token Identity Theory:</b> Proposes that mental states are identical to specific physical states or processes in the brain. Type identity theory suggests each mental state type corresponds to a specific physical state type, while token identity theory allows for different physical states across different instances.</li>
+  <li><b>Eliminative Materialism:</b> Suggests that current folk psychology and common-sense understandings of mental states, including consciousness, are fundamentally flawed and may be eliminated or revised in light of future scientific understanding.</li>
+  <li><b>Functionalism:</b> Defines consciousness in terms of functional roles within a system, emphasizing the causal relations between inputs, outputs, and other mental states. Consciousness arises from the functional organization of the brain.</li>
+  <li><b>Neutral Monism:</b> Proposes that consciousness and physical phenomena are different manifestations of a neutral substance or property underlying reality. Consciousness is neither purely mental nor purely physical but emerges from a more fundamental neutral substrate.</li>
+  <li><b>Mind-Body Dualism:</b> Posits that consciousness is a non-physical or immaterial aspect of reality. It suggests that consciousness exists independently of physical processes and may have properties that cannot be fully explained in terms of material phenomena.</li>
+</ul>
+
+<p><span class="label label-danger">Q</span> What is Computationalism?</span></p>
+<p><span class="label label-success">A</span> Computationalism holds that the mind is a computational system similar to a Turing machine, and core mental processes are computations similar to those executed by a Turing machine.</p>
+<p><span class="label label-danger">Q</span> What is a <code>Turing-style computational system</code>?</span></p>
+<p><span class="label label-success">A</span> A Turing-style computational system includes memory locations, a central processor, and a machine table that determines the processor’s actions based on its current state and the symbol it is accessing.</p>
+<p><span class="label label-danger">Q</span> How does the Computational Theory of Mind (CTM) compare with the Representational Theory of Mind (RTM)?</span></p>
+<p><span class="label label-success">A</span> CTM focuses on computational processes, while RTM emphasizes mental representations and their connections to the external world. RTM addresses limitations of CTM by incorporating qualitative aspects of consciousness and flexible cognitive processing.</p>
+<p><span class="label label-danger">Q</span> What are <code>productivity</code> and <code>systematicity</code> in CTM and RTM?</span></p>
+<p><span class="label label-success">A1</span>
+<b>CTM:</b>
+  <ul>
+    <li><b>Productivity:</b> CTM explains the productivity of thoughts by assuming that the mind, as a computational system, can generate an infinite number of thoughts from a finite set of symbols and rules.</li>
+    <li><b>Systematicity:</b> CTM assumes systematicity by subscribing to the structural organization of thoughts and the systematic rules of inference that govern them.</li>
+  </ul>
+  <p><span class="label label-success">A2</span>
+  <b>RTM:</b>
+  <ul>
+    <li><b>Productivity:</b> RTM posits that a finite set of symbols in natural language can entertain an infinite number of logical propositions using a finite set of concepts and ideas.</li>
+    <li><b>Systematicity:</b> RTM highlights the inherent systematic relationships between basic cognitive constituents, facilitating coherent and structured thought processes.</li>
+  </ul>
+
+
+<p><span class="label label-danger">Q</span> What are the limitations of CTM?</span></p>
+<p><span class="label label-success">A</span> Limitations include the <code>Symbol Grounding Problem</code>, difficulty in explaining <code>qualia</code> and <code>consciousness</code>, and rigid rule-based processing that may not capture the flexible nature of human cognition.<br><span class="label label-danger">Q</span> What is <code>Connectionism</code>?</span></p>
+<p><span class="label label-success">A</span> Connectionism is an approach within cognitive science that emphasizes distributed processing and learning from experience, using interconnected units similar to neurons in the brain.</p></p>
+<p><span class="label label-danger">Q</span> What is the significance of hybrid models in AI?</span></p>
+<p><span class="label label-success">A</span> Hybrid models integrate connectionist ideas with representational theories, combining symbolic manipulation capabilities with the learning and adaptability features of connectionism.</p></p>
+<p><span class="label label-danger">Q</span> What are <code>syntactic underpinnings</code>?</span></p>
+<p><span class="label label-success">A</span> Syntactic underpinnings refer to the foundational principles and structures that dictate the formation of sentences and phrases in a language, including rules for word order, phrase structure, and grammatical categories.</p></p>
+<p><span class="label label-danger">Q</span> What strategies can address <code>syntactic underpinnings</code>?</span></p>
+<p><span class="label label-success">A</span> Strategies include using grammar formalisms, developing parsing techniques, building rule-based systems, leveraging linguistic resources, and employing machine and deep learning approaches to learn syntactic patterns.</p></p>
+<p><span class="label label-danger">Q</span> How does <code>Connectionism</code> address the limitations of <code>CTM</code>?</span></p>
+<p><span class="label label-success">A</span> Connectionism offers a dynamic, continuous representation of cognitive processes through interconnected units, addressing the rigidity and symbolic limitations of CTM by using distributed representations and learning from experience.</p></p>
+<p><span class="label label-danger">Q</span> What is the main takeaway from this blog?</span></p>
+<p><span class="label label-success">A</span> The blog explores the <code>Computational Theory of Mind (CTM)</code> and its implications, addressing various theories on consciousness, the mind-body problem, and cognitive processes. It highlights the limitations of CTM and introduces <code>Connectionism</code> and the <code>Representational Theory of Mind (RTM)</code> as alternative approaches.</p></p>
+<p><span class="label label-danger">Q</span> Where could I find the resources that help me understand these concepts?</span></p>
+<p><span class="label label-success">A</span> Here are some key references:</p></p>
+<ul>
+  <li>Rescorla, Michael. "The Computational Theory of Mind." The Stanford Encyclopedia of Philosophy, edited by Edward N. Zalta, Fall 2020 Edition.</li> <li>Rumelhart, David E., James L. McClelland, and the PDP Research Group. Parallel Distributed Processing: Explorations in the Microstructure of Cognition, 1986.</li>
+  <li.Clark, Andy. Connectionism and Cognitive Architecture: A Critical Analysis, 1993.</li>
+  <li>Bechtel, William, and George Graham, editors. Connectionism and Cognitive Science, 1998.</li>
+  <li>Horgan, Terence, and John Tienson. Foundations of Connectionism: A Reassessment, 1996.</li>
+  <li>Clark, Andy. Mindware: An Introduction to the Philosophy of Cognitive Science, 2001.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Linguistics</category>
+      </categories>
+      <tags>
+        <tag>nlp-theories</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Intro &amp; Overview</title>
     <url>/nlp-docs/2024/07/11/place-holder/</url>
     <content><![CDATA[<h1 id="Hello-There-Welcome-To-This-Blog"><a href="#Hello-There-Welcome-To-This-Blog" class="headerlink" title="Hello There! Welcome To This Blog."></a><span id="title-intro">Hello There! Welcome To This Blog.</span></h1><p>I’m Shiyi. I’m deeply passionate about the intricate dance between data and innovation. With a fervent zeal for leveraging technology to extract insights and create a meaningful impact, I’ve embarked on a journey that spans the realms of Data Science, research, and creative expression.</p>
@@ -1021,6 +1021,18 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </categories>
       <tags>
         <tag>semantics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Understanding SGD</title>
+    <url>/nlp-docs/2024/11/18/sgd/</url>
+    <content><![CDATA[<h3 id="In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent"><a href="#In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent" class="headerlink" title="In this blog, we will comprehensively go through the concepts of stochastic gradient descent"></a>In this blog, we will comprehensively go through the concepts of stochastic gradient descent</h3>]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>stochastic</tag>
       </tags>
   </entry>
   <entry>
@@ -1167,18 +1179,6 @@ $$ \text{Jacobian} = \begin{pmatrix}
       <categories>
         <category>Other</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Understanding SGD</title>
-    <url>/nlp-docs/2024/11/18/sgd/</url>
-    <content><![CDATA[<h3 id="In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent"><a href="#In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent" class="headerlink" title="In this blog, we will comprehensively go through the concepts of stochastic gradient descent"></a>In this blog, we will comprehensively go through the concepts of stochastic gradient descent</h3>]]></content>
-      <categories>
-        <category>Math</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>stochastic</tag>
-      </tags>
   </entry>
   <entry>
     <title>The GPT Architecture</title>
@@ -1389,7 +1389,7 @@ $$ \text{Jacobian} = \begin{pmatrix}
 <li><strong>States</strong>: <code>Sunny</code>, <code>Rainy</code></li>
 <li><strong>Observations</strong>: <code>Dry</code>, <code>Dryish</code>, <code>Wet</code></li>
 <li><strong>Transition Probabilities</strong>:<br>$$<br>a_{\text{Sunny, Sunny}} &#x3D; 0.8, \quad a_{\text{Sunny, Rainy}} &#x3D; 0.2<br>$$<br>$$<br>a_{\text{Rainy, Sunny}} &#x3D; 0.4, \quad a_{\text{Rainy, Rainy}} &#x3D; 0.6<br>$$</li>
-<li><strong>Emission Probabilities</strong>:<br>$$<br>b_{\text{Sunny}}(\text{Dry}) &#x3D; 0.6, \quad b_{\text{Sunny}}(\text{Dryish}) &#x3D; 0.3, \quad b_{\text{Sunny}}(\text{Wet}) &#x3D; 0.1<br>$$<br>$$<br>b_{\text{Rainy}}(\text{Dry}) &#x3D; 0.1, \quad b_{\text{Rainy}}(\text{Dryish}) &#x3D; 0.4, \quad b_{\text{Rainy}}(\text{Wet}) &#x3D; 0.5<br>$$</li>
+<li><strong>Emission Probabilities</strong>:<br>$$<br>b_{\text{Sunny , Dry}} &#x3D; 0.6, \quad b_{\text{Sunny,Dryish}} &#x3D; 0.3, \quad b_{\text{Sunny,Wet}} &#x3D; 0.1<br>$$<br>$$<br>b_{\text{Rainy,Dry}} &#x3D; 0.1, \quad b_{\text{Rainy,Dryish}} &#x3D; 0.4, \quad b_{\text{Rainy,Wet}} &#x3D; 0.5<br>$$</li>
 <li><strong>Initial Probabilities</strong>:<br>$$<br>\pi_{\text{Sunny}} &#x3D; 0.5, \quad \pi_{\text{Rainy}} &#x3D; 0.5<br>$$</li>
 </ul>
 <h3 id="Step-2-Python-Implementation"><a href="#Step-2-Python-Implementation" class="headerlink" title="Step 2: Python Implementation"></a>Step 2: Python Implementation</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the states, observations, and sequences</span></span><br><span class="line">states = [<span class="string">&#x27;Sunny&#x27;</span>, <span class="string">&#x27;Rainy&#x27;</span>]</span><br><span class="line">observations = [<span class="string">&#x27;Dry&#x27;</span>, <span class="string">&#x27;Dryish&#x27;</span>, <span class="string">&#x27;Wet&#x27;</span>] <span class="comment"># the two lists don&#x27;t have to be the exact match</span></span><br><span class="line">obs_sequence = [<span class="string">&#x27;Dry&#x27;</span>, <span class="string">&#x27;Dryish&#x27;</span>, <span class="string">&#x27;Wet&#x27;</span>] <span class="comment"># this is the sequence of results we want to use the algorithm to explain.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the likely outcome might be [&#x27;Sunny&#x27;, &#x27;Sunny&#x27; , &#x27;Rainy&#x27;].</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Transition probabilities</span></span><br><span class="line">transition_probs = &#123;</span><br><span class="line">    <span class="string">&#x27;Sunny&#x27;</span>: &#123;<span class="string">&#x27;Sunny&#x27;</span>: <span class="number">0.8</span>, <span class="string">&#x27;Rainy&#x27;</span>: <span class="number">0.2</span>&#125;,</span><br><span class="line">    <span class="string">&#x27;Rainy&#x27;</span>: &#123;<span class="string">&#x27;Sunny&#x27;</span>: <span class="number">0.4</span>, <span class="string">&#x27;Rainy&#x27;</span>: <span class="number">0.6</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Emission probabilities</span></span><br><span class="line">emission_probs = &#123;</span><br><span class="line">    <span class="string">&#x27;Sunny&#x27;</span>: &#123;<span class="string">&#x27;Dry&#x27;</span>: <span class="number">0.6</span>, <span class="string">&#x27;Dryish&#x27;</span>: <span class="number">0.3</span>, <span class="string">&#x27;Wet&#x27;</span>: <span class="number">0.1</span>&#125;,</span><br><span class="line">    <span class="string">&#x27;Rainy&#x27;</span>: &#123;<span class="string">&#x27;Dry&#x27;</span>: <span class="number">0.1</span>, <span class="string">&#x27;Dryish&#x27;</span>: <span class="number">0.4</span>, <span class="string">&#x27;Wet&#x27;</span>: <span class="number">0.5</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initial probabilities</span></span><br><span class="line">start_probs = &#123;<span class="string">&#x27;Sunny&#x27;</span>: <span class="number">0.5</span>, <span class="string">&#x27;Rainy&#x27;</span>: <span class="number">0.5</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Viterbi Algorithm implementation</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">viterbi</span>(<span class="params">obs_sequence, states, start_probs, transition_probs, emission_probs</span>):</span><br><span class="line">    T = <span class="built_in">len</span>(obs_sequence)</span><br><span class="line">    N = <span class="built_in">len</span>(states)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Initialize variables</span></span><br><span class="line">    viterbi_matrix = np.zeros((N, T))  <span class="comment"># Store probabilities</span></span><br><span class="line">    backpointer = np.zeros((N, T), dtype=<span class="built_in">int</span>)  <span class="comment"># Store backtracking paths</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Mapping state names to indices</span></span><br><span class="line">    state_index = &#123;states[i]: i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N)&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Initialization step</span></span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        viterbi_matrix[s, <span class="number">0</span>] = start_probs[states[s]] * emission_probs[states[s]][obs_sequence[<span class="number">0</span>]]</span><br><span class="line">        backpointer[s, <span class="number">0</span>] = <span class="number">0</span>  <span class="comment"># No backpointer in the first column</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Recursion step</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, T):</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            max_prob, max_state = <span class="built_in">max</span>(</span><br><span class="line">                (viterbi_matrix[prev_s, t-<span class="number">1</span>] * transition_probs[states[prev_s]][states[s]], prev_s)</span><br><span class="line">                <span class="keyword">for</span> prev_s <span class="keyword">in</span> <span class="built_in">range</span>(N)</span><br><span class="line">            )</span><br><span class="line">            viterbi_matrix[s, t] = max_prob * emission_probs[states[s]][obs_sequence[t]]</span><br><span class="line">            backpointer[s, t] = max_state</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Termination step</span></span><br><span class="line">    best_path_prob = np.<span class="built_in">max</span>(viterbi_matrix[:, T-<span class="number">1</span>])</span><br><span class="line">    best_last_state = np.argmax(viterbi_matrix[:, T-<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Backtracking</span></span><br><span class="line">    best_path = [best_last_state]</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(T-<span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">        best_last_state = backpointer[best_last_state, t]</span><br><span class="line">        best_path.insert(<span class="number">0</span>, best_last_state)</span><br><span class="line"></span><br><span class="line">    best_path_states = [states[state] <span class="keyword">for</span> state <span class="keyword">in</span> best_path]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_path_states, best_path_prob</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the Viterbi algorithm</span></span><br><span class="line">best_path, best_prob = viterbi(obs_sequence, states, start_probs, transition_probs, emission_probs)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Most likely hidden state sequence:&quot;</span>, best_path)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Probability of this sequence:&quot;</span>, best_prob)</span><br></pre></td></tr></table></figure>
