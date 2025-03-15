@@ -44,7 +44,9 @@ The blog covers the following topics:
 <span class="label label-success">A</span> The hypotheses include `strong emergence`, `weak emergence`, and `normal emergence`. Each hypothesis offers a different perspective on how consciousness arises from physical processes:
 <ul>
   <li><b>Strong Emergence:</b> Higher-level properties that are fundamentally new and cannot be reduced to lower-level explanations. For example, consciousness itself might be considered strongly emergent, involving subjective experiences that cannot be directly deduced from neural activity alone.</li>
+  <b></b>
   <li><b>Weak Emergence:</b> Higher-level properties that are unexpected but fully explainable by lower-level processes. For example, the behavior of a flock of birds can be explained by simple rules followed by individual birds, leading to complex patterns.</li>
+  <b></b>
   <li><b>Normal Emergence:</b> Properties that arise predictably from underlying processes. For example, the temperature of a gas results from the average kinetic energy of its molecules, and this relationship is well-understood and predictable.</li>
 </ul>
 
@@ -65,9 +67,13 @@ The blog covers the following topics:
 <span class="label label-success">A</span> Theories include Type vs. Token Identity Theory, Eliminative Materialism, Functionalism, Neutral Monism, and Mind-Body Dualism. These theories offer different perspectives on the relationship between consciousness and the physical world:
 <ul>
   <li><b>Type vs. Token Identity Theory:</b> Proposes that mental states are identical to specific physical states or processes in the brain. Type identity theory suggests each mental state type corresponds to a specific physical state type, while token identity theory allows for different physical states across different instances.</li>
+
   <li><b>Eliminative Materialism:</b> Suggests that current folk psychology and common-sense understandings of mental states, including consciousness, are fundamentally flawed and may be eliminated or revised in light of future scientific understanding.</li>
+
   <li><b>Functionalism:</b> Defines consciousness in terms of functional roles within a system, emphasizing the causal relations between inputs, outputs, and other mental states. Consciousness arises from the functional organization of the brain.</li>
+
   <li><b>Neutral Monism:</b> Proposes that consciousness and physical phenomena are different manifestations of a neutral substance or property underlying reality. Consciousness is neither purely mental nor purely physical but emerges from a more fundamental neutral substrate.</li>
+
   <li><b>Mind-Body Dualism:</b> Posits that consciousness is a non-physical or immaterial aspect of reality. It suggests that consciousness exists independently of physical processes and may have properties that cannot be fully explained in terms of material phenomena.</li>
 </ul>
 

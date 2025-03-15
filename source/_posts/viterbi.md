@@ -104,10 +104,10 @@ We'll use two hidden states: **Sunny** and **Rainy**, and three possible observa
   $$
 - **Emission Probabilities**:
   $$
-  b_{\text{Sunny}}(\text{Dry}) = 0.6, \quad b_{\text{Sunny}}(\text{Dryish}) = 0.3, \quad b_{\text{Sunny}}(\text{Wet}) = 0.1
+  b_{\text{Sunny , Dry}} = 0.6, \quad b_{\text{Sunny,Dryish}} = 0.3, \quad b_{\text{Sunny,Wet}} = 0.1
   $$
   $$
-  b_{\text{Rainy}}(\text{Dry}) = 0.1, \quad b_{\text{Rainy}}(\text{Dryish}) = 0.4, \quad b_{\text{Rainy}}(\text{Wet}) = 0.5
+  b_{\text{Rainy,Dry}} = 0.1, \quad b_{\text{Rainy,Dryish}} = 0.4, \quad b_{\text{Rainy,Wet}} = 0.5
   $$
 - **Initial Probabilities**:
   $$
