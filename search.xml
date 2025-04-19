@@ -100,40 +100,8 @@
 <li>This ensures no two units in the chain map, which represent the same syntactic marker, can be active simultaneously.</li>
 </ol>
 <h4 id="Code-Example-with-Explanation"><a href="#Code-Example-with-Explanation" class="headerlink" title="Code Example with Explanation"></a>Code Example with Explanation</h4><p>Let’s look at a pseudo implementation that matches the diagram:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Unit(<span class="subst">&#123;self.identifier&#125;</span>, active=<span class="subst">&#123;self.active&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">                                                       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Activating <span class="subst">&#123;self.units[row][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map.&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):  <span class="comment"># Iterate through all rows</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):  <span class="comment"># Iterate through all columns</span></span><br><span class="line">                <span class="keyword">if</span> (i - row) == -(j - col):  <span class="comment"># Top-right to bottom-left diagonal</span></span><br><span class="line">                    <span class="keyword">if</span> i == row <span class="keyword">and</span> j == col:</span><br><span class="line">                        <span class="keyword">continue</span>  <span class="comment"># Skip the currently activated unit</span></span><br><span class="line">                    <span class="variable language_">self</span>.units[i][j].active = <span class="literal">False</span>  <span class="comment"># Deactivate other diagonal units</span></span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][j]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map due to diagonal inhibition.&quot;</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="comment"># Deactivate all non-diagonal units</span></span><br><span class="line">                    <span class="variable language_">self</span>.units[i][j].active = <span class="literal">False</span></span><br><span class="line">                    <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][j]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map due to non-overlap constraint.&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map(<span class="string">&quot;ChainMap&quot;</span>)</span><br><span class="line">non_overlap_map = Map(<span class="string">&quot;NonOverlapMap&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output the state of maps</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Chain Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> chain_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nNon-Overlap Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> non_overlap_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Unit</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, identifier</span>):</span><br><span class="line">        <span class="variable language_">self</span>.identifier = identifier</span><br><span class="line">        <span class="variable language_">self</span>.active = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Unit(<span class="subst">&#123;self.identifier&#125;</span>, active=<span class="subst">&#123;self.active&#125;</span>)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Map</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.units = [[Unit(<span class="string">f&quot;<span class="subst">&#123;name&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(<span class="number">65</span>+i)&#125;</span><span class="subst">&#123;j+<span class="number">1</span>&#125;</span>&quot;</span>) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">                                                       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">activate_unit</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="variable language_">self</span>.units[row][col].active = <span class="literal">True</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Activating <span class="subst">&#123;self.units[row][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span> map.&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.enforce_non_overlap(row, col)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enforce_non_overlap</span>(<span class="params">self, row, col</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">            <span class="keyword">if</span> i != row:</span><br><span class="line">                <span class="variable language_">self</span>.units[i][col].active = <span class="literal">False</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;Deactivating <span class="subst">&#123;self.units[i][col]&#125;</span> in <span class="subst">&#123;self.name&#125;</span></span></span><br><span class="line"><span class="string">                map due tonon-overlap constraint.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize Chain Map and Non-Overlap Map</span></span><br><span class="line">chain_map = Map(<span class="string">&quot;ChainMap&quot;</span>)</span><br><span class="line">non_overlap_map = Map(<span class="string">&quot;NonOverlapMap&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Activate unit in Chain Map</span></span><br><span class="line">chain_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Corresponding unit in Non-Overlap Map becomes active</span></span><br><span class="line">non_overlap_map.activate_unit(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Output the state of maps</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Chain Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> chain_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nNon-Overlap Map State:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> non_overlap_map.units:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-<h4 id="Explaining-How-The-Non-Overlap-Constraint-Gets-Enforced"><a href="#Explaining-How-The-Non-Overlap-Constraint-Gets-Enforced" class="headerlink" title="Explaining How The Non-Overlap Constraint Gets Enforced"></a>Explaining How The Non-Overlap Constraint Gets Enforced</h4><p>The logic for the <strong>top-right to bottom-left diagonal</strong> is that as you move <strong>one row down</strong>, you always move <strong>one column to the left</strong> from the previous square.</p>
-<h3 id="Why-does-it-work-this-way"><a href="#Why-does-it-work-this-way" class="headerlink" title="Why does it work this way?"></a>Why does it work this way?</h3><ul>
-<li><strong>Rows (<code>i</code>)</strong>: Moving <strong>down</strong> means increasing the row number (e.g., from 2 to 3).</li>
-<li><strong>Columns (<code>j</code>)</strong>: Moving <strong>left</strong> means decreasing the column number (e.g., from 3 to 2).</li>
-</ul>
-<p>So, for any square <code>(row, col)</code>, the next square in the same diagonal is:</p>
-<ul>
-<li><strong>One row down</strong>: <code>i = row + 1</code></li>
-<li><strong>One column left</strong>: <code>j = col - 1</code></li>
-</ul>
-<p>And that’s exactly what the math <code>(i - row) == -(j - col)</code> checks:</p>
-<ul>
-<li><code>(i - row)</code> → How far you’ve moved <strong>down</strong>.</li>
-<li><code>-(j - col)</code> → How far you’ve moved <strong>left</strong> (negative because it’s to the left).</li>
-<li>If these two are equal, you’re on the same diagonal!</li>
-</ul>
-<hr>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Let’s look at a grid and follow the diagonal logic:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  0   1   2   3   4</span><br><span class="line">0 .   .   .   .   X  &lt;- Start at (0,4)</span><br><span class="line">1 .   .   .   X   .  &lt;- Move to (1,3)</span><br><span class="line">2 .   .   X   .   .  &lt;- Move to (2,2)</span><br><span class="line">3 .   X   .   .   .  &lt;- Move to (3,1)</span><br><span class="line">4 X   .   .   .   .  &lt;- Move to (4,0)</span><br></pre></td></tr></table></figure>
-
-<p>If you start at <code>(0,4)</code>:</p>
-<ul>
-<li>Next diagonal position: <code>(1,3)</code> → One row down, one column left.</li>
-<li>Then <code>(2,2)</code>, <code>(3,1)</code>, <code>(4,0)</code> follow the same pattern.</li>
-</ul>
-<p>Each step satisfies:<br>$$<br>(i - row) &#x3D;&#x3D; -(j - col)<br>$$</p>
-<hr>
-<h3 id="Always-True-for-This-Diagonal"><a href="#Always-True-for-This-Diagonal" class="headerlink" title="Always True for This Diagonal"></a>Always True for This Diagonal</h3><p>For any unit on the diagonal:</p>
-<ul>
-<li>If you pick a starting point <code>(row, col)</code> and keep moving one row down and one column left, you’ll stay on the <strong>top-right to bottom-left diagonal</strong>.</li>
-</ul>
 <h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><h6 id="Chain-Map-Activation"><a href="#Chain-Map-Activation" class="headerlink" title="Chain Map Activation:"></a>Chain Map Activation:</h6><ul>
 <li>Activating a unit in the chain map triggers the corresponding unit in the non-overlap map.</li>
 <li>Example: Activating <code>ChainMapA1</code> will activate <code>NonOverlapMapA1</code>.</li>
@@ -147,6 +115,18 @@
       <categories>
         <category>Linguistics</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Formal Semantics</title>
+    <url>/nlp-docs/2024/01/17/formal-semantics/</url>
+    <content><![CDATA[<h3 id="In-this-blog-we-will-go-through-the-important-concepts-in-Formal-Semantics-more-comprehensively"><a href="#In-this-blog-we-will-go-through-the-important-concepts-in-Formal-Semantics-more-comprehensively" class="headerlink" title="In this blog, we will go through the important concepts in Formal Semantics more comprehensively"></a>In this blog, we will go through the important concepts in Formal Semantics more comprehensively</h3><p>First, we will go through entailments. When we say the first sentence entails the second, it means that if a sentence entails another.</p>
+]]></content>
+      <categories>
+        <category>Linguistics</category>
+      </categories>
+      <tags>
+        <tag>semantics</tag>
+      </tags>
   </entry>
   <entry>
     <title>Intro to Determinism</title>
@@ -225,18 +205,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Formal Semantics</title>
-    <url>/nlp-docs/2024/01/17/formal-semantics/</url>
-    <content><![CDATA[<h3 id="In-this-blog-we-will-go-through-the-important-concepts-in-Formal-Semantics-more-comprehensively"><a href="#In-this-blog-we-will-go-through-the-important-concepts-in-Formal-Semantics-more-comprehensively" class="headerlink" title="In this blog, we will go through the important concepts in Formal Semantics more comprehensively"></a>In this blog, we will go through the important concepts in Formal Semantics more comprehensively</h3><p>First, we will go through entailments. When we say the first sentence entails the second, it means that if a sentence entails another.</p>
-]]></content>
-      <categories>
-        <category>Linguistics</category>
-      </categories>
-      <tags>
-        <tag>semantics</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Naturalizing Intentions</title>
     <url>/nlp-docs/2024/09/02/intentionality/</url>
     <content><![CDATA[<h3 id="The-Hard-Problem-in-Naturalizing-Intentionality"><a href="#The-Hard-Problem-in-Naturalizing-Intentionality" class="headerlink" title="The Hard Problem in Naturalizing Intentionality"></a><strong>The Hard Problem in Naturalizing Intentionality</strong></h3><p>The <strong>Hard Problem of Intentionality</strong> mirrors the broader <strong>Hard Problem of Consciousness</strong>, focusing on a specific aspect of mental life: <strong>intentionality</strong>—the mind’s ability to represent, think about, or be “about” things. Both problems grapple with the difficulty of explaining <em>subjective mental phenomena</em> in purely naturalistic or physical terms.</p>
@@ -262,7 +230,7 @@
 <li>A causal theory might explain that seeing a tree causes certain brain states, but <strong>why does that brain state have the subjective character of “being about a tree”?</strong></li>
 <li>Teleosemantics might explain that certain brain processes evolved to represent environmental features for survival, but <strong>how does that give rise to the feeling of “thinking about” something in a first-person, subjective way?</strong></li>
 </ul>
-<p>This challenge is often compared to the <strong>Hard Problem of Consciousness</strong>, which philosopher <strong>David Chalmers</strong> famously articulated. The hard problem of consciousness asks how <strong>subjective experience (qualia)</strong> —the “what it’s like” aspect of experience—arises from physical processes in the brain. Similarly, the hard problem of intentionality asks how the subjective aspect of intentionality arises from natural processes.</p>
+<p>This challenge is often compared to the <strong>Hard Problem of Consciousness</strong>, which philosopher <strong>David Chalmers</strong> famously articulated. The hard problem of consciousness asks how **subjective experience (qualia)**—the “what it’s like” aspect of experience—arises from physical processes in the brain. Similarly, the hard problem of intentionality asks how the subjective aspect of intentionality arises from natural processes.</p>
 <h4 id="B-Intentionality-as-Normative"><a href="#B-Intentionality-as-Normative" class="headerlink" title="B. Intentionality as Normative"></a>B. <strong>Intentionality as Normative</strong></h4><p>Another element that naturalistic explanations struggle with is the <strong>normativity</strong> of intentionality. Intentional states are not just about things—they can also be <strong>correct</strong> or <strong>incorrect</strong>. For example:</p>
 <ul>
 <li>If you believe that the sky is blue, and it is blue, your belief is <strong>correct</strong>.</li>
@@ -364,6 +332,18 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
+    <title>Knowledge Graph</title>
+    <url>/nlp-docs/2025/03/25/knowledge-graph/</url>
+    <content><![CDATA[<h3 id="In-this-blog-we-will-go-through-the-important-gists-of-knowledge-graph-through-algebraic-methods"><a href="#In-this-blog-we-will-go-through-the-important-gists-of-knowledge-graph-through-algebraic-methods" class="headerlink" title="In this blog, we will go through the important gists of knowledge graph through algebraic methods"></a>In this blog, we will go through the important gists of knowledge graph through algebraic methods</h3>]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>graph models</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markov Processes</title>
     <url>/nlp-docs/2024/07/16/markov-chains/</url>
     <content><![CDATA[<h3 id="Discussions-on-Markov-Processes-Continued"><a href="#Discussions-on-Markov-Processes-Continued" class="headerlink" title="Discussions on Markov Processes Continued"></a>Discussions on Markov Processes Continued</h3><p>In a different blog, I noted the use of a markov processes in the context of natural language processing. Now in this blog, we will be going through some important details with regard to the concept.</p>
@@ -383,7 +363,7 @@ $$ \text{Jacobian} = \begin{pmatrix}
 <li><p><strong>Transition Matrix</strong>: A matrix $ P $ where each element $ P_{ij} $ represents the transition probability from state $ s_i $ to state $ s_j $.<br>$$<br>  P &#x3D; \begin{pmatrix}<br>  P_{11} &amp; P_{12} &amp; \cdots &amp; P_{1n} \cr<br>  P_{21} &amp; P_{22} &amp; \cdots &amp; P_{2n} \cr<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \cr<br>  P_{n1} &amp; P_{n2} &amp; \cdots &amp; P_{nn}<br>  \end{pmatrix}<br>$$</p>
 </li>
 </ol>
-<h4 id="Markov-Property"><a href="#Markov-Property" class="headerlink" title="Markov Property"></a>Markov Property</h4><p>The Markov property states that the probability of transitioning to the next state depends only on the current state and not on the past states:<br>$$ P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i, \ldots, X_0 &#x3D; s_0) $$<br>$$ \qquad \quad &#x3D; P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) $$</p>
+<h4 id="Markov-Property"><a href="#Markov-Property" class="headerlink" title="Markov Property"></a>Markov Property</h4><p>The Markov property states that the probability of transitioning to the next state depends only on the current state and not on the past states:<br>$$ P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i, X_{t-1} &#x3D; s_{i-1}, \ldots, X_0 &#x3D; s_0) $$<br>$$ \qquad \quad &#x3D; P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) $$</p>
 <h4 id="Step-by-Step-Process"><a href="#Step-by-Step-Process" class="headerlink" title="Step-by-Step Process"></a>Step-by-Step Process</h4><p>Let’s go through the process of a Markov chain step by step.</p>
 <h4 id="Step-1-Define-the-States"><a href="#Step-1-Define-the-States" class="headerlink" title="Step 1: Define the States"></a>Step 1: Define the States</h4><p>Identify all possible states of the system. Suppose we have a simple weather system with three states:</p>
 <ul>
@@ -581,6 +561,19 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </tags>
   </entry>
   <entry>
+    <title>Measuring Subjectivity</title>
+    <url>/nlp-docs/2024/11/23/measuring-subjectivity/</url>
+    <content><![CDATA[<h3 id="Understanding-VAE-through-a-different-angle"><a href="#Understanding-VAE-through-a-different-angle" class="headerlink" title="Understanding VAE through a different angle"></a>Understanding VAE through a different angle</h3><p>In a different blog, we have briefly introduced the mechanism behind the VAE algorithm, where it’s essentially taking complex input as numeric values, find a lower-dimensional, structured, and meaningful representation of the input data, and return output that facilitates generative modeling and reconstruction. </p>
+]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>stochastic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Contemporary NLP</title>
     <url>/nlp-docs/2024/08/13/mdn-nlp/</url>
     <content><![CDATA[<h3 id="Introduction-to-Contemporary-NLP"><a href="#Introduction-to-Contemporary-NLP" class="headerlink" title="Introduction to Contemporary NLP"></a>Introduction to Contemporary NLP</h3><p><span class="label label-danger">Q</span> What is the importance of psychological concepts in NLP?</p>
@@ -674,19 +667,6 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </categories>
       <tags>
         <tag>nlp-theories</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Measuring Subjectivity</title>
-    <url>/nlp-docs/2024/11/23/measuring-subjectivity/</url>
-    <content><![CDATA[<h3 id="Understanding-VAE-through-a-different-angle"><a href="#Understanding-VAE-through-a-different-angle" class="headerlink" title="Understanding VAE through a different angle"></a>Understanding VAE through a different angle</h3><p>In a different blog, we have briefly introduced the mechanism behind the VAE algorithm, where it’s essentially taking complex input as numeric values, find a lower-dimensional, structured, and meaningful representation of the input data, and return output that facilitates generative modeling and reconstruction. </p>
-]]></content>
-      <categories>
-        <category>Math</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>stochastic</tag>
       </tags>
   </entry>
   <entry>
@@ -858,8 +838,10 @@ $$ \text{Jacobian} = \begin{pmatrix}
 <p><span class="label label-success">A</span> The hypotheses include <code>strong emergence</code>, <code>weak emergence</code>, and <code>normal emergence</code>. Each hypothesis offers a different perspective on how consciousness arises from physical processes:</p>
 <ul>
   <li><b>Strong Emergence:</b> Higher-level properties that are fundamentally new and cannot be reduced to lower-level explanations. For example, consciousness itself might be considered strongly emergent, involving subjective experiences that cannot be directly deduced from neural activity alone.</li>
+  <b></b>
 
   <li><b>Weak Emergence:</b> Higher-level properties that are unexpected but fully explainable by lower-level processes. For example, the behavior of a flock of birds can be explained by simple rules followed by individual birds, leading to complex patterns.</li>
+  <b></b>
 
   <li><b>Normal Emergence:</b> Properties that arise predictably from underlying processes. For example, the temperature of a gas results from the average kinetic energy of its molecules, and this relationship is well-understood and predictable.</li>
 </ul>
@@ -894,8 +876,11 @@ $$ \text{Jacobian} = \begin{pmatrix}
 <p><span class="label label-success">A1</span>
 <b>CTM:</b>
   <ul>
-    <li><b>Productivity:</b> CTM explains the productivity of thoughts by assuming that the mind, as a computational system, can generate an infinite number of thoughts from a finite set of symbols and rules.</li>
-    <li><b>Systematicity:</b> CTM assumes systematicity by subscribing to the structural organization of thoughts and the systematic rules of inference that govern them.</li>
+  
+<pre><code>&lt;li&gt;&lt;b&gt;Productivity:&lt;/b&gt; CTM explains the productivity of thoughts by assuming that the mind, as a computational system, can generate an infinite number of thoughts from a finite set of symbols and rules.&lt;/li&gt;
+
+&lt;li&gt;&lt;b&gt;Systematicity:&lt;/b&gt; CTM assumes systematicity by subscribing to the structural organization of thoughts and the systematic rules of inference that govern them.&lt;/li&gt;
+</code></pre>
   </ul>
   <p><span class="label label-success">A2</span>
   <b>RTM:</b>
@@ -938,17 +923,17 @@ $$ \text{Jacobian} = \begin{pmatrix}
   <entry>
     <title>Intro &amp; Overview</title>
     <url>/nlp-docs/2024/07/11/place-holder/</url>
-    <content><![CDATA[<h1 id="Hello-There-Welcome-To-This-Blog"><a href="#Hello-There-Welcome-To-This-Blog" class="headerlink" title="Hello There! Welcome To This Blog."></a><span id="title-intro">Hello There! Welcome To This Blog.</span></h1><p>I’m Shiyi. I’m deeply passionate about the intricate dance between data and innovation. With a fervent zeal for leveraging technology to extract insights and create a meaningful impact, I’ve embarked on a journey that spans the realms of Data Science, research, and creative expression.</p>
+    <content><![CDATA[<h1 id="Hello-There-Welcome-To-This-Blog"><a href="#Hello-There-Welcome-To-This-Blog" class="headerlink" title="Hello There! Welcome To This Blog."></a><span id="title-intro">Hello There! Welcome To This Blog.</span></h1><p>Hello there! I’m Shiyi — a data enthusiast, researcher, and creative mind with a passion for the intricate dance between data and innovation. My journey spans the realms of Data Science, Machine Learning, and Natural Language Processing (NLP), all fueled by a drive to use technology to uncover insights and make a meaningful impact.</p>
 <p><span class="label label-danger">Q</span> What drives my work in Data Science and Machine Learning?</span></p>
-<p><span class="label label-success">A</span> At the heart of my endeavors lies a profound appreciation for machine learning, deep learning, and Natural Language Processing. As an advocate for data-driven decision-making, I thrive on unraveling the complexities of algorithms and patterns, harnessing their power to transform raw data into actionable intelligence. From predictive modeling in finance to image recognition tasks using deep learning architectures, I relish the challenge of pushing the boundaries of what’s possible with data.</p>
+<p><span class="label label-success">A</span> At the heart of everything I do is a deep appreciation for algorithms and the stories hidden within data. Whether I’m building predictive models in finance or developing image recognition systems using deep learning, I thrive on transforming raw data into actionable intelligence.</p>
 <p><span class="label label-danger">Q</span> What is my expertise in Natural Language Processing?</span></p>
-<p><span class="label label-success">A</span> My expertise extends to the captivating domain of Natural Language Processing. In an era inundated with information, I’m committed to empowering systems to understand, analyze, and generate insights from vast textual data. Whether it’s sentiment analysis to decipher the mood of social media conversations or language translation to bridge communication gaps, I’m fascinated by the potential of NLP to revolutionize how we interact with language.</p>
+<p><span class="label label-success">A</span> My main research focus is in NLP — a field that lets machines understand and generate human language. From sentiment analysis of social media conversations to machine translation, I’m fascinated by how language technologies are reshaping the way we communicate and understand the world.</p>
 <p><span class="label label-danger">Q</span> How do I combine creativity with my data-driven work?</span></p>
-<p><span class="label label-success">A</span> My passion for crafting extends beyond the digital realm to embrace a hands-on approach to creativity. From knitting intricate patterns inspired by my rabbit’s playful nature to sketching designed to stimulate curiosity and exploration, I find immense fulfillment in blending data-driven insights with the artistry of crafting.</p>
+<p><span class="label label-success">A</span> My love for data doesn’t stop at the screen. I enjoy crafting and creating — from knitting patterns inspired by my rabbit’s antics to sketching ideas that spark curiosity. This hands-on creativity helps me think differently and stay inspired in my technical work.</p>
 <p><span class="label label-danger">Q</span> What is the essence of my journey?</span></p>
-<p><span class="label label-success">A</span> In essence, my journey is defined by a relentless pursuit of innovation, fueled by the boundless possibilities that arise at the nexus of data, creativity, and companionship. With each endeavor, I strive to push the boundaries of what’s possible, shaping a future where technology not only empowers but also enriches our lives in meaningful and unexpected ways. To channel such a passion, I created this blog to document the things I find helpful and important in understanding some of the most crucial concepts. I hope in such a format, I can grow with you or someone who is interested in learning these cool things.</p>
+<p><span class="label label-success">A</span> This blog is a reflection of my commitment to continuous learning and innovation — where data, creativity, and curiosity come together. I’ve created this space to document what I find helpful, challenging, or just plain cool, especially for anyone learning about AI, machine learning, or language technologies.</p>
 <p><span class="label label-danger">Q</span> Is this the only blog? </span></p>
-<p><span class="label label-success">A</span> I have also created a separate blog for documenting the gists of NLP. This page will summarize important theories that lay the foundation for the development of AI, speech &amp; language processing, and computational linguistics to provide more context.</p>
+<p><span class="label label-success">A</span> Nope! I also maintain a dedicated NLP-focused blog, where I summarize key theories and concepts that underpin modern AI and computational linguistics. It’s my way of keeping track of foundational ideas and making them accessible to others.</p>
 <h4></h4>
 ]]></content>
       <tags>
@@ -1040,6 +1025,14 @@ $$ \text{Jacobian} = \begin{pmatrix}
       <tags>
         <tag>semantics</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Program Implementation</title>
+    <url>/nlp-docs/2025/01/01/program-implementation/</url>
+    <content><![CDATA[<h3 id="In-this-blog-we-will-go-through-more-stuff-on-multiple-realizability"><a href="#In-this-blog-we-will-go-through-more-stuff-on-multiple-realizability" class="headerlink" title="In this blog, we will go through more stuff on multiple realizability"></a>In this blog, we will go through more stuff on multiple realizability</h3>]]></content>
+      <categories>
+        <category>Computational</category>
+      </categories>
   </entry>
   <entry>
     <title>Quantifying Beliefs</title>
@@ -1187,18 +1180,6 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </categories>
   </entry>
   <entry>
-    <title>Understanding SGD</title>
-    <url>/nlp-docs/2024/11/18/sgd/</url>
-    <content><![CDATA[<h3 id="In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent"><a href="#In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent" class="headerlink" title="In this blog, we will comprehensively go through the concepts of stochastic gradient descent"></a>In this blog, we will comprehensively go through the concepts of stochastic gradient descent</h3>]]></content>
-      <categories>
-        <category>Math</category>
-      </categories>
-      <tags>
-        <tag>math</tag>
-        <tag>stochastic</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>The GPT Architecture</title>
     <url>/nlp-docs/2024/08/17/transformer/</url>
     <content><![CDATA[<h3 id="Summary-and-breakdown-of-the-code-that-form-the-Generative-Pre-trained-Transformer-architecture-continued"><a href="#Summary-and-breakdown-of-the-code-that-form-the-Generative-Pre-trained-Transformer-architecture-continued" class="headerlink" title="Summary and breakdown of the code that form the Generative Pre-trained Transformer architecture continued"></a>Summary and breakdown of the code that form the Generative Pre-trained Transformer architecture continued</h3><p>Let’s break down the code snippet line by line to understand what each step does in the context of creating positional encodings for a Transformer model using PyTorch.</p>
@@ -1318,6 +1299,18 @@ $$ \text{Jacobian} = \begin{pmatrix}
       </categories>
       <tags>
         <tag>nlp-theories</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Understanding SGD</title>
+    <url>/nlp-docs/2024/11/18/sgd/</url>
+    <content><![CDATA[<h3 id="In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent"><a href="#In-this-blog-we-will-comprehensively-go-through-the-concepts-of-stochastic-gradient-descent" class="headerlink" title="In this blog, we will comprehensively go through the concepts of stochastic gradient descent"></a>In this blog, we will comprehensively go through the concepts of stochastic gradient descent</h3>]]></content>
+      <categories>
+        <category>Math</category>
+      </categories>
+      <tags>
+        <tag>math</tag>
+        <tag>stochastic</tag>
       </tags>
   </entry>
   <entry>
